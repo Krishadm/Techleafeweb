@@ -5,7 +5,7 @@ const AboutPage = () => {
     <Container maxWidth="md" sx={{ py: 6 }}>
       <Box>
         <Typography variant="h3" component="h1" gutterBottom>
-          About
+          About1
         </Typography>
         <Typography variant="body1">
           We build modern digital experiences with clean design and thoughtful user journeys.
