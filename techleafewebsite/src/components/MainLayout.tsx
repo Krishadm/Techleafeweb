@@ -1,19 +1,9 @@
-import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import Header from "./pages/Header";
 
-
-
-const MainLayout = () => {
+export default function MainLayout() {
   return (
-    <Box>
-      <Header />
-
-      <Box component="main">
-        <Outlet />
-      </Box>
-    </Box>
+    <div className="app-shell">
+      <Outlet />
+    </div>
   );
-};
-
-export default MainLayout;
+}

@@ -1,18 +1,8 @@
-import { Box, Container, Typography } from "@mui/material";
-
-const ContactPage = () => {
+export default function ContactPage() {
   return (
-    <Container maxWidth="md" sx={{ py: 6 }}>
-      <Box>
-        <Typography variant="h3" component="h1" gutterBottom>
-          Contact
-        </Typography>
-        <Typography variant="body1">
-          Reach out to us for partnerships, questions, and project discussions.
-        </Typography>
-      </Box>
-    </Container>
+    <main className="simple-page">
+      <h1>Contact Us</h1>
+      <p>Build this page with the same reusable design system.</p>
+    </main>
   );
-};
-
-export default ContactPage;
+}
