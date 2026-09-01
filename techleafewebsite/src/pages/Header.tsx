@@ -8,7 +8,7 @@ ListItemText,
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
-// import logo from "../../assets/logo1.png";
+import logo from "../assets/logo1.png";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -53,10 +53,10 @@ const Header = () => {
           sx={{ display: "flex", alignItems: "center", minWidth: { md: 160 } }}
         >
           <Box
-            component="img"
-            // src={logo}
-            alt="Tech Leafe Technologies"
-            sx={{ height: { xs: 40, sm: 48, md: 56 }, width: "auto", objectFit: "contain" }}
+           component="img"
+  src={logo}
+  alt="Tech Leafe Technologies"
+  sx={{ height: { xs: 40, sm: 48, md: 56 }, width: "auto", objectFit: "contain" }}
           />
         </Box>
 
