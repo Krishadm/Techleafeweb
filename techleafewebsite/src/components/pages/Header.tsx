@@ -1,16 +1,36 @@
-import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import { useState } from "react";
+import { AppBar,Box,Button,Drawer,IconButton,List,ListItemButton,
+ListItemText,
+  Toolbar,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo1.png";
+
+const navLinks = [
+  { label: "Home", to: "/" },
+  { label: "Expertise", to: "/expertise" },
+  { label: "About us", to: "/about" },
+  { label: "Blog/Article", to: "/blog" },
+  { label: "Portfolio", to: "/portfolio" },
+];
 
 const Header = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
   return (
     <AppBar
       position="sticky"
       elevation={0}
       sx={{
-        backgroundColor: "#0f172a",
+        backgroundColor: "#000000",
         backgroundImage: "none",
-        backdropFilter: "blur(10px)",
-        borderBottom: "1px solid rgba(148, 163, 184, 0.2)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
       }}
     >
       <Toolbar
@@ -22,47 +42,94 @@ const Header = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          py: 1,
         }}
       >
-        <Typography variant="h6" sx={{ fontWeight: 700, letterSpacing: 0.5, minWidth: 120 }}>
-          Techleafe
-        </Typography>
-
+        {/* Logo — fixed width so the center math stays balanced */}
         <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 1,
-            flex: 1,
-            mx: 2,
-          }}
+          component={Link}
+          to="/"
+          sx={{ display: "flex", alignItems: "center", minWidth: { md: 160 } }}
         >
-          <Button component={Link} to="/" color="inherit" sx={{ textTransform: "none" }}>
-            Home
-          </Button>
-          <Button component={Link} to="/about" color="inherit" sx={{ textTransform: "none" }}>
-            About
-          </Button>
-          <Button component={Link} to="/contact" color="inherit" sx={{ textTransform: "none" }}>
-            Contact
-          </Button>
+          <Box
+            component="img"
+            src={logo}
+            alt="Tech Leafe Technologies"
+            sx={{ height: { xs: 40, sm: 48, md: 56 }, width: "auto", objectFit: "contain" }}
+          />
         </Box>
 
-        <Button
-          variant="contained"
-          sx={{
-            borderRadius: 999,
-            textTransform: "none",
-            background: "linear-gradient(135deg, #7c3aed 0%, #22c55e 100%)",
-            boxShadow: "none",
-            px: 2.5,
-            minWidth: 120,
-          }}
-        >
-          Get Started
-        </Button>
+        {/* Desktop nav — centered in the remaining space */}
+        {!isMobile && (
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 3,
+              flex: 1,
+            }}
+          >
+            {navLinks.map((link) => (
+              <Button
+                key={link.to}
+                component={Link}
+                to={link.to}
+                sx={{
+                  color: "#fff",
+                  textTransform: "none",
+                  fontWeight: 500,
+                  fontSize: 14,
+                  "&:hover": { color: "#3ecf6e", backgroundColor: "transparent" },
+                }}
+              >
+                {link.label}
+              </Button>
+            ))}
+          </Box>
+        )}
+
+        {/* Spacer — mirrors the logo's width so the nav box is truly centered */}
+        {!isMobile && <Box sx={{ minWidth: { md: 160 } }} />}
+
+        {/* Mobile menu button */}
+        {isMobile && (
+          <IconButton onClick={() => setDrawerOpen(true)} sx={{ color: "#fff" }} aria-label="open menu">
+            <MenuIcon />
+          </IconButton>
+        )}
       </Toolbar>
+
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        slotProps={{
+          paper: { sx: { backgroundColor: "#000", color: "#fff", width: 240 } },
+        }}
+      >
+        <Box sx={{ display: "flex", justifyContent: "flex-end", p: 1 }}>
+          <IconButton onClick={() => setDrawerOpen(false)} sx={{ color: "#fff" }} aria-label="close menu">
+            <CloseIcon />
+          </IconButton>
+        </Box>
+        <List>
+          {navLinks.map((link) => (
+            <ListItemButton
+              key={link.to}
+              component={Link}
+              to={link.to}
+              onClick={() => setDrawerOpen(false)}
+              sx={{
+                borderTop: "1px solid rgba(255,255,255,0.08)",
+                "&:hover": { color: "#3ecf6e" },
+              }}
+            >
+              <ListItemText primary={link.label} />
+            </ListItemButton>
+          ))}
+        </List>
+      </Drawer>
     </AppBar>
   );
 };
