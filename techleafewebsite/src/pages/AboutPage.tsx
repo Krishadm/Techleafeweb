@@ -20,6 +20,7 @@ import aboutimg4 from "../assets/about_page_assest/about_img_4.png";
 
 // re-usable components
 import InfoCard from "../component/About_reusable_components/InfoCard";
+import Footer from "../component/Footer";
 
 const AboutPage = () => {
 
@@ -545,6 +546,7 @@ const AboutPage = () => {
           </Box>
 
         </Container>
+        <Footer />
       </Box>
     </>
   );
