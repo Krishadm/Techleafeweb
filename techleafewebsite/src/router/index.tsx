@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../components/MainLayout";
-import AboutPage from "../components/pages/AboutPage";
-import ContactPage from "../components/pages/ContactPage";
-import HomePage from "../components/pages/HomePage";
+import HomePage from "../pages/HomePage";
+import AboutPage from "../pages/AboutPage";
+import { ContactPage } from "@mui/icons-material";
+import MainLayout from "../layouts/MainLayout";
 
 export const router = createBrowserRouter([
   {
