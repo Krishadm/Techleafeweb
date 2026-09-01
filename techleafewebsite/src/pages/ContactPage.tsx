@@ -57,6 +57,8 @@ const GetInTouchSection: React.FC = () => {
           }
         }
 
+
+        //testing
         @keyframes gitPulse {
           0%, 100% {
             box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.35);
