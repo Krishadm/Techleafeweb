@@ -4,6 +4,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import Footer from "../component/Footer";
 
 
 interface ContactFormData {
@@ -35,6 +36,7 @@ const GetInTouchSection: React.FC = () => {
   };
 
   return (
+    <>
     <section className="git-section">
       <style>{`
         @keyframes gitFadeUp {
@@ -72,37 +74,12 @@ const GetInTouchSection: React.FC = () => {
           position: relative;
           overflow: hidden;
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-          background: #0A0F14;
+          //background: #0A0F14;
+          background:rgb(0, 0, 0);
           padding: 56px 32px;
         }
 
-        // .git-glow-a,
-        // .git-glow-b {
-        //   position: absolute;
-        //   border-radius: 50%;
-        //   filter: blur(40px);
-        //   pointer-events: none;
-        //   z-index: 0;
-        // }
-
-        // .git-glow-a {
-        //   width: 360px;
-        //   height: 360px;
-        //   right: -60px;
-        //   bottom: -80px;
-        //   background: rgba(16, 185, 129, 0.16);
-        //   animation: gitGlowDrift 10s ease-in-out infinite;
-        // }
-
-        // .git-glow-b {
-        //   width: 300px;
-        //   height: 300px;
-        //   left: -60px;
-        //   top: -60px;
-        //   background: rgba(16, 185, 129, 0.1);
-        //   animation: gitGlowDrift 12s ease-in-out infinite reverse;
-        // }
-
+       
         .git-wrapper {
           position: relative;
           z-index: 1;
@@ -717,6 +694,8 @@ const GetInTouchSection: React.FC = () => {
         </div>
       </div>
     </section>
+    <Footer />
+    </>
   );
 };
 
