@@ -6,6 +6,7 @@ import MainLayout from "../layouts/MainLayout";
 import ContactPage from "../pages/ContactPage";
 
 import NotFoundPage from "../pages/Filenotfound";
+import PortfolioPage from "../pages/PortfolioPage";
 
 
 export const router = createBrowserRouter([
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: "contact",
         element: <ContactPage />,
+      },
+        {
+        path: "portfolio",
+        element: <PortfolioPage />,
       },
        {
         path: "*",
