@@ -15,10 +15,10 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
 const quickLinks = [
-  { name: "Home", path: "#home" },
-  { name: "About", path: "#about" },
-  { name: "Services", path: "#services" },
-  { name: "Contact", path: "#contact" },
+  { name: "Home", path: "/home" },
+  { name: "About", path: "/about" },
+  { name: "Services", path: "/services" },
+  { name: "Contact", path: "/contact" },
 ];
 
 const serviceLinks = [
@@ -28,6 +28,7 @@ const serviceLinks = [
   { name: "Digital Marketing", path: "/services/digital-marketing" },
   { name: "SEO", path: "/services/seo" },
 ];
+
 
 const Footer: React.FC = () => {
   return (
@@ -39,7 +40,7 @@ const Footer: React.FC = () => {
         color: "#1D620C",
         mt: 8,
       }}
-    >
+    > 
       <Container maxWidth="lg" sx={{ py: 6 }}>
         <Grid container spacing={4}>
           {/* Company */}
