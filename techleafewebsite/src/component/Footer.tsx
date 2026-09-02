@@ -13,12 +13,13 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { Link as RouterLink } from "react-router-dom";
 
 const quickLinks = [
-  { name: "Home", path: "#home" },
-  { name: "About", path: "#about" },
-  { name: "Services", path: "#services" },
-  { name: "Contact", path: "#contact" },
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Services", path: "/services" },
+  { name: "Contact", path: "/contact" },
 ];
 
 const serviceLinks = [
@@ -109,7 +110,8 @@ const Footer: React.FC = () => {
             {quickLinks.map((item) => (
               <Link
                 key={item.name}
-                href={item.path}
+               component={RouterLink}
+                to={item.path}
                 underline="none"
                 sx={{
                   display: "block",
