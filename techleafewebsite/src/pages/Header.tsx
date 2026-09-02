@@ -17,6 +17,7 @@ const navLinks = [
   { label: "About us", to: "/about" },
   { label: "Blog/Article", to: "/blog" },
   { label: "Portfolio", to: "/portfolio" },
+  { label: "Contact us", to: "/contact" },
 ];
 
 const Header = () => {
@@ -66,10 +67,10 @@ const Header = () => {
           sx={{ display: "flex", alignItems: "center", minWidth: { md: 160 } }}
         >
           <Box
-            component="img"
-            src={logo}
-            alt="Tech Leafe Technologies"
-            sx={{ height: { xs: 40, sm: 48, md: 56 }, width: "auto", objectFit: "contain" }}
+           component="img"
+  src={logo}
+  alt="Tech Leafe Technologies"
+  sx={{ height: { xs: 40, sm: 48, md: 56 }, width: "auto", objectFit: "contain" }}
           />
         </Box>
 
