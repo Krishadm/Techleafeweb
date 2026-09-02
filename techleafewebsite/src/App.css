@@ -326,6 +326,258 @@
   text-align: center;
 }
 
+.expertise-page {
+  min-height: 100vh;
+  background: #efefef;
+  padding: 28px 0 0;
+}
+
+.expertise-panel {
+  width: min(1280px, calc(100% - 24px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1.2fr 1.2fr;
+  min-height: 420px;
+  background: #040504;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+}
+
+.expertise-copy {
+  padding: 44px 28px 28px 24px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.expertise-copy h1 {
+  margin: 0;
+  color: #f3f3f3;
+  font-family: "Francois One", sans-serif;
+  font-size: clamp(2.1rem, 3vw, 4rem);
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+.expertise-copy p {
+  margin: 28px 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.06rem;
+  line-height: 1.7;
+  max-width: 420px;
+}
+
+.expertise-discipline-list {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.discipline-button {
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: left;
+  padding: 22px 22px 22px 28px;
+  font-size: 1.06rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.discipline-button:hover,
+.discipline-button.active {
+  background: rgba(88, 255, 135, 0.1);
+  color: #4be37f;
+}
+
+.discipline-button.active {
+  box-shadow: inset 0 0 0 1px rgba(75, 227, 127, 0.28);
+}
+
+.expertise-service-list {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 22px 12px;
+}
+
+.service-link {
+  display: block;
+  padding: 12px 10px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  transition: color 0.18s ease, opacity 0.18s ease;
+}
+
+.service-link:hover {
+  color: #4be37f;
+}
+
+.service-detail-page {
+  min-height: calc(100vh - 72px);
+  background: #f0f0f0;
+  padding: 40px 24px 80px;
+  color: #111;
+}
+
+.service-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #0f3f1a;
+  font-weight: 700;
+}
+
+.service-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+  background: #fff;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.07);
+}
+
+.service-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #1c8a3d;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.service-hero-copy h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 3vw, 4rem);
+  line-height: 1.1;
+  color: #121212;
+}
+
+.service-hero-copy p {
+  margin: 14px 0 0;
+  color: #3d3d3d;
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.service-image-wrap {
+  min-height: 300px;
+}
+
+.service-image {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}
+
+.service-body {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.service-points,
+.info-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.06);
+  padding: 24px 22px;
+}
+
+.service-points h2,
+.info-card h3 {
+  margin: 0 0 18px;
+  color: #171717;
+  font-size: 1.5rem;
+}
+
+.service-points ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #2a2a2a;
+  line-height: 1.9;
+}
+
+.service-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-card p {
+  margin: 0;
+  color: #3a3a3a;
+  line-height: 1.8;
+  font-size: 1.03rem;
+}
+
+.empty-state .service-shell {
+  text-align: center;
+  padding-top: 80px;
+}
+
+@media (max-width: 980px) {
+  .expertise-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .expertise-copy,
+  .expertise-discipline-list,
+  .expertise-service-list {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .service-hero,
+  .service-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .expertise-copy {
+    padding: 32px 18px 24px;
+  }
+
+  .discipline-button {
+    padding: 18px 18px 18px 20px;
+    font-size: 1rem;
+  }
+
+  .expertise-service-list {
+    padding: 14px 16px 10px;
+  }
+
+  .service-link {
+    font-size: 0.98rem;
+  }
+
+  .service-hero,
+  .service-points,
+  .info-card {
+    padding: 18px 16px;
+  }
+}
+
 /* =========================
    TABLET
 ========================= */

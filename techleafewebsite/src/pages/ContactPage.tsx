@@ -1,12 +1,9 @@
-
 import React, { useState } from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Footer from "../component/Footer";
-
-
 interface ContactFormData {
   name: string;
   email: string;
@@ -59,8 +56,6 @@ const GetInTouchSection: React.FC = () => {
           }
         }
 
-
-        //testing
         @keyframes gitPulse {
           0%, 100% {
             box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.35);
@@ -74,7 +69,6 @@ const GetInTouchSection: React.FC = () => {
           position: relative;
           overflow: hidden;
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-          //background: #0A0F14;
           background:rgb(0, 0, 0);
           padding: 56px 32px;
         }
@@ -108,8 +102,7 @@ const GetInTouchSection: React.FC = () => {
           padding: 6px 14px;
           border-radius: 999px;
           background: rgba(16, 185, 129, 0.12);
-          border: 1px solid rgba(16, 185, 129, 0.35);
-          //color: #34D399;
+          border: 1px solid  #1D620C;;
              color: #1e8511;
           font-size: 12px;
           font-weight: 600;
@@ -179,8 +172,9 @@ const GetInTouchSection: React.FC = () => {
 
         .git-info-card:hover {
           transform: translateY(-3px);
-          border-color: rgba(52, 211, 153, 0.4);
+            border-color: #1D620C;
           background: rgba(255, 255, 255, 0.05);
+          box-shadow: 0 0 40px rgba(16, 185, 129, 0.08); 
         }
 
         .git-info-list .git-info-card:nth-child(1) { animation-delay: 0.26s; }
@@ -222,16 +216,9 @@ const GetInTouchSection: React.FC = () => {
           color: #9CA8A5;
         }
 
-        .git-info-value.git-link {
-          //color: #34D399;
-          //color: rgb(29, 98, 12);
-           color: #1e8511;
-        
+        .git-info-value.git-link {       
+          // color: #1e8511;       
           text-decoration: none;
-        }
-
-        .git-info-value.git-link:hover {
-          text-decoration: underline;
         }
 
         .git-socials {
@@ -260,32 +247,22 @@ const GetInTouchSection: React.FC = () => {
 
         .git-social-btn:hover {
           transform: translateY(-2px);
-          border-color: rgba(52, 211, 153, 0.5);
+          border-color: #1D620C;
           background: rgba(255, 255, 255, 0.08);
         }
 
-        .git-social-btn.git-cta {
-         //background-color: rgb(29, 98, 12);     
+        .git-social-btn.git-cta {   
           background-color: #1D620C;
           border-color: rgba(16, 185, 129, 0.4); 
           color: #FFFFFF;
-           
         }
 
-        // .git-social-btn.git-cta:hover {
-        //   background: rgba(16, 185, 129, 0.25);
-        //   box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.1);
-        // }
-
         .git-social-btn.git-cta:hover {
-          // filter: brightness(1.08);
-          // transform: translateY(-2px);
-          // box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
            background: #1e8511;
             transform: translateY(-2px);
             box-shadow: 0 10px 28px rgba(31, 137, 17, 0.22);
-        }
-
+        
+           }
        
         /* Right column: form card */
         .git-right {
@@ -302,8 +279,8 @@ const GetInTouchSection: React.FC = () => {
         }
 
         .git-form-card:hover {
-          border-color: rgba(52, 211, 153, 0.25);
-          box-shadow: 0 0 40px rgba(16, 185, 129, 0.08);
+          border-color: #1d620ce0;
+          box-shadow: 0 0 40px rgba(16, 185, 129, 0.08); 
         }
 
         .git-form-title {
@@ -329,8 +306,6 @@ const GetInTouchSection: React.FC = () => {
           font-weight: 700;
           letter-spacing: 0.05em;
           text-transform: uppercase;
-          //color: #34D399;
-          //color:rgb(29, 98, 12);
           color: #1e8511;
           margin-bottom: 8px;
         }
@@ -353,10 +328,9 @@ const GetInTouchSection: React.FC = () => {
           color: #5C6663;
         }
 
-        .git-input:focus {
-          border-color: rgba(52, 211, 153, 0.6);
-        
-          box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.15);
+        .git-input:focus { 
+              border-color: #1D620C;
+          //box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.15);
         }
 
         .git-textarea {
@@ -504,7 +478,7 @@ const GetInTouchSection: React.FC = () => {
             <span className="git-badge-dot" />
             Contact us
           </span>
-//test
+
           <h1 className="git-heading">Let&apos;s build something amazing together.</h1>
           <div className="git-underline" />
 
@@ -523,7 +497,9 @@ const GetInTouchSection: React.FC = () => {
               </span>
               <div>
                 <p className="git-info-title">Email us</p>
-                <a href="mailto:admin@techleafe.com" className="git-info-value git-link">
+                {/* <a href="mailto:admin@techleafe.com" className="git-info-value git-link"> */}
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=admin@techleafe.com"
+              target="_blank" className="git-info-value git-link">
                   admin@techleafe.com
                 </a>
               </div>
