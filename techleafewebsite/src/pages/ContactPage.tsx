@@ -596,7 +596,7 @@ const GetInTouchSection: React.FC = () => {
               <div className="git-field">
                 <label className="git-label" htmlFor="git-name">
                   Name
-                </label>
+                </label>   
                 <input
                   id="git-name"
                   type="text"
