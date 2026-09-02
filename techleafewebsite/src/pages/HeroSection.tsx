@@ -26,7 +26,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 const HeroSection = () => {
   const services = [
     {
-      number: "01",
+      number: "",
       title: "Blockchain",
       heading: "Decentralized Apps, Smart Contracts & Web3",
       description:
@@ -39,7 +39,7 @@ const HeroSection = () => {
       buttonText: "View Blockchain Development",
     },
     {
-      number: "02",
+      number: "",
       title: "AI",
       heading: "Custom Enterprise AI & LLM Solutions",
       description:
@@ -52,7 +52,7 @@ const HeroSection = () => {
       buttonText: "View AI Solutions",
     },
     {
-      number: "03",
+      number: "",
       title: "App",
       heading: "Full-Stack Web Engineering & Mobile Apps",
       description:
@@ -146,14 +146,14 @@ const HeroSection = () => {
                     fontWeight: 500,
                   }}
                 >
-                  {service.number} — {service.title}
+                 {service.number ? `${service.number} — ` : ""}{service.title}
                 </Typography>
 
                 <Typography
                   variant="h5"
                   sx={{
                     mt: 2,
-                    color: "#20A914",
+                    color: "#1d620c",
                     fontWeight: 600,
                     lineHeight: 1.5,
                   }}
