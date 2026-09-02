@@ -8,7 +8,7 @@ import PortfolioPage from "../pages/PortfolioPage";
 import Blog from "../pages/Blog";
 import BlogDetail from "../pages/BlogDetail";
 import NotFoundPage from "../pages/Filenotfound";
-
+import AIDevelopmentServices from "../pages/Expertise/AIDevelopmentServices";
 import MainLayout from "../layouts/MainLayout";
 
 export const router = createBrowserRouter([
@@ -27,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "services/:slug",
         element: <ServiceDetailPage />,
+      },
+      {
+        path: "services/ai-development",
+        element: <AIDevelopmentServices />,
       },
       {
         path: "contact",
