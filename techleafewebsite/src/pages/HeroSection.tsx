@@ -21,6 +21,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 const HeroSection = () => {
   const services = [
@@ -67,13 +68,17 @@ const HeroSection = () => {
 
   return (
     <Box
-      sx={{
-        bgcolor: "#000",
-        color: "#fff",
-        py: 8,
-        px: 3,
-      }}
-    >
+    sx={{
+      bgcolor: "#000",
+      color: "#fff",
+      py: 7,
+      width: "100%",
+      maxWidth: "1600px",
+      px: { xs: 2, sm: 4, md: 11 },
+      boxSizing: "border-box",
+    }}
+  >
+
       {/* Heading */}
       <Typography
         sx={{
@@ -100,7 +105,7 @@ const HeroSection = () => {
         sx={{
           mt: 2,
           mb: 5, // gap before cards
-          fontWeight: 700,
+          fontSize:40,
         }}
       >
         Three disciplines, one engineering pipeline.
@@ -114,9 +119,16 @@ const HeroSection = () => {
               sx={{
                 backgroundColor: "#061F03",
                 border: "1px solid #178B0B",
-                borderRadius: "6px",
+                borderRadius: "20px",
                 color: "#fff",
                 height: "100%",
+                 // Hover effect
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+
+    "&:hover": {
+      transform: "scale(1.03)",
+      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+    },
               }}
             >
               <CardContent
@@ -153,8 +165,10 @@ const HeroSection = () => {
                   sx={{
                     mt: 2,
                     color: "#ffffff",
-                    fontSize: "14px",
+                    fontSize: "18px",
                     lineHeight: 1.5,
+                    fontFamily:"IStok Web",
+
                   }}
                 >
                   {service.description}
@@ -171,6 +185,8 @@ const HeroSection = () => {
                       mt: 2,
                       pl: 2,
                       color: "#fff",
+                     
+
                     }}
                   >
                     {service.features?.map((feature, index) => (
@@ -178,7 +194,8 @@ const HeroSection = () => {
                         <Typography
                           sx={{
                             color: "#fff",
-                            fontSize: "13px",
+                            fontSize: "16px",
+                            fontFamily:"IStok Web",
                           }}
                         >
                           {feature}
@@ -188,29 +205,58 @@ const HeroSection = () => {
                   </Box>
                 </Box>
                 {/* Button goes here */}
-                <Button
-                  variant="contained"
-                  sx={{
-                    mt: 1,
-                    alignSelf: "flex-start",
-                    borderRadius: "30px",
-                    textTransform: "lowercase",
-                    backgroundColor: "#178B0B",
-                    color: "#fff",
-                    fontSize: "12px",
-                    px: 2,
-                    py: 0.8,
-                    minWidth: "190px",
-                    "&:hover": {
-                      backgroundColor: "#178B0B",
-                    },
-                  }}
-                >
-                  {service.buttonText}
-                  <span style={{ marginLeft: "12px", fontSize: "18px" }}>
-                    →
-                  </span>
-                </Button>
+            <Button
+  variant="contained"
+  sx={{
+    mt: "auto",
+    width: "100%",
+    minWidth: 0,
+    borderRadius: "30px",
+    textTransform: "capitalize",
+    backgroundColor: "#0e5e03",
+    color: "#fff",
+    fontSize: { xs: "14px", sm: "15px" },
+    px: { xs: 1.5, sm: 2 },
+    py: 1,
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: { xs: "6px", sm: "10px" },
+
+     // Hover effect
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+
+    "&:hover": {
+      transform: "scale(1.03)",
+      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+    },
+  }}
+>
+  <Box
+    component="span"
+    sx={{
+      textAlign: "center",
+    }}
+  >
+    {service.buttonText}
+  </Box>
+
+  <Box
+    component="span"
+    sx={{
+      flexShrink: 0,
+      display: "flex",
+      alignItems: "center",
+      fontSize: { xs: "20px", sm: "24px" },
+      lineHeight: 1,
+      position: "relative",
+      top: "-1px",
+    }}
+  >
+    →
+  </Box>
+</Button>
               </CardContent>
             </Card>
           </Grid>
@@ -227,6 +273,14 @@ const HeroSection = () => {
 /* Our Methodology — center-mode ("coverflow") carousel                       */
 /* Active card sits full-size and fully opaque in front, overlapping the      */
 /* prev/next cards which sit behind it, scaled down and faded.                */
+/*                                                                            */
+/* IMPORTANT: we track an *unbounded* virtual `position` (rather than a       */
+/* modulo-wrapped index) and key each rendered slot by its virtual index.     */
+/* That guarantees every click only ever shifts each visible card by exactly */
+/* one slot, in the direction clicked - so left and right always animate     */
+/* identically instead of one direction occasionally "teleporting" a card    */
+/* across the whole stage when the real index wraps from 0 to length-1 (or   */
+/* vice versa).                                                              */
 /* -------------------------------------------------------------------------- */
 
 interface MethodologyStep {
@@ -277,31 +331,47 @@ const MethodologySection = () => {
   const isSm = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600-900
 
   // Card + layout sizing per breakpoint
-  const cardWidth = isXs ? 250 : isSm ? 300 : 380;
-  const cardHeight = isXs ? 220 : 240;
-  // How far (as a fraction of card width) the side cards sit from center.
-  // 0.55 means the center card overlaps ~45% of each side card - "half and half".
-  const overlapFactor = isXs ? 0.62 : 0.55;
-  // On mobile there isn't room to peek the neighbours without clipping - hide them.
-  const showNeighbours = !isXs;
+const cardWidth = isXs ? 270 : isSm ? 300 : 340;
+const cardHeight = isXs ? 240 : isSm ? 260 : 240;
+  // Symmetric "coverflow" stack: the active card sits centered and full
+  // size, with cards peeking on BOTH sides, shrinking/fading with distance -
+  // matching the reference (active card + 2 receding cards on each side).
+  const overlapFactor = isXs ? 0.62 : isSm ? 0.58 : 0.5;
 
   const length = methodologySteps.length;
-  const [activeIndex, setActiveIndex] = useState(0);
+
+  // `position` is an unbounded integer: it just keeps incrementing or
+  // decrementing as the user (or autoplay) moves forward/back. The *real*
+  // step index shown is derived from it via modulo. Because it never wraps
+  // itself, every card slot moves by exactly one step per click - no more
+  // "wrap teleport" in either direction.
+  const [position, setPosition] = useState(0);
+  const activeIndex = ((position % length) + length) % length;
+
   const [isPaused, setIsPaused] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
 
   const dragStartX = useRef<number | null>(null);
   const dragDeltaX = useRef(0);
 
+  const goNext = useCallback(() => setPosition((p) => p + 1), []);
+  const goPrev = useCallback(() => setPosition((p) => p - 1), []);
+
+  // Jump to an arbitrary real step index (e.g. clicking a peeking card or a
+  // dot). Moves via the *shortest* wrap direction so the animation still
+  // only travels the minimum number of slots instead of jumping.
   const goTo = useCallback(
-    (index: number) => {
-      setActiveIndex(((index % length) + length) % length);
+    (targetRealIndex: number) => {
+      setPosition((p) => {
+        const currentReal = ((p % length) + length) % length;
+        let delta = targetRealIndex - currentReal;
+        if (delta > length / 2) delta -= length;
+        if (delta < -length / 2) delta += length;
+        return p + delta;
+      });
     },
     [length]
   );
-
-  const goNext = useCallback(() => goTo(activeIndex + 1), [activeIndex, goTo]);
-  const goPrev = useCallback(() => goTo(activeIndex - 1), [activeIndex, goTo]);
 
   // Autoplay
   useEffect(() => {
@@ -359,8 +429,15 @@ const MethodologySection = () => {
     setIsPaused(false);
   };
 
-  // Only render the active card plus one neighbour on each side.
-  const visibleOffsets = showNeighbours ? [-1, 0, 1] : [0];
+  // Show the active card plus up to 2 cards receding on each side. On
+  // mobile there isn't room to peek either side without clipping/overlap,
+  // so show only the single active card there.
+  const maxSide = isXs ? 0 : 2;
+  const sideCount = Math.min(maxSide, Math.floor((length - 1) / 2));
+  const visibleOffsets = Array.from(
+    { length: sideCount * 2 + 1 },
+    (_, i) => i - sideCount
+  );
 
   return (
     <Box sx={{ mt: 10 }}>
@@ -384,7 +461,12 @@ const MethodologySection = () => {
         OUR METHODOLOGY
       </Typography>
 
-      <Typography variant="h3" sx={{ mt: 2, fontWeight: 700 }}>
+      <Typography variant="h3"
+       sx={{
+         mt: 2,
+         fontSize:40,
+         }}
+       >
         The 5-step security-first lifecycle.
       </Typography>
 
@@ -394,8 +476,9 @@ const MethodologySection = () => {
           mb: 6,
           maxWidth: "720px",
           color: "rgba(255,255,255,0.75)",
-          fontSize: "15px",
+          fontSize: "18px",
           lineHeight: 1.6,
+          fontFamily:"IStok Web",
         }}
       >
         A structured engineering process we run on every blockchain and AI
@@ -441,35 +524,44 @@ const MethodologySection = () => {
             overflow: "hidden",
           }}
         >
-          {visibleOffsets.map((offset) => {
-            const index = ((activeIndex + offset) % length + length) % length;
-            const step = methodologySteps[index];
-            const isActive = offset === 0;
+          {visibleOffsets.map((slotOffset) => {
+            // Virtual index is unbounded and unique per "physical" card
+            // instance over time - this is what we key on, so React keeps
+            // reusing (and smoothly animating) the same DOM node as it
+            // shifts by one slot, instead of remounting it when the real
+            // step index wraps around.
+            const virtualIndex = position + slotOffset;
+            const realIndex = ((virtualIndex % length) + length) % length;
+            const step = methodologySteps[realIndex];
+
+            const offset = virtualIndex - position; // always equals slotOffset
+            const distance = Math.abs(offset);
+            const isActive = distance === 0;
             const offsetPx = offset * cardWidth * overlapFactor;
+            const scale = 1 - distance * 0.14;
+            const opacity = Math.max(2 - distance * 0.32, 0.28);
 
             return (
               <Box
-                key={step.number}
-                onClick={() => !isActive && goTo(index)}
+                key={virtualIndex}
+                onClick={() => !isActive && goTo(realIndex)}
                 sx={{
                   position: "absolute",
                   left: "50%",
                   top: "50%",
                   width: cardWidth,
                   height: cardHeight,
-                  transform: `translate(calc(-50% + ${offsetPx}px), -50%) scale(${
-                    isActive ? 1 : 0.85
-                  })`,
+                  transform: `translate(calc(-50% + ${offsetPx}px), -50%) scale(${scale})`,
                   transition:
                     "transform 0.45s ease, opacity 0.45s ease",
-                  opacity: isActive ? 1 : 0.35,
-                  zIndex: isActive ? 3 : 1,
+                  opacity,
+                  zIndex: 10 - distance,
                   cursor: isActive ? "grab" : "pointer",
                   background:
                     "linear-gradient(160deg, #0B3306 0%, #041A02 100%)",
                   border: "1px solid #178B0B",
                   borderRadius: "10px",
-                  p: 3,
+                  p: { xs: 2, sm: 3 },
                   boxSizing: "border-box",
                   display: "flex",
                   flexDirection: "column",
@@ -486,11 +578,12 @@ const MethodologySection = () => {
 
                 <Typography
                   sx={{
-                    mt: 1,
+                    mt: 1.5,
                     color: "#20A914",
-                    fontWeight: 600,
-                    fontSize: "18px",
-                    lineHeight: 1.4,
+                    fontWeight: 700,
+                    fontSize: "22px",
+                    lineHeight: 1.2,
+                    fontFamily:"IStok Web",
                   }}
                 >
                   {step.title}
@@ -500,8 +593,9 @@ const MethodologySection = () => {
                   sx={{
                     mt: 1.5,
                     color: "rgba(255,255,255,0.85)",
-                    fontSize: "14px",
+                    fontSize: "16px",
                     lineHeight: 1.6,
+                    fontFamily:"IStok Web",
                   }}
                 >
                   {step.description}
@@ -529,7 +623,13 @@ const MethodologySection = () => {
             "&:hover": { backgroundColor: "#178B0B" },
           }}
         >
-          <span style={{ fontSize: 16, lineHeight: 1 }}>←</span>
+          <PlayArrowIcon
+  sx={{
+    transform: "rotate(180deg)",
+    fontSize: 24,
+  }}
+/>
+
         </IconButton>
 
         <IconButton
@@ -549,7 +649,11 @@ const MethodologySection = () => {
             "&:hover": { backgroundColor: "#178B0B" },
           }}
         >
-          <span style={{ fontSize: 16, lineHeight: 1 }}>→</span>
+          <PlayArrowIcon
+  sx={{
+    fontSize: 24,
+  }}
+/>
         </IconButton>
       </Box>
 
@@ -571,7 +675,7 @@ const MethodologySection = () => {
               p: 0,
               cursor: "pointer",
               backgroundColor: activeIndex === i ? "#20A914" : "#2b2b2b",
-              transition: "all 0.25s ease",
+              transition: "all 0.30s ease",
             }}
           />
         ))}
