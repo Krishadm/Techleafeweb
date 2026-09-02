@@ -64,11 +64,11 @@
   align-items: center;
   min-height: 30px;
   padding: 4px 14px;
-  border: 2px solid #157a08;
+  border: 1px solid #3af20c;
   border-radius: 999px;
-  color: #20A914
+  color: #e5ece7fd;
 ;
-  background: rgba(0, 17, 0, 0.3);
+  background: #1d620c8c;
   font-family: "Istok Web";
   font-size: 18px;
   font-weight: 400;
