@@ -19,7 +19,7 @@ import aboutimg3 from "../assets/about_page_assest/about_img_3.png";
 import aboutimg4 from "../assets/about_page_assest/about_img_4.png";
 
 // re-usable components
-import InfoCard from "../component/About_reusable_components/InfoCard";
+import InfoCard from "../component/AboutComponent/InfoCard";
 import Footer from "../component/Footer";
 
 const AboutPage = () => {
