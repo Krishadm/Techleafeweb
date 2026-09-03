@@ -13,21 +13,19 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import { Link as RouterLink } from "react-router-dom";
 
 const quickLinks = [
-  { name: "Home", path: "/" },
+  { name: "Home", path: "/home" },
   { name: "About", path: "/about" },
   { name: "Services", path: "/services" },
   { name: "Contact", path: "/contact" },
 ];
 
 const serviceLinks = [
-  { name: "Web Development", path: "/services/web-development" },
-  { name: "Mobile App Development", path: "/services/mobile-app" },
-  { name: "UI/UX Design", path: "/services/ui-ux" },
-  { name: "Digital Marketing", path: "/services/digital-marketing" },
-  { name: "SEO", path: "/services/seo" },
+  { name: "Blockchain Development", path: "/expertise/blockchain-development" },
+  { name: "AI Development", path: "/expertise/ai-development" },
+  { name: "Web & App Development", path: "/expertise/web-app-development" },
+ 
 ];
 
 const Footer: React.FC = () => {
@@ -110,8 +108,7 @@ const Footer: React.FC = () => {
             {quickLinks.map((item) => (
               <Link
                 key={item.name}
-               component={RouterLink}
-                to={item.path}
+                href={item.path}
                 underline="none"
                 sx={{
                   display: "block",
@@ -162,7 +159,7 @@ const Footer: React.FC = () => {
               variant="body2"
               sx={{ color: "#bdbdbd", mb: 1.5 }}
             >
-              📍 Chennai, Tamil Nadu
+              📍 100 Feet Road, Selaiyur, Tambaram, Chennai – 600073
             </Typography>
 
             <Typography

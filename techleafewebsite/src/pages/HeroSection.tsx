@@ -71,7 +71,8 @@ const HeroSection = () => {
     sx={{
       bgcolor: "#000",
       color: "#fff",
-      py: 7,
+      pt:3,
+      pb:6,
       width: "100%",
       maxWidth: "1600px",
       px: { xs: 2, sm: 4, md: 11 },
@@ -82,7 +83,7 @@ const HeroSection = () => {
       {/* Heading */}
       <Typography
         sx={{
-          mt: 2,
+          mt: 0,
           color: "#298911",
           fontWeight: 600,
 
@@ -103,9 +104,10 @@ const HeroSection = () => {
       <Typography
         variant="h3"
         sx={{
-          mt: 2,
-          mb: 5, // gap before cards
-          fontSize:40,
+          mt: 1.5,
+          mb: 4, // gap before cards
+          fontSize:{xs:32,sm:36,md:40},
+          lineHeight:1.15,
         }}
       >
         Three disciplines, one engineering pipeline.

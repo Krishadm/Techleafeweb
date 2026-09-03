@@ -5,6 +5,7 @@ import {
   Typography,
   keyframes,
 } from "@mui/material";
+import Footer from "../component/Footer";
 
 // SVG Stroke Animation Keyframes - draws once and stays static
 const drawLeafPath = keyframes`
@@ -30,6 +31,7 @@ const popNodeDot = keyframes`
 
 export default function PortfolioPage() {
   return (
+    <>
     <Box
       sx={{
         minHeight: "100vh",
@@ -712,5 +714,8 @@ export default function PortfolioPage() {
         </Box>
       </Container>
     </Box>
+    <Footer/>
+    
+    </>
   );
 }
