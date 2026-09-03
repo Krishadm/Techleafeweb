@@ -6,9 +6,9 @@ import { DISCIPLINES } from "../data/servicesData";
 const GREEN = "#3ecf6e";
 const PANEL_BG = "rgb(30, 34, 34)";
 const LINE = "rgba(255,255,255,0.1)";
-interface ExpertiseDropdownProps {
-  onNavigate?: () => void;
-}
+ interface ExpertiseDropdownProps {
+   onNavigate?: () => void;
+ }
 
 const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
   const [activeId, setActiveId] = useState<string>(DISCIPLINES[0].id);
@@ -122,7 +122,7 @@ const navigate = useNavigate();
                       onNavigate?.();
                     }
                     if(d.id == "web"){
-                      navigate("/expertise/appdevelopment");
+                      navigate("/expertise/appdevelopment")
                       onNavigate?.();
                     }
                   }}
