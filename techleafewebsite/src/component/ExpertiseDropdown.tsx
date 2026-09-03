@@ -6,6 +6,7 @@ import SmartToyOutlinedIcon from "@mui/icons-material/SmartToyOutlined";
 import PublicOutlinedIcon from "@mui/icons-material/PublicOutlined";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import { DISCIPLINES } from "../data/servicesData";
+import { useNavigate } from "react-router-dom";
 
 const GREEN = "#3ecf6e";
 const PANEL_BG = "rgb(24, 27, 27)";
@@ -105,6 +106,18 @@ const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
   );
   const ActiveIcon = DISCIPLINE_ICONS[active.id] ?? CircleOutlinedIcon;
 
+const navigate = useNavigate();  
+
+  // const handleDisciplineClick = (id: string) => {
+  //   if (id === "ai") {
+  //     navigate("/services/ai-development");
+  //     onNavigate?.();
+  //     return;
+  //   }
+
+  //   setActiveId(id);
+  // };
+  
   return (
     <Box
       sx={{
@@ -238,29 +251,50 @@ const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
               flexDirection: "column",
             }}
           >
-            <Box
-              sx={{
-                color: MUTED,
-                fontSize: 11,
-                fontWeight: 600,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                px: 1.5,
-                mb: 1,
-              }}
-            >
-              Disciplines
-            </Box>
-            {DISCIPLINES.map((d) => (
-              <DropdownRow
-                key={d.id}
-                label={d.title}
-                isActive={d.id === activeId}
-                icon={DISCIPLINE_ICONS[d.id] ?? CircleOutlinedIcon}
-                onClick={() => setActiveId(d.id)}
-                onMouseEnter={() => setActiveId(d.id)}
-              />
-            ))}
+            {DISCIPLINES.map((d) => {
+              const isActive = d.id === activeId;
+              return (
+                <Box
+                  key={d.id}
+                  component="button"
+                  type="button"
+                  onClick={() => {
+                    setActiveId(d.id);
+                    if(d.id == "blockchain"){
+                      navigate("/expertise/blockchain-development");
+                      onNavigate?.();
+                    }
+                    if(d.id == "ai"){
+                      navigate("/expertise/AIDevelopmentServices");
+                      onNavigate?.();
+                    }
+                    if(d.id == "web"){
+                      navigate("")
+                      onNavigate?.();
+                    }
+                  }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    width: "100%",
+                    textAlign: "left",
+                    background: isActive ? "rgba(75, 227, 127, 0.08)" : "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "14px 18px",
+                    fontFamily: "inherit",
+                    fontSize: { xs: 14, md: 17 },
+                    fontWeight: isActive ? 600 : 400,
+                    color: isActive ? GREEN : "#fff",
+                    transition: "color .18s ease, background-color .18s ease",
+                    borderBottom: `1px solid ${LINE}`,
+                    "&:hover": { color: GREEN, backgroundColor: "rgba(255,255,255,0.02)" },
+                  }}
+                >
+                  {d.title}
+                </Box>
+              );
+            })}
           </Box>
 
           {/* RIGHT: services for the active discipline */}

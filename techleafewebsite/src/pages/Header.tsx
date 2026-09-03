@@ -1,13 +1,20 @@
 import { useEffect, useRef, useState } from "react";
-import { AppBar,Box,Button,Drawer,IconButton,List,ListItemButton,
-ListItemText,
+import {
+  AppBar,
+  Box,
+  Button,
+  Drawer,
+  IconButton,
+  List,
+  ListItemButton,
+  ListItemText,
   Toolbar,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo1.png";
 import ExpertiseDropdown from "../component/ExpertiseDropdown";
 import { DISCIPLINES } from "../data/servicesData";
@@ -23,6 +30,7 @@ const navLinks = [
 const Header = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const location = useLocation();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [expertiseOpen, setExpertiseOpen] = useState(false);
   const [mobileExpertiseOpen, setMobileExpertiseOpen] = useState(false);
@@ -37,6 +45,11 @@ const Header = () => {
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
+
+  useEffect(() => {
+    setExpertiseOpen(false);
+    setMobileExpertiseOpen(false);
+  }, [location.pathname]);
 
   return (
     <AppBar
@@ -60,44 +73,81 @@ const Header = () => {
           py: 1,
         }}
       >
-        {/* Logo — fixed width so the center math stays balanced */}
+        {/* Logo */}
         <Box
           component={Link}
           to="/"
           sx={{ display: "flex", alignItems: "center", minWidth: { md: 160 } }}
         >
           <Box
-           component="img"
-  src={logo}
-  alt="Tech Leafe Technologies"
-  sx={{ height: { xs: 40, sm: 48, md: 56 }, width: "auto", objectFit: "contain" }}
+            component="img"
+            src={logo}
+            alt="Tech Leafe Technologies"
+            sx={{ height: { xs: 40, sm: 48, md: 56 }, width: "auto", objectFit: "contain" }}
           />
         </Box>
 
-        {/* Desktop nav — centered in the remaining space */}
+        {/* Desktop nav */}
         {!isMobile && (
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 3,
-              flex: 1,
-            }}
-          >
-            <Button component={Link} to="/" sx={{ color: "#fff", textTransform: "none", fontWeight: 500, fontSize: 14, "&:hover": { color: "#3ecf6e", backgroundColor: "transparent" } }}>
+          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 3, flex: 1 }}>
+            <Button
+              component={Link}
+              to="/"
+              disableRipple
+              sx={{
+                position: "relative",
+                color: !expertiseOpen && location.pathname === "/" ? "#3ecf6e" : "#fff",
+                textTransform: "none",
+                fontWeight: 500,
+                fontSize: 14,
+                borderRadius: 0,
+                backgroundColor: "transparent",
+                "&:hover": { backgroundColor: "transparent" },
+                "&::after": {
+                  content: '""',
+                  position: "absolute",
+                  left: 0,
+                  bottom: 4,
+                  height: "2px",
+                  width: "100%",
+                  backgroundColor: "#3ecf6e",
+                  transform: !expertiseOpen && location.pathname === "/" ? "scaleX(1)" : "scaleX(0)",
+                  transformOrigin: "center",
+                  transition: "transform 0.3s ease",
+                },
+              }}
+            >
               Home
             </Button>
 
-            {/* Expertise — click-to-toggle only, no separate page. Hovering
-                still previews the dropdown; clicking the button itself
-                closes it instantly if it's already open (or opens it if
-                closed) rather than navigating anywhere. */}
             <Box ref={expertiseRef} sx={{ position: "relative" }}>
               <Button
                 type="button"
+                disableRipple
                 onClick={() => setExpertiseOpen((v) => !v)}
-                sx={{ color: expertiseOpen ? "#3ecf6e" : "#fff", textTransform: "none", fontWeight: 500, fontSize: 14, "&:hover": { color: "#3ecf6e", backgroundColor: "transparent" } }}
+                sx={{
+                  position: "relative",
+                  color: expertiseOpen || location.pathname.startsWith("/services") ? "#3ecf6e" : "#fff",
+                  textTransform: "none",
+                  fontWeight: 500,
+                  fontSize: 14,
+                  borderRadius: 0,
+                  backgroundColor: "transparent",
+                  "&:hover": { backgroundColor: "transparent" },
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    left: 0,
+                    bottom: 4,
+                    height: "2px",
+                    width: "100%",
+                    backgroundColor: "#3ecf6e",
+                    transform:
+                      expertiseOpen || location.pathname.startsWith("/services") ? "scaleX(1)" : "scaleX(0)",
+                    transformOrigin: "center",
+                    transition: "transform 0.3s ease",
+                  },
+                }}
               >
                 Expertise
               </Button>
@@ -109,12 +159,28 @@ const Header = () => {
                 key={link.to}
                 component={Link}
                 to={link.to}
+                disableRipple
                 sx={{
-                  color: "#fff",
+                  position: "relative",
+                  color: !expertiseOpen && location.pathname === link.to ? "#3ecf6e" : "#fff",
                   textTransform: "none",
                   fontWeight: 500,
                   fontSize: 14,
-                  "&:hover": { color: "#3ecf6e", backgroundColor: "transparent" },
+                  borderRadius: 0,
+                  backgroundColor: "transparent",
+                  "&:hover": { backgroundColor: "transparent" },
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    left: 0,
+                    bottom: 4,
+                    height: "2px",
+                    width: "100%",
+                    backgroundColor: "#3ecf6e",
+                    transform: !expertiseOpen && location.pathname === link.to ? "scaleX(1)" : "scaleX(0)",
+                    transformOrigin: "center",
+                    transition: "transform 0.3s ease",
+                  },
                 }}
               >
                 {link.label}
@@ -123,10 +189,8 @@ const Header = () => {
           </Box>
         )}
 
-        {/* Spacer — mirrors the logo's width so the nav box is truly centered */}
         {!isMobile && <Box sx={{ minWidth: { md: 160 } }} />}
 
-        {/* Mobile menu button */}
         {isMobile && (
           <IconButton onClick={() => setDrawerOpen(true)} sx={{ color: "#fff" }} aria-label="open menu">
             <MenuIcon />
@@ -138,9 +202,7 @@ const Header = () => {
         anchor="right"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        slotProps={{
-          paper: { sx: { backgroundColor: "#000", color: "#fff", width: 260 } },
-        }}
+        slotProps={{ paper: { sx: { backgroundColor: "#000", color: "#fff", width: 260 } } }}
       >
         <Box sx={{ display: "flex", justifyContent: "flex-end", p: 1 }}>
           <IconButton onClick={() => setDrawerOpen(false)} sx={{ color: "#fff" }} aria-label="close menu">
@@ -148,14 +210,24 @@ const Header = () => {
           </IconButton>
         </Box>
         <List>
-          <ListItemButton component={Link} to="/" onClick={() => setDrawerOpen(false)} sx={{ borderTop: "1px solid rgba(255,255,255,0.08)", "&:hover": { color: "#3ecf6e" } }}>
+          <ListItemButton
+            component={Link}
+            to="/"
+            onClick={() => setDrawerOpen(false)}
+            sx={{
+              borderTop: "1px solid rgba(255,255,255,0.08)",
+              color: !mobileExpertiseOpen && location.pathname === "/" ? "#3ecf6e" : "#fff",
+            }}
+          >
             <ListItemText primary="Home" />
           </ListItemButton>
 
-          {/* Expertise — expands inline in the mobile drawer instead of a floating panel */}
           <ListItemButton
             onClick={() => setMobileExpertiseOpen((v) => !v)}
-            sx={{ borderTop: "1px solid rgba(255,255,255,0.08)", "&:hover": { color: "#3ecf6e" } }}
+            sx={{
+              borderTop: "1px solid rgba(255,255,255,0.08)",
+              color: mobileExpertiseOpen || location.pathname.startsWith("/services") ? "#3ecf6e" : "#fff",
+            }}
           >
             <ListItemText primary="Expertise" />
           </ListItemButton>
@@ -169,7 +241,7 @@ const Header = () => {
                   setDrawerOpen(false);
                   setMobileExpertiseOpen(false);
                 }}
-                sx={{ pl: 4, borderTop: "1px solid rgba(255,255,255,0.05)", "&:hover": { color: "#3ecf6e" } }}
+                sx={{ pl: 4, borderTop: "1px solid rgba(255,255,255,0.05)" }}
               >
                 <ListItemText primary={s.label} sx={{ fontSize: 14 }} />
               </ListItemButton>
@@ -183,7 +255,7 @@ const Header = () => {
               onClick={() => setDrawerOpen(false)}
               sx={{
                 borderTop: "1px solid rgba(255,255,255,0.08)",
-                "&:hover": { color: "#3ecf6e" },
+                color: !mobileExpertiseOpen && location.pathname === link.to ? "#3ecf6e" : "#fff",
               }}
             >
               <ListItemText primary={link.label} />
