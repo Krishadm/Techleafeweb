@@ -11,13 +11,12 @@ import BlockchainDevelopment from "../pages/Expertise/BlockchainDevelopment";
 // import Blog from "../pages/Blog";
 // import BlogDetail from "../pages/BlogDetail";
 import NotFoundPage from "../pages/Filenotfound";
-<<<<<<< HEAD
 import Footer from "../component/Footer";
-=======
 import AIDevelopmentServices from "../pages/Expertise/AIDevelopmentServices";
->>>>>>> df696cd500b9fd1dddeabd7643ed4e50aaf7a6a3
 import MainLayout from "../layouts/MainLayout";
 import AppDevelopmentPage from "../pages/Expertise/WebAppDevelopment";
+import BlogDetail from "../pages/BlogDetail";
+import Blog from "../pages/Blog";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -55,7 +54,6 @@ export const router = createBrowserRouter([
         path: "portfolio",
         element: <PortfolioPage />,
       },
-<<<<<<< HEAD
       
       /* BLOG LIST PAGE */
       {
@@ -75,9 +73,7 @@ export const router = createBrowserRouter([
 
       /* KEEP THIS LAST */
       {
-=======
        {
->>>>>>> df696cd500b9fd1dddeabd7643ed4e50aaf7a6a3
         path: "*",
         element: <NotFoundPage />,
       }, 
