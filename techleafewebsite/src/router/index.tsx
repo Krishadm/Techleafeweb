@@ -15,6 +15,8 @@ import NotFoundPage from "../pages/Filenotfound";
 import AIDevelopmentServices from "../pages/Expertise/AIDevelopmentServices";
 import MainLayout from "../layouts/MainLayout";
 import AppDevelopmentPage from "../pages/Expertise/WebAppDevelopment";
+// import BlogDetail from "../pages/BlogDetail";
+// import Blog from "../pages/Blog";
 export const router = createBrowserRouter([
   {
     path: "/",
