@@ -29,7 +29,6 @@ const serviceLinks = [
   { name: "SEO", path: "/services/seo" },
 ];
 
-
 const Footer: React.FC = () => {
   return (
     <Box
@@ -40,7 +39,7 @@ const Footer: React.FC = () => {
         color: "#1D620C",
         mt: 8,
       }}
-    > 
+    >
       <Container maxWidth="lg" sx={{ py: 6 }}>
         <Grid container spacing={4}>
           {/* Company */}
