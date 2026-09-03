@@ -1,3 +1,5 @@
+import Blockchain from "./Expertise/Blockchain";
+
 export default function ExpertisePage() {
   return (
     <main className="simple-page">
@@ -5,6 +7,7 @@ export default function ExpertisePage() {
       <p>
         Explore our core capabilities across AI, blockchain, mobile, and web engineering.
       </p>
+      <Blockchain />
     </main>
   );
 }

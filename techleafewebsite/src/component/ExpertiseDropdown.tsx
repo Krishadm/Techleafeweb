@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Box, Container } from "@mui/material";
 import { DISCIPLINES } from "../data/servicesData";
 
+
 const GREEN = "#3ecf6e";
 const PANEL_BG = "rgb(30, 34, 34)";
 const LINE = "rgba(255,255,255,0.1)";
@@ -13,6 +14,8 @@ interface ExpertiseDropdownProps {
 const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
   const [activeId, setActiveId] = useState<string>(DISCIPLINES[0].id);
   const active = DISCIPLINES.find((d) => d.id === activeId) ?? DISCIPLINES[0];
+
+ 
 
   return (
     <Box
@@ -99,7 +102,13 @@ const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
                   key={d.id}
                   component="button"
                   type="button"
-                  onClick={() => setActiveId(d.id)}
+                  onClick={() => {
+                    setActiveId(d.id);
+ 
+                  }
+
+                  }
+
                   sx={{
                     display: "flex",
                     alignItems: "center",

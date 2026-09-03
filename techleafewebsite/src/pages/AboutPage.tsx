@@ -19,7 +19,7 @@ import aboutimg3 from "../assets/about_page_assest/about_img_3.png";
 import aboutimg4 from "../assets/about_page_assest/about_img_4.png";
 
 // re-usable components
-import InfoCard from "../component/About_reusable_components/InfoCard";
+import InfoCard from "../component/AboutComponent/InfoCard";
 import Footer from "../component/Footer";
 
 const AboutPage = () => {
@@ -73,11 +73,22 @@ const AboutPage = () => {
     <>
       <style>
         {`
+
+          // @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+          // .public-sans-regular {
+          //   font-family: "Public Sans" !important;
+          //   font-optical-sizing: auto;
+          //   font-weight: 400;
+          //   font-style: normal;
+          // }
+
           /* =========================
              MAIN SECTION
           ========================= */
 
           .about-page {
+            // font-family: "Public Sans" !important;
             min-height: 100vh;
             background-color: #000000;
             color: #ffffff;
@@ -373,7 +384,7 @@ const AboutPage = () => {
         `}
       </style>
 
-      <Box className="about-page">
+      <Box className="about-page public-sans-regular">
         <Container className="about-container">
 
           {/* TOP SECTION */}
