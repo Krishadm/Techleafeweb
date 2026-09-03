@@ -1,4 +1,4 @@
-import Blockchain from "./Expertise/Blockchain";
+import Blockchain from "./Expertise/BlockchainDevelopment";
 import AIDevelopmentServices from "./Expertise/AIDevelopmentServices";
 
 export default function ExpertisePage() {
