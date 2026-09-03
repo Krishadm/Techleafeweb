@@ -5,6 +5,9 @@ import AboutPage from "../pages/AboutPage";
 import ContactPage from "../pages/ContactPage";
 import ServiceDetailPage from "../pages/ServiceDetailPage";
 import PortfolioPage from "../pages/PortfolioPage";
+
+import BlockchainDevelopment from "../pages/Expertise/BlockchainDevelopment";
+
 import Blog from "../pages/Blog";
 import BlogDetail from "../pages/BlogDetail";
 import NotFoundPage from "../pages/Filenotfound";
@@ -26,12 +29,20 @@ export const router = createBrowserRouter([
         element: <AboutPage />,
       },
       {
-        path: "services/:slug",
-        element: <ServiceDetailPage />,
+        path:"/expertise/blockchain-development", 
+        element:<BlockchainDevelopment />
       },
       {
-        path: "services/ai-development",
+        path: "/expertise/AIDevelopmentServices",
         element: <AIDevelopmentServices />,
+      },
+      {
+        path: "/expertise/appdevelopment",
+        element: <AppDevelopmentPage />,
+      },
+      {
+        path: "services/:slug",
+        element: <ServiceDetailPage />,
       },
       {
         path: "contact",
@@ -53,10 +64,7 @@ export const router = createBrowserRouter([
         path: "blog/:slug",
         element: <BlogDetail />,
       },
-              {
-        path: "/expertise/appdevelopment",
-        element: <AppDevelopmentPage />,
-      },
+
 
       /* KEEP THIS LAST */
       {
