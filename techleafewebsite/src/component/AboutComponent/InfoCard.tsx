@@ -19,34 +19,98 @@ const InfoCard = ({
           /* =========================
              INFO CARD
           ========================= */
+            :root {
+    --tl-bg: #000000;
+    --tl-bg-soft: #050505;
+    --tl-fg: #ffffff;
+    --tl-muted: #cfcfcf;
+    --tl-accent: #1d620c;
+    --tl-accent-light: #35a51c;
+    --tl-border: rgba(29, 98, 12, 0.55);
+  }
 
           .info-card {
+            position: relative;
+
             width: 100%;
             min-height: 125px;
+
             display: flex;
             align-items: center;
+
             gap: 18px;
             padding: 20px;
+
             box-sizing: border-box;
-            background-color: #050908;
-            border: 1px solid #1D620C;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            overflow: hidden;
+
+            /* SAME BACKGROUND THEME */
+            background:
+              linear-gradient(
+                145deg,
+                rgba(255, 255, 255, 0.035),
+                rgba(255, 255, 255, 0.01)
+              );
+
+            /* SAME BORDER THEME */
+            border: 1px solid var(--tl-border);
+            border-radius: 16px;
+
+            transition:
+              transform 0.35s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
           }
-          .about-section{
-            
+
+
+          /* =========================
+             BOTTOM GREEN LINE
+          ========================= */
+
+          .info-card::after {
+            content: "";
+
+            position: absolute;
+
+            right: 15%;
+            bottom: 0;
+            left: 15%;
+
+            height: 2px;
+
+            /* SAME ACCENT COLOR */
+            background: var(--tl-accent-light);
+
+            transform: scaleX(0);
+
+            transition: transform 0.35s ease;
           }
+
 
           /* =========================
              HOVER
           ========================= */
 
           .info-card:hover {
-            border-color: #1D620C;
-            background-color: #07120b;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 100, 40, 0.18);
+            // transform: translateY(-8px);
+
+            /* SAME BORDER COLOR */
+            border-color: var(--tl-accent-light);
+
+            /* SAME SHADOW */
+            box-shadow:
+              0 15px 40px rgba(29, 98, 12, 0.18);
           }
+
+
+          /* =========================
+             SHOW BOTTOM LINE
+          ========================= */
+
+          .info-card:hover::after {
+            transform: scaleX(1);
+          }
+
 
           /* =========================
              ICON
@@ -56,26 +120,44 @@ const InfoCard = ({
             width: 62px;
             min-width: 62px;
             height: 62px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             border-radius: 50%;
-            border: 2px solid #1D620C;
-            background-color: #06110a;
-            color: #1D620C;
+
+            /* SAME BORDER THEME */
+            border: 2px solid var(--tl-border);
+
+            /* DARK BACKGROUND */
+            background: rgba(0, 0, 0, 0.2);
+
+            /* SAME ACCENT THEME */
+            color: var(--tl-accent-light);
+
             box-sizing: border-box;
-            transition: all 0.3s ease;
+
+            transition:
+              border-color 0.35s ease,
+              color 0.35s ease,
+              box-shadow 0.35s ease;
           }
+
 
           /* =========================
              ICON HOVER
           ========================= */
 
           .info-card:hover .info-card-icon {
-            background-color: #0d401e;
-            border-color: #1D620C;
-            color: #1D620C;
+            border-color: var(--tl-accent-light);
+
+            color: var(--tl-accent-light);
+
+            box-shadow:
+              0 0 12px rgba(29, 98, 12, 0.18);
           }
+
 
           /* =========================
              MUI ICON SIZE
@@ -84,6 +166,7 @@ const InfoCard = ({
           .info-card-icon svg {
             font-size: 30px;
           }
+
 
           /* =========================
              CONTENT
@@ -94,20 +177,33 @@ const InfoCard = ({
             min-width: 0;
           }
 
+
           /* =========================
              TITLE
           ========================= */
 
           .info-card-title {
-            color: #ffffff;
-            font-size: 17px !important;
-            font-weight: 600 !important;
+            // color: var(--tl-muted);
+            color: var(--tl-accent-light) !important;
+
+            font-size: 20px !important;
+            font-weight: 400 !important;
+
             line-height: 1.3 !important;
+
             margin-bottom: 7px !important;
+
+            transition: color 0.35s ease;
           }
-            p{
-            color: #ffffff;
-            }
+
+
+          /* =========================
+             TITLE HOVER
+          ========================= */
+
+          .info-card:hover .info-card-title {
+            // color: var(--tl-accent-light);
+          }
 
 
           /* =========================
@@ -115,12 +211,20 @@ const InfoCard = ({
           ========================= */
 
           .info-card-description {
-            color: #ffffff;
-            font-size: 13px !important;
-            font-weight: 400 !important;
+            // color: var(--tl-muted);
+            color: var(--tl-fg) !important;
+
+            font-size: 16px !important;
+            font-weight: 200 !important;
+
             line-height: 1.5 !important;
+
             margin: 0 !important;
+            transition: color 0.35s ease;
           }
+            .info-card:hover .info-card-description{
+            // color: var(--tl-fg);
+            }
 
 
           /* =========================
@@ -145,13 +249,13 @@ const InfoCard = ({
               font-size: 26px;
             }
 
-            .info-card-title {
-              font-size: 15px !important;
-            }
+             .info-card-title {
+               font-size: 18px !important;
+             }
 
-            .info-card-description {
-              font-size: 12px !important;
-            }
+             .info-card-description {
+               font-size: 14px !important;
+             }
 
           }
 
@@ -179,16 +283,6 @@ const InfoCard = ({
               font-size: 23px;
             }
 
-            .info-card-title {
-              font-size: 14px !important;
-              margin-bottom: 5px !important;
-            }
-
-            .info-card-description {
-              font-size: 11px !important;
-              line-height: 1.45 !important;
-            }
-
           }
 
 
@@ -206,7 +300,6 @@ const InfoCard = ({
             .info-card-icon {
               width: 43px;
               min-width: 43px;
-
               height: 43px;
             }
 
@@ -214,33 +307,31 @@ const InfoCard = ({
               font-size: 21px;
             }
 
-            .info-card-title {
-              font-size: 13px !important;
-            }
-
-            .info-card-description {
-              font-size: 10px !important;
-            }
-
           }
         `}
       </style>
 
-      <Box className="info-card about-section">
+
+      {/* =========================
+          INFO CARD
+      ========================= */}
+
+      <Box className="info-card">
 
         {/* ICON */}
         <Box className="info-card-icon">
           {icon}
         </Box>
 
+
         {/* CONTENT */}
         <Box className="info-card-content">
 
-          <Typography className="info-card-title" sx={{color: "#ffffff  !important"}}>
+          <Typography className="info-card-title">
             {title}
           </Typography>
 
-          <Typography className="info-card-description" sx={{color: "#ffffff  !important"}}>
+          <Typography className="info-card-description">
             {description}
           </Typography>
 
