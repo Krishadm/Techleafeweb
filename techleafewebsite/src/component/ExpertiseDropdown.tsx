@@ -1,18 +1,115 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useMemo, type ElementType } from "react";
 import { Box, Container } from "@mui/material";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import LayersOutlinedIcon from "@mui/icons-material/LayersOutlined";
+import SmartToyOutlinedIcon from "@mui/icons-material/SmartToyOutlined";
+import PublicOutlinedIcon from "@mui/icons-material/PublicOutlined";
+import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import { DISCIPLINES } from "../data/servicesData";
+import { useNavigate } from "react-router-dom";
 
 const GREEN = "#3ecf6e";
-const PANEL_BG = "rgb(30, 34, 34)";
-const LINE = "rgba(255,255,255,0.1)";
+// const PANEL_BG = "rgb(30, 34, 34)";
+// const LINE = "rgba(255,255,255,0.1)";
  interface ExpertiseDropdownProps {
    onNavigate?: () => void;
  }
+const PANEL_BG = "rgb(24, 27, 27)";
+const ROW_HOVER = "rgba(62, 207, 110, 0.08)";
+const LINE = "rgba(255,255,255,0.08)";
+const MUTED = "rgba(255,255,255,0.55)";
+
+// Optional per-discipline icon — falls back to a generic icon if an id isn't listed here.
+const DISCIPLINE_ICONS: Record<string, ElementType> = {
+  blockchain: LayersOutlinedIcon,
+  ai: SmartToyOutlinedIcon,
+  web: PublicOutlinedIcon,
+};
+
+interface ExpertiseDropdownProps {
+  onNavigate?: () => void;
+}
+
+/** Small row used for both the discipline list and the service list. */
+function DropdownRow({
+  label,
+  isActive,
+  icon: Icon,
+  onClick,
+  onMouseEnter,
+}: {
+  label: string;
+  isActive?: boolean;
+  icon?: ElementType;
+  onClick?: () => void;
+  onMouseEnter?: () => void;
+}) {
+  return (
+    <Box
+      component="button"
+      type="button"
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: 1.5,
+        width: "100%",
+        textAlign: "left",
+        background: isActive ? ROW_HOVER : "transparent",
+        border: "none",
+        borderRadius: "10px",
+        cursor: "pointer",
+        p: "10px 12px",
+        fontFamily: "inherit",
+        transition: "background-color .15s ease",
+        "&:hover": { background: ROW_HOVER },
+        "&:hover .row-icon": { color: GREEN },
+      }}
+    >
+      {Icon ? (
+        <Box
+          sx={{
+            width: 28,
+            height: 28,
+            flexShrink: 0,
+            borderRadius: "7px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: isActive ? "rgba(62, 207, 110, 0.14)" : "rgba(255,255,255,0.06)",
+            color: isActive ? GREEN : "rgba(255,255,255,0.7)",
+          }}
+        >
+          <Icon sx={{ fontSize: 16 }} />
+        </Box>
+      ) : (
+        <CircleOutlinedIcon
+          className="row-icon"
+          sx={{ fontSize: 8, color: "rgba(255,255,255,0.35)", flexShrink: 0 }}
+        />
+      )}
+      <Box
+        sx={{
+          fontSize: 14,
+          fontWeight: isActive ? 600 : 400,
+          color: isActive ? GREEN : "rgba(255,255,255,0.9)",
+        }}
+      >
+        {label}
+      </Box>
+    </Box>
+  );
+}
 
 const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
   const [activeId, setActiveId] = useState<string>(DISCIPLINES[0].id);
-  const active = DISCIPLINES.find((d) => d.id === activeId) ?? DISCIPLINES[0];
+
+  const active = useMemo(
+    () => DISCIPLINES.find((d) => d.id === activeId) ?? DISCIPLINES[0],
+    [activeId]
+  );
+  const ActiveIcon = DISCIPLINE_ICONS[active.id] ?? CircleOutlinedIcon;
 
 const navigate = useNavigate();  
 
@@ -30,34 +127,53 @@ const navigate = useNavigate();
     <Box
       sx={{
         position: "fixed",
-        top: 72,
+        top: { xs: 64, md: 84 },
         left: 0,
         right: 0,
-        width: "100vw",
-        background: PANEL_BG,
-        borderTop: `1px solid ${LINE}`,
-        borderBottom: `1px solid ${LINE}`,
-        boxShadow: "0 18px 36px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.04)",
+        bottom: { xs: 0, md: "auto" }, // lets the mobile panel size itself to the viewport
+        display: "flex",
+        justifyContent: "center",
         zIndex: 100,
+        px: { xs: 0, md: 2 },
+        pointerEvents: "none", // container is just for centering; panel below re-enables it
       }}
     >
-      <Container maxWidth="xl" sx={{ px: { xs: 0, md: 2 }, py: 0 }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          pointerEvents: "auto",
+          background: PANEL_BG,
+          borderRadius: { xs: 0, md: "20px" },
+          border: { xs: "none", md: `1px solid ${LINE}` },
+          borderTop: `1px solid ${LINE}`,
+          boxShadow: {
+            xs: "none",
+            md: "0 24px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.03)",
+          },
+          overflow: "hidden",
+          maxHeight: { xs: "calc(100dvh - 64px)", md: "calc(100dvh - 120px)" },
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "1.1fr 0.9fr 1.1fr" },
-            minHeight: 280,
-            gap: 0,
+            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr 1.1fr" },
+            overflowY: "auto",
           }}
         >
+          {/* LEFT: heading + highlighted feature card */}
           <Box
             sx={{
-              p: { xs: 2, md: 3 },
+              p: { xs: 2.5, md: 4 },
               borderRight: { md: `1px solid ${LINE}` },
               borderBottom: { xs: `1px solid ${LINE}`, md: "none" },
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
+              // NOTE: no justifyContent:"space-between" here — that was what pinned the
+              // card to the bottom of the column and made it "jump" whenever the
+              // services column (right side) got taller/shorter between disciplines.
             }}
           >
             <Box
@@ -65,39 +181,75 @@ const navigate = useNavigate();
               sx={{
                 m: 0,
                 color: "#f3f3f3",
-                fontSize: { xs: 22, md: 38 },
-                lineHeight: 1,
-                letterSpacing: "-0.04em",
+                fontSize: { xs: 20, md: 30 },
+                lineHeight: 1.15,
+                letterSpacing: "-0.03em",
                 fontFamily: "'Francois One', sans-serif",
                 fontWeight: 400,
               }}
             >
-              Enterprise AI,
-              <br />
-              Blockchain &amp; Mobile
-              <br />
-              Applications
+              Enterprise AI, Blockchain &amp; Mobile Applications
             </Box>
 
+            {/* Feature card — fixed distance from the heading, independent of
+                how tall the services list on the right ends up being. */}
             <Box
-              component="p"
               sx={{
-                m: 0,
-                mt: 1.5,
-                color: "rgba(255,255,255,0.7)",
-                fontSize: { xs: 12, md: 15 },
-                lineHeight: 1.5,
-                maxWidth: 420,
-                fontWeight: 400,
+                mt: 3,
+                border: `1px solid ${LINE}`,
+                borderRadius: "14px",
+                p: 2.5,
+                background: "rgba(62, 207, 110, 0.05)",
               }}
             >
-              High-performance software engineering for startups and enterprises — turning
-              complex tech requirements into reliable production software.
+              <Box
+                sx={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: "8px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: "rgba(62, 207, 110, 0.12)",
+                  color: GREEN,
+                  mb: 1.5,
+                }}
+              >
+                <ActiveIcon sx={{ fontSize: 18 }} />
+              </Box>
+              <Box sx={{ color: "#f3f3f3", fontSize: 15, fontWeight: 600, mb: 0.5 }}>
+                {active.title}
+              </Box>
+              <Box sx={{ color: MUTED, fontSize: 13, lineHeight: 1.5, mb: 1.5 }}>
+                High-performance engineering focused on {active.title.toLowerCase()},
+                built for production from day one.
+              </Box>
+              <Box
+                component="button"
+                type="button"
+                onClick={onNavigate}
+                sx={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                  background: "none",
+                  border: "none",
+                  color: GREEN,
+                  fontSize: 13,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  p: 0,
+                }}
+              >
+                Learn more <ArrowForwardRoundedIcon sx={{ fontSize: 14 }} />
+              </Box>
             </Box>
           </Box>
 
+          {/* MIDDLE: discipline selector */}
           <Box
             sx={{
+              p: { xs: 2, md: 2.5 },
               borderRight: { md: `1px solid ${LINE}` },
               borderBottom: { xs: `1px solid ${LINE}`, md: "none" },
               display: "flex",
@@ -150,45 +302,23 @@ const navigate = useNavigate();
             })}
           </Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              py: { xs: 1.5, md: 1.5 },
-              px: { xs: 1.5, md: 2 },
-            }}
-          >
+          {/* RIGHT: services for the active discipline */}
+          <Box sx={{ p: { xs: 2, md: 2.5 }, display: "flex", flexDirection: "column" }}>
+            <Box
+              sx={{
+                color: MUTED,
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                px: 1.5,
+                mb: 1,
+              }}
+            >
+              Services
+            </Box>
             {active.services.map((item) => (
-              <Box
-                key={item.slug}
-                component="button"
-                type="button"
-                onClick={onNavigate}
-  //               onClick={() => {
-  //   navigate(`/expertise/blockchain-development`);
-  //   onNavigate?.();
-  // }}
-                sx={{
-                  display: "block",
-                  width: "100%",
-                  textAlign: "left",
-                  background: "transparent",
-                  padding: "10px 10px",
-                  fontSize: { xs: 13, md: 15 },
-                  fontWeight: 400,
-                  color: "rgba(255,255,255,0.9)",
-                  textDecoration: "none",
-                  transition: "color .18s ease, opacity .18s ease",
-                  lineHeight: 1.5,
-                  opacity: 0.95,
-                  margin: 0,
-                  border: "none",
-                  cursor: "pointer",
-                  "&:hover": { color: GREEN },
-                }}
-              >
-                {item.label}
-              </Box>
+              <DropdownRow key={item.slug} label={item.label} onClick={onNavigate} />
             ))}
           </Box>
         </Box>
