@@ -6,9 +6,9 @@ import { DISCIPLINES } from "../data/servicesData";
 const GREEN = "#3ecf6e";
 const PANEL_BG = "rgb(30, 34, 34)";
 const LINE = "rgba(255,255,255,0.1)";
-interface ExpertiseDropdownProps {
-  onNavigate?: () => void;
-}
+ interface ExpertiseDropdownProps {
+   onNavigate?: () => void;
+ }
 
 const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
   const [activeId, setActiveId] = useState<string>(DISCIPLINES[0].id);
@@ -115,12 +115,15 @@ const navigate = useNavigate();
                     setActiveId(d.id);
                     if(d.id == "blockchain"){
                       navigate("/expertise/blockchain-development");
+                      onNavigate?.();
                     }
                     if(d.id == "ai"){
                       navigate("/expertise/AIDevelopmentServices");
+                      onNavigate?.();
                     }
                     if(d.id == "web"){
                       navigate("")
+                      onNavigate?.();
                     }
                   }}
                   sx={{
