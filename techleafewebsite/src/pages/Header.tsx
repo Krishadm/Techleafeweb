@@ -27,12 +27,15 @@ const navLinks = [
   { label: "Contact us", to: "/contact" },
 ];
 
+const EXPERTISE_ANIM_MS = 350; // must match the exit animation duration in ExpertiseDropdown.tsx
+
 const Header = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const location = useLocation();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [expertiseOpen, setExpertiseOpen] = useState(false);
+  const [expertiseRendered, setExpertiseRendered] = useState(false);
   const [mobileExpertiseOpen, setMobileExpertiseOpen] = useState(false);
   const expertiseRef = useRef<HTMLDivElement>(null);
 
@@ -50,6 +53,31 @@ const Header = () => {
     setExpertiseOpen(false);
     setMobileExpertiseOpen(false);
   }, [location.pathname]);
+
+  // Keep the dropdown mounted a little longer than `expertiseOpen` so the
+  // closing (zoom-out) animation has time to actually play before unmount.
+  useEffect(() => {
+    if (expertiseOpen) {
+      setExpertiseRendered(true);
+    } else if (expertiseRendered) {
+      const t = setTimeout(() => setExpertiseRendered(false), EXPERTISE_ANIM_MS);
+      return () => clearTimeout(t);
+    }
+  }, [expertiseOpen]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const navBtnBase = {
+    position: "relative" as const,
+    display: "flex",
+    alignItems: "center",
+    height: "20px",
+    lineHeight: "20px",
+    textTransform: "none" as const,
+    fontWeight: 500,
+    fontSize: 14,
+    borderRadius: 0,
+    backgroundColor: "transparent",
+    "&:hover": { backgroundColor: "transparent" },
+  };
 
   return (
     <AppBar
@@ -73,12 +101,7 @@ const Header = () => {
           py: 1,
         }}
       >
-        {/* Logo */}
-        <Box
-          component={Link}
-          to="/"
-          sx={{ display: "flex", alignItems: "center", minWidth: { md: 160 } }}
-        >
+        <Box component={Link} to="/" sx={{ display: "flex", alignItems: "center", minWidth: { md: 160 } }}>
           <Box
             component="img"
             src={logo}
@@ -87,7 +110,6 @@ const Header = () => {
           />
         </Box>
 
-        {/* Desktop nav */}
         {!isMobile && (
           <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 3, flex: 1 }}>
             <Button
@@ -95,19 +117,13 @@ const Header = () => {
               to="/"
               disableRipple
               sx={{
-                position: "relative",
+                ...navBtnBase,
                 color: !expertiseOpen && location.pathname === "/" ? "#3ecf6e" : "#fff",
-                textTransform: "none",
-                fontWeight: 500,
-                fontSize: 14,
-                borderRadius: 0,
-                backgroundColor: "transparent",
-                "&:hover": { backgroundColor: "transparent" },
                 "&::after": {
                   content: '""',
                   position: "absolute",
                   left: 0,
-                  bottom: 4,
+                  bottom: -6,
                   height: "2px",
                   width: "100%",
                   backgroundColor: "#3ecf6e",
@@ -126,19 +142,14 @@ const Header = () => {
                 disableRipple
                 onClick={() => setExpertiseOpen((v) => !v)}
                 sx={{
-                  position: "relative",
+                  ...navBtnBase,
+                  gap: 0.6,
                   color: expertiseOpen || location.pathname.startsWith("/services") ? "#3ecf6e" : "#fff",
-                  textTransform: "none",
-                  fontWeight: 500,
-                  fontSize: 14,
-                  borderRadius: 0,
-                  backgroundColor: "transparent",
-                  "&:hover": { backgroundColor: "transparent" },
                   "&::after": {
                     content: '""',
                     position: "absolute",
                     left: 0,
-                    bottom: 4,
+                    bottom: -6,
                     height: "2px",
                     width: "100%",
                     backgroundColor: "#3ecf6e",
@@ -150,8 +161,35 @@ const Header = () => {
                 }}
               >
                 Expertise
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 12,
+                    height: 12,
+                  }}
+                >
+                  <Box
+                    component="svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    sx={{
+                      width: 11,
+                      height: 11,
+                      transform: expertiseOpen ? "rotate(0deg)" : "rotate(90deg)",
+                      transition: "transform 0.3s ease",
+                    }}
+                  >
+                    <path d="M9 6l6 6-6 6" />
+                  </Box>
+                </Box>
               </Button>
-              {expertiseOpen && <ExpertiseDropdown onNavigate={() => setExpertiseOpen(false)} />}
+              {expertiseRendered && (
+                <ExpertiseDropdown open={expertiseOpen} onNavigate={() => setExpertiseOpen(false)} />
+              )}
             </Box>
 
             {navLinks.slice(1).map((link) => (
@@ -161,19 +199,13 @@ const Header = () => {
                 to={link.to}
                 disableRipple
                 sx={{
-                  position: "relative",
+                  ...navBtnBase,
                   color: !expertiseOpen && location.pathname === link.to ? "#3ecf6e" : "#fff",
-                  textTransform: "none",
-                  fontWeight: 500,
-                  fontSize: 14,
-                  borderRadius: 0,
-                  backgroundColor: "transparent",
-                  "&:hover": { backgroundColor: "transparent" },
                   "&::after": {
                     content: '""',
                     position: "absolute",
                     left: 0,
-                    bottom: 4,
+                    bottom: -6,
                     height: "2px",
                     width: "100%",
                     backgroundColor: "#3ecf6e",
