@@ -9,6 +9,11 @@ import { DISCIPLINES } from "../data/servicesData";
 import { useNavigate } from "react-router-dom";
 
 const GREEN = "#3ecf6e";
+// const PANEL_BG = "rgb(30, 34, 34)";
+// const LINE = "rgba(255,255,255,0.1)";
+ interface ExpertiseDropdownProps {
+   onNavigate?: () => void;
+ }
 const PANEL_BG = "rgb(24, 27, 27)";
 const ROW_HOVER = "rgba(62, 207, 110, 0.08)";
 const LINE = "rgba(255,255,255,0.08)";
@@ -269,7 +274,7 @@ const navigate = useNavigate();
                       onNavigate?.();
                     }
                     if(d.id == "web"){
-                      navigate("")
+                      navigate("/expertise/appdevelopment")
                       onNavigate?.();
                     }
                   }}

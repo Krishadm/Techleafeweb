@@ -14,9 +14,11 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 import blockchainImage from "../../assets/blockchain-hero.jpg";
+import Footer from "../../component/Footer";
 
 const BlockchainDevelopment = () => {
   return (
+    <>
     <Box className="blockchain-page">
       <style>{`
         .blockchain-page {
@@ -1257,6 +1259,8 @@ const BlockchainDevelopment = () => {
       </Box>
 
     </Box>
+    <Footer />
+    </>
   );
 };
 
