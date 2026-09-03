@@ -1,4 +1,5 @@
 import Blockchain from "./Expertise/Blockchain";
+import AIDevelopmentServices from "./Expertise/AIDevelopmentServices";
 
 export default function ExpertisePage() {
   return (
@@ -8,6 +9,7 @@ export default function ExpertisePage() {
         Explore our core capabilities across AI, blockchain, mobile, and web engineering.
       </p>
       <Blockchain />
+       <AIDevelopmentServices />
     </main>
   );
 }

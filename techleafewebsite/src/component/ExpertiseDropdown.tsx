@@ -1,22 +1,29 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Box, Container } from "@mui/material";
 import { DISCIPLINES } from "../data/servicesData";
-
-
 const GREEN = "#3ecf6e";
 const PANEL_BG = "rgb(30, 34, 34)";
 const LINE = "rgba(255,255,255,0.1)";
-
 interface ExpertiseDropdownProps {
   onNavigate?: () => void;
 }
 
 const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
+  const navigate = useNavigate();
   const [activeId, setActiveId] = useState<string>(DISCIPLINES[0].id);
   const active = DISCIPLINES.find((d) => d.id === activeId) ?? DISCIPLINES[0];
 
- 
+  const handleDisciplineClick = (id: string) => {
+    if (id === "ai") {
+      navigate("/services/ai-development");
+      onNavigate?.();
+      return;
+    }
 
+    setActiveId(id);
+  };
+  
   return (
     <Box
       sx={{
@@ -102,13 +109,14 @@ const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
                   key={d.id}
                   component="button"
                   type="button"
-                  onClick={() => {
-                    setActiveId(d.id);
+                  // onClick={() => {
+                  //   setActiveId(d.id);
  
-                  }
+                  // }
 
-                  }
+                  // }
 
+                  onClick={() => handleDisciplineClick(d.id)}
                   sx={{
                     display: "flex",
                     alignItems: "center",
