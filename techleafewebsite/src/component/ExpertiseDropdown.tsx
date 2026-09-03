@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Box, Container } from "@mui/material";
 import { DISCIPLINES } from "../data/servicesData";
 
+import { useNavigate } from "react-router-dom";  //
+
 const GREEN = "#3ecf6e";
 const PANEL_BG = "rgb(30, 34, 34)";
 const LINE = "rgba(255,255,255,0.1)";
@@ -13,6 +15,8 @@ interface ExpertiseDropdownProps {
 const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
   const [activeId, setActiveId] = useState<string>(DISCIPLINES[0].id);
   const active = DISCIPLINES.find((d) => d.id === activeId) ?? DISCIPLINES[0];
+
+const navigate = useNavigate();  
 
   return (
     <Box
@@ -99,7 +103,12 @@ const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
                   key={d.id}
                   component="button"
                   type="button"
-                  onClick={() => setActiveId(d.id)}
+                  onClick={() => {
+                    setActiveId(d.id);
+                    if(d.id == "blockchain"){
+                      navigate(`/expertise/blockchain-development`)
+                    }
+                  }}
                   sx={{
                     display: "flex",
                     alignItems: "center",
@@ -138,6 +147,10 @@ const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
                 component="button"
                 type="button"
                 onClick={onNavigate}
+  //               onClick={() => {
+  //   navigate(`/expertise/blockchain-development`);
+  //   onNavigate?.();
+  // }}
                 sx={{
                   display: "block",
                   width: "100%",

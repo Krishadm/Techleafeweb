@@ -10,6 +10,8 @@ import MainLayout from "../layouts/MainLayout";
 import NotFoundPage from "../pages/Filenotfound";
 import PortfolioPage from "../pages/PortfolioPage";
 
+import BlockchainDevelopment from "../pages/Expertise/BlockchainDevelopment";
+
 
 export const router = createBrowserRouter([
   {
@@ -36,10 +38,15 @@ export const router = createBrowserRouter([
         path: "portfolio",
         element: <PortfolioPage />,
       },
+            {
+        path:"/expertise/blockchain-development", 
+        element:<BlockchainDevelopment />
+      },
        {
         path: "*",
         element: <NotFoundPage />,
       }, 
+
     ],
   },
 ]);

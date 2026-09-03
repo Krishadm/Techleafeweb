@@ -109,7 +109,7 @@ const InfoCard = ({
           ========================= */
 
           .info-card-description {
-            color: #c3c9c5;
+            color: #ffffff;
             font-size: 13px !important;
             font-weight: 400 !important;
             line-height: 1.5 !important;
