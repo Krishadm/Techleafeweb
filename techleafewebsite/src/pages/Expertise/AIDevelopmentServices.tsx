@@ -20,6 +20,7 @@ import {
   RocketLaunch,
   ArrowForward
 } from '@mui/icons-material';
+import Footer from '../../component/Footer';
 
 // --- Types ---
 interface ServiceItem {
@@ -102,6 +103,7 @@ const processSteps: ProcessStep[] = [
 export const AIDevelopmentServices: React.FC = () => {
 
   return (
+    <>
     <Box sx={{ bgcolor: 'black', color: 'text.primary' }}>
       {/* Hero Section */}
       <Paper
@@ -369,6 +371,8 @@ Next-Gen AI Engineering
         </Paper>
       </Container>
     </Box>
+    <Footer />
+    </>
   );
 };
 
