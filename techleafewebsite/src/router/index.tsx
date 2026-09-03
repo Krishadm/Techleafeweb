@@ -8,7 +8,7 @@ import PortfolioPage from "../pages/PortfolioPage";
 import Blog from "../pages/Blog";
 import BlogDetail from "../pages/BlogDetail";
 import NotFoundPage from "../pages/Filenotfound";
-
+import Footer from "../component/Footer";
 import MainLayout from "../layouts/MainLayout";
 
 export const router = createBrowserRouter([
@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
         path: "portfolio",
         element: <PortfolioPage />,
       },
-
+      
       /* BLOG LIST PAGE */
       {
         path: "blog",
@@ -47,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "blog/:slug",
         element: <BlogDetail />,
+      },
+      {
+        path: "footer",
+        element: <Footer/>,
       },
 
       /* KEEP THIS LAST */

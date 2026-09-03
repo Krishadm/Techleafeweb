@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { blogPosts } from "../data/BlogData";
+import Footer from "../component/Footer";
+
 
 export default function Blog() {
   return (
+    <>
     <main className="blog-page">
       <section className="blog-hero">
         <span className="blog-eyebrow">Insights & Articles</span>
@@ -41,5 +44,7 @@ export default function Blog() {
         ))}
       </section>
     </main>
+    <Footer/>
+    </>
   );
 }
