@@ -74,15 +74,6 @@ const AboutPage = () => {
       <style>
         {`
 
-          // @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
-          // .public-sans-regular {
-          //   font-family: "Public Sans" !important;
-          //   font-optical-sizing: auto;
-          //   font-weight: 400;
-          //   font-style: normal;
-          // }
-
           /* =========================
              MAIN SECTION
           ========================= */

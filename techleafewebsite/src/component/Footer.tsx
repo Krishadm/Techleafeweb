@@ -22,11 +22,10 @@ const quickLinks = [
 ];
 
 const serviceLinks = [
-  { name: "Web Development", path: "/services/web-development" },
-  { name: "Mobile App Development", path: "/services/mobile-app" },
-  { name: "UI/UX Design", path: "/services/ui-ux" },
-  { name: "Digital Marketing", path: "/services/digital-marketing" },
-  { name: "SEO", path: "/services/seo" },
+  { name: "Blockchain Development", path: "/expertise/blockchain-development" },
+  { name: "AI Development", path: "/expertise/ai-development" },
+  { name: "Web & App Development", path: "/expertise/web-app-development" },
+ 
 ];
 
 const Footer: React.FC = () => {

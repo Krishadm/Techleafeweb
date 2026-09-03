@@ -1,22 +1,31 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Box, Container } from "@mui/material";
 import { DISCIPLINES } from "../data/servicesData";
-
-import { useNavigate } from "react-router-dom";
 
 const GREEN = "#3ecf6e";
 const PANEL_BG = "rgb(30, 34, 34)";
 const LINE = "rgba(255,255,255,0.1)";
-
-interface ExpertiseDropdownProps {
-  onNavigate?: () => void;
-}
+ interface ExpertiseDropdownProps {
+   onNavigate?: () => void;
+ }
 
 const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
   const [activeId, setActiveId] = useState<string>(DISCIPLINES[0].id);
   const active = DISCIPLINES.find((d) => d.id === activeId) ?? DISCIPLINES[0];
-  const navigate = useNavigate();
 
+const navigate = useNavigate();  
+
+  // const handleDisciplineClick = (id: string) => {
+  //   if (id === "ai") {
+  //     navigate("/services/ai-development");
+  //     onNavigate?.();
+  //     return;
+  //   }
+
+  //   setActiveId(id);
+  // };
+  
   return (
     <Box
       sx={{
@@ -103,13 +112,20 @@ const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
                   component="button"
                   type="button"
                   onClick={() => {
-  setActiveId(d.id);
-
-  if (d.title === "AI Development") {
-    navigate("/expertise/ai-development");
-    onNavigate?.();
-  }
-}}
+                    setActiveId(d.id);
+                    if(d.id == "blockchain"){
+                      navigate("/expertise/blockchain-development");
+                      onNavigate?.();
+                    }
+                    if(d.id == "ai"){
+                      navigate("/expertise/AIDevelopmentServices");
+                      onNavigate?.();
+                    }
+                    if(d.id == "web"){
+                      navigate("")
+                      onNavigate?.();
+                    }
+                  }}
                   sx={{
                     display: "flex",
                     alignItems: "center",
@@ -148,6 +164,10 @@ const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
                 component="button"
                 type="button"
                 onClick={onNavigate}
+  //               onClick={() => {
+  //   navigate(`/expertise/blockchain-development`);
+  //   onNavigate?.();
+  // }}
                 sx={{
                   display: "block",
                   width: "100%",

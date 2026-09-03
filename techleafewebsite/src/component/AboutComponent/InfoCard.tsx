@@ -33,6 +33,9 @@ const InfoCard = ({
             border-radius: 10px;
             transition: all 0.3s ease;
           }
+          .about-section{
+            
+          }
 
           /* =========================
              HOVER
@@ -102,6 +105,9 @@ const InfoCard = ({
             line-height: 1.3 !important;
             margin-bottom: 7px !important;
           }
+            p{
+            color: #ffffff;
+            }
 
 
           /* =========================
@@ -109,7 +115,7 @@ const InfoCard = ({
           ========================= */
 
           .info-card-description {
-            color: #c3c9c5;
+            color: #ffffff;
             font-size: 13px !important;
             font-weight: 400 !important;
             line-height: 1.5 !important;
@@ -220,7 +226,7 @@ const InfoCard = ({
         `}
       </style>
 
-      <Box className="info-card">
+      <Box className="info-card about-section">
 
         {/* ICON */}
         <Box className="info-card-icon">
@@ -230,11 +236,11 @@ const InfoCard = ({
         {/* CONTENT */}
         <Box className="info-card-content">
 
-          <Typography className="info-card-title">
+          <Typography className="info-card-title" sx={{color: "#ffffff  !important"}}>
             {title}
           </Typography>
 
-          <Typography className="info-card-description">
+          <Typography className="info-card-description" sx={{color: "#ffffff  !important"}}>
             {description}
           </Typography>
 
