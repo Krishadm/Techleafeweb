@@ -13,7 +13,7 @@ import LayersOutlinedIcon from "@mui/icons-material/LayersOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-import blockchainImage from "../../assets/blockchain-hero.jpg";
+import blockchainImage from "../../assets/blockchain-hero.png";
 import Footer from "../../component/Footer";
 
 const BlockchainDevelopment = () => {
