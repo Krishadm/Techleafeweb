@@ -1,13 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Box, Container } from "@mui/material";
 import { DISCIPLINES } from "../data/servicesData";
-
-import { useNavigate } from "react-router-dom";  //
 
 const GREEN = "#3ecf6e";
 const PANEL_BG = "rgb(30, 34, 34)";
 const LINE = "rgba(255,255,255,0.1)";
-
 interface ExpertiseDropdownProps {
   onNavigate?: () => void;
 }
@@ -18,6 +16,16 @@ const ExpertiseDropdown = ({ onNavigate }: ExpertiseDropdownProps) => {
 
 const navigate = useNavigate();  
 
+  // const handleDisciplineClick = (id: string) => {
+  //   if (id === "ai") {
+  //     navigate("/services/ai-development");
+  //     onNavigate?.();
+  //     return;
+  //   }
+
+  //   setActiveId(id);
+  // };
+  
   return (
     <Box
       sx={{
@@ -106,7 +114,13 @@ const navigate = useNavigate();
                   onClick={() => {
                     setActiveId(d.id);
                     if(d.id == "blockchain"){
-                      navigate(`/expertise/blockchain-development`)
+                      navigate("/expertise/blockchain-development");
+                    }
+                    if(d.id == "ai"){
+                      navigate("/expertise/AIDevelopmentServices");
+                    }
+                    if(d.id == "web"){
+                      navigate("")
                     }
                   }}
                   sx={{
