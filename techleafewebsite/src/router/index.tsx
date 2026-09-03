@@ -72,7 +72,7 @@ export const router = createBrowserRouter([
       },
 
       /* KEEP THIS LAST */
-      {
+      
        {
         path: "*",
         element: <NotFoundPage />,
