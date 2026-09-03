@@ -13,6 +13,7 @@ import BlockchainDevelopment from "../pages/Expertise/BlockchainDevelopment";
 import NotFoundPage from "../pages/Filenotfound";
 import AIDevelopmentServices from "../pages/Expertise/AIDevelopmentServices";
 import MainLayout from "../layouts/MainLayout";
+import AppDevelopmentPage from "../pages/Expertise/WebAppDevelopment";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/expertise/AIDevelopmentServices",
         element: <AIDevelopmentServices />,
+      },
+      {
+        path: "/expertise/appdevelopment",
+        element: <AppDevelopmentPage />,
       },
       {
         path: "services/:slug",

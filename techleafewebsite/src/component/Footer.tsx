@@ -159,7 +159,7 @@ const Footer: React.FC = () => {
               variant="body2"
               sx={{ color: "#bdbdbd", mb: 1.5 }}
             >
-              📍 Chennai, Tamil Nadu
+              📍 100 Feet Road, Selaiyur, Tambaram, Chennai – 600073
             </Typography>
 
             <Typography
