@@ -189,7 +189,7 @@ const Footer: React.FC = () => {
               variant="body2"
               sx={{ color: "#bdbdbd", mb: 1.5 }}
             >
-              📧 support@techleafe.com
+              📧 admin@techleafe.com
             </Typography>
              <Typography variant="body2" sx={{ color: "#bdbdbd" }}>
               <Link href="tel:+919345955510" sx={{ color: "#bdbdbd" }}>
