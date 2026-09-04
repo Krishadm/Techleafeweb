@@ -233,7 +233,7 @@ function BuildCard({
 
       <Typography
         sx={{
-          fontFamily: "'Francois One', sans-serif",
+           fontFamily: '"DM Sans", sans-serif',
           fontSize: "18px",
           fontWeight: 400,
           color: "#ffffff",
@@ -244,7 +244,7 @@ function BuildCard({
 
       <Typography
         sx={{
-          fontFamily: "'Istok Web', sans-serif",
+           fontFamily: '"DM Sans", sans-serif',
           fontSize: "14px",
           lineHeight: 1.6,
           color: "#c9c9c9",
@@ -387,7 +387,7 @@ function LiveProjectRow({
         <Box sx={{ flex: 1, minWidth: 0 }}>
           <Typography
             sx={{
-              fontFamily: "'Francois One', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: "17px",
               color: "#ffffff",
               mb: 0.5,
@@ -397,7 +397,7 @@ function LiveProjectRow({
           </Typography>
           <Typography
             sx={{
-              fontFamily: "'Istok Web', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: "14px",
               lineHeight: 1.6,
               color: "#c9c9c9",
@@ -445,9 +445,9 @@ function LiveProjectRow({
                 fontSize: "11px",
                 fontWeight: 700,
                 letterSpacing: "0.06em",
-                color: "#20A914",
+                color: "#35A51C",
                 textTransform: "uppercase",
-                fontFamily: "'Istok Web', sans-serif",
+                 fontFamily: '"DM Sans", sans-serif',
               }}
             >
               {project.status}
@@ -455,7 +455,7 @@ function LiveProjectRow({
           </Box>
           <Typography
             sx={{
-              fontFamily: "'Istok Web', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: "12px",
               color: "#9a9a9a",
             }}
@@ -526,7 +526,7 @@ function CaseStudyRow({
         <Box>
           <Typography
             sx={{
-              fontFamily: "'Istok Web', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: "12px",
               fontWeight: 700,
               letterSpacing: "0.14em",
@@ -539,7 +539,7 @@ function CaseStudyRow({
           </Typography>
           <Typography
             sx={{
-              fontFamily: "'Francois One', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: { xs: "19px", md: "21px" },
               lineHeight: 1.3,
               color: "#ffffff",
@@ -559,8 +559,8 @@ function CaseStudyRow({
                   borderRadius: "999px",
                   border: "1px solid rgba(32, 169, 20, 0.5)",
                   fontSize: "12px",
-                  color: "#20A914",
-                  fontFamily: "'Istok Web', sans-serif",
+                  color: "#35A51C",
+                   fontFamily: '"DM Sans", sans-serif',
                 }}
               >
                 {tag}
@@ -573,7 +573,7 @@ function CaseStudyRow({
         <Box>
           <Typography
             sx={{
-              fontFamily: "'Istok Web', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: "14.5px",
               lineHeight: 1.7,
               color: "#c9c9c9",
@@ -591,8 +591,8 @@ function CaseStudyRow({
               display: "inline-flex",
               alignItems: "center",
               gap: "6px",
-              color: "#20A914",
-              fontFamily: "'Istok Web', sans-serif",
+              color: "#35A51C",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: "14px",
               fontWeight: 700,
               textDecoration: "none",
@@ -618,6 +618,7 @@ function CaseStudyRow({
 
 // ============== "Leadership" Data ==============
 interface LeadershipMember {
+  quote: any;
   photo: string;
   name: string;
   title: string;
@@ -634,14 +635,15 @@ const leadershipMembers: LeadershipMember[] = [
     bio: [
       <>
         With a background spanning enterprise IT infrastructure, software engineering, and
-        high-performance Web3 architecture, P. S. Vigneshwaran <strong>led Tech Leafe Technologies
-        in 2020</strong> to build secure, scalable solutions powered by Blockchain and AI. His
+        high-performance Web3 architecture, P.S.Vigneshwaran <strong>led Tech Leafe Technologies
+          in 2020</strong> to build secure, scalable solutions powered by Blockchain and AI. His
         engineering work includes <strong>two proprietary Layer-2 blockchain frameworks and three
-        multi-chain cryptocurrency exchanges</strong>, backed by an academic foundation in BCA,
+          multi-chain cryptocurrency exchanges</strong>, backed by an academic foundation in BCA,
         MCA, MSCA, and BBA. He believes technology is only as powerful as the trust and efficiency
         it delivers — a principle that shapes every product Tech Leafe ships.
       </>,
     ],
+    quote: undefined
   },
   {
     photo: "/assets/team/tmari-headshot.jpg",
@@ -650,7 +652,7 @@ const leadershipMembers: LeadershipMember[] = [
     bio: [
       <>
         A dynamic entrepreneur and strategic leader with <strong>20+ years of experience across
-        business, real estate, technology, and operations</strong>, T. Mari drives Tech Leafe
+          business, real estate, technology, and operations</strong>, T. Mari drives Tech Leafe
         Technologies&apos; <strong>strategic and financial direction</strong> — bringing deep expertise in
         strategic planning, investor relations, and organizational leadership. He also serves as a
         Director at Maco Internet Laboratories, and holds a Bachelor of Business Administration
@@ -658,6 +660,7 @@ const leadershipMembers: LeadershipMember[] = [
         and sustainable growth.
       </>,
     ],
+    quote: undefined
   },
 ];
 
@@ -710,7 +713,7 @@ function LeadershipBlock({ member, index }: { member: LeadershipMember; index: n
         {/* Name / title / subtitle — stacked beneath the photo */}
         <Typography
           sx={{
-            fontFamily: "'Francois One', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "18px", md: "19px" },
             color: "#ffffff",
             mb: 0.3,
@@ -720,12 +723,12 @@ function LeadershipBlock({ member, index }: { member: LeadershipMember; index: n
         </Typography>
         <Typography
           sx={{
-            fontFamily: "'Istok Web', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: "12px",
             fontWeight: 700,
             letterSpacing: "0.06em",
             textTransform: "uppercase",
-            color: "#20A914",
+            color: "#35A51C",
             lineHeight: 1.5,
           }}
         >
@@ -734,7 +737,7 @@ function LeadershipBlock({ member, index }: { member: LeadershipMember; index: n
         {member.subtitle && (
           <Typography
             sx={{
-              fontFamily: "'Istok Web', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: "12.5px",
               fontStyle: "italic",
               color: "#9a9a9a",
@@ -751,18 +754,56 @@ function LeadershipBlock({ member, index }: { member: LeadershipMember; index: n
             <Typography
               key={pIndex}
               sx={{
-                fontFamily: "'Istok Web', sans-serif",
+                 fontFamily: '"DM Sans", sans-serif',
                 fontSize: { xs: "14.5px", sm: "15px" },
                 lineHeight: 1.75,
                 color: "#c9c9c9",
                 opacity: 0.92,
-                mb: pIndex === member.bio.length - 1 ? 0 : 2,
-                "& strong": { color: "#20A914", fontWeight: 700 },
+                mb: pIndex === member.bio.length - 1 && !member.quote ? 0 : 2,
+                "& strong": { color: "#35A51C", fontWeight: 700 },
               }}
             >
               {paragraph}
             </Typography>
           ))}
+
+          {member.quote && (
+            <Box
+              sx={{
+                position: "relative",
+                mt: 3,
+                p: { xs: 2.5, md: 3 },
+                borderRadius: "14px",
+                border: "1px solid rgba(32, 169, 20, 0.3)",
+                background: "rgba(10, 22, 10, 0.4)",
+              }}
+            >
+              <Typography
+                sx={{
+                   fontFamily: '"DM Sans", sans-serif',
+                  fontSize: "12px",
+                  fontWeight: 700,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "#35A51C",
+                  mb: 1,
+                }}
+              >
+                {member.quote.label}
+              </Typography>
+              <Typography
+                sx={{
+                   fontFamily: '"DM Sans", sans-serif',
+                  fontStyle: "italic",
+                  fontSize: "14.5px",
+                  lineHeight: 1.7,
+                  color: "#e6e6e6",
+                }}
+              >
+                &ldquo;{member.quote.text}&rdquo;
+              </Typography>
+            </Box>
+          )}
         </Box>
       </Box>
     </ScrollReveal>
@@ -822,12 +863,6 @@ const teamMembers: TeamMember[] = [
     description: "Builds responsive digital experiences that deliver value to our clients.",
   },
   {
-    photo: "/assets/team/raja.jpg",
-    name: "Raja",
-    role: "Web Developer",
-    description: "Builds and maintains reliable, high-performance websites for our clients.",
-  },
-  {
     photo: "/assets/team/harinipriya.jpg",
     name: "Harinipriya",
     role: "Full Stack Developer",
@@ -838,6 +873,12 @@ const teamMembers: TeamMember[] = [
     name: "Harshita Sharma",
     role: "Full Stack AI Engineer",
     description: "Develops end-to-end solutions across frontend, backend and architecture.",
+  },
+  {
+    photo: "/assets/team/raja.jpg",
+    name: "Raja",
+    role: "Web Developer",
+    description: "Builds and maintains reliable, high-performance websites for our clients.",
   },
   {
     photo: "/assets/team/arul.jpg",
@@ -954,6 +995,7 @@ function TeamStopStyles() {
         align-items: center;
         cursor: pointer;
         transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        fontFamily: "DM Sans, Satoshi",
       }
       .team-stop:hover {
         z-index: 5;
@@ -1013,21 +1055,21 @@ function TeamStopStyles() {
         box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
       }
       .team-stop-role {
-        font-family: 'Istok Web', sans-serif;
+         fontFamily: '"DM Sans", sans-serif',
         font-size: 11px;
         font-weight: 700;
-        color: #20A914;
+        color: #35A51C;
         margin: 0 0 2px;
       }
       .team-stop-name {
-        font-family: 'Francois One', sans-serif;
+         fontFamily: '"DM Sans", sans-serif',
         font-size: 13.5px;
         color: #ffffff;
         line-height: 1.25;
         margin: 0 0 4px;
       }
       .team-stop-desc {
-        font-family: 'Istok Web', sans-serif;
+         fontFamily: '"DM Sans", sans-serif',
         font-size: 10.75px;
         line-height: 1.45;
         color: #9aa39a;
@@ -1274,7 +1316,7 @@ function TeamJourneyRoad({ members }: { members: TeamMember[] }) {
         >
           <Typography
             sx={{
-              fontFamily: "'Istok Web', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: "9.5px",
               fontWeight: 700,
               lineHeight: 1.3,
@@ -1524,7 +1566,7 @@ function VoicesSlider() {
                 <StarRating rating={t.rating} size={14} />
                 <Typography
                   sx={{
-                    fontFamily: "'Istok Web', sans-serif",
+                     fontFamily: '"DM Sans", sans-serif',
                     fontStyle: "italic",
                     fontSize: { xs: "13.5px", sm: "14px" },
                     lineHeight: 1.6,
@@ -1548,7 +1590,7 @@ function VoicesSlider() {
                 />
                 <Typography
                   sx={{
-                    fontFamily: "'Istok Web', sans-serif",
+                     fontFamily: '"DM Sans", sans-serif',
                     fontSize: "12.5px",
                     color: "#9a9a9a",
                   }}
@@ -1646,7 +1688,7 @@ export default function PortfolioPage() {
           zIndex: 1,
           px: { xs: 2.5, sm: 4, md: 5 },
           pt: { xs: 2, sm: 2.5, md: 3 },
-          pb: { xs: 5, md: 7 },
+          pb: { xs: 2.5, md: 3 },
           display: "grid",
           gridTemplateColumns: { xs: "1fr", md: "1.2fr 0.8fr" },
           alignItems: "center",
@@ -1665,9 +1707,9 @@ export default function PortfolioPage() {
               py: "3px",
               border: "1.5px solid #157a08",
               borderRadius: "999px",
-              color: "#20A914",
+              color: "#35A51C",
               background: "rgba(0, 17, 0, 0.45)",
-              fontFamily: "'Istok Web', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: { xs: "12px", sm: "14px" },
               fontWeight: 600,
               letterSpacing: "0.12em",
@@ -1684,7 +1726,7 @@ export default function PortfolioPage() {
             variant="h1"
             sx={{
               margin: 0,
-              fontFamily: "'Francois One', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: { xs: "32px", sm: "44px", md: "50px" },
               fontWeight: 400,
               lineHeight: 1.15,
@@ -1698,7 +1740,7 @@ export default function PortfolioPage() {
               component="span"
               sx={{
                 display: "block",
-                color: "#20A914",
+                color: "#35A51C",
                 fontWeight: 400,
                 mt: 0.5,
               }}
@@ -1711,7 +1753,7 @@ export default function PortfolioPage() {
           <Typography
             sx={{
               color: "#FFFFFF",
-              fontFamily: "'Istok Web', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: { xs: "15px", sm: "17px" },
               fontWeight: 400,
               lineHeight: 1.55,
@@ -1750,7 +1792,7 @@ export default function PortfolioPage() {
                 color: "#ffffff",
                 border: "none",
                 borderRadius: "999px",
-                fontFamily: "'Instrument Sans', sans-serif",
+                 fontFamily: '"DM Sans", sans-serif',
                 fontSize: { xs: "16px", sm: "18px" },
                 fontWeight: 700,
                 lineHeight: 1,
@@ -1768,7 +1810,7 @@ export default function PortfolioPage() {
               <span>Start a project</span>
               <span
                 style={{
-                  fontFamily: "Arial, sans-serif",
+                   fontFamily: '"DM Sans", sans-serif',
                   fontSize: "22px",
                   fontWeight: 400,
                   lineHeight: 1,
@@ -1791,9 +1833,9 @@ export default function PortfolioPage() {
                 px: "24px",
                 border: "2px solid #157a08",
                 background: "rgba(0, 17, 0, 0.4)",
-                color: "#20A914",
+                color: "#35A51C",
                 borderRadius: "999px",
-                fontFamily: "'Instrument Sans', sans-serif",
+                 fontFamily: '"DM Sans", sans-serif',
                 fontSize: { xs: "16px", sm: "18px" },
                 fontWeight: 700,
                 lineHeight: 1,
@@ -1801,7 +1843,7 @@ export default function PortfolioPage() {
                 cursor: "pointer",
                 transition: "all 0.2s ease",
                 "&:hover": {
-                  borderColor: "#20A914",
+                  bordercolor: "#35A51C",
                   background: "rgba(32, 169, 20, 0.15)",
                   color: "#ffffff",
                   transform: "translateY(-2px)",
@@ -1962,17 +2004,17 @@ export default function PortfolioPage() {
       </Container>
 
       {/* Dashed Green Divider Between Sections */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "calc(100% - 32px)", md: "min(1100px, calc(100% - 48px))" },
           mx: "auto",
-          my: { xs: 4, md: 6 },
+          my: { xs: 2, md: 3 },
           height: "1px",
           background: "repeating-linear-gradient(to right, #1b850e 0 8px, transparent 8px 13px)",
           opacity: 0.85,
         }}
         aria-hidden="true"
-      />
+      /> */}
 
       {/* ================= MISSION & VISION SECTION ================= */}
       <Container
@@ -1984,18 +2026,18 @@ export default function PortfolioPage() {
           zIndex: 1,
           px: { xs: 2.5, sm: 4, md: 5 },
           pt: { xs: 2, md: 3 },
-          pb: { xs: 8, md: 12 },
+          pb: { xs: 3, md: 4 },
         }}
       >
         {/* Section Header / Eyebrow */}
         <Typography
           sx={{
-            fontFamily: "'Istok Web', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "14px", sm: "16px" },
             fontWeight: 700,
             letterSpacing: "0.16em",
             textTransform: "uppercase",
-            color: "#20A914",
+            color: "#35A51C",
             mb: { xs: 5, md: 7 },
           }}
         >
@@ -2087,12 +2129,12 @@ export default function PortfolioPage() {
             {/* Sub-label */}
             <Typography
               sx={{
-                fontFamily: "'Istok Web', sans-serif",
+                 fontFamily: '"DM Sans", sans-serif',
                 fontSize: "15px",
                 fontWeight: 700,
                 letterSpacing: "0.16em",
                 textTransform: "uppercase",
-                color: "#20A914",
+                color: "#35A51C",
                 mb: 2,
               }}
             >
@@ -2102,7 +2144,7 @@ export default function PortfolioPage() {
             {/* Headline */}
             <Typography
               sx={{
-                fontFamily: "'Francois One', sans-serif",
+                 fontFamily: '"DM Sans", sans-serif',
                 fontSize: { xs: "22px", sm: "24px", md: "26px" },
                 fontWeight: 400,
                 lineHeight: 1.3,
@@ -2117,7 +2159,7 @@ export default function PortfolioPage() {
             {/* Description Paragraph */}
             <Typography
               sx={{
-                fontFamily: "'Istok Web', sans-serif",
+                 fontFamily: '"DM Sans", sans-serif',
                 fontSize: { xs: "15px", sm: "16px" },
                 fontWeight: 400,
                 lineHeight: 1.65,
@@ -2237,12 +2279,12 @@ export default function PortfolioPage() {
             {/* Sub-label */}
             <Typography
               sx={{
-                fontFamily: "'Istok Web', sans-serif",
+                 fontFamily: '"DM Sans", sans-serif',
                 fontSize: "15px",
                 fontWeight: 700,
                 letterSpacing: "0.16em",
                 textTransform: "uppercase",
-                color: "#20A914",
+                color: "#35A51C",
                 mb: 2,
               }}
             >
@@ -2252,7 +2294,7 @@ export default function PortfolioPage() {
             {/* Headline */}
             <Typography
               sx={{
-                fontFamily: "'Francois One', sans-serif",
+                 fontFamily: '"DM Sans", sans-serif',
                 fontSize: { xs: "22px", sm: "24px", md: "26px" },
                 fontWeight: 400,
                 lineHeight: 1.3,
@@ -2267,7 +2309,7 @@ export default function PortfolioPage() {
             {/* Description Paragraph */}
             <Typography
               sx={{
-                fontFamily: "'Istok Web', sans-serif",
+                 fontFamily: '"DM Sans", sans-serif',
                 fontSize: { xs: "15px", sm: "16px" },
                 fontWeight: 400,
                 lineHeight: 1.65,
@@ -2286,17 +2328,17 @@ export default function PortfolioPage() {
       </Container>
 
       {/* Dashed Green Divider Between Sections */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "calc(100% - 32px)", md: "min(1100px, calc(100% - 48px))" },
           mx: "auto",
-          my: { xs: 4, md: 6 },
+          my: { xs: 2, md: 3 },
           height: "1px",
           background: "repeating-linear-gradient(to right, #1b850e 0 8px, transparent 8px 13px)",
           opacity: 0.85,
         }}
         aria-hidden="true"
-      />
+      /> */}
 
       {/* ================= WHAT WE BUILD SECTION ================= */}
       <Container
@@ -2314,12 +2356,12 @@ export default function PortfolioPage() {
         {/* Section Header / Eyebrow */}
         <Typography
           sx={{
-            fontFamily: "'Istok Web', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "14px", sm: "16px" },
             fontWeight: 700,
             letterSpacing: "0.16em",
             textTransform: "uppercase",
-            color: "#20A914",
+            color: "#35A51C",
             mb: { xs: 1.5, md: 2 },
           }}
         >
@@ -2329,7 +2371,7 @@ export default function PortfolioPage() {
         {/* Intro Line */}
         <Typography
           sx={{
-            fontFamily: "'Istok Web', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "15px", sm: "16px" },
             lineHeight: 1.6,
             color: "#d6d6d6",
@@ -2367,7 +2409,7 @@ export default function PortfolioPage() {
       </Container>
 
       {/* Dashed Green Divider Between Sections */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "calc(100% - 32px)", md: "min(1100px, calc(100% - 48px))" },
           mx: "auto",
@@ -2377,7 +2419,7 @@ export default function PortfolioPage() {
           opacity: 0.85,
         }}
         aria-hidden="true"
-      />
+      /> */}
 
       {/* ================= LIVE PROJECTS SECTION ================= */}
       <Container
@@ -2395,12 +2437,12 @@ export default function PortfolioPage() {
         {/* Section Header / Eyebrow */}
         <Typography
           sx={{
-            fontFamily: "'Istok Web', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "14px", sm: "16px" },
             fontWeight: 700,
             letterSpacing: "0.16em",
             textTransform: "uppercase",
-            color: "#20A914",
+            color: "#35A51C",
             mb: { xs: 1.5, md: 2 },
           }}
         >
@@ -2410,7 +2452,7 @@ export default function PortfolioPage() {
         {/* Heading */}
         <Typography
           sx={{
-            fontFamily: "'Francois One', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "26px", sm: "30px", md: "34px" },
             fontWeight: 400,
             lineHeight: 1.25,
@@ -2424,7 +2466,7 @@ export default function PortfolioPage() {
         {/* Subtext */}
         <Typography
           sx={{
-            fontFamily: "'Istok Web', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "15px", sm: "16px" },
             color: "#c9c9c9",
             opacity: 0.9,
@@ -2443,7 +2485,7 @@ export default function PortfolioPage() {
       </Container>
 
       {/* Dashed Green Divider Between Sections */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "calc(100% - 32px)", md: "min(1100px, calc(100% - 48px))" },
           mx: "auto",
@@ -2453,7 +2495,7 @@ export default function PortfolioPage() {
           opacity: 0.85,
         }}
         aria-hidden="true"
-      />
+      /> */}
 
       {/* ================= CASE STUDIES SECTION ================= */}
       <Container
@@ -2471,12 +2513,12 @@ export default function PortfolioPage() {
         {/* Section Header / Eyebrow */}
         <Typography
           sx={{
-            fontFamily: "'Istok Web', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "14px", sm: "16px" },
             fontWeight: 700,
             letterSpacing: "0.16em",
             textTransform: "uppercase",
-            color: "#20A914",
+            color: "#35A51C",
             mb: { xs: 1.5, md: 2 },
           }}
         >
@@ -2486,7 +2528,7 @@ export default function PortfolioPage() {
         {/* Heading */}
         <Typography
           sx={{
-            fontFamily: "'Francois One', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "26px", sm: "30px", md: "34px" },
             fontWeight: 400,
             lineHeight: 1.25,
@@ -2518,7 +2560,7 @@ export default function PortfolioPage() {
       </Container>
 
       {/* Dashed Green Divider Between Sections */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "calc(100% - 32px)", md: "min(1100px, calc(100% - 48px))" },
           mx: "auto",
@@ -2528,7 +2570,7 @@ export default function PortfolioPage() {
           opacity: 0.85,
         }}
         aria-hidden="true"
-      />
+      /> */}
 
       {/* ================= LEADERSHIP SECTION ================= */}
       <Container
@@ -2546,12 +2588,12 @@ export default function PortfolioPage() {
         {/* Section Header / Eyebrow */}
         <Typography
           sx={{
-            fontFamily: "'Istok Web', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "14px", sm: "16px" },
             fontWeight: 700,
             letterSpacing: "0.16em",
             textTransform: "uppercase",
-            color: "#20A914",
+            color: "#35A51C",
             mb: { xs: 1.5, md: 2 },
           }}
         >
@@ -2561,7 +2603,7 @@ export default function PortfolioPage() {
         {/* Heading */}
         <Typography
           sx={{
-            fontFamily: "'Francois One', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "26px", sm: "30px", md: "34px" },
             fontWeight: 400,
             lineHeight: 1.25,
@@ -2575,11 +2617,11 @@ export default function PortfolioPage() {
         {/* Subtext */}
         <Typography
           sx={{
-            fontFamily: "'Istok Web', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "15px", sm: "16px" },
             color: "#c9c9c9",
             opacity: 0.9,
-            mb: { xs: 5, md: 6 },
+            mb: { xs: 2, md: 3 },
             maxWidth: "640px",
           }}
         >
@@ -2602,7 +2644,7 @@ export default function PortfolioPage() {
       </Container>
 
       {/* Dashed Green Divider Between Sections */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "calc(100% - 32px)", md: "min(1100px, calc(100% - 48px))" },
           mx: "auto",
@@ -2612,7 +2654,7 @@ export default function PortfolioPage() {
           opacity: 0.85,
         }}
         aria-hidden="true"
-      />
+      /> */}
 
       {/* ================= OUR TEAM SECTION ================= */}
       <Container
@@ -2630,12 +2672,12 @@ export default function PortfolioPage() {
         {/* Section Header / Eyebrow */}
         <Typography
           sx={{
-            fontFamily: "'Istok Web', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "14px", sm: "16px" },
             fontWeight: 700,
             letterSpacing: "0.16em",
             textTransform: "uppercase",
-            color: "#20A914",
+            color: "#35A51C",
             mb: { xs: 1.5, md: 2 },
           }}
         >
@@ -2645,7 +2687,7 @@ export default function PortfolioPage() {
         {/* Heading */}
         <Typography
           sx={{
-            fontFamily: "'Francois One', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "26px", sm: "30px", md: "34px" },
             fontWeight: 400,
             lineHeight: 1.25,
@@ -2659,7 +2701,7 @@ export default function PortfolioPage() {
         {/* Subtext */}
         <Typography
           sx={{
-            fontFamily: "'Istok Web', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "15px", sm: "16px" },
             color: "#c9c9c9",
             opacity: 0.9,
@@ -2708,7 +2750,7 @@ export default function PortfolioPage() {
           />
           <Typography
             sx={{
-              fontFamily: "'Francois One', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: { xs: "24px", sm: "28px", md: "32px" },
               fontWeight: 400,
               color: "#ffffff",
@@ -2719,7 +2761,7 @@ export default function PortfolioPage() {
           </Typography>
           <Typography
             sx={{
-              fontFamily: "'Istok Web', sans-serif",
+               fontFamily: '"DM Sans", sans-serif',
               fontSize: { xs: "14.5px", sm: "15.5px" },
               color: "#c9c9c9",
               opacity: 0.9,
@@ -2761,12 +2803,12 @@ export default function PortfolioPage() {
         {/* Section Header / Eyebrow */}
         <Typography
           sx={{
-            fontFamily: "'Istok Web', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "14px", sm: "16px" },
             fontWeight: 700,
             letterSpacing: "0.16em",
             textTransform: "uppercase",
-            color: "#20A914",
+            color: "#35A51C",
             mb: { xs: 1.25, md: 1.5 },
             textAlign: "center",
           }}
@@ -2777,7 +2819,7 @@ export default function PortfolioPage() {
         {/* Heading */}
         <Typography
           sx={{
-            fontFamily: "'Francois One', sans-serif",
+             fontFamily: '"DM Sans", sans-serif',
             fontSize: { xs: "26px", sm: "30px", md: "34px" },
             fontWeight: 400,
             lineHeight: 1.25,
@@ -2793,6 +2835,9 @@ export default function PortfolioPage() {
       </Container>
     </Box>
     <Footer/>
+
+
+//testing
     </>
   );
 }

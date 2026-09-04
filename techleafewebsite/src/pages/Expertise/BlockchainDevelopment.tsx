@@ -12,7 +12,6 @@ import {
 
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-
 import {
   SiEthereum,
   SiPolygon,
@@ -412,6 +411,7 @@ const pageStyles = `
 
   .tl-eyebrow {
     margin-bottom: 16px;
+    margin-top: 32px;
 
     color: var(--tl-accent-light);
 
@@ -1496,8 +1496,7 @@ const pageStyles = `
       margin-top: 40px;
     }
 
-    .tl-section,
-    .tl-section-soft {
+    .tl-section {
       padding: 52px 0;
     }
 
@@ -1602,9 +1601,9 @@ const pageStyles = `
     }
 
     .tl-section,
-    .tl-section-soft {
+     {
       padding: 44px 0;
-    }
+}
 
     .tl-section h2,
     .tl-section-soft h2 {
@@ -1868,12 +1867,12 @@ const BlockchainDevelopment: React.FC = () => {
                 </Typography>
 
                 <Typography className="tl-lede">
-                  Tech Leafe Technologies designs, audits, 
-                  and deploys production-ready Web3 
-                  infrastructure from our Chennai 
-                  engineering hub — bridging enterprise 
-                  software practices with gas-optimized 
-                  EVM smart contracts, high-speed dApps, 
+                  Tech Leafe Technologies designs, audits,
+                  and deploys production-ready Web3
+                  infrastructure from our Chennai
+                  engineering hub — bridging enterprise
+                  software practices with gas-optimized
+                  EVM smart contracts, high-speed dApps,
                   and zero-knowledge security patterns.
                 </Typography>
 
@@ -1911,11 +1910,11 @@ const BlockchainDevelopment: React.FC = () => {
           >
 
             <div className="tl-eyebrow">
-              WHY BLOCKCHAIN DEVELOPMENT
+              Why this matters
             </div>
 
             <Typography component="h2">
-              Build trust into the infrastructure.
+              Why Blockchain Development
             </Typography> 
 
             <Box className="tl-grid-3">
@@ -1962,7 +1961,7 @@ const BlockchainDevelopment: React.FC = () => {
             </div>
 
             <Typography component="h2">
-              Inside app development
+              Inside blockchain development
             </Typography>
 
             {SERVICE_BLOCKS.map((service) => (
@@ -2027,7 +2026,7 @@ const BlockchainDevelopment: React.FC = () => {
             disableGutters
           >
 
-        
+
             <Typography component="h2">
               What we build it with
             </Typography>

@@ -99,7 +99,14 @@ const GetInTouchSection: React.FC = () => {
     <>
       <section className="git-section">
         <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+          .public-sans-regular {
+            font-family: "Public Sans", sans-serif !important;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+          }
           /* =========================================
              CONTACT US ONLY - ANIMATIONS
              ========================================= */
@@ -825,7 +832,7 @@ const GetInTouchSection: React.FC = () => {
         <div className="git-glow-a" />
         <div className="git-glow-b" />
 
-        <div className="git-wrapper">
+        <div className="git-wrapper public-sans-regular">
 
           {/* LEFT COLUMN */}
           <div className="git-left">
