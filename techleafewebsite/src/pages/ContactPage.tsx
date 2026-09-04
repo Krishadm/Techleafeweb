@@ -3,6 +3,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import PersonIcon from "@mui/icons-material/Person";
 import Footer from "../component/Footer";
 
 interface ContactFormData {
@@ -36,7 +37,6 @@ const GetInTouchSection: React.FC = () => {
       [name]: value,
     }));
 
-    // Clear previous success/error message when user edits the form
     if (status !== "idle") {
       setStatus("idle");
     }
@@ -58,7 +58,6 @@ const GetInTouchSection: React.FC = () => {
             Accept: "application/json",
           },
           body: JSON.stringify({
-            // Replace this with your Web3Forms access key
             access_key: "YOUR_ACCESS_KEY",
 
             name: formData.name,
@@ -100,6 +99,51 @@ const GetInTouchSection: React.FC = () => {
     <>
       <section className="git-section">
         <style>{`
+
+          /* =========================================
+             CONTACT US ONLY - ANIMATIONS
+             ========================================= */
+
+          @keyframes contactBadgeIn {
+            0% {
+              opacity: 0;
+              transform: translateX(-18px);
+            }
+
+            100% {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
+
+          @keyframes contactIconIn {
+            0% {
+              opacity: 0;
+              transform: translateX(-15px) translateY(-50%);
+            }
+
+            70% {
+              opacity: 1;
+              transform: translateX(4px) translateY(-50%);
+            }
+
+            100% {
+              opacity: 1;
+              transform: translateX(0) translateY(-50%);
+            }
+          }
+
+  @keyframes contactUsFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
           @keyframes gitFadeUp {
             from {
               opacity: 0;
@@ -109,28 +153,6 @@ const GetInTouchSection: React.FC = () => {
             to {
               opacity: 1;
               transform: translateY(0);
-            }
-          }
-
-          @keyframes gitGlowDrift {
-            0%,
-            100% {
-              transform: translate(0, 0) scale(1);
-            }
-
-            50% {
-              transform: translate(-16px, 20px) scale(1.08);
-            }
-          }
-
-          @keyframes gitPulse {
-            0%,
-            100% {
-              box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.35);
-            }
-
-            50% {
-              box-shadow: 0 0 0 8px rgba(52, 211, 153, 0);
             }
           }
 
@@ -162,36 +184,138 @@ const GetInTouchSection: React.FC = () => {
             width: 100%;
           }
 
-          /* Left column */
+          /* =========================================
+             LEFT COLUMN
+             ========================================= */
 
           .git-left {
             flex: 1 1 420px;
           }
 
-          .git-badge {
+          /* =========================================
+             CONTACT US
+             ========================================= */
+
+          .git-contact-wrap {
+            position: relative;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            border-radius: 999px;
-            background: rgba(16, 185, 129, 0.12);
-            border: 1px solid #1d620c;
-            color: #1e8511;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            animation: gitFadeUp 0.6s ease both;
+
+            margin-left: 50px;
+            margin-bottom: 28px;
+
+            /*
+              Animation only.
+              Does NOT change the size.
+            */
+            animation: contactBadgeIn 0.7s ease-out both;
           }
 
-          .git-badge-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #34d399;
-            animation: gitPulse 2s ease-in-out infinite;
+          .git-badge {
+            position: relative;
+
+            /* KEEP ORIGINAL SIZE */
+            width: 180px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+
+            background: #1e8511;
+
+            clip-path: polygon(
+              9% 0,
+              100% 0,
+              100% 100%,
+              9% 100%,
+              0 50%
+            );
+
+            z-index: 1;
+
+            transition:
+              transform 0.3s ease,
+              filter 0.3s ease;
+
+              animation: contactUsFloat 2.5s ease-in-out infinite;
           }
+
+          .git-badge::before {
+            content: "";
+            position: absolute;
+
+            top: 2px;
+            right: 2px;
+            bottom: 2px;
+            left: 2px;
+
+            background: #000000;
+
+            clip-path: polygon(
+              9% 0,
+              100% 0,
+              100% 100%,
+              9% 100%,
+              0 50%
+            );
+
+            z-index: -1;
+          }
+
+          /*
+             Small hover movement.
+             Size remains exactly the same.
+          */
+          .git-contact-wrap:hover .git-badge {
+            transform: translateX(5px);
+            filter: brightness(1.15);
+          }
+
+          /* =========================================
+             PERSON ICON
+             ========================================= */
+
+          .git-contact-icon {
+            position: absolute !important;
+
+            left: -40px;
+            top: 50%;
+
+            /* Initial animation state */
+            transform: translateX(-15px) translateY(-50%);
+
+            width: 38px !important;
+            height: 38px !important;
+
+            color: #ffffff !important;
+
+            z-index: 10;
+
+            /*
+              First slide in,
+              then gentle floating.
+            */
+        animation:
+  contactIconIn 0.7s ease-out 0.15s both,
+  contactIconFloat 3s ease-in-out 0.85s infinite;  }
+
+          /*
+             Icon reacts when Contact Us is hovered.
+          */
+          .git-contact-wrap:hover .git-contact-icon {
+            filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.5));
+          }
+
+          /* =========================================
+             HEADING
+             ========================================= */
 
           .git-heading {
             font-size: 40px;
@@ -225,6 +349,10 @@ const GetInTouchSection: React.FC = () => {
             animation: gitFadeUp 0.6s ease 0.2s both;
           }
 
+          /* =========================================
+             INFO CARDS
+             ========================================= */
+
           .git-info-list {
             display: flex;
             flex-direction: column;
@@ -240,7 +368,9 @@ const GetInTouchSection: React.FC = () => {
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
+
             animation: gitFadeUp 0.6s ease both;
+
             transition:
               transform 0.25s ease,
               border-color 0.25s ease,
@@ -271,11 +401,14 @@ const GetInTouchSection: React.FC = () => {
             width: 38px;
             height: 38px;
             border-radius: 10px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             background: rgba(16, 185, 129, 0.15);
             color: #1e8511;
+
             transition:
               transform 0.25s ease,
               box-shadow 0.25s ease;
@@ -283,7 +416,8 @@ const GetInTouchSection: React.FC = () => {
 
           .git-info-card:hover .git-info-icon {
             transform: scale(1.08);
-            box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.12);
+            box-shadow:
+              0 0 0 4px rgba(52, 211, 153, 0.12);
           }
 
           .git-info-title {
@@ -303,6 +437,10 @@ const GetInTouchSection: React.FC = () => {
             text-decoration: none;
           }
 
+          /* =========================================
+             SOCIAL BUTTONS
+             ========================================= */
+
           .git-socials {
             display: flex;
             flex-wrap: wrap;
@@ -316,15 +454,22 @@ const GetInTouchSection: React.FC = () => {
             align-items: center;
             justify-content: center;
             gap: 8px;
+
             padding: 9px 16px;
+
             border-radius: 999px;
+
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.1);
+
             color: #f5f7f6;
+
             font-size: 13px;
             font-weight: 600;
+
             text-decoration: none;
             cursor: pointer;
+
             transition:
               transform 0.2s ease,
               border-color 0.2s ease,
@@ -346,10 +491,13 @@ const GetInTouchSection: React.FC = () => {
           .git-social-btn.git-cta:hover {
             background: #1e8511;
             transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(31, 137, 17, 0.22);
+            box-shadow:
+              0 10px 28px rgba(31, 137, 17, 0.22);
           }
 
-          /* Right column */
+          /* =========================================
+             RIGHT COLUMN
+             ========================================= */
 
           .git-right {
             flex: 1 1 380px;
@@ -359,8 +507,11 @@ const GetInTouchSection: React.FC = () => {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 18px;
+
             padding: 32px;
+
             animation: gitFadeUp 0.6s ease 0.2s both;
+
             transition:
               border-color 0.3s ease,
               box-shadow 0.3s ease;
@@ -368,7 +519,8 @@ const GetInTouchSection: React.FC = () => {
 
           .git-form-card:hover {
             border-color: #1d620ce0;
-            box-shadow: 0 0 40px rgba(16, 185, 129, 0.08);
+            box-shadow:
+              0 0 40px rgba(16, 185, 129, 0.08);
           }
 
           .git-form-title {
@@ -401,13 +553,18 @@ const GetInTouchSection: React.FC = () => {
           .git-input {
             width: 100%;
             padding: 12px 14px;
+
             font-size: 14px;
             font-family: inherit;
+
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+
             background: rgba(0, 0, 0, 0.25);
             color: #f5f7f6;
+
             outline: none;
+
             transition:
               border-color 0.2s ease,
               box-shadow 0.2s ease;
@@ -419,7 +576,8 @@ const GetInTouchSection: React.FC = () => {
 
           .git-input:focus {
             border-color: #1d620c;
-            box-shadow: 0 0 0 2px rgba(30, 133, 17, 0.08);
+            box-shadow:
+              0 0 0 2px rgba(30, 133, 17, 0.08);
           }
 
           .git-textarea {
@@ -427,23 +585,33 @@ const GetInTouchSection: React.FC = () => {
             min-height: 110px;
           }
 
-          /* Submit button */
+          /* =========================================
+             SUBMIT BUTTON
+             ========================================= */
 
           .git-submit {
             width: 100%;
+
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+
             padding: 14px 20px;
+
             font-size: 14px;
             font-weight: 700;
+
             color: #ffffff;
             background-color: #1d620c;
+
             border: none;
             border-radius: 10px;
+
             cursor: pointer;
+
             margin-top: 4px;
+
             transition:
               transform 0.2s ease,
               filter 0.2s ease,
@@ -454,13 +622,23 @@ const GetInTouchSection: React.FC = () => {
           .git-submit:hover:not(:disabled) {
             background: #1e8511;
             transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(31, 137, 17, 0.22);
+            box-shadow:
+              0 10px 28px rgba(31, 137, 17, 0.22);
           }
 
           .git-submit:active:not(:disabled) {
             transform: translateY(0);
           }
 
+      <div className="git-wrapper">
+        {/* Left column */}
+        <div className="git-left">
+          <span className="git-badge">
+            <span className="git-badge-dot" />
+            Contact us
+          </span>
+          <h1 className="git-heading">Let&apos;s build something amazing together.</h1>
+          <div className="git-underline" />
           .git-submit span {
             transition: transform 0.2s ease;
           }
@@ -475,37 +653,42 @@ const GetInTouchSection: React.FC = () => {
             transform: none;
           }
 
-          /* Success message */
+          /* =========================================
+             SUCCESS / ERROR
+             ========================================= */
 
-         .git-form-success {
+          .git-form-success {
             margin: 12px 0 0 0;
             color: #1e8511;
             font-size: 13px;
             font-weight: 600;
             text-align: center;
-              animation: gitFadeUp 0.35s ease both;
-        
-              }
-
-          /* Error message */
+            animation: gitFadeUp 0.35s ease both;
+          }
 
           .git-form-error {
-          margin: 12px 0 0 0;
-          color: #ff6b6b;
-          font-size: 13px;
-          font-weight: 600;
-          text-align: center;
-          animation: gitFadeUp 0.35s ease both;
+            margin: 12px 0 0 0;
+            color: #ff6b6b;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            animation: gitFadeUp 0.35s ease both;
           }
 
           .git-privacy {
             display: flex;
             align-items: center;
             gap: 6px;
+
             margin: 12px 0 0 0;
+
             font-size: 12px;
             color: #6b7573;
           }
+
+          /* =========================================
+             TABLET
+             ========================================= */
 
           @media (max-width: 900px) {
             .git-wrapper {
@@ -521,6 +704,10 @@ const GetInTouchSection: React.FC = () => {
               max-width: 100%;
             }
           }
+
+          /* =========================================
+             MOBILE
+             ========================================= */
 
           @media (max-width: 640px) {
             .git-section {
@@ -547,7 +734,32 @@ const GetInTouchSection: React.FC = () => {
               padding: 8px 14px;
               font-size: 12px;
             }
+
+            /*
+              Keep Contact Us SAME SIZE.
+              Do not increase it on mobile.
+            */
+            .git-contact-wrap {
+              margin-left: 40px;
+              margin-bottom: 24px;
+            }
+
+            .git-badge {
+              width: 180px;
+              height: 40px;
+              font-size: 16px;
+            }
+
+            .git-contact-icon {
+              left: -38px;
+              width: 34px !important;
+              height: 34px !important;
+            }
           }
+
+          /* =========================================
+             SMALL MOBILE
+             ========================================= */
 
           @media (max-width: 400px) {
             .git-section {
@@ -558,9 +770,26 @@ const GetInTouchSection: React.FC = () => {
               font-size: 26px;
             }
 
+            /*
+              IMPORTANT:
+              Contact button remains small.
+              No 260px x 58px here.
+            */
+            .git-contact-wrap {
+              margin-left: 36px;
+              margin-bottom: 22px;
+            }
+
             .git-badge {
-              font-size: 11px;
-              padding: 5px 12px;
+              width: 180px;
+              height: 40px;
+              font-size: 14px;
+            }
+
+            .git-contact-icon {
+              left: -34px;
+              width: 30px !important;
+              height: 30px !important;
             }
 
             .git-info-card {
@@ -577,8 +806,12 @@ const GetInTouchSection: React.FC = () => {
             }
           }
 
+          /* =========================================
+             REDUCED MOTION
+             ========================================= */
+
           @media (prefers-reduced-motion: reduce) {
-            .git-section *,
+            .git-section * ,
             .git-section *::before,
             .git-section *::after {
               animation-duration: 0.01ms !important;
@@ -586,6 +819,7 @@ const GetInTouchSection: React.FC = () => {
               transition-duration: 0.01ms !important;
             }
           }
+
         `}</style>
 
         <div className="git-glow-a" />
@@ -596,10 +830,14 @@ const GetInTouchSection: React.FC = () => {
           {/* LEFT COLUMN */}
           <div className="git-left">
 
-            <span className="git-badge">
-              <span className="git-badge-dot" />
-              Contact us
-            </span>
+            {/* CONTACT US */}
+            <div className="git-contact-wrap">
+              <PersonIcon className="git-contact-icon" />
+
+              <span className="git-badge">
+                Contact us
+              </span>
+            </div>
 
             <h1 className="git-heading">
               Let&apos;s build something amazing together.
@@ -632,6 +870,7 @@ const GetInTouchSection: React.FC = () => {
                       height="14"
                       rx="2"
                     />
+
                     <path d="M3 7l9 6 9-6" />
                   </svg>
                 </span>
@@ -641,7 +880,6 @@ const GetInTouchSection: React.FC = () => {
                     Email us
                   </p>
 
-                  {/* KEEP ADMIN EMAIL */}
                   <a
                     href="https://mail.google.com/mail/?view=cm&fs=1&to=admin@techleafe.com"
                     target="_blank"
@@ -694,6 +932,7 @@ const GetInTouchSection: React.FC = () => {
                     strokeWidth="2"
                   >
                     <path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z" />
+
                     <circle
                       cx="12"
                       cy="10"
@@ -759,7 +998,6 @@ const GetInTouchSection: React.FC = () => {
                 <FacebookIcon />
               </a>
 
-              {/* KEEP THIS AS ADMIN EMAIL */}
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=admin@techleafe.com"
                 target="_blank"
@@ -774,6 +1012,7 @@ const GetInTouchSection: React.FC = () => {
 
           {/* RIGHT COLUMN - FORM */}
           <div className="git-right">
+
             <div className="git-form-card">
 
               <h2 className="git-form-title">
@@ -887,7 +1126,7 @@ const GetInTouchSection: React.FC = () => {
                   )}
                 </button>
 
-                {/* SUCCESS MESSAGE */}
+                {/* SUCCESS */}
                 {status === "success" && (
                   <p
                     className="git-form-success"
@@ -898,7 +1137,7 @@ const GetInTouchSection: React.FC = () => {
                   </p>
                 )}
 
-                {/* ERROR MESSAGE */}
+                {/* ERROR */}
                 {status === "error" && (
                   <p
                     className="git-form-error"

@@ -5,6 +5,9 @@ import ContactPage from "../pages/ContactPage";
 import ServiceDetailPage from "../pages/ServiceDetailPage";
 // import { ContactPage } from "@mui/icons-material";
 import PortfolioPage from "../pages/PortfolioPage";
+import CrabCoinPage from "../pages/Crabcoinpage";
+import RockWalletPage from "../pages/Rockwalletpage";
+import SuperHeroPage from "../pages/Superheropage";
 
 import BlockchainDevelopment from "../pages/Expertise/BlockchainDevelopment";
 
@@ -59,14 +62,26 @@ export const router = createBrowserRouter([
         path: "contact",
         element: <ContactPage />,
       },
-        {
+      {
         path: "portfolio",
         element: <PortfolioPage />,
       },
-       {
+      {
+        path: "crab-coin",
+        element: <CrabCoinPage />,
+      },
+      {
+        path: "rockwallet",
+        element: <RockWalletPage />,
+      },
+      {
+        path: "super-hero",
+        element: <SuperHeroPage />,
+      },
+      {
         path: "*",
         element: <NotFoundPage />,
-      }, 
+      },
     ],
   },
 ]);
