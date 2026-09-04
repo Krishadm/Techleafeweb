@@ -1,10 +1,4 @@
-import {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-} from "react";
-
+import { useState, useRef, useEffect, useCallback } from "react";
 import type {
   TouchEvent,
   KeyboardEvent,
@@ -26,7 +20,11 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import ViewInArOutlinedIcon from "@mui/icons-material/ViewInArOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
-
+interface MethodologyStep {
+  number: string;
+  title: string;
+  description: string;
+}
 const HeroSection = () => {
   const navigate = useNavigate();
 
@@ -79,7 +77,6 @@ const HeroSection = () => {
           mt: 0,
           color: "#298911",
           fontWeight: 600,
-
         }}
       >
         WHAT WE BUILD
@@ -158,7 +155,6 @@ const HeroSection = () => {
                     color: "rgba(255,255,255,0.75)",
                     fontSize: "16px",
                     lineHeight: 1.6,
-                    fontFamily: "IStok Web",
                     flexGrow: 1,
                   }}
                 >
@@ -232,14 +228,6 @@ const HeroSection = () => {
   );
 };
 
-
-
-interface MethodologyStep {
-  number: string;
-  title: string;
-  description: string;
-}
-
 const methodologySteps: MethodologyStep[] = [
   {
     number: "01",
@@ -274,7 +262,7 @@ const methodologySteps: MethodologyStep[] = [
 ];
 
 const AUTOPLAY_DELAY = 5000;
-const SWIPE_THRESHOLD = 50; // px needed to trigger a slide change
+const SWIPE_THRESHOLD = 50;
 
 const MethodologySection = () => {
   const theme = useTheme();
@@ -284,18 +272,9 @@ const MethodologySection = () => {
   // Card + layout sizing per breakpoint
   const cardWidth = isXs ? 270 : isSm ? 300 : 340;
   const cardHeight = isXs ? 240 : isSm ? 260 : 240;
-  // Symmetric "coverflow" stack: the active card sits centered and full
-  // size, with cards peeking on BOTH sides, shrinking/fading with distance -
-  // matching the reference (active card + 2 receding cards on each side).
   const overlapFactor = isXs ? 0.62 : isSm ? 0.58 : 0.5;
 
   const length = methodologySteps.length;
-
-  // `position` is an unbounded integer: it just keeps incrementing or
-  // decrementing as the user (or autoplay) moves forward/back. The *real*
-  // step index shown is derived from it via modulo. Because it never wraps
-  // itself, every card slot moves by exactly one step per click - no more
-  // "wrap teleport" in either direction.
   const [position, setPosition] = useState(0);
   const activeIndex = ((position % length) + length) % length;
 
@@ -308,9 +287,6 @@ const MethodologySection = () => {
   const goNext = useCallback(() => setPosition((p) => p + 1), []);
   const goPrev = useCallback(() => setPosition((p) => p - 1), []);
 
-  // Jump to an arbitrary real step index (e.g. clicking a peeking card or a
-  // dot). Moves via the *shortest* wrap direction so the animation still
-  // only travels the minimum number of slots instead of jumping.
   const goTo = useCallback(
     (targetRealIndex: number) => {
       setPosition((p) => {
@@ -321,7 +297,7 @@ const MethodologySection = () => {
         return p + delta;
       });
     },
-    [length]
+    [length],
   );
 
   // Autoplay
@@ -379,15 +355,11 @@ const MethodologySection = () => {
     if (dragStartX.current !== null) endDrag();
     setIsPaused(false);
   };
-
-  // Show the active card plus up to 2 cards receding on each side. On
-  // mobile there isn't room to peek either side without clipping/overlap,
-  // so show only the single active card there.
   const maxSide = isXs ? 0 : 2;
   const sideCount = Math.min(maxSide, Math.floor((length - 1) / 2));
   const visibleOffsets = Array.from(
     { length: sideCount * 2 + 1 },
-    (_, i) => i - sideCount
+    (_, i) => i - sideCount,
   );
 
   return (
@@ -398,7 +370,6 @@ const MethodologySection = () => {
           mt: 2,
           color: "#298911",
           fontWeight: 600,
-          
         }}
       >
         OUR METHODOLOGY
@@ -422,7 +393,6 @@ const MethodologySection = () => {
           color: "rgba(255,255,255,0.75)",
           fontSize: "18px",
           lineHeight: 1.6,
-          fontFamily: "IStok Web",
         }}
       >
         A structured engineering process we run on every blockchain and AI
@@ -469,11 +439,6 @@ const MethodologySection = () => {
           }}
         >
           {visibleOffsets.map((slotOffset) => {
-            // Virtual index is unbounded and unique per "physical" card
-            // instance over time - this is what we key on, so React keeps
-            // reusing (and smoothly animating) the same DOM node as it
-            // shifts by one slot, instead of remounting it when the real
-            // step index wraps around.
             const virtualIndex = position + slotOffset;
             const realIndex = ((virtualIndex % length) + length) % length;
             const step = methodologySteps[realIndex];
@@ -508,9 +473,7 @@ const MethodologySection = () => {
                   boxSizing: "border-box",
                   display: "flex",
                   flexDirection: "column",
-                  boxShadow: isActive
-                    ? "0 20px 40px rgba(0,0,0,0.55)"
-                    : "none",
+                  boxShadow: isActive ? "0 20px 40px rgba(0,0,0,0.55)" : "none",
                 }}
               >
                 <Typography
@@ -526,7 +489,6 @@ const MethodologySection = () => {
                     fontWeight: 700,
                     fontSize: "22px",
                     lineHeight: 1.2,
-                    fontFamily: "IStok Web",
                   }}
                 >
                   {step.title}
@@ -538,7 +500,6 @@ const MethodologySection = () => {
                     color: "rgba(255,255,255,0.85)",
                     fontSize: "16px",
                     lineHeight: 1.6,
-                    fontFamily: "IStok Web",
                   }}
                 >
                   {step.description}
@@ -549,26 +510,27 @@ const MethodologySection = () => {
         </Box>
 
         {/* Arrow controls */}
-       <IconButton
-  onClick={goPrev}
-  aria-label="Previous methodology step"
-  sx={{
-    display: { xs: "none", md: "flex" },
-    position: "absolute",
-    left: 12,
-    top: "50%",
-    transform: "translateY(-50%)",
-    zIndex: 4,
-    backgroundColor: "#0B3306",
-    border: "1px solid #178B0B",
-    color: "#fff",
-    width: 40,
-    height: 40,
-    "&:hover": {
-      backgroundColor: "#178B0B",
-    },
-  }}
->
+        <IconButton
+          onClick={goPrev}
+          aria-label="Previous methodology step"
+          sx={{
+            display: { xs: "none", md: "flex" },
+            position: "absolute",
+            left: 12,
+            top: "50%",
+            transform: "translateY(-50%)",
+            zIndex: 4,
+            backgroundColor: "#0B3306",
+            border: "1px solid #178B0B",
+            color: "#fff",
+            width: 40,
+            height: 40,
+            "&:hover": {
+              backgroundColor: "#178B0B",
+              // bor
+            },
+          }}
+        >
           <PlayArrowIcon
             sx={{
               transform: "rotate(180deg)",
@@ -578,25 +540,25 @@ const MethodologySection = () => {
         </IconButton>
 
         <IconButton
-  onClick={goNext}
-  aria-label="Next methodology step"
-  sx={{
-    display: { xs: "none", md: "flex" },
-    position: "absolute",
-    right: 12,
-    top: "50%",
-    transform: "translateY(-50%)",
-    zIndex: 4,
-    backgroundColor: "#0B3306",
-    border: "1px solid #178B0B",
-    color: "#fff",
-    width: 40,
-    height: 40,
-    "&:hover": {
-      backgroundColor: "#178B0B",
-    },
-  }}
->
+          onClick={goNext}
+          aria-label="Next methodology step"
+          sx={{
+            display: { xs: "none", md: "flex" },
+            position: "absolute",
+            right: 12,
+            top: "50%",
+            transform: "translateY(-50%)",
+            zIndex: 4,
+            backgroundColor: "#0B3306",
+            border: "1px solid #178B0B",
+            color: "#fff",
+            width: 40,
+            height: 40,
+            "&:hover": {
+              backgroundColor: "#178B0B",
+            },
+          }}
+        >
           <PlayArrowIcon
             sx={{
               fontSize: 24,
