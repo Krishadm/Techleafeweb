@@ -21,20 +21,6 @@ import StorageIcon from "@mui/icons-material/Storage";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import DnsIcon from "@mui/icons-material/Dns";
 
-import {
-  SiEthereum,
-  SiPolygon,
-  SiSolidity,
-  SiRuby,
-  SiTypescript,
-  SiSolana,
-  SiIpfs,
-  SiGraphql,
-  SiChainlink,
-  SiNodedotjs,
-  SiReact,
-} from "react-icons/si";
-
 import AppImage from "../../assets/blockchain-hero.png";
 import Footer from "../../component/Footer";
 
