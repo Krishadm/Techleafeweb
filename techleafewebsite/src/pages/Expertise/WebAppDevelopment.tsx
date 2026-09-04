@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 import {
   Box,
@@ -25,6 +25,9 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import AppImage from "../../assets/App Development.png";
 import Footer from "../../component/Footer";
 
+/* =========================================================
+   WHY CARDS
+========================================================= */
 
 const WHY_CARDS = [
   {
@@ -48,6 +51,10 @@ const WHY_CARDS = [
       "Long-term success through maintenance, updates, performance monitoring, and technical support.",
   },
 ];
+
+/* =========================================================
+   SERVICE BLOCKS
+========================================================= */
 
 interface ServiceBlock {
   id: string;
@@ -195,6 +202,10 @@ const STACK: Technology[] = [
   },
 ];
 
+/* =========================================================
+   FAQS
+========================================================= */
+
 const FAQS = [
   {
     q: "Flutter or React Native — which do you recommend?",
@@ -219,115 +230,35 @@ const FAQS = [
 ];
 
 /* =========================================================
-   COUNT UP COMPONENT
-========================================================= */
-
-interface CountUpProps {
-  end: number;
-  duration?: number;
-  decimals?: number;
-  prefix?: string;
-  suffix?: string;
-  startAnimation: boolean;
-}
-
-const CountUp: React.FC<CountUpProps> = ({
-  end,
-  duration = 2000,
-  decimals = 0,
-  prefix = "",
-  suffix = "",
-  startAnimation,
-}) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!startAnimation) return;
-
-    let startTime: number | null = null;
-    let animationFrame: number;
-
-    const animate = (currentTime: number) => {
-      if (startTime === null) {
-        startTime = currentTime;
-      }
-
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
-
-      const currentValue = easedProgress * end;
-
-      setCount(currentValue);
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-
-    return () => {
-      cancelAnimationFrame(animationFrame);
-    };
-  }, [end, duration, startAnimation]);
-
-  return (
-    <>
-      {prefix}
-      {count.toFixed(decimals)}
-      {suffix}
-    </>
-  );
-};
-
-/* =========================================================
-   ARROW
-========================================================= */
-
-const ArrowCta: React.FC = () => (
-  <span className="arrow-cta" aria-hidden="true">
-    <svg
-      viewBox="0 0 26 14"
-      width="26"
-      height="14"
-      fill="none"
-    >
-      <path
-        d="M1 7H20"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M14 1L21 7L14 13"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </span>
-);
-
-/* =========================================================
    CSS
 ========================================================= */
 
 const pageStyles = `
+  /* =========================================================
+     GOOGLE FONT
+  ========================================================= */
+
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+
+  /* =========================================================
+     ROOT VARIABLES
+  ========================================================= */
+
   :root {
     --tl-bg: #000000;
     --tl-bg-soft: #050505;
     --tl-fg: #ffffff;
     --tl-muted: #cfcfcf;
-    --tl-accent: #1d620c;
+    --tl-accent: #35a51c;
     --tl-accent-light: #35a51c;
     --tl-border: rgba(29, 98, 12, 0.55);
   }
+
+
+  /* =========================================================
+     GLOBAL
+  ========================================================= */
 
   html {
     scroll-behavior: smooth;
@@ -341,6 +272,12 @@ const pageStyles = `
     width: 100%;
     min-height: 100%;
     background: var(--tl-bg);
+    font-family: "DM Sans" !important;
+  }
+
+  body {
+    overflow-x: hidden;
+    font-family: "DM Sans" !important;
   }
 
   *,
@@ -349,9 +286,49 @@ const pageStyles = `
     box-sizing: border-box;
   }
 
-  body {
-    overflow-x: hidden;
+
+  /* =========================================================
+     FORCE DM SANS
+  ========================================================= */
+
+  .tl-root,
+  .tl-root *,
+  .tl-root h1,
+  .tl-root h2,
+  .tl-root h3,
+  .tl-root h4,
+  .tl-root h5,
+  .tl-root h6,
+  .tl-root p,
+  .tl-root span,
+  .tl-root div,
+  .tl-root li,
+  .tl-root a,
+  .tl-root button,
+  .tl-root input,
+  .tl-root textarea,
+  .tl-root label {
+    font-family: "DM Sans" !important;
   }
+
+  .tl-root .MuiTypography-root {
+    font-family: "DM Sans" !important;
+  }
+
+  .tl-root .MuiBreadcrumbs-root,
+  .tl-root .MuiBreadcrumbs-root * {
+    font-family: "DM Sans" !important;
+  }
+
+  .tl-root .MuiAccordion-root,
+  .tl-root .MuiAccordionSummary-root,
+  .tl-root .MuiAccordionSummary-root *,
+  .tl-root .MuiAccordionSummary-content,
+  .tl-root .MuiAccordionDetails-root,
+  .tl-root .MuiAccordionDetails-root * {
+    font-family: "DM Sans" !important;
+  }
+
 
   /* =========================================================
      ROOT
@@ -361,41 +338,27 @@ const pageStyles = `
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
-
     color: var(--tl-fg);
     background: var(--tl-bg);
-
-    font-family:
-      "Inter",
-      "Segoe UI",
-      Roboto,
-      sans-serif;
+    font-family: "DM Sans" !important;
   }
+
+
+  /* =========================================================
+     WRAPPER
+  ========================================================= */
 
   .tl-wrap {
     width: 100%;
     max-width: 1140px;
-
     margin: 0 auto;
-
     padding: 0 24px;
   }
+
 
   /* =========================================================
      ANIMATIONS
   ========================================================= */
-
-  @keyframes tlFadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
   @keyframes tlFadeLeft {
     from {
@@ -432,32 +395,6 @@ const pageStyles = `
     }
   }
 
-  @keyframes tlGlow {
-    0%,
-    100% {
-      box-shadow: 0 0 0 rgba(53, 165, 28, 0);
-    }
-
-    50% {
-      box-shadow: 0 0 25px rgba(53, 165, 28, 0.15);
-    }
-  }
-
-  @keyframes tlNumberGlow {
-    0% {
-      text-shadow: 0 0 0 rgba(53, 165, 28, 0);
-    }
-
-    50% {
-      text-shadow:
-        0 0 10px rgba(53, 165, 28, 0.35),
-        0 0 25px rgba(53, 165, 28, 0.15);
-    }
-
-    100% {
-      text-shadow: 0 0 0 rgba(53, 165, 28, 0);
-    }
-  }
 
   /* =========================================================
      BREADCRUMB
@@ -465,20 +402,16 @@ const pageStyles = `
 
   .tl-breadcrumb {
     margin: 32px 0 24px;
-
     overflow-x: auto;
-
     white-space: nowrap;
-
     font-size: 13px;
   }
 
   .tl-breadcrumb a {
     color: #999999;
-
     text-decoration: none;
-
     transition: color 0.3s ease;
+    font-family: "DM Sans" !important;
   }
 
   .tl-breadcrumb a:hover {
@@ -487,9 +420,10 @@ const pageStyles = `
 
   .tl-breadcrumb-current {
     color: var(--tl-fg);
-
     font-size: 13px;
+    font-family: "DM Sans" !important;
   }
+
 
   /* =========================================================
      HERO
@@ -497,18 +431,14 @@ const pageStyles = `
 
   .tl-hero {
     padding-bottom: 24px;
-
   }
 
   .tl-hero-grid {
     display: grid;
-
     grid-template-columns:
       minmax(0, 1.1fr)
       minmax(0, 0.9fr);
-
     align-items: center;
-
     gap: 48px;
   }
 
@@ -519,48 +449,39 @@ const pageStyles = `
 
   .tl-eyebrow {
     margin-bottom: 16px;
-
     color: var(--tl-accent-light);
-
     font-size: 13px;
-
     font-weight: 600;
-
     line-height: 1.4;
     text-transform: uppercase;
+    font-family: "DM Sans" !important;
   }
 
   .tl-hero h1 {
     margin: 0 0 20px;
-
     color: var(--tl-fg);
-
     font-size: clamp(32px, 4.5vw, 48px);
-
     font-weight: 700;
-
     line-height: 1.15;
-
     letter-spacing: -1px;
+    font-family: "DM Sans" !important;
   }
 
   .tl-hero h1 em {
     color: var(--tl-accent-light);
-
     font-style: normal;
+    font-family: "DM Sans" !important;
   }
 
   .tl-lede {
     max-width: 52ch;
-
     margin: 0 0 32px;
-
     color: var(--tl-muted);
-
     font-size: 17px;
-
     line-height: 1.6;
+    font-family: "DM Sans" !important;
   }
+
 
   /* =========================================================
      HERO IMAGE
@@ -568,24 +489,17 @@ const pageStyles = `
 
   .tl-hero-photo {
     width: 100%;
-
     animation:
       tlFadeRight 0.8s ease 0.15s both;
   }
 
   .tl-hero-photo img {
     display: block;
-
     width: 100%;
-
     max-width: 100%;
-
     height: auto;
-
     border: 1px solid var(--tl-accent);
-
     border-radius: 16px;
-
     object-fit: cover;
 
     animation:
@@ -618,28 +532,20 @@ const pageStyles = `
   }
 
   .tl-section-soft {
-   padding: 32px 0 32px; 
-
-    background:
-      var(--tl-bg-soft);
-
-  
+    padding: 32px 0 32px;
+    background: var(--tl-bg-soft);
   }
 
   .tl-section h2,
   .tl-section-soft h2 {
     margin: 0 0 40px;
-
-    color:
-      var(--tl-fg);
-
-    font-size:
-      clamp(26px, 3.5vw, 36px);
-
+    color: var(--tl-fg);
+    font-size: clamp(26px, 3.5vw, 36px);
     font-weight: 700;
-
     line-height: 1.2;
+    font-family: "DM Sans" !important;
   }
+
 
   /* =========================================================
      WHY CARDS
@@ -647,23 +553,17 @@ const pageStyles = `
 
   .tl-grid-3 {
     display: grid;
-
     grid-template-columns:
       repeat(4, minmax(0, 1fr));
-
     gap: 24px;
   }
 
   .tl-card {
     min-width: 0;
-
     padding: 24px;
-
     background: #000000;
-
     border:
       1px solid var(--tl-accent);
-
     border-radius: 14px;
 
     transition:
@@ -684,19 +584,16 @@ const pageStyles = `
 
   .tl-card h3 {
     margin: 0 0 10px;
-
-    color:
-      var(--tl-fg);
-
+    color: var(--tl-fg);
     font-size: 17px;
-
     font-weight: 700;
-
     line-height: 1.35;
 
     transition:
       transform 0.3s ease,
       color 0.3s ease;
+
+    font-family: "DM Sans" !important;
   }
 
   .tl-card:hover h3 {
@@ -709,14 +606,14 @@ const pageStyles = `
 
   .tl-card p {
     margin: 0;
-
     color:
       var(--tl-muted);
 
     font-size: 14px;
-
     line-height: 1.6;
+    font-family: "DM Sans" !important;
   }
+
 
   /* =========================================================
      SERVICES
@@ -761,12 +658,13 @@ const pageStyles = `
       var(--tl-accent-light);
 
     font-size: 13px;
-
     font-weight: 600;
 
     transition:
       transform 0.3s ease,
       letter-spacing 0.3s ease;
+
+    font-family: "DM Sans" !important;
   }
 
   .tl-service-block:hover .tl-service-index {
@@ -783,14 +681,14 @@ const pageStyles = `
       var(--tl-fg);
 
     font-size: 22px;
-
     font-weight: 700;
-
     line-height: 1.3;
 
     transition:
       transform 0.3s ease,
       color 0.3s ease;
+
+    font-family: "DM Sans" !important;
   }
 
   .tl-service-block:hover h3 {
@@ -808,17 +706,15 @@ const pageStyles = `
       var(--tl-muted);
 
     font-size: 15px;
-
     line-height: 1.6;
+
+    font-family: "DM Sans" !important;
   }
 
   .tl-bullet-grid {
     align-self: center;
-
     margin: 0;
-
     padding: 0;
-
     list-style: none;
   }
 
@@ -830,7 +726,6 @@ const pageStyles = `
     color: #d8d8d8;
 
     font-size: 14px;
-
     line-height: 1.5;
 
     border-bottom:
@@ -839,6 +734,8 @@ const pageStyles = `
     transition:
       padding-left 0.3s ease,
       color 0.3s ease;
+
+    font-family: "DM Sans" !important;
   }
 
   .tl-bullet-grid li::before {
@@ -847,11 +744,9 @@ const pageStyles = `
     position: absolute;
 
     top: 17px;
-
     left: 0;
 
     width: 8px;
-
     height: 8px;
 
     border-radius: 50%;
@@ -866,7 +761,6 @@ const pageStyles = `
 
   .tl-bullet-grid li:hover {
     padding-left: 30px;
-
     color: #ffffff;
   }
 
@@ -877,8 +771,9 @@ const pageStyles = `
       0 0 10px rgba(53, 165, 28, 0.8);
   }
 
+
   /* =========================================================
-     TECHNOLOGIES - FULL WIDTH
+     TECHNOLOGIES
   ========================================================= */
 
   .tl-tech-section {
@@ -899,11 +794,6 @@ const pageStyles = `
     overflow: hidden;
   }
 
-  /*
-     Heading container keeps the same alignment
-     as the rest of your website.
-  */
-
   .tl-tech-container {
     width: 100%;
 
@@ -914,9 +804,9 @@ const pageStyles = `
     padding: 0 24px;
   }
 
-
   .tl-tech-section h2 {
-     text-align : center;  
+    text-align: center;
+
     margin: 0 0 28px;
 
     color: #ffffff;
@@ -925,9 +815,11 @@ const pageStyles = `
       clamp(27px, 3.5vw, 36px);
 
     font-weight: 700;
-
     line-height: 1.2;
+
+    font-family: "DM Sans" !important;
   }
+
 
   /* =========================================================
      TECHNOLOGY MARQUEE
@@ -942,10 +834,6 @@ const pageStyles = `
 
     padding: 4px 0 8px;
   }
-
-  /*
-     Left fade
-  */
 
   .tl-tech-marquee::before {
     content: "";
@@ -970,10 +858,6 @@ const pageStyles = `
       );
   }
 
-  /*
-     Right fade
-  */
-
   .tl-tech-marquee::after {
     content: "";
 
@@ -997,11 +881,6 @@ const pageStyles = `
       );
   }
 
-  /*
-     Track containing duplicated technologies.
-     Duplicating the list creates the infinite effect.
-  */
-
   .tl-tech-track {
     display: flex;
 
@@ -1015,15 +894,10 @@ const pageStyles = `
     will-change: transform;
   }
 
-  /*
-     Individual technology pill
-  */
-
   .tl-tech-item {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     gap: 9px;
@@ -1043,7 +917,6 @@ const pageStyles = `
     border-radius: 999px;
 
     font-size: 13px;
-
     font-weight: 600;
 
     white-space: nowrap;
@@ -1054,11 +927,9 @@ const pageStyles = `
       background-color 0.3s ease,
       color 0.3s ease,
       box-shadow 0.3s ease;
-  }
 
-  /*
-     Hover effect
-  */
+    font-family: "DM Sans" !important;
+  }
 
   .tl-tech-item:hover {
     transform:
@@ -1076,13 +947,12 @@ const pageStyles = `
       0 8px 25px rgba(0, 0, 0, 0.4);
   }
 
-  /*
-     Technology icon
-  */
+  .tl-tech-item span {
+    font-family: "DM Sans" !important;
+  }
 
   .tl-tech-icon {
     width: 18px;
-
     height: 18px;
 
     flex-shrink: 0;
@@ -1097,10 +967,6 @@ const pageStyles = `
       scale(1.15);
   }
 
-  /*
-     Infinite horizontal animation
-  */
-
   @keyframes tlTechnologyMove {
     from {
       transform:
@@ -1113,21 +979,18 @@ const pageStyles = `
     }
   }
 
-  /*
-     Pause animation when mouse is over technology row
-  */
-
   .tl-tech-marquee:hover .tl-tech-track {
     animation-play-state: paused;
   }
 
-  
+
   /* =========================================================
      FAQ
   ========================================================= */
-   .tl-section-soft {
-  background-color: #000000;;
-    }
+
+  .tl-section-soft {
+    background-color: #000000;
+  }
 
   .tl-faq-container {
     width: 100%;
@@ -1137,7 +1000,6 @@ const pageStyles = `
     margin: 0 auto;
 
     padding: 0 24px;
-    
   }
 
   .tl-faq-list {
@@ -1160,6 +1022,8 @@ const pageStyles = `
     transition:
       padding-left 0.3s ease,
       border-color 0.3s ease !important;
+
+    font-family: "DM Sans" !important;
   }
 
   .tl-faq-accordion::before {
@@ -1183,8 +1047,14 @@ const pageStyles = `
       #ffffff !important;
 
     font-size: 15px;
-
     font-weight: 600;
+
+    font-family: "DM Sans" !important;
+  }
+
+  .tl-faq-summary *,
+  .tl-faq-summary .MuiAccordionSummary-content {
+    font-family: "DM Sans" !important;
   }
 
   .tl-faq-icon {
@@ -1196,6 +1066,10 @@ const pageStyles = `
       transform 0.2s ease;
   }
 
+  .tl-faq-details {
+    font-family: "DM Sans" !important;
+  }
+
   .tl-faq-details p {
     margin: 0;
 
@@ -1203,9 +1077,11 @@ const pageStyles = `
       var(--tl-muted);
 
     font-size: 14px;
-
     line-height: 1.6;
+
+    font-family: "DM Sans" !important;
   }
+
 
   /* =========================================================
      TABLET
@@ -1230,18 +1106,11 @@ const pageStyles = `
       gap: 28px;
     }
 
-    .tl-metrics-grid {
-      gap: 16px;
-    }
-
-    .tl-cta-band {
-      padding: 40px;
-    }
-
     .tl-tech-container {
       padding: 0 28px;
     }
   }
+
 
   /* =========================================================
      MOBILE
@@ -1259,31 +1128,11 @@ const pageStyles = `
 
     .tl-hero-grid {
       grid-template-columns: 1fr;
-
       gap: 36px;
     }
 
     .tl-hero-photo {
       order: 2;
-    }
-
-    // .tl-hero-actions {
-    //   width: 100%;
-
-    //   flex-direction: column;
-    // }
-
-    .tl-btn-primary,
-    .tl-btn-ghost {
-      width: 100%;
-    }
-
-    .tl-metrics-grid {
-      grid-template-columns: 1fr;   
-
-      gap: 14px;
-
-      margin-top: 40px;
     }
 
     .tl-section,
@@ -1293,20 +1142,7 @@ const pageStyles = `
 
     .tl-service-block-grid {
       grid-template-columns: 1fr;
-
       gap: 24px;
-    }
-
-    .tl-cta-band {
-      flex-direction: column;
-
-      align-items: stretch;
-
-      padding: 32px 24px;
-    }
-
-    .tl-cta-band .tl-btn-primary {
-      width: 100%;
     }
 
     /* TECHNOLOGIES MOBILE */
@@ -1325,21 +1161,17 @@ const pageStyles = `
 
     .tl-tech-track {
       gap: 10px;
-
       animation-duration: 24s;
     }
 
     .tl-tech-item {
       padding: 8px 13px;
-
       gap: 7px;
-
       font-size: 12px;
     }
 
     .tl-tech-icon {
       width: 16px;
-
       height: 16px;
     }
 
@@ -1348,6 +1180,7 @@ const pageStyles = `
       width: 45px;
     }
   }
+
 
   /* =========================================================
      SMALL MOBILE
@@ -1361,7 +1194,6 @@ const pageStyles = `
 
     .tl-breadcrumb {
       margin: 20px 0;
-
       font-size: 12px;
     }
 
@@ -1383,7 +1215,6 @@ const pageStyles = `
 
     .tl-grid-3 {
       grid-template-columns: 1fr;
-
       gap: 16px;
     }
 
@@ -1399,7 +1230,6 @@ const pageStyles = `
     .tl-section h2,
     .tl-section-soft h2 {
       margin-bottom: 26px;
-
       font-size: 28px;
     }
 
@@ -1419,6 +1249,7 @@ const pageStyles = `
       font-size: 13px;
     }
 
+
     /* TECHNOLOGY */
 
     .tl-tech-section {
@@ -1431,39 +1262,22 @@ const pageStyles = `
 
     .tl-tech-section h2 {
       font-size: 28px;
-
       margin-bottom: 22px;
     }
 
     .tl-tech-item {
       padding: 7px 12px;
-
       font-size: 11px;
     }
 
     .tl-tech-icon {
       width: 15px;
-
       height: 15px;
     }
 
     .tl-tech-marquee::before,
     .tl-tech-marquee::after {
       width: 30px;
-    }
-
-    .tl-cta-band {
-      padding: 28px 20px;
-
-      border-radius: 12px;
-    }
-
-    .tl-cta-band h2 {
-      font-size: 23px;
-    }
-
-    .tl-cta-band p {
-      font-size: 14px;
     }
 
     .tl-faq-container {
@@ -1475,18 +1289,14 @@ const pageStyles = `
         68px !important;
 
       font-size: 14px;
-
       line-height: 1.4;
     }
 
     .tl-faq-details p {
       font-size: 13px;
     }
-
-    .tl-mn {
-      font-size: 30px;
-    }
   }
+
 
   /* =========================================================
      VERY SMALL PHONES
@@ -1517,24 +1327,15 @@ const pageStyles = `
 
     .tl-tech-item {
       padding: 6px 10px;
-
       font-size: 10px;
     }
 
     .tl-tech-icon {
       width: 14px;
-
       height: 14px;
     }
-
-    .tl-cta-band {
-      padding: 24px 16px;
-    }
-
-    .tl-mn {
-      font-size: 28px;
-    }
   }
+
 
   /* =========================================================
      ACCESSIBILITY
@@ -1560,6 +1361,7 @@ const pageStyles = `
   }
 `;
 
+
 /* =========================================================
    COMPONENT
 ========================================================= */
@@ -1567,48 +1369,6 @@ const pageStyles = `
 const AppDevelopmentPage: React.FC = () => {
   const [openFaq, setOpenFaq] =
     useState<string | false>(FAQS[0].q);
-
-  const [metricsVisible, setMetricsVisible] =
-    useState(false);
-
-  const metricsRef =
-    useRef<HTMLDivElement | null>(null);
-
-  /* =========================================================
-     METRICS INTERSECTION OBSERVER
-  ========================================================= */
-
-  useEffect(() => {
-    const element = metricsRef.current;
-
-    if (!element) return;
-
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
-          const entry = entries[0];
-
-          if (entry.isIntersecting) {
-            setMetricsVisible(true);
-
-            observer.unobserve(element);
-          }
-        },
-        {
-          threshold: 0.35,
-        }
-      );
-
-    observer.observe(element);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  /* =========================================================
-     RETURN
-  ========================================================= */
 
   return (
     <>
@@ -1618,6 +1378,7 @@ const AppDevelopmentPage: React.FC = () => {
           {pageStyles}
         </style>
 
+
         {/* =====================================================
             HERO
         ===================================================== */}
@@ -1626,6 +1387,7 @@ const AppDevelopmentPage: React.FC = () => {
           component="section"
           className="tl-hero"
         >
+
           <Container
             className="tl-wrap"
             maxWidth={false}
@@ -1638,27 +1400,21 @@ const AppDevelopmentPage: React.FC = () => {
               className="tl-breadcrumb"
               separator="/"
             >
-              {/* <MuiLink
-                href="/"
-                underline="none"
-              >
+
+              <a href="/">
                 Home
-              </MuiLink> */}
+              </a>
 
-              {/* <MuiLink
-                href="/expertise"
-                underline="none"
-              >
-                Expertise
-              </MuiLink> */}
+              <a href="/services">
+                Services
+              </a>
 
-              {/* <Typography
-                component="span"
-                className="tl-breadcrumb-current"
-              >
+              <span className="tl-breadcrumb-current">
                 App Development
-              </Typography> */}
+              </span>
+
             </Breadcrumbs>
+
 
             {/* HERO GRID */}
 
@@ -1688,9 +1444,8 @@ const AppDevelopmentPage: React.FC = () => {
                   actually enjoy using.
                 </Typography>
 
-              
-
               </Box>
+
 
               {/* RIGHT IMAGE */}
 
@@ -1699,7 +1454,6 @@ const AppDevelopmentPage: React.FC = () => {
                 <img
                   src={AppImage}
                   alt="App development dashboard"
-                  loading="lazy"
                 />
 
               </Box>
@@ -1707,7 +1461,9 @@ const AppDevelopmentPage: React.FC = () => {
             </Box>
 
           </Container>
+
         </Box>
+
 
         {/* =====================================================
             WHY APP DEVELOPMENT
@@ -1717,6 +1473,7 @@ const AppDevelopmentPage: React.FC = () => {
           component="section"
           className="tl-section-soft"
         >
+
           <Container
             className="tl-wrap"
             maxWidth={false}
@@ -1734,6 +1491,7 @@ const AppDevelopmentPage: React.FC = () => {
             <Box className="tl-grid-3">
 
               {WHY_CARDS.map((card) => (
+
                 <Box
                   className="tl-card"
                   key={card.title}
@@ -1748,12 +1506,15 @@ const AppDevelopmentPage: React.FC = () => {
                   </Typography>
 
                 </Box>
+
               ))}
 
             </Box>
 
           </Container>
+
         </Box>
+
 
         {/* =====================================================
             SERVICES
@@ -1764,6 +1525,7 @@ const AppDevelopmentPage: React.FC = () => {
           id="details"
           className="tl-section"
         >
+
           <Container
             className="tl-wrap"
             maxWidth={false}
@@ -1778,7 +1540,9 @@ const AppDevelopmentPage: React.FC = () => {
               Inside app development
             </Typography>
 
+
             {SERVICE_BLOCKS.map((service) => (
+
               <Box
                 className="tl-service-block"
                 id={service.id}
@@ -1803,13 +1567,16 @@ const AppDevelopmentPage: React.FC = () => {
 
                   </Box>
 
+
                   <ul className="tl-bullet-grid">
 
                     {service.bullets.map(
                       (bullet) => (
+
                         <li key={bullet}>
                           {bullet}
                         </li>
+
                       )
                     )}
 
@@ -1818,10 +1585,13 @@ const AppDevelopmentPage: React.FC = () => {
                 </Box>
 
               </Box>
+
             ))}
 
           </Container>
+
         </Box>
+
 
         {/* =====================================================
             TECHNOLOGIES
@@ -1832,20 +1602,18 @@ const AppDevelopmentPage: React.FC = () => {
           className="tl-tech-section"
         >
 
-          {/* Heading */}
-
           <Container
             className="tl-tech-container"
             maxWidth={false}
             disableGutters
           >
 
-        
             <Typography component="h2">
               What we build it with
             </Typography>
 
           </Container>
+
 
           {/* FULL WIDTH MOVING ROW */}
 
@@ -1863,6 +1631,7 @@ const AppDevelopmentPage: React.FC = () => {
                     technology.icon;
 
                   return (
+
                     <div
                       className="tl-tech-item"
                       key={`${technology.name}-${index}`}
@@ -1881,7 +1650,9 @@ const AppDevelopmentPage: React.FC = () => {
                       </span>
 
                     </div>
+
                   );
+
                 }
               )}
 
@@ -1891,7 +1662,6 @@ const AppDevelopmentPage: React.FC = () => {
 
         </Box>
 
-       
 
         {/* =====================================================
             FAQ
@@ -1919,6 +1689,7 @@ const AppDevelopmentPage: React.FC = () => {
             <Box className="tl-faq-list">
 
               {FAQS.map((faq) => (
+
                 <Accordion
                   key={faq.q}
                   className="tl-faq-accordion"
@@ -1929,11 +1700,13 @@ const AppDevelopmentPage: React.FC = () => {
                     _,
                     expanded
                   ) => {
+
                     setOpenFaq(
                       expanded
                         ? faq.q
                         : false
                     );
+
                   }}
                   disableGutters
                 >
@@ -1952,26 +1725,36 @@ const AppDevelopmentPage: React.FC = () => {
                       )
                     }
                   >
+
                     {faq.q}
+
                   </AccordionSummary>
+
 
                   <AccordionDetails
                     className="tl-faq-details"
                   >
+
                     <p>
                       {faq.a}
                     </p>
+
                   </AccordionDetails>
 
                 </Accordion>
+
               ))}
 
             </Box>
 
           </Container>
+
         </Box>
 
       </Box>
+
+
+      {/* FOOTER */}
 
       <Footer />
     </>
