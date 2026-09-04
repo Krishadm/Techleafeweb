@@ -877,7 +877,7 @@ const pageStyles = `
   }
 
   .tl-section-soft {
-    padding: 72px 0;
+    padding-top: 72px;
   }
 
   .tl-section h2,
@@ -1873,7 +1873,7 @@ const pageStyles = `
    COMPONENT
 ========================================================= */
 
-const AppDevelopmentPage: React.FC = () => {
+const BlockchainDevelopment: React.FC = () => {
   const [openFaq, setOpenFaq] =
     useState<string | false>(false);
 
@@ -2265,4 +2265,4 @@ const AppDevelopmentPage: React.FC = () => {
   );
 };
 
-export default AppDevelopmentPage;
+export default BlockchainDevelopment;
