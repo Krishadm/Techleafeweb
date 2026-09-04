@@ -411,6 +411,7 @@ const pageStyles = `
 
   .tl-eyebrow {
     margin-bottom: 16px;
+    margin-top: 32px;
 
     color: var(--tl-accent-light);
 
@@ -1495,8 +1496,7 @@ const pageStyles = `
       margin-top: 40px;
     }
 
-    .tl-section,
-    .tl-section-soft {
+    .tl-section {
       padding: 52px 0;
     }
 
@@ -1601,9 +1601,9 @@ const pageStyles = `
     }
 
     .tl-section,
-    .tl-section-soft {
+     {
       padding: 44px 0;
-    }
+}
 
     .tl-section h2,
     .tl-section-soft h2 {
@@ -1910,12 +1910,12 @@ const BlockchainDevelopment: React.FC = () => {
           >
 
             <div className="tl-eyebrow">
-              WHY BLOCKCHAIN DEVELOPMENT
+              Why this matters
             </div>
 
             <Typography component="h2">
-              Build trust into the infrastructure.
-            </Typography>
+              Why Blockchain Development
+            </Typography> 
 
             <Box className="tl-grid-3">
 
@@ -1961,7 +1961,7 @@ const BlockchainDevelopment: React.FC = () => {
             </div>
 
             <Typography component="h2">
-              Inside app development
+              Inside blockchain development
             </Typography>
 
             {SERVICE_BLOCKS.map((service) => (
