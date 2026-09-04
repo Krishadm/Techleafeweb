@@ -117,11 +117,66 @@ const AboutPage = () => {
 
 
           /* =========================
+             HERO ANIMATIONS
+          ========================= */
+
+          @keyframes aboutFadeLeft {
+            from {
+              opacity: 0;
+
+              transform:
+                translateX(-40px);
+            }
+
+            to {
+              opacity: 1;
+
+              transform:
+                translateX(0);
+            }
+          }
+
+
+          @keyframes aboutFadeRight {
+            from {
+              opacity: 0;
+
+              transform:
+                translateX(40px);
+            }
+
+            to {
+              opacity: 1;
+
+              transform:
+                translateX(0);
+            }
+          }
+
+
+          @keyframes aboutFloat {
+            0%,
+            100% {
+              transform:
+                translateY(0);
+            }
+
+            50% {
+              transform:
+                translateY(-8px);
+            }
+          }
+
+
+          /* =========================
              LEFT CONTENT
           ========================= */
 
           .about-content {
             width: 43%;
+
+            animation:
+              aboutFadeLeft 0.8s ease both;
           }
 
 
@@ -180,7 +235,7 @@ const AboutPage = () => {
 
 
           /* =========================
-             TECHNOLOGY IMAGE
+             TECHNOLOGY IMAGE CONTAINER
           ========================= */
 
           .about-images {
@@ -189,8 +244,15 @@ const AboutPage = () => {
             max-width: 600px;
 
             position: relative;
+
+            animation:
+              aboutFadeRight 0.8s ease 0.15s both;
           }
 
+
+          /* =========================
+             TECHNOLOGY IMAGE
+          ========================= */
 
           .about-technology-image {
             width: 100%;
@@ -210,10 +272,13 @@ const AboutPage = () => {
             box-shadow:
               0 10px 35px rgba(29, 98, 12, 0.12);
 
+            animation:
+              aboutFloat 5s ease-in-out 1s infinite;
+
             transition:
-              transform 0.3s ease,
-              border-color 0.3s ease,
-              box-shadow 0.3s ease;
+              transform 0.4s ease,
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
           }
 
 
@@ -223,10 +288,15 @@ const AboutPage = () => {
 
           .about-technology-image:hover {
 
+            animation-play-state: paused;
+
+            transform:
+              scale(1.02);
+
             border-color: #20a914;
 
             box-shadow:
-              0 12px 35px rgba(29, 98, 12, 0.20);
+              0 20px 50px rgba(29, 98, 12, 0.25);
           }
 
 
@@ -277,7 +347,8 @@ const AboutPage = () => {
 
             display: grid;
 
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns:
+              repeat(3, 1fr);
 
             gap: 15px;
           }
@@ -315,7 +386,8 @@ const AboutPage = () => {
 
 
             .teams-grid {
-              grid-template-columns: repeat(2, 1fr);
+              grid-template-columns:
+                repeat(2, 1fr);
             }
 
           }
@@ -432,6 +504,24 @@ const AboutPage = () => {
 
           }
 
+
+          /* =========================
+             REDUCED MOTION
+          ========================= */
+
+          @media (prefers-reduced-motion: reduce) {
+
+            .about-content,
+            .about-images,
+            .about-technology-image {
+
+              animation: none !important;
+
+              transition: none !important;
+            }
+
+          }
+
         `}
       </style>
 
@@ -458,11 +548,6 @@ const AboutPage = () => {
 
             <Box className="about-content">
 
-              <Typography className="about-label">
-                About Us
-              </Typography>
-
-
               <Typography
                 component="h1"
                 className="about-title"
@@ -474,9 +559,7 @@ const AboutPage = () => {
 
 
               <Typography className="about-description">
-                We constantly learn, experiment and push our standards
-                higher. So every project we ship is better than the one
-                before.
+                Tech Leafe Technologies Private Limited bridges traditional enterprise software with the fast-moving world of blockchain and AI. We started to address the security and reliability gaps in Web3 and AI projects, focusing on audited contracts, grounded AI systems, and production-ready software.
               </Typography>
 
             </Box>
