@@ -635,14 +635,15 @@ const leadershipMembers: LeadershipMember[] = [
     bio: [
       <>
         With a background spanning enterprise IT infrastructure, software engineering, and
-        high-performance Web3 architecture, P. S. Vigneshwaran <strong>led Tech Leafe Technologies
-        in 2020</strong> to build secure, scalable solutions powered by Blockchain and AI. His
+        high-performance Web3 architecture, P.S.Vigneshwaran <strong>led Tech Leafe Technologies
+          in 2020</strong> to build secure, scalable solutions powered by Blockchain and AI. His
         engineering work includes <strong>two proprietary Layer-2 blockchain frameworks and three
-        multi-chain cryptocurrency exchanges</strong>, backed by an academic foundation in BCA,
+          multi-chain cryptocurrency exchanges</strong>, backed by an academic foundation in BCA,
         MCA, MSCA, and BBA. He believes technology is only as powerful as the trust and efficiency
         it delivers — a principle that shapes every product Tech Leafe ships.
       </>,
     ],
+    quote: undefined
   },
   {
     photo: "/assets/team/tmari-headshot.jpg",
@@ -651,7 +652,7 @@ const leadershipMembers: LeadershipMember[] = [
     bio: [
       <>
         A dynamic entrepreneur and strategic leader with <strong>20+ years of experience across
-        business, real estate, technology, and operations</strong>, T. Mari drives Tech Leafe
+          business, real estate, technology, and operations</strong>, T. Mari drives Tech Leafe
         Technologies&apos; <strong>strategic and financial direction</strong> — bringing deep expertise in
         strategic planning, investor relations, and organizational leadership. He also serves as a
         Director at Maco Internet Laboratories, and holds a Bachelor of Business Administration
@@ -659,6 +660,7 @@ const leadershipMembers: LeadershipMember[] = [
         and sustainable growth.
       </>,
     ],
+    quote: undefined
   },
 ];
 
