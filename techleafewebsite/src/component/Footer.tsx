@@ -191,10 +191,8 @@ const Footer: React.FC = () => {
             >
               📧 admin@techleafe.com
             </Typography>
-             <Typography variant="body2" sx={{ color: "#bdbdbd" }}>
-              <Link href="tel:+919345955510" sx={{ color: "#bdbdbd" }}>
-                📞 +91 93459 55510
-              </Link>
+            <Typography variant="body2" sx={{ color: "#bdbdbd" }}>
+              📞 +91 93459 55510
             </Typography>
           </Grid>
         </Grid>

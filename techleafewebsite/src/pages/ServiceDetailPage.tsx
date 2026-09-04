@@ -31,5 +31,6 @@ export default function ServiceDetailPage() {
         </p>
       </div>
     </main>
+    
   );
 }
