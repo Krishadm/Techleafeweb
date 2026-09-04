@@ -504,7 +504,6 @@ const GetInTouchSection: React.FC = () => {
             <span className="git-badge-dot" />
             Contact us
           </span>
-//test
           <h1 className="git-heading">Let&apos;s build something amazing together.</h1>
           <div className="git-underline" />
 
