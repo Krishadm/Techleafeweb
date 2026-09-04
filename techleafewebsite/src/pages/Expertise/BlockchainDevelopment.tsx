@@ -13,20 +13,6 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import {
-  SiChainlink,
-  SiEthereum,
-  SiGraphql,
-  SiIpfs,
-  SiNodedotjs,
-  SiPolygon,
-  SiReact,
-  SiRuby,
-  SiSolana,
-  SiSolidity,
-  SiTypescript,
-} from "react-icons/si";
-
-import {
   SiEthereum,
   SiPolygon,
   SiSolidity,
@@ -1881,12 +1867,12 @@ const BlockchainDevelopment: React.FC = () => {
                 </Typography>
 
                 <Typography className="tl-lede">
-                  Tech Leafe Technologies designs, audits, 
-                  and deploys production-ready Web3 
-                  infrastructure from our Chennai 
-                  engineering hub — bridging enterprise 
-                  software practices with gas-optimized 
-                  EVM smart contracts, high-speed dApps, 
+                  Tech Leafe Technologies designs, audits,
+                  and deploys production-ready Web3
+                  infrastructure from our Chennai
+                  engineering hub — bridging enterprise
+                  software practices with gas-optimized
+                  EVM smart contracts, high-speed dApps,
                   and zero-knowledge security patterns.
                 </Typography>
 
@@ -1929,7 +1915,7 @@ const BlockchainDevelopment: React.FC = () => {
 
             <Typography component="h2">
               Build trust into the infrastructure.
-            </Typography> 
+            </Typography>
 
             <Box className="tl-grid-3">
 
@@ -2040,7 +2026,7 @@ const BlockchainDevelopment: React.FC = () => {
             disableGutters
           >
 
-        
+
             <Typography component="h2">
               What we build it with
             </Typography>
