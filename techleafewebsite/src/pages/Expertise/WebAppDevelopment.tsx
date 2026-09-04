@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {  useState } from "react";
 
 import {
   Box,
@@ -1475,42 +1475,11 @@ const AppDevelopmentPage: React.FC = () => {
     useState<string | false>(FAQS[0].q);
 
   //const [metricsVisible, setMetricsVisible] =
-    useState(false);
+    // useState(false);
 
-  const metricsRef =
-    useRef<HTMLDivElement | null>(null);
+  //const metricsRef =
+    //useRef<HTMLDivElement | null>(null);
 
-  /* =========================================================
-     METRICS INTERSECTION OBSERVER
-  ========================================================= */
-
-  useEffect(() => {
-    const element = metricsRef.current;
-
-    if (!element) return;
-
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
-          const entry = entries[0];
-
-          // if (entry.isIntersecting) {
-          //   setMetricsVisible(true);
-
-          //   observer.unobserve(element);
-          // }
-        },
-        {
-          threshold: 0.35,
-        }
-      );
-
-    observer.observe(element);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   /* =========================================================
      RETURN
