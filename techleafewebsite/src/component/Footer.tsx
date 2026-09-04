@@ -24,7 +24,7 @@ const quickLinks = [
 const serviceLinks = [
   { name: "Blockchain Development", path: "/expertise/blockchain-development" },
   { name: "AI Development", path: "/expertise/ai-development" },
-  { name: "Web & App Development", path: "/expertise/web-app-development" },
+  { name: "Web & App Development", path: "/expertise/appdevelopment" },
  
 ];
 
