@@ -75,7 +75,7 @@ const HeroSection = () => {
       <Typography
         sx={{
           mt: 0,
-          color: "#298911",
+          color: "#35A51C",
           fontWeight: 600,
            fontFamily: '"DM Sans", sans-serif',
         }}
@@ -128,7 +128,7 @@ const HeroSection = () => {
                 {/* Icon */}
                 <Box
                   sx={{
-                    color: "#20A914",
+                    color: "#35A51C",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "flex-start",
@@ -375,7 +375,7 @@ const MethodologySection = () => {
       <Typography
         sx={{
           mt: 2,
-          color: "#298911",
+          color: "#35A51C",
           fontWeight: 600,
            fontFamily: '"DM Sans", sans-serif',
         }}
@@ -495,7 +495,7 @@ const MethodologySection = () => {
                 <Typography
                   sx={{
                     mt: 1.5,
-                    color: "#20A914",
+                    color: "#35A51C",
                     fontWeight: 700,
                     fontSize: "22px",
                     lineHeight: 1.2,
