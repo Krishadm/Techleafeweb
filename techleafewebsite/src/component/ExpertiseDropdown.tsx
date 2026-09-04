@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import { DISCIPLINES } from "../data/servicesData";
 import { useNavigate } from "react-router-dom";
 
-const GREEN = "#3ecf6e";
+const GREEN = "#35A51C";
 const PANEL_BG = "rgb(24, 27, 27)";
 const LINE = "rgba(255,255,255,0.08)";
 

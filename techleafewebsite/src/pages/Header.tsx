@@ -114,7 +114,7 @@ const Header = () => {
               disableRipple
               sx={{
                 ...navBtnBase,
-                color: !expertiseOpen && location.pathname === "/" ? "#3ecf6e" : "#fff",
+                color: !expertiseOpen && location.pathname === "/" ? "#35A51C" : "#fff",
                 "&::after": {
                   content: '""',
                   position: "absolute",
@@ -122,7 +122,7 @@ const Header = () => {
                   bottom: -6,
                   height: "2px",
                   width: "100%",
-                  backgroundColor: "#3ecf6e",
+                  backgroundColor: "#35A51C",
                   transform: !expertiseOpen && location.pathname === "/" ? "scaleX(1)" : "scaleX(0)",
                   transformOrigin: "center",
                   transition: "transform 0.3s ease",
@@ -141,7 +141,7 @@ const Header = () => {
                 sx={{
                   ...navBtnBase,
                   gap: 0.6,
-                  color: expertiseOpen || location.pathname.startsWith("/expertise") ? "#3ecf6e" : "#fff",
+                  color: expertiseOpen || location.pathname.startsWith("/expertise") ? "#35A51C" : "#fff",
                   "&::after": {
                     content: '""',
                     position: "absolute",
@@ -149,7 +149,7 @@ const Header = () => {
                     bottom: -6,
                     height: "2px",
                     width: "100%",
-                    backgroundColor: "#3ecf6e",
+                    backgroundColor: "#35A51C",
                     transform:
                       expertiseOpen || location.pathname.startsWith("/expertise") ? "scaleX(1)" : "scaleX(0)",
                     transformOrigin: "center",
@@ -197,7 +197,7 @@ const Header = () => {
                 disableRipple
                 sx={{
                   ...navBtnBase,
-                  color: !expertiseOpen && location.pathname === link.to ? "#3ecf6e" : "#fff",
+                  color: !expertiseOpen && location.pathname === link.to ? "#35A51C" : "#fff",
                   "&::after": {
                     content: '""',
                     position: "absolute",
@@ -205,7 +205,7 @@ const Header = () => {
                     bottom: -6,
                     height: "2px",
                     width: "100%",
-                    backgroundColor: "#3ecf6e",
+                    backgroundColor: "#35A51C",
                     transform: !expertiseOpen && location.pathname === link.to ? "scaleX(1)" : "scaleX(0)",
                     transformOrigin: "center",
                     transition: "transform 0.3s ease",
@@ -275,7 +275,7 @@ const Header = () => {
             sx={{
               borderBottom: "1px solid rgba(255,255,255,0.08)",
               py: 2,
-              color: !mobileExpertiseOpen && location.pathname === "/" ? "#3ecf6e" : "#fff",
+              color: !mobileExpertiseOpen && location.pathname === "/" ? "#35A51C" : "#fff",
             }}
           >
             <ListItemText primary="Home" slotProps={{ primary: { sx: { fontSize: 18, fontWeight: 500 } } }} />
@@ -286,7 +286,7 @@ const Header = () => {
             sx={{
               borderBottom: "1px solid rgba(255,255,255,0.08)",
               py: 2,
-              color: mobileExpertiseOpen || location.pathname.startsWith("/expertise") ? "#3ecf6e" : "#fff",
+              color: mobileExpertiseOpen || location.pathname.startsWith("/expertise") ? "#35A51C" : "#fff",
             }}
           >
             <ListItemText primary="Expertise" slotProps={{ primary: { sx: { fontSize: 18, fontWeight: 500 } } }} />
@@ -323,7 +323,7 @@ const Header = () => {
               sx={{
                 borderBottom: "1px solid rgba(255,255,255,0.08)",
                 py: 2,
-                color: !mobileExpertiseOpen && location.pathname === link.to ? "#3ecf6e" : "#fff",
+                color: !mobileExpertiseOpen && location.pathname === link.to ? "#35A51C" : "#fff",
               }}
             >
               <ListItemText primary={link.label} slotProps={{ primary: { sx: { fontSize: 18, fontWeight: 500 } } }} />
