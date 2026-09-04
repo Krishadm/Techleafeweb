@@ -1,23 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  AppBar,
-  Box,
-  Button,
-  Drawer,
-  IconButton,
-  List,
-  ListItemButton,
-  ListItemText,
-  Toolbar,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import {AppBar, Box,Button,Drawer,IconButton,List,ListItemButton,ListItemText,Toolbar,useMediaQuery,useTheme,} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo1.png";
 import ExpertiseDropdown from "../component/ExpertiseDropdown";
-import { DISCIPLINES } from "../data/servicesData";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -25,6 +13,12 @@ const navLinks = [
   { label: "Blog/Article", to: "/blog" },
   { label: "Portfolio", to: "/portfolio" },
   { label: "Contact us", to: "/contact" },
+];
+
+const MOBILE_EXPERTISE_ITEMS = [
+  { label: "Blockchain Development", to: "/expertise/blockchain-development" },
+  { label: "AI Development", to: "/expertise/AIDevelopmentServices" },
+  { label: "Web & App Development", to: "/expertise/appdevelopment" },
 ];
 
 const EXPERTISE_ANIM_MS = 350; // must match the exit animation duration in ExpertiseDropdown.tsx
@@ -52,6 +46,7 @@ const Header = () => {
   useEffect(() => {
     setExpertiseOpen(false);
     setMobileExpertiseOpen(false);
+    setDrawerOpen(false);
   }, [location.pathname]);
 
   // Keep the dropdown mounted a little longer than `expertiseOpen` so the
@@ -146,7 +141,7 @@ const Header = () => {
                 sx={{
                   ...navBtnBase,
                   gap: 0.6,
-                  color: expertiseOpen || location.pathname.startsWith("/services") ? "#3ecf6e" : "#fff",
+                  color: expertiseOpen || location.pathname.startsWith("/expertise") ? "#3ecf6e" : "#fff",
                   "&::after": {
                     content: '""',
                     position: "absolute",
@@ -156,7 +151,7 @@ const Header = () => {
                     width: "100%",
                     backgroundColor: "#3ecf6e",
                     transform:
-                      expertiseOpen || location.pathname.startsWith("/services") ? "scaleX(1)" : "scaleX(0)",
+                      expertiseOpen || location.pathname.startsWith("/expertise") ? "scaleX(1)" : "scaleX(0)",
                     transformOrigin: "center",
                     transition: "transform 0.3s ease",
                   },
@@ -232,52 +227,91 @@ const Header = () => {
         )}
       </Toolbar>
 
+      {/* FULL-SCREEN MOBILE MENU */}
       <Drawer
         anchor="right"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        slotProps={{ paper: { sx: { backgroundColor: "#000", color: "#fff", width: 260 } } }}
+        slotProps={{
+          paper: {
+            sx: {
+              backgroundColor: "#0a0a0a",
+              color: "#fff",
+              width: "100vw",
+              height: "100dvh",
+              maxWidth: "100vw",
+            },
+          },
+        }}
       >
-        <Box sx={{ display: "flex", justifyContent: "flex-end", p: 1 }}>
+        {/* Top bar: logo + close */}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            px: 2,
+            py: 1.5,
+            borderBottom: "1px solid rgba(255,255,255,0.08)",
+          }}
+        >
+          <Box
+            component={Link}
+            to="/"
+            onClick={() => setDrawerOpen(false)}
+            sx={{ display: "flex", alignItems: "center" }}
+          >
+            <Box component="img" src={logo} alt="Tech Leafe Technologies" sx={{ height: 40, width: "auto" }} />
+          </Box>
           <IconButton onClick={() => setDrawerOpen(false)} sx={{ color: "#fff" }} aria-label="close menu">
             <CloseIcon />
           </IconButton>
         </Box>
-        <List>
+
+        <List sx={{ px: 2, pt: 1, overflowY: "auto" }}>
           <ListItemButton
             component={Link}
             to="/"
-            onClick={() => setDrawerOpen(false)}
             sx={{
-              borderTop: "1px solid rgba(255,255,255,0.08)",
+              borderBottom: "1px solid rgba(255,255,255,0.08)",
+              py: 2,
               color: !mobileExpertiseOpen && location.pathname === "/" ? "#3ecf6e" : "#fff",
             }}
           >
-            <ListItemText primary="Home" />
+            <ListItemText primary="Home" slotProps={{ primary: { sx: { fontSize: 18, fontWeight: 500 } } }} />
           </ListItemButton>
 
           <ListItemButton
             onClick={() => setMobileExpertiseOpen((v) => !v)}
             sx={{
-              borderTop: "1px solid rgba(255,255,255,0.08)",
-              color: mobileExpertiseOpen || location.pathname.startsWith("/services") ? "#3ecf6e" : "#fff",
+              borderBottom: "1px solid rgba(255,255,255,0.08)",
+              py: 2,
+              color: mobileExpertiseOpen || location.pathname.startsWith("/expertise") ? "#3ecf6e" : "#fff",
             }}
           >
-            <ListItemText primary="Expertise" />
+            <ListItemText primary="Expertise" slotProps={{ primary: { sx: { fontSize: 18, fontWeight: 500 } } }} />
+            <KeyboardArrowDownIcon
+              sx={{
+                transform: mobileExpertiseOpen ? "rotate(180deg)" : "rotate(0deg)",
+                transition: "transform 0.3s ease",
+              }}
+            />
           </ListItemButton>
+
+          {/* Only the 3 top-level disciplines — same as desktop dropdown */}
           {mobileExpertiseOpen &&
-            DISCIPLINES.flatMap((d) => d.services).map((s) => (
+            MOBILE_EXPERTISE_ITEMS.map((d) => (
               <ListItemButton
-                key={s.slug}
+                key={d.to}
                 component={Link}
-                to={`/services/${s.slug}`}
+                to={d.to}
                 onClick={() => {
                   setDrawerOpen(false);
                   setMobileExpertiseOpen(false);
                 }}
-                sx={{ pl: 4, borderTop: "1px solid rgba(255,255,255,0.05)" }}
+                sx={{ pl: 4, py: 1.5, borderBottom: "1px solid rgba(255,255,255,0.05)" }}
               >
-                <ListItemText primary={s.label} sx={{ fontSize: 14 }} />
+                <ListItemText primary={d.label} slotProps={{ primary: { sx: { fontSize: 15, color: "#ccc" } } }} />
               </ListItemButton>
             ))}
 
@@ -286,13 +320,13 @@ const Header = () => {
               key={link.to}
               component={Link}
               to={link.to}
-              onClick={() => setDrawerOpen(false)}
               sx={{
-                borderTop: "1px solid rgba(255,255,255,0.08)",
+                borderBottom: "1px solid rgba(255,255,255,0.08)",
+                py: 2,
                 color: !mobileExpertiseOpen && location.pathname === link.to ? "#3ecf6e" : "#fff",
               }}
             >
-              <ListItemText primary={link.label} />
+              <ListItemText primary={link.label} slotProps={{ primary: { sx: { fontSize: 18, fontWeight: 500 } } }} />
             </ListItemButton>
           ))}
         </List>

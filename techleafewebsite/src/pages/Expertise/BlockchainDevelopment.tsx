@@ -12,6 +12,14 @@ import {
 
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+import LayersIcon from "@mui/icons-material/Layers";
+import CodeIcon from "@mui/icons-material/Code";
+import DataObjectIcon from "@mui/icons-material/DataObject";
+import HubIcon from "@mui/icons-material/Hub";
+import StorageIcon from "@mui/icons-material/Storage";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import DnsIcon from "@mui/icons-material/Dns";
 
 import {
   SiEthereum,
@@ -116,72 +124,72 @@ interface Technology {
 const STACK: Technology[] = [
   {
     name: "Ethereum",
-    icon: SiEthereum,
+    icon: AccountBalanceWalletIcon,
     color: "#627EEA",
   },
   {
     name: "Polygon",
-    icon: SiPolygon,
+    icon: LayersIcon,
     color: "#8247E5",
   },
   {
     name: "Solidity",
-    icon: SiSolidity,
+    icon: CodeIcon,
     color: "#8C8C8C",
   },
   {
     name: "Ruby",
-    icon: SiRuby,
+    icon: CodeIcon,
     color: "#CC342D",
   },
   {
     name: "TypeScript",
-    icon: SiTypescript,
+    icon: DataObjectIcon,
     color: "#3178C6",
   },
   {
     name: "Arbitrum",
-    icon: SiEthereum,
+    icon: AccountBalanceWalletIcon,
     color: "#28A0F0",
   },
   {
     name: "Solana (Rust)",
-    icon: SiSolana,
+    icon: HubIcon,
     color: "#9945FF",
   },
   {
     name: "Hardhat / Foundry",
-    icon: SiSolidity,
+    icon: CodeIcon,
     color: "#F7C948",
   },
   {
     name: "Ethers.js / Web3.js",
-    icon: SiEthereum,
+    icon: AccountBalanceWalletIcon,
     color: "#627EEA",
   },
   {
     name: "IPFS & Pinata",
-    icon: SiIpfs,
+    icon: StorageIcon,
     color: "#65C2CB",
   },
   {
     name: "The Graph",
-    icon: SiGraphql,
+    icon: AccountTreeIcon,
     color: "#E10098",
   },
   {
     name: "Chainlink Oracles",
-    icon: SiChainlink,
+    icon: HubIcon,
     color: "#375BD2",
   },
   {
     name: "Node.js",
-    icon: SiNodedotjs,
+    icon: DnsIcon,
     color: "#339933",
   },
   {
     name: "React / Next.js",
-    icon: SiReact,
+    icon: CodeIcon,
     color: "#61DAFB",
   },
 ];
@@ -208,103 +216,6 @@ const FAQS = [
       "Our development hub is at 100 Feet Road, Camp Road Junction, Selaiyur, Tambaram, Chennai. We host in-person technical reviews locally and work with remote clients globally.",
   },
 ];
-
-/* =========================================================
-   COUNT UP COMPONENT
-========================================================= */
-
-interface CountUpProps {
-  end: number;
-  duration?: number;
-  decimals?: number;
-  prefix?: string;
-  suffix?: string;
-  startAnimation: boolean;
-}
-
-const CountUp: React.FC<CountUpProps> = ({
-  end,
-  duration = 2000,
-  decimals = 0,
-  prefix = "",
-  suffix = "",
-  startAnimation,
-}) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!startAnimation) return;
-
-    let startTime: number | null = null;
-    let animationFrame: number;
-
-    const animate = (currentTime: number) => {
-      if (startTime === null) {
-        startTime = currentTime;
-      }
-
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
-
-      const currentValue = easedProgress * end;
-
-      setCount(currentValue);
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-
-    return () => {
-      cancelAnimationFrame(animationFrame);
-    };
-  }, [end, duration, startAnimation]);
-
-  return (
-    <>
-      {prefix}
-      {count.toFixed(decimals)}
-      {suffix}
-    </>
-  );
-};
-
-/* =========================================================
-   ARROW
-========================================================= */
-
-const ArrowCta: React.FC = () => (
-  <span className="arrow-cta" aria-hidden="true">
-    <svg
-      viewBox="0 0 26 14"
-      width="26"
-      height="14"
-      fill="none"
-    >
-      <path
-        d="M1 7H20"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M14 1L21 7L14 13"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </span>
-);
-
 /* =========================================================
    CSS
 ========================================================= */
@@ -877,7 +788,7 @@ const pageStyles = `
   }
 
   .tl-section-soft {
-    padding: 72px 0;
+    padding-top: 72px;
   }
 
   .tl-section h2,
@@ -1873,12 +1784,12 @@ const pageStyles = `
    COMPONENT
 ========================================================= */
 
-const AppDevelopmentPage: React.FC = () => {
+const BlockchainDevelopment: React.FC = () => {
   const [openFaq, setOpenFaq] =
     useState<string | false>(false);
 
-  const [metricsVisible, setMetricsVisible] =
-    useState(false);
+  // const [metricsVisible, setMetricsVisible] =
+  //   useState(false);
 
   const metricsRef =
     useRef<HTMLDivElement | null>(null);
@@ -1898,8 +1809,6 @@ const AppDevelopmentPage: React.FC = () => {
           const entry = entries[0];
 
           if (entry.isIntersecting) {
-            setMetricsVisible(true);
-
             observer.unobserve(element);
           }
         },
@@ -2265,4 +2174,4 @@ const AppDevelopmentPage: React.FC = () => {
   );
 };
 
-export default AppDevelopmentPage;
+export default BlockchainDevelopment;

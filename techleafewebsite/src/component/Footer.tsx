@@ -23,20 +23,28 @@ const quickLinks = [
 ];
 
 const serviceLinks = [
-  { name: "Blockchain Development", path: "/expertise/blockchain-development" },
-  { name: "AI Development", path: "/expertise/AIDevelopmentServices" },
-  { name: "Web & App Development", path: "/expertise/appdevelopment" },
- 
+  {
+    name: "Blockchain Development",
+    path: "/expertise/blockchain-development",
+  },
+  {
+    name: "AI Development",
+    path: "/expertise/AIDevelopmentServices",
+  },
+  {
+    name: "Web & App Development",
+    path: "/expertise/appdevelopment",
+  },
 ];
 
 const Footer: React.FC = () => {
   return (
     <Box
-      id="footer" // <-- ADD THIS LINE HERE
+      id="footer"
       component="footer"
       sx={{
         backgroundColor: "black",
-        color: "#1D620C",
+        color: "#35A51C",
         mt: 1,
         
       }}
@@ -48,7 +56,10 @@ const Footer: React.FC = () => {
 
       }}>
         <Grid container spacing={3}>
-          {/* Company */}
+
+          {/* =========================
+              COMPANY
+          ========================= */}
           <Grid size={{ xs: 12, sm: 6, md: 4 }}>
             <Typography variant="h5"
              sx={{ 
@@ -72,7 +83,15 @@ const Footer: React.FC = () => {
               that help businesses grow and succeed.
             </Typography>
 
-            <Box sx={{ mt: 2, display: "flex", gap: 1 }}>
+            {/* SOCIAL ICONS */}
+            <Box
+              sx={{
+                mt: 2,
+                display: "flex",
+                gap: 1,
+              }}
+            >
+              {/* Facebook */}
               <IconButton
                 component="a"
                 href="https://www.facebook.com/profile.php?id=61593430346026"
@@ -81,11 +100,16 @@ const Footer: React.FC = () => {
                 aria-label="Facebook"
                 sx={{
                   color: "#fff",
-                  "&:hover": { color: "#fff", backgroundColor: "#1877F2" },
+                  "&:hover": {
+                    color: "#fff",
+                    backgroundColor: "#1877F2",
+                  },
                 }}
               >
                 <FacebookIcon />
               </IconButton>
+
+              {/* Instagram */}
               <IconButton
                 component="a"
                 href="https://www.instagram.com/tech_leafe_technologies"
@@ -96,12 +120,15 @@ const Footer: React.FC = () => {
                   color: "#fff",
                   "&:hover": {
                     color: "#fff",
-                    background: "linear-gradient(45deg, #F9CE34, #EE2A7B, #6228D7)",
+                    background:
+                      "linear-gradient(45deg, #F9CE34, #EE2A7B, #6228D7)",
                   },
                 }}
               >
                 <InstagramIcon />
               </IconButton>
+
+              {/* LinkedIn */}
               <IconButton
                 component="a"
                 href="https://www.linkedin.com/company/tech-leafe-technologies"
@@ -110,11 +137,16 @@ const Footer: React.FC = () => {
                 aria-label="LinkedIn"
                 sx={{
                   color: "#fff",
-                  "&:hover": { color: "#fff", backgroundColor: "#0A66C2" },
+                  "&:hover": {
+                    color: "#fff",
+                    backgroundColor: "#0A66C2",
+                  },
                 }}
               >
                 <LinkedInIcon />
               </IconButton>
+
+              {/* Twitter / X */}
               <IconButton
                 component="a"
                 href="https://x.com/TechLeafe_India"
@@ -123,7 +155,10 @@ const Footer: React.FC = () => {
                 aria-label="Twitter"
                 sx={{
                   color: "#fff",
-                  "&:hover": { color: "#fff", backgroundColor: "#1DA1F2" },
+                  "&:hover": {
+                    color: "#fff",
+                    backgroundColor: "#1DA1F2",
+                  },
                 }}
               >
                 <TwitterIcon />
@@ -131,7 +166,9 @@ const Footer: React.FC = () => {
             </Box>
           </Grid>
 
-          {/* Quick Links */}
+          {/* =========================
+              QUICK LINKS
+          ========================= */}
           <Grid size={{ xs: 12, sm: 6, md: 2 }}>
             <Typography variant="h6"
              sx={{
@@ -152,6 +189,7 @@ const Footer: React.FC = () => {
                   display: "block",
                   color: "#bdbdbd",
                   mb: 1.2,
+
                   "&:hover": {
                     color: "#fff",
                   },
@@ -162,7 +200,9 @@ const Footer: React.FC = () => {
             ))}
           </Grid>
 
-          {/* Expertise */}
+          {/* =========================
+              EXPERTISE
+          ========================= */}
           <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <Typography variant="h6" sx={{ 
               fontWeight: 600, 
@@ -182,6 +222,7 @@ const Footer: React.FC = () => {
                   display: "block",
                   color: "#bdbdbd",
                   mb: 1.2,
+
                   "&:hover": {
                     color: "#fff",
                   },
@@ -192,7 +233,9 @@ const Footer: React.FC = () => {
             ))}
           </Grid>
 
-          {/* Contact */}
+          {/* =========================
+              CONTACT
+          ========================= */}
           <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <Typography variant="h6" sx={{
                fontWeight: 600,
@@ -204,7 +247,10 @@ const Footer: React.FC = () => {
 
             <Typography
               variant="body2"
-              sx={{ color: "#bdbdbd", mb: 1.5 }}
+              sx={{
+                color: "#bdbdbd",
+                mb: 1.5,
+              }}
             >
               <LocationOnIcon sx={{ 
                 fontSize: "1.1rem",
@@ -222,7 +268,7 @@ const Footer: React.FC = () => {
                 fontFamily: '"DM Sans", sans-serif',
                 }}
             >
-              📧 support@techleafe.com
+              📧 admin@techleafe.com
             </Typography>
             <Typography variant="body2" sx={{ color: "#bdbdbd",fontFamily: '"DM Sans", sans-serif', }}>
               📞 +91 93459 55510
@@ -230,15 +276,30 @@ const Footer: React.FC = () => {
           </Grid>
         </Grid>
 
-        <Divider sx={{ my: 2.5, borderColor: "#444" }} />
+        {/* =========================
+            DIVIDER
+        ========================= */}
+        <Divider
+          sx={{
+            my: 2.5,
+            borderColor: "#444",
+          }}
+        />
 
-        {/* Copyright */}
+        {/* =========================
+            COPYRIGHT
+        ========================= */}
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            flexDirection: { xs: "column", sm: "row" },
+
+            flexDirection: {
+              xs: "column",
+              sm: "row",
+            },
+
             gap: 2,
           }}
         >
