@@ -20,13 +20,13 @@ import InfoCard from "../component/AboutComponent/InfoCard";
 import FeatureCard from "../component/AboutComponent/FeatureCard";
 import Footer from "../component/Footer";
 
-
 const AboutPage = () => {
-
   // =========================
   // FEATURE CARD DETAILS
   // =========================
 
+
+  //testing
   const cards = [
     {
       icon: <GroupsOutlinedIcon />,
@@ -34,35 +34,30 @@ const AboutPage = () => {
       description:
         "Senior engineers, not a bench of juniors learning on your project.",
     },
-
     {
       icon: <CodeOutlinedIcon />,
       title: "Modern Tech & Frameworks",
       description:
         "We use the latest technologies to build scalable applications.",
     },
-
     {
       icon: <SecurityOutlinedIcon />,
       title: "Secure & Scalable Solutions",
       description:
         "Security, performance and scalability built into every solution.",
     },
-
     {
       icon: <TrackChangesOutlinedIcon />,
       title: "Client-Focused Approach",
       description:
         "Your goals drive our process and decision-making.",
     },
-
     {
       icon: <AccountBalanceWalletOutlinedIcon />,
       title: "Affordable Pricing",
       description:
         "Quality solutions that fit your budget.",
     },
-
     {
       icon: <AccessTimeOutlinedIcon />,
       title: "Timely Delivery",
@@ -71,26 +66,20 @@ const AboutPage = () => {
     },
   ];
 
-
   return (
     <>
       <style>
         {`
-
           /* =========================
              MAIN PAGE
           ========================= */
 
           .about-page {
             min-height: 100vh;
-
             background-color: #000000;
-
             color: #ffffff;
-
             padding: 55px 0;
           }
-
 
           /* =========================
              CONTAINER
@@ -100,21 +89,16 @@ const AboutPage = () => {
             max-width: 1200px;
           }
 
-
           /* =========================
              TOP SECTION
           ========================= */
 
           .about-top {
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
-
             gap: 70px;
           }
-
 
           /* =========================
              HERO ANIMATIONS
@@ -179,70 +163,13 @@ const AboutPage = () => {
               aboutFadeLeft 0.8s ease both;
           }
 
-
-          /* =========================
-             LABEL
-          ========================= */
-
-          .about-label {
-            color: #20a914;
-
-            font-weight: 700 !important;
-
-            font-size: 15px !important;
-
-            text-transform: uppercase;
-
-            letter-spacing: 0.5px;
-
-            margin-bottom: 20px !important;
-          }
-
-
-          /* =========================
-             MAIN TITLE
-          ========================= */
-
-          .about-title {
-            font-size: 45px !important;
-
-            font-weight: 700 !important;
-
-            line-height: 1.15 !important;
-
-            margin-bottom: 22px !important;
-          }
-
-
-          .about-title span {
-            color: #20a914;
-          }
-
-
-          /* =========================
-             DESCRIPTION
-          ========================= */
-
-          .about-description {
-            color: rgba(255, 255, 255, 0.75);
-
-            font-size: 18px !important;
-
-            line-height: 1.7 !important;
-
-            max-width: 500px;
-          }
-
-
           /* =========================
              TECHNOLOGY IMAGE CONTAINER
           ========================= */
 
           .about-images {
             width: 55%;
-
             max-width: 600px;
-
             position: relative;
 
             animation:
@@ -256,17 +183,11 @@ const AboutPage = () => {
 
           .about-technology-image {
             width: 100%;
-
             height: 380px;
-
             display: block;
-
             object-fit: cover;
-
             border-radius: 14px;
-
             border: 1px solid #1D620C;
-
             box-sizing: border-box;
 
             box-shadow:
@@ -280,7 +201,6 @@ const AboutPage = () => {
               border-color 0.4s ease,
               box-shadow 0.4s ease;
           }
-
 
           /* =========================
              IMAGE HOVER
@@ -299,26 +219,20 @@ const AboutPage = () => {
               0 20px 50px rgba(29, 98, 12, 0.25);
           }
 
-
           /* =========================
              MISSION & VISION
           ========================= */
 
           .info-cards {
             display: flex;
-
             gap: 15px;
-
             margin: 55px 0;
           }
 
-
           .info-card-wrapper {
             flex: 1;
-
             min-width: 0;
           }
-
 
           /* =========================
              ABOUT SECTION
@@ -328,7 +242,6 @@ const AboutPage = () => {
             margin-bottom: 55px;
           }
 
-
           /* =========================
              TEAMS HEADING
           ========================= */
@@ -337,14 +250,12 @@ const AboutPage = () => {
             margin-bottom: 35px;
           }
 
-
           /* =========================
              FEATURE GRID
           ========================= */
 
           .teams-grid {
             width: 100%;
-
             display: grid;
 
             grid-template-columns:
@@ -353,155 +264,92 @@ const AboutPage = () => {
             gap: 15px;
           }
 
-
           /* =========================
              TABLET
           ========================= */
 
           @media (max-width: 900px) {
-
             .about-page {
               padding: 45px 0;
             }
-
 
             .about-top {
               gap: 40px;
             }
 
-
-            .about-title {
-              font-size: 38px !important;
-            }
-
-
             .about-images {
               width: 55%;
             }
-
 
             .about-technology-image {
               height: 320px;
             }
 
-
             .teams-grid {
               grid-template-columns:
                 repeat(2, 1fr);
             }
-
           }
-
 
           /* =========================
              MOBILE
           ========================= */
 
           @media (max-width: 700px) {
-
             .about-page {
               padding: 35px 0;
             }
 
-
             .about-top {
               flex-direction: column;
-
               align-items: stretch;
-
               gap: 40px;
             }
-
 
             .about-content {
               width: 100%;
             }
 
-
-            .about-label {
-              font-size: 13px !important;
-
-              margin-bottom: 15px !important;
-            }
-
-
-            .about-title {
-              font-size: 32px !important;
-
-              line-height: 1.2 !important;
-            }
-
-
-            .about-description {
-              font-size: 14px !important;
-            }
-
-
-            /* TECHNOLOGY IMAGE */
-
             .about-images {
               width: 100%;
-
               max-width: 100%;
             }
 
-
             .about-technology-image {
               width: 100%;
-
               height: auto;
-
               aspect-ratio: 16 / 9;
-
               object-fit: cover;
-
               border-radius: 12px;
             }
 
-
-            /* MISSION & VISION */
-
             .info-cards {
               flex-direction: column;
-
               margin-top: 40px;
             }
-
 
             .teams-heading {
               margin-bottom: 25px;
             }
 
-
             .teams-grid {
               grid-template-columns: 1fr;
-
               gap: 12px;
             }
-
           }
-
 
           /* =========================
              SMALL MOBILE
           ========================= */
 
           @media (max-width: 450px) {
-
-            .about-title {
-              font-size: 28px !important;
-            }
-
-
             .about-technology-image {
               border-radius: 10px;
             }
 
-
             .info-cards {
               gap: 12px;
             }
-
           }
 
 
@@ -525,27 +373,17 @@ const AboutPage = () => {
         `}
       </style>
 
-
       {/* =========================
           ABOUT PAGE
       ========================= */}
 
-      <Box className="about-page public-sans-regular">
-
+      <Box className="about-page">
         <Container className="about-container">
 
-
-          {/* =========================
-              TOP SECTION
-          ========================= */}
-
+          {/* TOP SECTION */}
           <Box className="about-top">
 
-
-            {/* =========================
-                LEFT CONTENT
-            ========================= */}
-
+            {/* LEFT CONTENT */}
             <Box className="about-content">
 
               <Typography
@@ -557,31 +395,23 @@ const AboutPage = () => {
                 for emerging technology.
               </Typography>
 
-
               <Typography className="about-description">
                 Tech Leafe Technologies Private Limited bridges traditional enterprise software with the fast-moving world of blockchain and AI. We started to address the security and reliability gaps in Web3 and AI projects, focusing on audited contracts, grounded AI systems, and production-ready software.
               </Typography>
 
             </Box>
 
-
-            {/* =========================
-                TECHNOLOGY IMAGE
-            ========================= */}
-
+            {/* TECHNOLOGY IMAGE */}
             <Box className="about-images">
-
               <Box
                 component="img"
                 src={about_page}
                 alt="Blockchain, AI and application development"
                 className="about-technology-image"
               />
-
             </Box>
 
           </Box>
-
 
           {/* =========================
               MISSION & VISION
@@ -589,34 +419,23 @@ const AboutPage = () => {
 
           <Box className="info-cards">
 
-
-            {/* MISSION */}
-
             <Box className="info-card-wrapper">
-
               <InfoCard
                 icon={<AirplaneTicketIcon />}
                 title="Our Mission"
                 description="To help startups and enterprises adopt AI and blockchain responsibly through secure, scalable and production-ready engineering."
               />
-
             </Box>
 
-
-            {/* VISION */}
-
             <Box className="info-card-wrapper">
-
               <InfoCard
                 icon={<BrightnessHighIcon />}
                 title="Our Vision"
                 description="To build an engineering culture that continuously learns, experiments and raises the standard for every product we ship."
               />
-
             </Box>
 
           </Box>
-
 
           {/* =========================
               HOW WE WORK
@@ -631,13 +450,14 @@ const AboutPage = () => {
               How we work
             </Typography>
 
-
             <Typography className="about-title">
               A professional team that works closely together.
             </Typography>
 
-
-            <Typography sx={{ marginBottom: 4 }}>
+            <Typography
+              className="about-body-text"
+              sx={{ marginBottom: 4 }}
+            >
               Blockchain and AI move fast, and neither discipline
               rewards working in isolation — a smart contract
               decision affects the front-end team, and an AI
@@ -649,8 +469,7 @@ const AboutPage = () => {
               happening in separate silos.
             </Typography>
 
-
-            <Typography>
+            <Typography className="about-body-text">
               That collaboration is also how we keep
               improving — cross-pollinating patterns we learn
               auditing a smart contract into how we ground an AI
@@ -661,15 +480,11 @@ const AboutPage = () => {
 
           </Box>
 
-
           {/* =========================
               WHY TECH LEAFE
           ========================= */}
 
           <Box className="about-section">
-
-
-            {/* HEADING */}
 
             <Box className="teams-heading">
 
@@ -677,27 +492,21 @@ const AboutPage = () => {
                 WHY TECH LEAFE
               </Typography>
 
-
               <Typography className="about-title">
                 Six reasons teams choose to work with us.
               </Typography>
 
             </Box>
 
-
-            {/* FEATURE CARDS */}
-
             <Box className="teams-grid">
 
               {cards.map((card, index) => (
-
                 <FeatureCard
                   key={index}
                   icon={card.icon}
                   title={card.title}
                   description={card.description}
                 />
-
               ))}
 
             </Box>
@@ -706,17 +515,11 @@ const AboutPage = () => {
 
         </Container>
 
-
-        {/* =========================
-            FOOTER
-        ========================= */}
-
         <Footer />
 
       </Box>
     </>
   );
 };
-
 
 export default AboutPage;
