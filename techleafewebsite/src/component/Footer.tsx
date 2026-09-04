@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
       <Container maxWidth="lg" 
       sx={{
          py: 4 ,
-          fontFamily: '"DM Sans", sans-serif',
+          fontFamily: '"DM Sans"',
 
       }}>
         <Grid container spacing={3}>
@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
              sx={{ 
               fontWeight: 600,
                mb: 2 ,
-               fontFamily: '"DM Sans", sans-serif',
+               fontFamily: '"DM Sans"',
                }}>
               TechLeafe
             </Typography>
@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
                 color: "#bdbdbd",
                 lineHeight: 1.8,
                 maxWidth: 350,
-                fontFamily: '"DM Sans", sans-serif',
+                fontFamily: '"DM Sans"',
               }}
             >
               We build modern, responsive and innovative digital solutions
@@ -174,7 +174,7 @@ const Footer: React.FC = () => {
              sx={{
                fontWeight: 600,
                 mb: 2 ,
-                fontFamily: '"DM Sans", sans-serif',
+                fontFamily: '"DM Sans"',
                 }}>
               Quick Links
             </Typography>
@@ -207,7 +207,7 @@ const Footer: React.FC = () => {
             <Typography variant="h6" sx={{ 
               fontWeight: 600, 
               mb: 2 ,
-              fontFamily: '"DM Sans", sans-serif',
+              fontFamily: '"DM Sans"',
               }}>
               Expertise
             </Typography>
@@ -240,7 +240,7 @@ const Footer: React.FC = () => {
             <Typography variant="h6" sx={{
                fontWeight: 600,
                 mb: 2,
-                fontFamily: '"DM Sans", sans-serif',
+                fontFamily: '"DM Sans"',
                  }}>
               Contact Us
             </Typography>
@@ -256,7 +256,7 @@ const Footer: React.FC = () => {
                 fontSize: "1.1rem",
                  verticalAlign: "middle",
                   mr: 0.5 ,
-                   fontFamily: '"DM Sans", sans-serif',
+                   fontFamily: '"DM Sans"',
                   }} />
               100 Feet Road, Selaiyur, Tambaram, Chennai – 600073
             </Typography>
@@ -265,12 +265,12 @@ const Footer: React.FC = () => {
               variant="body2"
               sx={{ color: "#bdbdbd",
                  mb: 1.5 ,
-                fontFamily: '"DM Sans", sans-serif',
+                fontFamily: '"DM Sans"',
                 }}
             >
               📧 admin@techleafe.com
             </Typography>
-            <Typography variant="body2" sx={{ color: "#bdbdbd",fontFamily: '"DM Sans", sans-serif', }}>
+            <Typography variant="body2" sx={{ color: "#bdbdbd",fontFamily: '"DM Sans"', }}>
               📞 +91 93459 55510
             </Typography>
           </Grid>
@@ -305,17 +305,17 @@ const Footer: React.FC = () => {
         >
           <Typography
             variant="body2"
-            sx={{ color: "#999", textAlign: "center",fontFamily: '"DM Sans", sans-serif',}}
+            sx={{ color: "#999", textAlign: "center",fontFamily: '"DM Sans"',}}
           >
             © {new Date().getFullYear()} TechLeafe. All rights reserved.
           </Typography>
 
           <Box sx={{ display: "flex", gap: 3 }}>
-            <Typography variant="body2" sx={{ color: "#999",fontFamily: '"DM Sans", sans-serif', }}>
+            <Typography variant="body2" sx={{ color: "#999",fontFamily: '"DM Sans"', }}>
               Privacy Policy
             </Typography>
 
-            <Typography variant="body2" sx={{ color: "#999",fontFamily: '"DM Sans", sans-serif', }}>
+            <Typography variant="body2" sx={{ color: "#999",fontFamily: '"DM Sans"', }}>
               Terms & Conditions
             </Typography>
           </Box>
