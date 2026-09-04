@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 
 import {
   Box,
@@ -1370,6 +1370,17 @@ const AppDevelopmentPage: React.FC = () => {
   const [openFaq, setOpenFaq] =
     useState<string | false>(FAQS[0].q);
 
+  //const [metricsVisible, setMetricsVisible] =
+    // useState(false);
+
+  //const metricsRef =
+    //useRef<HTMLDivElement | null>(null);
+
+
+  /* =========================================================
+     RETURN
+  ========================================================= */
+
   return (
     <>
       <Box className="tl-root">
@@ -1401,17 +1412,7 @@ const AppDevelopmentPage: React.FC = () => {
               separator="/"
             >
 
-              <a href="/">
-                Home
-              </a>
-
-              <a href="/services">
-                Services
-              </a>
-
-              <span className="tl-breadcrumb-current">
-                App Development
-              </span>
+             
 
             </Breadcrumbs>
 
