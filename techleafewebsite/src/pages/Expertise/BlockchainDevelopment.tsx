@@ -12,6 +12,19 @@ import {
 
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import {
+  SiChainlink,
+  SiEthereum,
+  SiGraphql,
+  SiIpfs,
+  SiNodedotjs,
+  SiPolygon,
+  SiReact,
+  SiRuby,
+  SiSolana,
+  SiSolidity,
+  SiTypescript,
+} from "react-icons/si";
 
 import AppImage from "../../assets/blockchain-hero.png";
 import Footer from "../../component/Footer";
