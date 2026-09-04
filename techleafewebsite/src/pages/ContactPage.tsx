@@ -630,6 +630,15 @@ const GetInTouchSection: React.FC = () => {
             transform: translateY(0);
           }
 
+      <div className="git-wrapper">
+        {/* Left column */}
+        <div className="git-left">
+          <span className="git-badge">
+            <span className="git-badge-dot" />
+            Contact us
+          </span>
+          <h1 className="git-heading">Let&apos;s build something amazing together.</h1>
+          <div className="git-underline" />
           .git-submit span {
             transition: transform 0.2s ease;
           }
