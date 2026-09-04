@@ -1,112 +1,234 @@
 import { Link, useParams } from "react-router-dom";
-import { blogPosts } from "../data/blogData";
+import { blogPosts } from "../data/BlogData";
+import Footer from "../component/Footer";
 
 export default function BlogDetail() {
   const { slug } = useParams();
 
-  const post = blogPosts.find((item) => item.slug === slug);
+  const post = blogPosts.find(
+    (item) => item.slug === slug
+  );
 
   if (!post) {
     return (
-      <main className="blog-not-found">
-        <h1>Article not found</h1>
+      <>
+        <main className="blog-not-found">
+          <span className="blog-not-found-code">
+            404
+          </span>
 
-        <Link to="/blog">
-          ← Back to Blog
-        </Link>
-      </main>
+          <h1>Article not found</h1>
+
+          <p>
+            The article you are looking for is not available.
+          </p>
+
+          <Link
+            to="/blog"
+            className="blog-not-found-link"
+          >
+            Browse all insights
+            <span aria-hidden="true">↗</span>
+          </Link>
+        </main>
+
+        <Footer />
+      </>
     );
   }
 
   return (
-    <main className="blog-detail-page">
-      <article className="blog-detail-container">
-        <Link to="/blog" className="blog-back">
-          ← Back to Blog
-        </Link>
+    <>
+      <main className="official-blog-detail">
+        <article className="official-blog-container">
 
-        <header className="blog-detail-header">
-          <span className="blog-detail-category">
-            {post.category}
-          </span>
-
-          <h1>{post.title}</h1>
-        </header>
-
-        <div className="blog-detail-image">
-          <img src={post.image} alt="" />
-        </div>
-
-        <div className="blog-article-content">
-          {post.sections.map((section, index) => (
-            <section
-              className="blog-article-section"
-              key={`${post.slug}-${index}`}
+          {/* TOP NAVIGATION */}
+          <nav
+            className="official-blog-nav"
+            aria-label="Blog navigation"
+          >
+            <Link
+              to="/blog"
+              className="official-back-button"
             >
-              {section.heading && (
-                <h2>{section.heading}</h2>
-              )}
+              <span aria-hidden="true">←</span>
+              All Insights
+            </Link>
 
-              {section.paragraphs?.map(
-                (paragraph, paragraphIndex) => (
-                  <p key={paragraphIndex}>
-                    {paragraph}
-                  </p>
-                )
-              )}
+            <span className="official-nav-category">
+              {post.category}
+            </span>
+          </nav>
 
-              {section.bullets && (
-                <ul>
-                  {section.bullets.map(
-                    (item, itemIndex) => (
-                      <li key={itemIndex}>
-                        {item}
-                      </li>
-                    )
-                  )}
-                </ul>
-              )}
 
-              {section.numbered && (
-                <ol>
-                  {section.numbered.map(
-                    (item, itemIndex) => (
-                      <li key={itemIndex}>
-                        {item}
-                      </li>
-                    )
-                  )}
-                </ol>
-              )}
-            </section>
-          ))}
+          {/* HERO */}
+          <header className="official-blog-hero">
 
-          {post.conclusion && (
-            <section className="blog-article-section">
-              <h2>Conclusion</h2>
+            <div className="official-blog-hero-copy">
 
-              <p>{post.conclusion}</p>
-            </section>
-          )}
+              <span className="official-blog-kicker">
+                Tech Leafe Insights
+              </span>
 
-          {post.companyText && (
-            <p className="blog-company-text">
-              {post.companyText}
-            </p>
-          )}
+              <h1>
+                {post.title}
+              </h1>
 
-          {post.cta && (
-            <div className="blog-bottom-cta">
-              <p>{post.cta}</p>
+              <div className="official-blog-meta">
+                <span>{post.category}</span>
+                <span aria-hidden="true">•</span>
+                <span>Insight</span>
+              </div>
 
-              <Link to="/contact">
-                Let's Talk
-                <span>→</span>
-              </Link>
             </div>
-          )}
-        </div>
-      </article>
-    </main>
+
+
+            {/* FEATURE IMAGE */}
+            <div className="official-blog-image">
+
+              <img
+                src={post.image}
+                alt={post.title}
+                loading="eager"
+              />
+
+              <span
+                className="official-image-corner official-image-corner-top"
+                aria-hidden="true"
+              />
+
+              <span
+                className="official-image-corner official-image-corner-bottom"
+                aria-hidden="true"
+              />
+
+            </div>
+
+          </header>
+
+
+          {/* ARTICLE BODY */}
+          <div className="official-article-content">
+
+            {post.sections.map(
+              (section, index) => (
+                <section
+                  className="official-article-section"
+                  key={`${post.slug}-${index}`}
+                >
+
+                  {/* SECTION NUMBER */}
+                  <div className="official-section-number">
+                    {String(index + 1).padStart(
+                      2,
+                      "0"
+                    )}
+                  </div>
+
+
+                  {/* SECTION CONTENT */}
+                  <div className="official-section-content">
+
+                    {section.heading && (
+                      <header className="official-section-header">
+
+                        <span className="official-section-label">
+                          Insight
+                        </span>
+
+                        <h2>
+                          {section.heading}
+                        </h2>
+
+                        <span
+                          className="official-heading-line"
+                          aria-hidden="true"
+                        />
+
+                      </header>
+                    )}
+
+
+                    {section.paragraphs?.map(
+                      (
+                        paragraph,
+                        paragraphIndex
+                      ) => (
+                        <p key={paragraphIndex}>
+                          {paragraph}
+                        </p>
+                      )
+                    )}
+
+
+                    {section.bullets && (
+                      <ul>
+                        {section.bullets.map(
+                          (
+                            item,
+                            itemIndex
+                          ) => (
+                            <li key={itemIndex}>
+                              {item}
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    )}
+
+
+                    {section.numbered && (
+                      <ol>
+                        {section.numbered.map(
+                          (
+                            item,
+                            itemIndex
+                          ) => (
+                            <li key={itemIndex}>
+                              {item}
+                            </li>
+                          )
+                        )}
+                      </ol>
+                    )}
+
+                  </div>
+
+                </section>
+              )
+            )}
+
+
+            {/* CONCLUSION */}
+            {post.conclusion && (
+              <section className="official-conclusion">
+
+                <span className="official-conclusion-label">
+                  Final Perspective
+                </span>
+
+                <h2>
+                  Conclusion
+                </h2>
+
+                <span
+                  className="official-conclusion-line"
+                  aria-hidden="true"
+                />
+
+                <p>
+                  {post.conclusion}
+                </p>
+
+              </section>
+            )}
+
+          </div>
+
+        </article>
+      </main>
+
+      <Footer />
+    </>
   );
 }
