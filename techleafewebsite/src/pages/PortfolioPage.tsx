@@ -879,12 +879,6 @@ const teamMembers: TeamMember[] = [
     description: "Builds responsive digital experiences that deliver value to our clients.",
   },
   {
-    photo: "/assets/team/raja.jpg",
-    name: "Raja",
-    role: "Web Developer",
-    description: "Builds and maintains reliable, high-performance websites for our clients.",
-  },
-  {
     photo: "/assets/team/harinipriya.jpg",
     name: "Harinipriya",
     role: "Full Stack Developer",
@@ -895,6 +889,12 @@ const teamMembers: TeamMember[] = [
     name: "Harshita Sharma",
     role: "Full Stack AI Engineer",
     description: "Develops end-to-end solutions across frontend, backend and architecture.",
+  },
+  {
+    photo: "/assets/team/raja.jpg",
+    name: "Raja",
+    role: "Web Developer",
+    description: "Builds and maintains reliable, high-performance websites for our clients.",
   },
   {
     photo: "/assets/team/arul.jpg",
@@ -1703,7 +1703,7 @@ export default function PortfolioPage() {
           zIndex: 1,
           px: { xs: 2.5, sm: 4, md: 5 },
           pt: { xs: 2, sm: 2.5, md: 3 },
-          pb: { xs: 5, md: 7 },
+          pb: { xs: 2.5, md: 3 },
           display: "grid",
           gridTemplateColumns: { xs: "1fr", md: "1.2fr 0.8fr" },
           alignItems: "center",
@@ -1782,93 +1782,6 @@ export default function PortfolioPage() {
             and SEO work that gets a product in front of people.
           </Typography>
 
-          {/* Action Buttons */}
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: { xs: 2, sm: 2.5 },
-              flexWrap: "wrap",
-            }}
-          >
-            {/* Primary CTA */}
-            <Button
-              component={RouterLink}
-              to="/contact"
-              sx={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                minWidth: { xs: "160px", sm: "190px" },
-                height: "50px",
-                px: "24px",
-                background: "#1D620C",
-                color: "#ffffff",
-                border: "none",
-                borderRadius: "999px",
-                fontFamily: "'Instrument Sans', sans-serif",
-                fontSize: { xs: "16px", sm: "18px" },
-                fontWeight: 700,
-                lineHeight: 1,
-                textTransform: "none",
-                cursor: "pointer",
-                boxShadow: "none",
-                transition: "background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
-                "&:hover": {
-                  background: "#1e8511",
-                  transform: "translateY(-2px)",
-                  boxShadow: "0 8px 24px rgba(31, 137, 17, 0.3)",
-                },
-              }}
-            >
-              <span>Start a project</span>
-              <span
-                style={{
-                  fontFamily: "Arial, sans-serif",
-                  fontSize: "22px",
-                  fontWeight: 400,
-                  lineHeight: 1,
-                }}
-              >
-                →
-              </span>
-            </Button>
-
-            {/* Secondary CTA */}
-            <Button
-              component="a"
-              href="#what-we-build"
-              sx={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                minWidth: { xs: "160px", sm: "190px" },
-                height: "50px",
-                px: "24px",
-                border: "2px solid #157a08",
-                background: "rgba(0, 17, 0, 0.4)",
-                color: "#20A914",
-                borderRadius: "999px",
-                fontFamily: "'Instrument Sans', sans-serif",
-                fontSize: { xs: "16px", sm: "18px" },
-                fontWeight: 700,
-                lineHeight: 1,
-                textTransform: "none",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-                "&:hover": {
-                  borderColor: "#20A914",
-                  background: "rgba(32, 169, 20, 0.15)",
-                  color: "#ffffff",
-                  transform: "translateY(-2px)",
-                  boxShadow: "0 6px 20px rgba(32, 169, 20, 0.2)",
-                },
-              }}
-            >
-              See what we build
-            </Button>
-          </Box>
         </Box>
 
         {/* Right Column: Properly Proportioned, Natural Leaf SVG */}
@@ -2019,17 +1932,17 @@ export default function PortfolioPage() {
       </Container>
 
       {/* Dashed Green Divider Between Sections */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "calc(100% - 32px)", md: "min(1100px, calc(100% - 48px))" },
           mx: "auto",
-          my: { xs: 4, md: 6 },
+          my: { xs: 2, md: 3 },
           height: "1px",
           background: "repeating-linear-gradient(to right, #1b850e 0 8px, transparent 8px 13px)",
           opacity: 0.85,
         }}
         aria-hidden="true"
-      />
+      /> */}
 
       {/* ================= MISSION & VISION SECTION ================= */}
       <Container
@@ -2041,7 +1954,7 @@ export default function PortfolioPage() {
           zIndex: 1,
           px: { xs: 2.5, sm: 4, md: 5 },
           pt: { xs: 2, md: 3 },
-          pb: { xs: 8, md: 12 },
+          pb: { xs: 3, md: 4 },
         }}
       >
         {/* Section Header / Eyebrow */}
@@ -2343,17 +2256,17 @@ export default function PortfolioPage() {
       </Container>
 
       {/* Dashed Green Divider Between Sections */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "calc(100% - 32px)", md: "min(1100px, calc(100% - 48px))" },
           mx: "auto",
-          my: { xs: 4, md: 6 },
+          my: { xs: 2, md: 3 },
           height: "1px",
           background: "repeating-linear-gradient(to right, #1b850e 0 8px, transparent 8px 13px)",
           opacity: 0.85,
         }}
         aria-hidden="true"
-      />
+      /> */}
 
       {/* ================= WHAT WE BUILD SECTION ================= */}
       <Container
@@ -2424,7 +2337,7 @@ export default function PortfolioPage() {
       </Container>
 
       {/* Dashed Green Divider Between Sections */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "calc(100% - 32px)", md: "min(1100px, calc(100% - 48px))" },
           mx: "auto",
@@ -2434,7 +2347,7 @@ export default function PortfolioPage() {
           opacity: 0.85,
         }}
         aria-hidden="true"
-      />
+      /> */}
 
       {/* ================= LIVE PROJECTS SECTION ================= */}
       <Container
@@ -2458,7 +2371,7 @@ export default function PortfolioPage() {
             letterSpacing: "0.16em",
             textTransform: "uppercase",
             color: "#20A914",
-            mb: { xs: 1.5, md: 2 },
+            mb: { xs: 1.5, md: 1 },
           }}
         >
           REAL-TIME PROJECTS
@@ -2500,7 +2413,7 @@ export default function PortfolioPage() {
       </Container>
 
       {/* Dashed Green Divider Between Sections */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "calc(100% - 32px)", md: "min(1100px, calc(100% - 48px))" },
           mx: "auto",
@@ -2510,7 +2423,7 @@ export default function PortfolioPage() {
           opacity: 0.85,
         }}
         aria-hidden="true"
-      />
+      /> */}
 
       {/* ================= CASE STUDIES SECTION ================= */}
       <Container
@@ -2575,7 +2488,7 @@ export default function PortfolioPage() {
       </Container>
 
       {/* Dashed Green Divider Between Sections */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "calc(100% - 32px)", md: "min(1100px, calc(100% - 48px))" },
           mx: "auto",
@@ -2585,7 +2498,7 @@ export default function PortfolioPage() {
           opacity: 0.85,
         }}
         aria-hidden="true"
-      />
+      /> */}
 
       {/* ================= LEADERSHIP SECTION ================= */}
       <Container
@@ -2636,7 +2549,7 @@ export default function PortfolioPage() {
             fontSize: { xs: "15px", sm: "16px" },
             color: "#c9c9c9",
             opacity: 0.9,
-            mb: { xs: 5, md: 6 },
+            mb: { xs: 2, md: 3 },
             maxWidth: "640px",
           }}
         >
@@ -2659,7 +2572,7 @@ export default function PortfolioPage() {
       </Container>
 
       {/* Dashed Green Divider Between Sections */}
-      <Box
+      {/* <Box
         sx={{
           width: { xs: "calc(100% - 32px)", md: "min(1100px, calc(100% - 48px))" },
           mx: "auto",
@@ -2669,7 +2582,7 @@ export default function PortfolioPage() {
           opacity: 0.85,
         }}
         aria-hidden="true"
-      />
+      /> */}
 
       {/* ================= OUR TEAM SECTION ================= */}
       <Container
