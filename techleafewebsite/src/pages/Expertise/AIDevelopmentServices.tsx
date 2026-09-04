@@ -1,377 +1,2254 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from "react";
+
 import {
+  Box,
   Container,
   Typography,
-  Card,
-  CardContent,
-  Button,
-  Box,
-  Paper,
-  Stack,
-  Chip,
-  
-} from '@mui/material';
+  Breadcrumbs,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
+
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import AppImage from "../../assets/aidevelopment.png"
 import {
-  Psychology,
-  AutoAwesome,
-  Memory,
-  Code,
-  IntegrationInstructions,
-  RocketLaunch,
-  ArrowForward
-} from '@mui/icons-material';
-import Footer from '../../component/Footer';
+  SiPython,
+  SiPytorch,
+  SiTensorflow,
+  SiLangchain,
+  SiNextdotjs,
+  SiSolidity,
+  SiRuby,
+  SiTypescript,
+} from "react-icons/si";
 
-// --- Types ---
-interface ServiceItem {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  tags: string[];
-}
-
-interface ProcessStep {
-  number: string;
-  title: string;
-  description: string;
-}
-
-// --- Data ---
-const services: ServiceItem[] = [
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import StorageIcon from "@mui/icons-material/Storage";
+import CloudIcon from "@mui/icons-material/Cloud";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import Footer from "../../component/Footer";
+const WHY_CARDS = [
   {
-    icon: <Psychology fontSize="large" color="primary" />,
-    title: 'Custom Machine Learning Models',
-    description: 'Tailored predictive algorithms and ML solutions built to solve your unique business challenges using state-of-the-art frameworks.',
-    tags: ['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn']
+    title: "Intelligent Automation",
+    body:
+      "Automate repetitive tasks and business workflows using intelligent, self-correcting AI systems.",
   },
   {
-    icon: <AutoAwesome fontSize="large" color="primary" />,
-    title: 'Generative AI Solutions',
-    description: 'Harness LLMs, fine-tuned foundational models, and Retrieval-Augmented Generation (RAG) to automate workflows and enhance interactions.',
-    tags: ['OpenAI API', 'LangChain', 'Llama 3', 'Vector DBs']
+    title: "Grounded, Not Guessing",
+    body:
+      "Chatbot and agent responses stay grounded in your own verified documents, with source attribution.",
   },
   {
-    icon: <Memory fontSize="large" color="primary" />,
-    title: 'Computer Vision Systems',
-    description: 'Automated visual data processing for object detection, facial recognition, image classification, and real-time video analytics.',
-    tags: ['OpenCV', 'YOLO', 'Image Processing', 'Edge AI']
+    title: "Private by Default",
+    body:
+      "Deploy inside your own cloud tenant so proprietary data never leaves your perimeter.",
   },
   {
-    icon: <Code fontSize="large" color="primary" />,
-    title: 'Natural Language Processing (NLP)',
-    description: 'Extract insights from text data with sentiment analysis, semantic search, intelligent chatbots, and multi-language translation.',
-    tags: ['BERT', 'NLTK', 'Text Mining', 'Entity Recognition']
+    title: "Business Growth",
+    body:
+      "Use AI to improve productivity, efficiency, scalability, and long-term growth, not just novelty.",
   },
-  {
-    icon: <IntegrationInstructions fontSize="large" color="primary" />,
-    title: 'AI Integration & API Development',
-    description: 'Seamlessly integrate third-party AI features into your existing software infrastructure via secure REST APIs and microservices.',
-    tags: ['REST / GraphQL', 'FastAPI', 'Cloud Deployment', 'Microservices']
-  },
-  {
-    icon: <RocketLaunch fontSize="large" color="primary" />,
-    title: 'MLOps & AI Maintenance',
-    description: 'Ensure model reliability, continuously monitor performance drift, automate retraining pipelines, and optimize latency.',
-    tags: ['Kubeflow', 'Docker', 'CI/CD Pipelines', 'Model Drift']
-  }
 ];
 
-const processSteps: ProcessStep[] = [
+interface ServiceBlock {
+  id: string;
+  index: string;
+  title: string;
+  body: string;
+  bullets: string[];
+}
+
+const SERVICE_BLOCKS: ServiceBlock[] = [
   {
-    number: '01',
-    title: 'Discovery & Feasibility',
-    description: 'We evaluate your business goals, assess data availability, and define strategic objectives to build a viable AI roadmap.'
+    id: "AI Workflow Automation & Agentic Networks",
+    index: "01 / 03",
+    title: "AI Workflow Automation & Agentic Networks",
+    body:
+      "We deploy self-correcting multi-agent systems that triage tasks, validate compliance, and process documents around the clock, cutting the operational drag of manual review.",
+    bullets: [
+      "Intelligent document parsing (OCR / IDP)",
+      "Predictive process monitoring",
+      "Multi-agent workflow orchestration (CrewAI, LangGraph)",
+      "Automated resolution before downtime hits",
+    ],
   },
   {
-    number: '02',
-    title: 'Data Preparation & Engineering',
-    description: 'Raw data is cleaned, structured, labeled, and prepared to train high-performing algorithms with minimal bias.'
+    id: "Enterprise RAG Chatbots",
+    index: "02 / 03",
+    title: "Enterprise RAG Chatbots",
+    body:
+      "We turn your manuals, PDFs, and databases into an active, instant-response knowledge base for employees and customers — answers stay grounded in your own documents.",
+    bullets: [
+      "Hybrid vector search (Pinecone, Qdrant)",
+      "Source-attributed answers",
+      "Deployed on WhatsApp, Slack, Teams, or embedded in your product  ",
+      "Built for internal or customer-facing use",
+    ],
   },
   {
-    number: '03',
-    title: 'Model Building & Fine-Tuning',
-    description: 'We select appropriate architectures, run extensive experiments, and tune parameters to achieve maximal precision.'
+    id: "Predictive Machine Learning",
+    index: "03 / 03",
+    title: "Predictive Machine Learning",
+    body:
+      "We move you from reactive firefighting to proactive planning — forecasting demand, detecting fraud, and flagging quality issues in real time.",
+    bullets: [
+      "Demand & financial forecasting",
+      "Real-time anomaly & fraud detection",
+      "Computer vision for quality inspection",
+      "Multi-chain asset support",
+    ],
   },
-  {
-    number: '04',
-    title: 'Integration & Deployment',
-    description: 'Models are deployed into secure cloud environments or edge devices and integrated seamlessly into your applications.'
-  }
 ];
 
-// --- Main Component ---
-export const AIDevelopmentServices: React.FC = () => {
+/* =========================================================
+   TECHNOLOGIES
+========================================================= */
+
+interface Technology {
+  name: string;
+  icon: React.ElementType;
+  color: string;
+}
+
+const STACK: Technology[] = [
+  {
+    name: "Python",
+    icon: SiPython,
+    color: "#3776AB",
+  },
+  {
+    name: "PyTorch",
+    icon: SiPytorch,
+    color: "#EE4C2C",
+  },
+  {
+    name: "TensorFlow",
+    icon: SiTensorflow,
+    color: "#FF6F00",
+  },
+  {
+    name: "LangChain & CrewAI",
+    icon: SiLangchain,
+    color: "#1C3C3C",
+  },
+  {
+    name: "Pinecone & Qdrant",
+    icon: StorageIcon,
+    color: "#5B5BD6",
+  },
+  {
+    name: "AWS SageMaker",
+    icon: CloudIcon,
+    color: "#FF9900",
+  },
+  {
+    name: "OpenAI",
+    icon: SmartToyIcon,
+    color: "#FFFFFF",
+  },
+  {
+    name: "NLP",
+    icon: PsychologyIcon,
+    color: "#35A51C",
+  },
+  {
+    name: "Computer Vision",
+    icon: VisibilityIcon,
+    color: "#35A51C",
+  },
+  {
+    name: "Next.js & Flutter",
+    icon: SiNextdotjs,
+    color: "#FFFFFF",
+  },
+  {
+    name: "Solidity",
+    icon: SiSolidity,
+    color: "#8C8C8C",
+  },
+  {
+    name: "Ruby",
+    icon: SiRuby,
+    color: "#CC342D",
+  },
+  {
+    name: "TypeScript",
+    icon: SiTypescript,
+    color: "#3178C6",
+  },
+];
+
+const FAQS = [
+  {
+    q: "How do you keep our data from leaking into public AI models?",
+    a:
+      "Where it matters, we deploy inside your own private cloud (VPC) rather than calling public model APIs, so proprietary data stays inside your perimeter.",
+  },
+  {
+    q: "How do you reduce chatbot hallucination?",
+    a:
+      "Responses are grounded in your own indexed documents through hybrid vector search, with source attribution — the model is answering from your data, not guessing.",
+  },
+  {
+    q: "Do we own the fine-tuned model afterwards?",
+    a:
+      "Yes — for private fine-tuning engagements, you retain full ownership of the model weights, code, and data pipelines we build.",
+  },
+  {
+    q: "How long does an AI project typically take?",
+    a:
+      "A single chatbot or automation workflow usually takes a few weeks; a broader multi-agent system or fine-tuned private model runs longer, depending on your data readiness.",
+  },
+];
+
+/* =========================================================
+   COUNT UP COMPONENT
+========================================================= */
+
+interface CountUpProps {
+  end: number;
+  duration?: number;
+  decimals?: number;
+  prefix?: string;
+  suffix?: string;
+  startAnimation: boolean;
+}
+
+const CountUp: React.FC<CountUpProps> = ({
+  end,
+  duration = 2000,
+  decimals = 0,
+  prefix = "",
+  suffix = "",
+  startAnimation,
+}) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!startAnimation) return;
+
+    let startTime: number | null = null;
+    let animationFrame: number;
+
+    const animate = (currentTime: number) => {
+      if (startTime === null) {
+        startTime = currentTime;
+      }
+
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+      const currentValue = easedProgress * end;
+
+      setCount(currentValue);
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, [end, duration, startAnimation]);
 
   return (
     <>
-    <Box sx={{ bgcolor: 'black', color: 'text.primary' }}>
-      {/* Hero Section */}
-      <Paper
-        elevation={0}
-        sx={{
-          bgcolor: 'black',
-          color: "#1D620C",
-          py: { xs: 8, md: 12 },
-          borderRadius: 0,
-          position: 'relative',
-          overflow: 'hidden'
-        }}
-      >
-        <Container maxWidth="lg">
-          <Box sx={{ maxWidth: { xs: '100%', md: '66%' } }}>
-            {/* <Chip
-              label="Next-Gen AI Engineering"
-              color="primary"
-              size="small"
-              sx={{ mb: 2, fontWeight: 600 }}
-            /> */}
-            <Typography variant="h6" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
-Next-Gen AI Engineering
-            </Typography>
-            <Typography variant="h2" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
-              AI Development Services
-            </Typography>
-            <Typography
-  variant="h6"
-  sx={{
-    opacity: 0.85,
-    mb: 4,
-    fontWeight: 300,
-    color: "#ffffff",
-  }}
->
-  Transform your operations with scalable, custom artificial intelligence,
-  machine learning, and generative AI solutions designed for high performance.
-</Typography>
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-              {/* <Button
-                variant="outlined"
-                color="primary"
-                size="large"
-                endIcon={<ArrowForward />}
-              >
-                Schedule a Consultation
-              </Button> */}
-              <Button variant="outlined" color="inherit" size="large" endIcon={<ArrowForward />}>
-               Schedule a Consultation
-              </Button>
-              <Button variant="outlined" color="inherit" size="large">
-                Explore Case Studies
-              </Button>
-            </Stack>
-          </Box>
-        </Container>
-      </Paper>
+      {prefix}
+      {count.toFixed(decimals)}
+      {suffix}
+    </>
+  );
+};
 
-      {/* Services Section */}
-      <Container maxWidth="lg" sx={{ py: { xs: 8, md: 10 } }}>
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <Typography
-  variant="h2"
-  sx={{
-    color: "white",
-    fontWeight: 700,
-  }}
->
-  Our Core AI Capabilities
-</Typography>
-         <Typography
-  variant="body1"
-  sx={{
-    maxWidth: "600px",
-    mx: "auto",
-    color: "#1D620C",
-  }}
->
-  From experimental concepts to production-level systems, we deliver scalable AI capabilities.
-</Typography>
-        </Box>
+/* =========================================================
+   ARROW
+========================================================= */
+
+const ArrowCta: React.FC = () => (
+  <span className="arrow-cta" aria-hidden="true">
+    <svg
+      viewBox="0 0 26 14"
+      width="26"
+      height="14"
+      fill="none"
+    >
+      <path
+        d="M1 7H20"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M14 1L21 7L14 13"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
+);
+
+/* =========================================================
+   CSS
+========================================================= */
+
+const pageStyles = `
+  :root {
+    --tl-bg: #000000;
+    --tl-bg-soft: #050505;
+    --tl-fg: #ffffff;
+    --tl-muted: #cfcfcf;
+    --tl-accent: #1d620c;
+    --tl-accent-light: #35a51c;
+    --tl-border: rgba(29, 98, 12, 0.55);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body,
+  #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background: var(--tl-bg);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* =========================================================
+     ROOT
+  ========================================================= */
+
+  .tl-root {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+
+    color: var(--tl-fg);
+    background: var(--tl-bg);
+
+    font-family:
+      "Inter",
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+  }
+
+  .tl-wrap {
+    width: 100%;
+    max-width: 1140px;
+
+    margin: 0 auto;
+
+    padding: 0 24px;
+  }
+
+  /* =========================================================
+     ANIMATIONS
+  ========================================================= */
+
+  @keyframes tlFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes tlFadeLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes tlFadeRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes tlFloat {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes tlGlow {
+    0%,
+    100% {
+      box-shadow: 0 0 0 rgba(53, 165, 28, 0);
+    }
+
+    50% {
+      box-shadow: 0 0 25px rgba(53, 165, 28, 0.15);
+    }
+  }
+
+  @keyframes tlNumberGlow {
+    0% {
+      text-shadow: 0 0 0 rgba(53, 165, 28, 0);
+    }
+
+    50% {
+      text-shadow:
+        0 0 10px rgba(53, 165, 28, 0.35),
+        0 0 25px rgba(53, 165, 28, 0.15);
+    }
+
+    100% {
+      text-shadow: 0 0 0 rgba(53, 165, 28, 0);
+    }
+  }
+
+  /* =========================================================
+     BREADCRUMB
+  ========================================================= */
+
+  .tl-breadcrumb {
+    margin: 32px 0 24px;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+
+    font-size: 13px;
+  }
+
+  .tl-breadcrumb a {
+    color: #999999;
+
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+  }
+
+  .tl-breadcrumb a:hover {
+    color: var(--tl-accent-light);
+  }
+
+  .tl-breadcrumb-current {
+    color: var(--tl-fg);
+
+    font-size: 13px;
+  }
+
+  /* =========================================================
+     HERO
+  ========================================================= */
+
+  .tl-hero {
+    padding-bottom: 56px;
+  }
+
+  .tl-hero-grid {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.1fr)
+      minmax(0, 0.9fr);
+
+    align-items: center;
+
+    gap: 48px;
+  }
+
+  .tl-hero-grid > div:first-child {
+    animation:
+      tlFadeLeft 0.8s ease both;
+  }
+
+  .tl-eyebrow {
+    margin-bottom: 16px;
+
+    color: var(--tl-accent-light);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .tl-hero h1 {
+    margin: 0 0 20px;
+
+    color: var(--tl-fg);
+
+    font-size: clamp(32px, 4.5vw, 48px);
+
+    font-weight: 700;
+
+    line-height: 1.15;
+
+    letter-spacing: -1px;
+  }
+
+  .tl-hero h1 em {
+    color: var(--tl-accent-light);
+
+    font-style: normal;
+  }
+
+  .tl-lede {
+    max-width: 52ch;
+
+    margin: 0 0 32px;
+
+    color: var(--tl-muted);
+
+    font-size: 17px;
+
+    line-height: 1.6;
+  }
+
+  /* =========================================================
+     HERO IMAGE
+  ========================================================= */
+
+  .tl-hero-photo {
+    width: 100%;
+
+    animation:
+      tlFadeRight 0.8s ease 0.15s both;
+  }
+
+  .tl-hero-photo img {
+    display: block;
+
+    width: 100%;
+
+    max-width: 100%;
+
+    height: auto;
+
+    border: 1px solid var(--tl-accent);
+
+    border-radius: 16px;
+
+    object-fit: cover;
+
+    animation:
+      tlFloat 5s ease-in-out 1s infinite;
+
+    transition:
+      transform 0.4s ease,
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+
+  .tl-hero-photo img:hover {
+    animation-play-state: paused;
+
+    transform: scale(1.02);
+
+    border-color: var(--tl-accent-light);
+
+    box-shadow:
+      0 20px 50px rgba(29, 98, 12, 0.25);
+  }
+
+  /* =========================================================
+     BUTTONS
+  ========================================================= */
+
+  .tl-hero-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 16px;
+
+    animation:
+      tlFadeUp 0.8s ease 0.3s both;
+  }
+
+  .tl-btn-primary,
+  .tl-btn-ghost {
+    min-height: 46px;
+
+    padding: 12px 24px !important;
+
+    border-radius: 999px !important;
+
+    text-transform: none !important;
+
+    font-weight: 600 !important;
+
+    display: inline-flex !important;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    transition:
+      transform 0.3s ease,
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      box-shadow 0.3s ease !important;
+  }
+
+  .tl-btn-primary {
+    color: #ffffff !important;
+
+    background:
+      var(--tl-accent) !important;
+  }
+
+  .tl-btn-primary:hover {
+    transform: translateY(-4px);
+
+    background: #24790f !important;
+
+    box-shadow:
+      0 10px 25px rgba(29, 98, 12, 0.3);
+  }
+
+  .tl-btn-ghost {
+    color: var(--tl-fg) !important;
+
+    background: transparent !important;
+
+    border:
+      1px solid #333333 !important;
+  }
+
+  .tl-btn-ghost:hover {
+    transform: translateY(-4px);
+
+    color: var(--tl-accent-light) !important;
+
+    border-color:
+      var(--tl-accent-light) !important;
+  }
+
+  .arrow-cta {
+    display: inline-flex;
+
+    align-items: center;
+
+    transition:
+      transform 0.3s ease;
+  }
+
+  .tl-btn-primary:hover .arrow-cta,
+  .tl-btn-ghost:hover .arrow-cta {
+    transform: translateX(5px);
+  }
+
+  /* =========================================================
+     METRICS
+  ========================================================= */
+
+  .tl-metrics-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    gap: 24px;
+
+    margin-top: 56px;
+  }
+
+  .tl-metric-card {
+    position: relative;
+
+    min-width: 0;
+
+    min-height: 80px;
+
+    padding: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.035),
+        rgba(255, 255, 255, 0.01)
+      );
+
+    border:
+      1px solid var(--tl-border);
+
+    border-radius: 16px;
+
+    transition:
+      transform 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+
+  .tl-metric-card:nth-child(1) {
+    animation:
+      tlFadeUp 0.6s ease 0.15s both;
+  }
+
+  .tl-metric-card:nth-child(2) {
+    animation:
+      tlFadeUp 0.6s ease 0.3s both;
+  }
+
+  .tl-metric-card:nth-child(3) {
+    animation:
+      tlFadeUp 0.6s ease 0.45s both;
+  }
+
+  .tl-metric-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+
+    height: 120px;
+
+    top: -70px;
+
+    right: -60px;
+
+    border-radius: 50%;
+
+    background:
+      rgba(53, 165, 28, 0.08);
+
+    filter: blur(10px);
+
+    transition:
+      transform 0.5s ease,
+      opacity 0.5s ease;
+  }
+
+  .tl-metric-card:hover::before {
+    transform: scale(2);
+
+    opacity: 0.8;
+  }
+
+  .tl-metric-card::after {
+    content: "";
+
+    position: absolute;
+
+    right: 15%;
+
+    bottom: 0;
+
+    left: 15%;
+
+    height: 2px;
+
+    background:
+      var(--tl-accent-light);
+
+    transform: scaleX(0);
+
+    transition:
+      transform 0.35s ease;
+  }
+
+  .tl-metric-card:hover {
+    transform: translateY(-8px);
+
+    border-color:
+      var(--tl-accent-light);
+  }
+
+  .tl-metric-card:hover::after {
+    transform: scaleX(1);
+  }
+
+  .tl-mn {
+    position: relative;
+
+    z-index: 1;
+
+    margin-bottom: 12px;
+
+    color:
+      var(--tl-accent-light);
+
+    font-size:
+      clamp(27px, 3vw, 34px);
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: -0.5px;
+
+    animation:
+      tlNumberGlow 2s ease-in-out;
+
+    transition:
+      transform 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .tl-metric-card:hover .tl-mn {
+    color: #ffffff;
+
+    transform: scale(1.06);
+  }
+
+  .tl-ml {
+    position: relative;
+
+    z-index: 1;
+
+    color:
+      var(--tl-muted);
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    text-align: center;
+  }
+
+  /* =========================================================
+     SECTIONS
+  ========================================================= */
+
+  .tl-section {
+    padding: 35px 0;
+  }
+
+  .tl-section h2,
+  .tl-section-soft h2 {
+    margin: 0 0 40px;
+
+    color:
+      var(--tl-fg);
+
+    font-size:
+      clamp(26px, 3.5vw, 36px);
+
+    font-weight: 700;
+
+    line-height: 1.2;
+  }
+
+  /* =========================================================
+     WHY CARDS
+  ========================================================= */
+
+  .tl-grid-3 {
+    display: grid;
+
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
+    gap: 24px;
+  }
+
+  .tl-card {
+    min-width: 0;
+
+    padding: 24px;
+
+    background: #000000;
+
+    border:
+      1px solid var(--tl-accent);
+
+    border-radius: 14px;
+
+    transition:
+      transform 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+
+  .tl-card:hover {
+    transform: translateY(-8px);
+
+    border-color:
+      var(--tl-accent-light);
+
+    box-shadow:
+      0 15px 35px rgba(29, 98, 12, 0.18);
+  }
+
+  .tl-card h3 {
+    margin: 0 0 10px;
+
+    color:
+      var(--tl-fg);
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    line-height: 1.35;
+
+    transition:
+      transform 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .tl-card:hover h3 {
+    color:
+      var(--tl-accent-light);
+
+    transform:
+      translateX(3px);
+  }
+
+  .tl-card p {
+    margin: 0;
+
+    color:
+      var(--tl-muted);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+  }
+
+  /* =========================================================
+     SERVICES
+  ========================================================= */
+
+  .tl-service-block {
+    padding: 40px 0;
+
+    border-top:
+      1px solid rgba(29, 98, 12, 0.4);
+
+    transition:
+      padding-left 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .tl-service-block:first-of-type {
+    border-top: 0;
+  }
+
+  .tl-service-block:hover {
+    padding-left: 10px;
+
+    border-color:
+      rgba(53, 165, 28, 0.8);
+  }
+
+  .tl-service-block-grid {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.2fr)
+      minmax(0, 0.8fr);
+
+    gap: 40px;
+  }
+
+  .tl-service-index {
+    margin-bottom: 12px;
+
+    color:
+      var(--tl-accent-light);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition:
+      transform 0.3s ease,
+      letter-spacing 0.3s ease;
+  }
+
+  .tl-service-block:hover .tl-service-index {
+    transform:
+      translateX(4px);
+
+    letter-spacing: 1px;
+  }
+
+  .tl-service-block h3 {
+    margin: 0 0 12px;
+
+    color:
+      var(--tl-fg);
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    transition:
+      transform 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .tl-service-block:hover h3 {
+    color:
+      var(--tl-accent-light);
+
+    transform:
+      translateX(3px);
+  }
+
+  .tl-service-block p {
+    margin: 0;
+
+    color:
+      var(--tl-muted);
+
+    font-size: 15px;
+
+    line-height: 1.6;
+  }
+
+  .tl-bullet-grid {
+    align-self: center;
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .tl-bullet-grid li {
+    position: relative;
+
+    padding: 10px 0 10px 24px;
+
+    color: #d8d8d8;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.06);
+
+    transition:
+      padding-left 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .tl-bullet-grid li::before {
+    content: "";
+
+    position: absolute;
+
+    top: 17px;
+
+    left: 0;
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background:
+      var(--tl-accent-light);
+
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .tl-bullet-grid li:hover {
+    padding-left: 30px;
+
+    color: #ffffff;
+  }
+
+  .tl-bullet-grid li:hover::before {
+    transform: scale(1.4);
+
+    box-shadow:
+      0 0 10px rgba(53, 165, 28, 0.8);
+  }
+
+  /* =========================================================
+     TECHNOLOGIES - FULL WIDTH
+  ========================================================= */
+
+  .tl-tech-section {
+    position: relative;
+
+    width: 100%;
+
+    padding: 58px 0 60px;
+
+    background: #000000;
+
+    border-top:
+      1px solid rgba(29, 98, 12, 0.35);
+
+    border-bottom:
+      1px solid rgba(29, 98, 12, 0.35);
+
+    overflow: hidden;
+  }
+
+  /*
+     Heading container keeps the same alignment
+     as the rest of your website.
+  */
+
+  .tl-tech-container {
+    width: 100%;
+
+    max-width: 1140px;
+
+    margin: 0 auto;
+
+    padding: 0 24px;
+  }
+
+  // .tl-tech-section .tl-eyebrow {
+  //   margin-bottom: 14px;
+  // }
+
+  .tl-tech-section h2 {
+     text-align : center;  
+    margin: 0 0 28px;
+
+    color: #ffffff;
+
+    font-size:
+      clamp(27px, 3.5vw, 36px);
+
+    font-weight: 700;
+
+    line-height: 1.2;
+  }
+
+  /* =========================================================
+     TECHNOLOGY MARQUEE
+  ========================================================= */
+
+  .tl-tech-marquee {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    padding: 4px 0 8px;
+  }
+
+  /*
+     Left fade
+  */
+
+  .tl-tech-marquee::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100px;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+      linear-gradient(
+        to right,
+        #000000,
+        transparent
+      );
+  }
+
+  /*
+     Right fade
+  */
+
+  .tl-tech-marquee::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    width: 100px;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+      linear-gradient(
+        to left,
+        #000000,
+        transparent
+      );
+  }
+
+  /*
+     Track containing duplicated technologies.
+     Duplicating the list creates the infinite effect.
+  */
+
+  .tl-tech-track {
+    display: flex;
+
+    width: max-content;
+
+    gap: 14px;
+
+    animation:
+      tlTechnologyMove 28s linear infinite;
+
+    will-change: transform;
+  }
+
+  /*
+     Individual technology pill
+  */
+
+  .tl-tech-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    min-width: max-content;
+
+    padding: 9px 16px;
+
+    color: #d8d8d8;
+
+    background:
+      rgba(255, 255, 255, 0.025);
+
+    border:
+      1px solid rgba(255, 255, 255, 0.14);
+
+    border-radius: 999px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      background-color 0.3s ease,
+      color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  /*
+     Hover effect
+  */
+
+  .tl-tech-item:hover {
+    transform:
+      translateY(-4px);
+
+    color: #ffffff;
+
+    background:
+      rgba(255, 255, 255, 0.07);
+
+    border-color:
+      rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  /*
+     Technology icon
+  */
+
+  .tl-tech-icon {
+    width: 18px;
+
+    height: 18px;
+
+    flex-shrink: 0;
+
+    transition:
+      transform 0.3s ease,
+      filter 0.3s ease;
+  }
+
+  .tl-tech-item:hover .tl-tech-icon {
+    transform:
+      scale(1.15);
+  }
+
+  /*
+     Infinite horizontal animation
+  */
+
+  @keyframes tlTechnologyMove {
+    from {
+      transform:
+        translateX(0);
+    }
+
+    to {
+      transform:
+        translateX(-50%);
+    }
+  }
+
+  /*
+     Pause animation when mouse is over technology row
+  */
+
+  .tl-tech-marquee:hover .tl-tech-track {
+    animation-play-state: paused;
+  }
+
+  /* =========================================================
+     CTA
+  ========================================================= */
+
+  .tl-cta-band {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 32px;
+
+    padding: 48px;
+
+    background:
+      var(--tl-bg-soft);
+
+    border:
+      1px solid var(--tl-accent);
+
+    border-radius: 16px;
+
+    animation:
+      tlGlow 4s ease-in-out infinite;
+
+    transition:
+      transform 0.35s ease,
+      border-color 0.35s ease;
+  }
+
+  .tl-cta-band:hover {
+    transform:
+      translateY(-6px);
+
+    border-color:
+      var(--tl-accent-light);
+  }
+
+  .tl-cta-band h2 {
+    margin: 0 0 8px;
+
+    color:
+      var(--tl-fg);
+
+    font-size: 26px;
+  }
+
+  .tl-cta-band p {
+    max-width: 48ch;
+
+    margin: 0;
+
+    color:
+      var(--tl-muted);
+
+    line-height: 1.6;
+  }
+
+  /* =========================================================
+     FAQ
+  ========================================================= */
+
+  .tl-faq-container {
+    width: 100%;
+
+    max-width: 820px !important;
+
+    margin: 0 auto;
+
+    padding: 0 24px;
+  }
+
+  .tl-faq-list {
+    margin-top: 16px;
+  }
+
+  .tl-faq-accordion {
+    color:
+      var(--tl-fg) !important;
+
+    background:
+      transparent !important;
+
+    border-bottom:
+      1px solid rgba(29, 98, 12, 0.4);
+
+    box-shadow:
+      none !important;
+
+    transition:
+      padding-left 0.3s ease,
+      border-color 0.3s ease !important;
+  }
+
+  .tl-faq-accordion::before {
+    display: none;
+  }
+
+  .tl-faq-accordion:hover {
+    padding-left: 6px;
+
+    border-color:
+      var(--tl-accent-light);
+  }
+
+  .tl-faq-summary {
+    min-height:
+      76px !important;
+
+    padding: 8px 0 !important;
+
+    color:
+      #ffffff !important;
+
+    font-size: 15px;
+  
+    font-weight: 200;
+  }
+
+  .tl-faq-icon {
+    color:
+      var(--tl-accent-light) !important;
+
+    font-size: 22px !important;
+  }
+
+  .tl-faq-details p {
+    margin: 0;
+
+    color:
+      var(--tl-muted);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+  }
+
+  /* =========================================================
+     TABLET
+  ========================================================= */
+
+  @media (max-width: 1000px) {
+
+    .tl-wrap {
+      padding: 0 28px;
+    }
+
+    .tl-hero-grid {
+      gap: 32px;
+    }
+
+    .tl-grid-3 {
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    }
+
+    .tl-service-block-grid {
+      gap: 28px;
+    }
+
+    .tl-metrics-grid {
+      gap: 16px;
+    }
+
+    .tl-cta-band {
+      padding: 40px;
+    }
+
+    .tl-tech-container {
+      padding: 0 28px;
+    }
+  }
+
+  /* =========================================================
+     MOBILE
+  ========================================================= */
+
+  @media (max-width: 800px) {
+
+    .tl-wrap {
+      padding: 0 20px;
+    }
+
+    .tl-hero {
+      padding-bottom: 40px;
+    }
+
+    .tl-hero-grid {
+      grid-template-columns: 1fr;
+
+      gap: 36px;
+    }
+
+    .tl-hero-photo {
+      order: 2;
+    }
+
+    .tl-hero-actions {
+      width: 100%;
+
+      flex-direction: column;
+    }
+
+    .tl-btn-primary,
+    .tl-btn-ghost {
+      width: 100%;
+    }
+
+    .tl-metrics-grid {
+      grid-template-columns: 1fr;
+
+      gap: 14px;
+
+      margin-top: 40px;
+    }
+
+    .tl-section,
+    .tl-section-soft {
+      padding: 52px 0;
+    }
+
+    .tl-service-block-grid {
+      grid-template-columns: 1fr;
+
+      gap: 24px;
+    }
+
+    .tl-cta-band {
+      flex-direction: column;
+
+      align-items: stretch;
+
+      padding: 32px 24px;
+    }
+
+    .tl-cta-band .tl-btn-primary {
+      width: 100%;
+    }
+
+    /* TECHNOLOGIES MOBILE */
+
+    .tl-tech-section {
+      padding: 48px 0 50px;
+    }
+
+    .tl-tech-container {
+      padding: 0 20px;
+    }
+
+    .tl-tech-section h2 {
+      margin-bottom: 24px;
+    }
+
+    .tl-tech-track {
+      gap: 10px;
+
+      animation-duration: 24s;
+    }
+
+    .tl-tech-item {
+      padding: 8px 13px;
+
+      gap: 7px;
+
+      font-size: 12px;
+    }
+
+    .tl-tech-icon {
+      width: 16px;
+
+      height: 16px;
+    }
+
+    .tl-tech-marquee::before,
+    .tl-tech-marquee::after {
+      width: 45px;
+    }
+  }
+
+  /* =========================================================
+     SMALL MOBILE
+  ========================================================= */
+
+  @media (max-width: 600px) {
+
+    .tl-wrap {
+      padding: 0 16px;
+    }
+
+    .tl-breadcrumb {
+      margin: 20px 0;
+
+      font-size: 12px;
+    }
+
+    .tl-eyebrow {
+      font-size: 12px;
+    }
+
+    .tl-hero h1 {
+      font-size: 32px;
+    }
+
+    .tl-lede {
+      font-size: 15px;
+    }
+
+    .tl-hero-photo img {
+      border-radius: 12px;
+    }
+
+    .tl-grid-3 {
+      grid-template-columns: 1fr;
+
+      gap: 16px;
+    }
+
+    .tl-card {
+      padding: 20px;
+    }
+
+    .tl-section,
+    .tl-section-soft {
+      padding: 44px 0;
+    }
+
+    .tl-section h2,
+    .tl-section-soft h2 {
+      margin-bottom: 26px;
+
+      font-size: 28px;
+    }
+
+    .tl-service-block {
+      padding: 30px 0;
+    }
+
+    .tl-service-block h3 {
+      font-size: 20px;
+    }
+
+    .tl-service-block p {
+      font-size: 14px;
+    }
+
+    .tl-bullet-grid li {
+      font-size: 13px;
+    }
+
+    /* TECHNOLOGY */
+
+    .tl-tech-section {
+      padding: 42px 0 46px;
+    }
+
+    .tl-tech-container {
+      padding: 0 16px;
+    }
+
+    .tl-tech-section h2 {
+      font-size: 28px;
+
+      margin-bottom: 22px;
+    }
+
+    .tl-tech-item {
+      padding: 7px 12px;
+
+      font-size: 11px;
+    }
+
+    .tl-tech-icon {
+      width: 15px;
+
+      height: 15px;
+    }
+
+    .tl-tech-marquee::before,
+    .tl-tech-marquee::after {
+      width: 30px;
+    }
+
+    .tl-cta-band {
+      padding: 28px 20px;
+
+      border-radius: 12px;
+    }
+
+    .tl-cta-band h2 {
+      font-size: 23px;
+    }
+
+    .tl-cta-band p {
+      font-size: 14px;
+    }
+
+    .tl-faq-container {
+      padding: 0 16px;
+    }
+
+    .tl-faq-summary {
+      min-height:
+        56px !important;
+
+      font-size: 14px;
+
+      line-height: 1.4;
+    }
+
+    .tl-faq-details p {
+      font-size: 13px;
+    }
+
+    .tl-mn {
+      font-size: 30px;
+    }
+  }
+
+  /* =========================================================
+     VERY SMALL PHONES
+  ========================================================= */
+
+  @media (max-width: 380px) {
+
+    .tl-wrap {
+      padding: 0 14px;
+    }
+
+    .tl-hero h1 {
+      font-size: 29px;
+    }
+
+    .tl-lede {
+      font-size: 14px;
+    }
+
+    .tl-section h2,
+    .tl-section-soft h2 {
+      font-size: 25px;
+    }
+
+    .tl-tech-section h2 {
+      font-size: 25px;
+    }
+
+    .tl-tech-item {
+      padding: 6px 10px;
+
+      font-size: 10px;
+    }
+
+    .tl-tech-icon {
+      width: 14px;
+
+      height: 14px;
+    }
+
+    .tl-cta-band {
+      padding: 24px 16px;
+    }
+
+    .tl-mn {
+      font-size: 28px;
+    }
+  }
+
+  /* =========================================================
+     ACCESSIBILITY
+  ========================================================= */
+
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      animation-duration:
+        0.01ms !important;
+
+      animation-iteration-count:
+        1 !important;
+
+      transition-duration:
+        0.01ms !important;
+
+      scroll-behavior:
+        auto !important;
+    }
+  }
+`;
+
+/* =========================================================
+   COMPONENT
+========================================================= */
+
+const AIDevelopmentServices: React.FC = () => {
+  const [openFaq, setOpenFaq] =
+    useState<string | false>(false);
+
+  const [metricsVisible, setMetricsVisible] =
+    useState(false);
+
+  const metricsRef =
+    useRef<HTMLDivElement | null>(null);
+
+  /* =========================================================
+     METRICS INTERSECTION OBSERVER
+  ========================================================= */
+
+  useEffect(() => {
+    const element = metricsRef.current;
+
+    if (!element) return;
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+
+          if (entry.isIntersecting) {
+            setMetricsVisible(true);
+
+            observer.unobserve(element);
+          }
+        },
+        {
+          threshold: 0.35,
+        }
+      );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  /* =========================================================
+     RETURN
+  ========================================================= */
+
+  return (
+    <>
+      <Box className="tl-root">
+
+        <style>
+          {pageStyles}
+        </style>
+
+        {/* =====================================================
+            HERO
+        ===================================================== */}
 
         <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: {
-              xs: '1fr',
-              sm: 'repeat(2, 1fr)',
-              md: 'repeat(3, 1fr)'
-            },
-            gap: 4
-          }}
+          component="section"
+          className="tl-hero"
         >
-          {services.map((service, index) => (
-           <Card
-  key={index}
-  sx={{
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#000000',
-    border: '1px solid #1D620C',
-    borderRadius: 2,
-    color:'white',
-    transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
-
-    '&:hover': {
-      transform: 'translateY(-4px)',
-      boxShadow: '0 0 20px rgba(62, 207, 110, 0.25)',
-    },
-  }}
->
-              <CardContent  sx={{ flexGrow: 1 }}>
-             <Box
-  sx={{
-    mb: 2,
-    color: '#1D620C',
-    '& svg': {
-      color: '#1D620C',
-    },
-  }}
->
-  {service.icon}
-</Box>
-                <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
-                  {service.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                  {service.description}
-                </Typography>
-                <Stack direction="row" spacing={1} useFlexGap sx={{ mt: 2, flexWrap: 'wrap' }}>
-                  {service.tags.map((tag, tagIndex) => (
-                    <Chip
-  key={tagIndex}
-  label={tag}
-  size="small"
-  variant="outlined"
-  sx={{
-    color: '#1D620C !important',
-    borderColor: '#1D620C',
-    backgroundColor: 'transparent',
-
-    '& .MuiChip-label': {
-      color: '#1D620C !important',
-    },
-  }}
-/>
-                  ))}
-                </Stack>
-              </CardContent>
-            </Card>
-          ))}
-        </Box>
-      </Container>
-
-      {/* Development Process Section */}
-      <Box sx={{ bgcolor: 'black', py: { xs: 8, md: 10 } }}>
-        <Container maxWidth="lg">
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
-            <Typography
-  variant="h3"
-  sx={{
-    color: "#1D620C",
-    fontWeight: 700,
-  }}
->
-  Our Development Process
-</Typography>
-<Typography
-  variant="body1"
-  sx={{
-    maxWidth: "600px",
-    mx: "auto",
-    color: "#ffffff",
-  }}
->
-   A structured approach ensuring high reliability, performance, and alignment with business KPIs.
-</Typography>
-            {/* <Typography variant="body1" color="text.secondary" sx={{ maxWidth: '600px', mx: 'auto' }}>
-              A structured approach ensuring high reliability, performance, and alignment with business KPIs.
-            </Typography> */}
-          </Box>
-
-          <Box
-            sx={{
-              
-              display: 'grid',
-              gridTemplateColumns: {
-                xs: '1fr',
-                sm: 'repeat(2, 1fr)',
-                md: 'repeat(4, 1fr)'
-              },
-              gap: 4
-            }}
+          <Container
+            className="tl-wrap"
+            maxWidth={false}
+            disableGutters
           >
-            {processSteps.map((step, index) => (
-              <Paper
-  key={index}
-  elevation={1}
-  sx={{
-    p: 3,
-    height: '100%',
-    position: 'relative',
-    borderRadius: 2,
-    bgcolor: 'black',
-    border: '1px solid #1D620C',
-    color: 'white',
-  }}
->
-                <Typography
-                  variant="h3"
-                  component="span"
-                  color="primary.light"
-                  sx={{ opacity: 0.5, display: 'block', mb: 1, fontWeight: 800 }}
+
+            {/* BREADCRUMB */}
+
+            <Breadcrumbs
+              className="tl-breadcrumb"
+              separator="/"
+            >
+            </Breadcrumbs>
+
+            {/* HERO GRID */}
+
+            <Box className="tl-hero-grid">
+
+              {/* LEFT */}
+
+              <Box>
+
+                <div className="tl-eyebrow">
+                  Extension of our core — think, automate, innovate
+                </div>
+
+                <Typography component="h1">
+                  Turn raw business data into an operations engine.
+{" "}
+                  <em>
+                    built to hold up.
+                  </em>
+                </Typography>
+
+                <Typography className="tl-lede">
+                 We replace manual operational bottlenecks with AI agents, grounded RAG knowledge bases, and private fine-tuned LLMs built
+                  for your own data — not generic wrappers around a public API.
+                </Typography>
+
+              </Box>
+
+              {/* RIGHT IMAGE */}
+
+              <Box className="tl-hero-photo">
+
+                <img
+                  src={AppImage}
+                  alt="App development dashboard"
+                  loading="lazy"
+                />
+
+              </Box>
+
+            </Box>
+
+          </Container>
+        </Box>
+
+        {/* =====================================================
+            WHY BLOCKCHAIN DEVELOPMENT
+        ===================================================== */}
+
+        <Box
+          component="section"
+          className="tl-section-soft"
+        >
+          <Container
+            className="tl-wrap"
+            maxWidth={false}
+            disableGutters
+          >
+
+            <div className="tl-eyebrow">
+              WHY THIS MATTERS
+            </div>
+
+            <Typography component="h2">
+              Why AI Development
+            </Typography> 
+
+            <Box className="tl-grid-3">
+
+              {WHY_CARDS.map((card) => (
+                <Box
+                  className="tl-card"
+                  key={card.title}
                 >
-                  {step.number}
-                </Typography>
-                <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
-                  {step.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {step.description}
-                </Typography>
-              </Paper>
+
+                  <Typography component="h3">
+                    {card.title}
+                  </Typography>
+
+                  <Typography component="p">
+                    {card.body}
+                  </Typography>
+
+                </Box>
+              ))}
+
+            </Box>
+
+          </Container>
+        </Box>
+
+        {/* =====================================================
+            SERVICES
+        ===================================================== */}
+
+        <Box
+          component="section"
+          id="details"
+          className="tl-section"
+        >
+          <Container
+            className="tl-wrap"
+            maxWidth={false}
+            disableGutters
+          >
+
+            <div className="tl-eyebrow">
+              What&apos;s included
+            </div>
+
+            <Typography component="h2">
+              Inside ai development
+            </Typography>
+
+            {SERVICE_BLOCKS.map((service) => (
+              <Box
+                className="tl-service-block"
+                id={service.id}
+                key={service.id}
+              >
+
+                <Box className="tl-service-block-grid">
+
+                  <Box>
+
+                    <div className="tl-service-index">
+                      {service.index}
+                    </div>
+
+                    <Typography component="h3">
+                      {service.title}
+                    </Typography>
+
+                    <Typography component="p">
+                      {service.body}
+                    </Typography>
+
+                  </Box>
+
+                  <ul className="tl-bullet-grid">
+
+                    {service.bullets.map(
+                      (bullet) => (
+                        <li key={bullet}>
+                          {bullet}
+                        </li>
+                      )
+                    )}
+
+                  </ul>
+
+                </Box>
+
+              </Box>
             ))}
+
+          </Container>
+        </Box>
+
+        {/* =====================================================
+            TECHNOLOGIES
+        ===================================================== */}
+
+        <Box
+          component="section"
+          className="tl-tech-section"
+        >
+
+          {/* Heading */}
+
+          <Container
+            className="tl-tech-container"
+            maxWidth={false}
+            disableGutters
+          >
+
+        
+            <Typography component="h2">
+              What we build it with
+            </Typography>
+
+          </Container>
+
+          {/* FULL WIDTH MOVING ROW */}
+
+          <Box className="tl-tech-marquee">
+
+            <Box className="tl-tech-track">
+
+              {[
+                ...STACK,
+                ...STACK,
+              ].map(
+                (technology, index) => {
+
+                  const Icon =
+                    technology.icon;
+
+                  return (
+                    <div
+                      className="tl-tech-item"
+                      key={`${technology.name}-${index}`}
+                    >
+
+                      <Icon
+                        className="tl-tech-icon"
+                        style={{
+                          color:
+                            technology.color,
+                        }}
+                      />
+
+                      <span>
+                        {technology.name}
+                      </span>
+
+                    </div>
+                  );
+                }
+              )}
+
+            </Box>
+
           </Box>
-        </Container>
+
+        </Box>
+
+
+        {/* =====================================================
+            FAQ
+        ===================================================== */}
+
+        <Box
+          component="section"
+          className="tl-section-soft"
+        >
+
+          <Container
+            maxWidth={false}
+            disableGutters
+            className="tl-faq-container"
+          >
+
+            <div className="tl-eyebrow">
+              Q&amp;A
+            </div>
+
+            <Typography component="h2">
+              Questions about this service
+            </Typography>
+
+            <Box className="tl-faq-list">
+
+              {FAQS.map((faq) => (
+                <Accordion
+                  key={faq.q}
+                  className="tl-faq-accordion"
+                  expanded={
+                    openFaq === faq.q
+                  }
+                  onChange={(
+                    _,
+                    expanded
+                  ) => {
+                    setOpenFaq(
+                      expanded
+                        ? faq.q
+                        : false
+                    );
+                  }}
+                  disableGutters
+                >
+
+                  <AccordionSummary
+                    className="tl-faq-summary"
+                    expandIcon={
+                      openFaq === faq.q ? (
+                        <RemoveIcon
+                          className="tl-faq-icon"
+                        />
+                      ) : (
+                        <AddIcon
+                          className="tl-faq-icon"
+                        />
+                      )
+                    }
+                  >
+                    {faq.q}
+                  </AccordionSummary>
+
+                  <AccordionDetails
+                    className="tl-faq-details"
+                  >
+                    <p>
+                      {faq.a}
+                    </p>
+                  </AccordionDetails>
+
+                </Accordion>
+              ))}
+
+            </Box>
+
+          </Container>
+        </Box>
+
       </Box>
 
-      {/* Call to Action Section */}
-      <Container maxWidth="lg" sx={{ py: { xs: 8, md: 10 } }}>
-        <Paper
-          elevation={4}
-          sx={{
-            variant: 'outlined',
-            p: { xs: 4, md: 8 },
-            bgcolor: 'black',
-            color: '#1D620C',
-            borderRadius: 3,
-            textAlign: 'center'
-          }}
-        >
-          <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700 }}>
-            Ready to Build Your AI Solution?
-          </Typography>
-          <Typography variant="h6" sx={{ opacity: 0.9, maxWidth: '650px', mx: 'auto', mb: 4, fontWeight: 400 }}>
-            Let’s turn your vision into intelligent software. Book a discovery call with our AI engineering team today.
-          </Typography>
-          <Button
-            variant="contained"
-            size="large"
-            sx={{
-  backgroundColor: "#000000",
-  color: "#ffffff",
-  border: "1px solid #1D620C",
-  "&:hover": {
-    backgroundColor: "#000000",
-    borderColor: "#1D620C",
-  },
-}}
-          >
-            Get Started Now
-          </Button>
-        </Paper>
-      </Container>
-    </Box>
-    <Footer />
+      <Footer />
     </>
   );
 };
