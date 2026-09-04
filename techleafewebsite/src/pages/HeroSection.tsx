@@ -77,6 +77,7 @@ const HeroSection = () => {
           mt: 0,
           color: "#298911",
           fontWeight: 600,
+           fontFamily: '"DM Sans", sans-serif',
         }}
       >
         WHAT WE BUILD
@@ -89,6 +90,7 @@ const HeroSection = () => {
           mb: 4, // gap before cards
           fontSize: { xs: 32, sm: 36, md: 40 },
           lineHeight: 1.15,
+           fontFamily: '"DM Sans", sans-serif',
         }}
       >
         Three disciplines, one engineering pipeline.
@@ -144,6 +146,7 @@ const HeroSection = () => {
                     fontWeight: 700,
                     fontSize: { xs: "22px", sm: "24px" },
                     lineHeight: 1.3,
+                     fontFamily: '"DM Sans", sans-serif',
                   }}
                 >
                   {service.heading}
@@ -155,6 +158,7 @@ const HeroSection = () => {
                     color: "rgba(255,255,255,0.75)",
                     fontSize: "16px",
                     lineHeight: 1.6,
+                     fontFamily: '"DM Sans", sans-serif',
                     flexGrow: 1,
                   }}
                 >
@@ -182,6 +186,7 @@ const HeroSection = () => {
                     display: "inline-flex",
                     alignItems: "center",
                     justifyContent: "center",
+                     fontFamily: '"DM Sans", sans-serif',
                     gap: "8px",
 
                     // Hover effect
@@ -227,6 +232,8 @@ const HeroSection = () => {
     </Box>
   );
 };
+
+
 
 const methodologySteps: MethodologyStep[] = [
   {
@@ -370,6 +377,7 @@ const MethodologySection = () => {
           mt: 2,
           color: "#298911",
           fontWeight: 600,
+           fontFamily: '"DM Sans", sans-serif',
         }}
       >
         OUR METHODOLOGY
@@ -380,6 +388,7 @@ const MethodologySection = () => {
         sx={{
           mt: 2,
           fontSize: 40,
+           fontFamily: '"DM Sans", sans-serif',
         }}
       >
         The 5-step security-first lifecycle.
@@ -393,7 +402,8 @@ const MethodologySection = () => {
           color: "rgba(255,255,255,0.75)",
           fontSize: "18px",
           lineHeight: 1.6,
-        }}
+           fontFamily: '"DM Sans", sans-serif',
+              }}
       >
         A structured engineering process we run on every blockchain and AI
         engagement, designed to catch problems long before they reach
@@ -489,6 +499,7 @@ const MethodologySection = () => {
                     fontWeight: 700,
                     fontSize: "22px",
                     lineHeight: 1.2,
+                     fontFamily: '"DM Sans", sans-serif',
                   }}
                 >
                   {step.title}
@@ -500,6 +511,7 @@ const MethodologySection = () => {
                     color: "rgba(255,255,255,0.85)",
                     fontSize: "16px",
                     lineHeight: 1.6,
+                     fontFamily: '"DM Sans", sans-serif',
                   }}
                 >
                   {step.description}

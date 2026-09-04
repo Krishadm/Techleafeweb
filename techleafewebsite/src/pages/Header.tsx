@@ -66,18 +66,19 @@ const Header = () => {
   }, [expertiseOpen]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const navBtnBase = {
-    position: "relative" as const,
-    display: "flex",
-    alignItems: "center",
-    height: "20px",
-    lineHeight: "20px",
-    textTransform: "none" as const,
-    fontWeight: 500,
-    fontSize: 14,
-    borderRadius: 0,
-    backgroundColor: "transparent",
-    "&:hover": { backgroundColor: "transparent" },
-  };
+  position: "relative" as const,
+  display: "flex",
+  alignItems: "center",
+  height: "20px",
+  lineHeight: "20px",
+  textTransform: "none" as const,
+  fontWeight: 500,
+  fontSize: 14,
+  fontFamily: '"DM Sans", sans-serif',
+  borderRadius: 0,
+  backgroundColor: "transparent",
+  "&:hover": { backgroundColor: "transparent" },
+};
 
   return (
     <AppBar
@@ -130,6 +131,7 @@ const Header = () => {
                   transform: !expertiseOpen && location.pathname === "/" ? "scaleX(1)" : "scaleX(0)",
                   transformOrigin: "center",
                   transition: "transform 0.3s ease",
+                  
                 },
               }}
             >

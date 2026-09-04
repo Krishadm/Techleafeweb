@@ -38,13 +38,24 @@ const Footer: React.FC = () => {
         backgroundColor: "black",
         color: "#1D620C",
         mt: 1,
+        
       }}
     >
-      <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" 
+      sx={{
+         py: 4 ,
+          fontFamily: '"DM Sans", sans-serif',
+
+      }}>
         <Grid container spacing={3}>
           {/* Company */}
           <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-            <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+            <Typography variant="h5"
+             sx={{ 
+              fontWeight: 600,
+               mb: 2 ,
+               fontFamily: '"DM Sans", sans-serif',
+               }}>
               TechLeafe
             </Typography>
 
@@ -54,6 +65,7 @@ const Footer: React.FC = () => {
                 color: "#bdbdbd",
                 lineHeight: 1.8,
                 maxWidth: 350,
+                fontFamily: '"DM Sans", sans-serif',
               }}
             >
               We build modern, responsive and innovative digital solutions
@@ -121,7 +133,12 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <Grid size={{ xs: 12, sm: 6, md: 2 }}>
-            <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+            <Typography variant="h6"
+             sx={{
+               fontWeight: 600,
+                mb: 2 ,
+                fontFamily: '"DM Sans", sans-serif',
+                }}>
               Quick Links
             </Typography>
 
@@ -147,7 +164,11 @@ const Footer: React.FC = () => {
 
           {/* Expertise */}
           <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-            <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+            <Typography variant="h6" sx={{ 
+              fontWeight: 600, 
+              mb: 2 ,
+              fontFamily: '"DM Sans", sans-serif',
+              }}>
               Expertise
             </Typography>
 
@@ -173,7 +194,11 @@ const Footer: React.FC = () => {
 
           {/* Contact */}
           <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-            <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+            <Typography variant="h6" sx={{
+               fontWeight: 600,
+                mb: 2,
+                fontFamily: '"DM Sans", sans-serif',
+                 }}>
               Contact Us
             </Typography>
 
@@ -181,17 +206,25 @@ const Footer: React.FC = () => {
               variant="body2"
               sx={{ color: "#bdbdbd", mb: 1.5 }}
             >
-              <LocationOnIcon sx={{ fontSize: "1.1rem", verticalAlign: "middle", mr: 0.5 }} />
+              <LocationOnIcon sx={{ 
+                fontSize: "1.1rem",
+                 verticalAlign: "middle",
+                  mr: 0.5 ,
+                   fontFamily: '"DM Sans", sans-serif',
+                  }} />
               100 Feet Road, Selaiyur, Tambaram, Chennai – 600073
             </Typography>
 
             <Typography
               variant="body2"
-              sx={{ color: "#bdbdbd", mb: 1.5 }}
+              sx={{ color: "#bdbdbd",
+                 mb: 1.5 ,
+                fontFamily: '"DM Sans", sans-serif',
+                }}
             >
               📧 support@techleafe.com
             </Typography>
-            <Typography variant="body2" sx={{ color: "#bdbdbd" }}>
+            <Typography variant="body2" sx={{ color: "#bdbdbd",fontFamily: '"DM Sans", sans-serif', }}>
               📞 +91 93459 55510
             </Typography>
           </Grid>
@@ -211,17 +244,17 @@ const Footer: React.FC = () => {
         >
           <Typography
             variant="body2"
-            sx={{ color: "#999", textAlign: "center" }}
+            sx={{ color: "#999", textAlign: "center",fontFamily: '"DM Sans", sans-serif',}}
           >
             © {new Date().getFullYear()} TechLeafe. All rights reserved.
           </Typography>
 
           <Box sx={{ display: "flex", gap: 3 }}>
-            <Typography variant="body2" sx={{ color: "#999" }}>
+            <Typography variant="body2" sx={{ color: "#999",fontFamily: '"DM Sans", sans-serif', }}>
               Privacy Policy
             </Typography>
 
-            <Typography variant="body2" sx={{ color: "#999" }}>
+            <Typography variant="body2" sx={{ color: "#999",fontFamily: '"DM Sans", sans-serif', }}>
               Terms & Conditions
             </Typography>
           </Box>

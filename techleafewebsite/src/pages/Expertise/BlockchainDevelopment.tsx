@@ -27,7 +27,7 @@ import {
   SiReact,
 } from "react-icons/si";
 
-import AppImage from "../assets/blockchain-hero.png";
+import AppImage from "../../assets/blockchain-hero.png";
 import Footer from "../../component/Footer";
 
 const WHY_CARDS = [
