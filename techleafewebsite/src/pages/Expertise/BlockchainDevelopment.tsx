@@ -779,9 +779,7 @@ const pageStyles = `
     padding: 72px 0;
   }
 
-  .tl-section-soft {
-    padding-top: 72px;
-  }
+
 
   .tl-section h2,
   .tl-section-soft h2 {
