@@ -8,15 +8,14 @@ import PortfolioPage from "../pages/PortfolioPage";
 
 import BlockchainDevelopment from "../pages/Expertise/BlockchainDevelopment";
 
-// import Blog from "../pages/Blog";
-// import BlogDetail from "../pages/BlogDetail";
+
 import NotFoundPage from "../pages/Filenotfound";
 // import Footer from "../component/Footer";
 import AIDevelopmentServices from "../pages/Expertise/AIDevelopmentServices";
 import MainLayout from "../layouts/MainLayout";
 import AppDevelopmentPage from "../pages/Expertise/WebAppDevelopment";
-// import BlogDetail from "../pages/BlogDetail";
-// import Blog from "../pages/Blog";
+import BlogDetail from "../pages/BlogDetail";
+import Blog from "../pages/Blog";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -46,6 +45,16 @@ export const router = createBrowserRouter([
         path: "services/:slug",
         element: <ServiceDetailPage />,
       },
+      {
+        path: "blog",
+        element: <Blog />,
+      },
+      {
+        path: "blog/:slug",
+        element: <BlogDetail />,
+      },
+      
+      
       {
         path: "contact",
         element: <ContactPage />,

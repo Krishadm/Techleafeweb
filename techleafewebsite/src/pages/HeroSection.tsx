@@ -10,6 +10,7 @@ import type {
   KeyboardEvent,
   MouseEvent as ReactMouseEvent,
 } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -22,64 +23,56 @@ import {
   useTheme,
 } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import ViewInArOutlinedIcon from "@mui/icons-material/ViewInArOutlined";
+import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
+import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
-      number: "",
+      key: "blockchain",
       title: "Blockchain",
       heading: "Decentralized Apps, Smart Contracts & Web3",
       description:
         "Build secure, audit-ready decentralized ecosystems. From EVM and Solana smart contracts to custom dApps, DeFi platforms, and tokenomics design, we deliver transparent Web3 infrastructure built for transactional security and scale.",
-      features: [
-        "Solidity & Rust smart contract audits",
-        "DApp front-ends with subgraph indexing",
-        "Non-custodial wallets & account abstraction",
-      ],
-      buttonText: "View Blockchain Development",
+      icon: <ViewInArOutlinedIcon sx={{ fontSize: { xs: 34, sm: 40 } }} />,
+      path: "/expertise/blockchain-development",
     },
     {
-      number: "",
+      key: "ai",
       title: "AI",
       heading: "Custom Enterprise AI & LLM Solutions",
       description:
         "Unlock the power of your internal business data with zero data leakage. We design production-ready Retrieval-Augmented Generation (RAG) pipelines, autonomous AI agents, and private open-source LLM fine-tuning to automate complex corporate workflows.",
-      features: [
-        "Grounded, source-attributed RAG chatbots",
-        "Multi-agent workflow automation",
-        "Private fine-tuned LLMs, hosted in your cloud",
-      ],
-      buttonText: "View AI Solutions",
+      icon: <PsychologyOutlinedIcon sx={{ fontSize: { xs: 34, sm: 40 } }} />,
+      path: "/expertise/AIDevelopmentServices",
     },
     {
-      number: "",
+      key: "app",
       title: "App",
       heading: "Full-Stack Web Engineering & Mobile Apps",
       description:
         "Turn your ideas into fast, intuitive software. We develop cross-platform iOS & Android applications and cloud-native full-stack web platforms engineered for low latency and a seamless user experience.",
-      features: [
-        "Flutter & React Native mobile apps",
-        "Next.js, Node.js full-stack web platforms",
-        "UI/UX, e-commerce, SEO, and ongoing support",
-      ],
-      buttonText: "View App Development",
+      icon: <PhoneIphoneOutlinedIcon sx={{ fontSize: { xs: 34, sm: 40 } }} />,
+      path: "/expertise/appdevelopment",
     },
   ];
 
   return (
     <Box
-    sx={{
-      bgcolor: "#000",
-      color: "#fff",
-      pt:3,
-      pb:6,
-      width: "100%",
-      maxWidth: "1600px",
-      px: { xs: 2, sm: 4, md: 11 },
-      boxSizing: "border-box",
-    }}
-  >
-
+      sx={{
+        bgcolor: "#000",
+        color: "#fff",
+        pt: 3,
+        pb: 6,
+        width: "100%",
+        maxWidth: "1600px",
+        px: { xs: 2, sm: 4, md: 11 },
+        boxSizing: "border-box",
+      }}
+    >
       {/* Heading */}
       <Typography
         sx={{
@@ -87,15 +80,6 @@ const HeroSection = () => {
           color: "#298911",
           fontWeight: 600,
 
-          "&::before": {
-            content: '""',
-            display: "inline-block",
-            width: "7px",
-            height: "7px",
-            backgroundColor: "red",
-            marginRight: "6px",
-            verticalAlign: "middle",
-          },
         }}
       >
         WHAT WE BUILD
@@ -106,8 +90,8 @@ const HeroSection = () => {
         sx={{
           mt: 1.5,
           mb: 4, // gap before cards
-          fontSize:{xs:32,sm:36,md:40},
-          lineHeight:1.15,
+          fontSize: { xs: 32, sm: 36, md: 40 },
+          lineHeight: 1.15,
         }}
       >
         Three disciplines, one engineering pipeline.
@@ -116,21 +100,21 @@ const HeroSection = () => {
       {/* Grid starts here */}
       <Grid container spacing={4}>
         {services.map((service) => (
-          <Grid size={{ xs: 12, md: 6, lg: 4 }} key={service.number}>
+          <Grid size={{ xs: 12, md: 6, lg: 4 }} key={service.key}>
             <Card
               sx={{
-                backgroundColor: "#061F03",
+                backgroundColor: "#000000",
                 border: "1px solid #178B0B",
                 borderRadius: "20px",
                 color: "#fff",
                 height: "100%",
-                 // Hover effect
-    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                // Hover effect
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
 
-    "&:hover": {
-      transform: "scale(1.03)",
-      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
-    },
+                "&:hover": {
+                  transform: "scale(1.03)",
+                  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+                },
               }}
             >
               <CardContent
@@ -139,25 +123,30 @@ const HeroSection = () => {
                   display: "flex",
                   flexDirection: "column",
                   boxSizing: "border-box",
+                  p: { xs: 3, sm: 4 },
                 }}
               >
-                <Typography
+                {/* Icon */}
+                <Box
                   sx={{
-                    color: "#ffffff",
-                    fontSize: "14px",
-                    fontWeight: 500,
+                    color: "#20A914",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    mb: 2,
                   }}
+                  aria-hidden="true"
                 >
-                 {service.number ? `${service.number} — ` : ""}{service.title}
-                </Typography>
+                  {service.icon}
+                </Box>
 
                 <Typography
                   variant="h5"
                   sx={{
-                    mt: 2,
-                    color: "#1d620c",
-                    fontWeight: 600,
-                    lineHeight: 1.5,
+                    color: "#ffffff",
+                    fontWeight: 700,
+                    fontSize: { xs: "22px", sm: "24px" },
+                    lineHeight: 1.3,
                   }}
                 >
                   {service.heading}
@@ -166,99 +155,71 @@ const HeroSection = () => {
                 <Typography
                   sx={{
                     mt: 2,
-                    color: "#ffffff",
-                    fontSize: "18px",
-                    lineHeight: 1.5,
-                    fontFamily:"IStok Web",
-
+                    color: "rgba(255,255,255,0.75)",
+                    fontSize: "16px",
+                    lineHeight: 1.6,
+                    fontFamily: "IStok Web",
+                    flexGrow: 1,
                   }}
                 >
                   {service.description}
                 </Typography>
 
-                <Box
+                {/* Explore More button */}
+                <Button
+                  onClick={() => navigate(service.path)}
+                  variant="contained"
+                  aria-label={`Explore more about ${service.title}`}
                   sx={{
-                    height: "120px",
+                    mt: 3,
+                    alignSelf: "flex-start",
+                    width: { xs: "100%", sm: "auto" },
+                    minWidth: 0,
+                    borderRadius: "30px",
+                    textTransform: "capitalize",
+                    backgroundColor: "#0e5e03",
+                    color: "#fff",
+                    fontSize: { xs: "14px", sm: "15px" },
+                    fontWeight: 600,
+                    px: 3,
+                    py: 1,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+
+                    // Hover effect
+                    transition:
+                      "transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease",
+
+                    "&:hover": {
+                      backgroundColor: "#178B0B",
+                      transform: "scale(1.03)",
+                      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+                    },
+                    "&:focus-visible": {
+                      outline: "2px solid #20A914",
+                      outlineOffset: "2px",
+                    },
                   }}
                 >
-                  <Box
-                    component="ul"
-                    sx={{
-                      mt: 2,
-                      pl: 2,
-                      color: "#fff",
-                     
+                  <Box component="span">Explore More</Box>
 
+                  <Box
+                    component="span"
+                    sx={{
+                      flexShrink: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      fontSize: { xs: "18px", sm: "20px" },
+                      lineHeight: 1,
+                      position: "relative",
+                      top: "-1px",
                     }}
                   >
-                    {service.features?.map((feature, index) => (
-                      <li key={index}>
-                        <Typography
-                          sx={{
-                            color: "#fff",
-                            fontSize: "16px",
-                            fontFamily:"IStok Web",
-                          }}
-                        >
-                          {feature}
-                        </Typography>
-                      </li>
-                    ))}
+                    →
                   </Box>
-                </Box>
-                {/* Button goes here */}
-            <Button
-  variant="contained"
-  sx={{
-    mt: "auto",
-    width: "100%",
-    minWidth: 0,
-    borderRadius: "30px",
-    textTransform: "capitalize",
-    backgroundColor: "#0e5e03",
-    color: "#fff",
-    fontSize: { xs: "14px", sm: "15px" },
-    px: { xs: 1.5, sm: 2 },
-    py: 1,
-
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: { xs: "6px", sm: "10px" },
-
-     // Hover effect
-    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-
-    "&:hover": {
-      transform: "scale(1.03)",
-      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
-    },
-  }}
->
-  <Box
-    component="span"
-    sx={{
-      textAlign: "center",
-    }}
-  >
-    {service.buttonText}
-  </Box>
-
-  <Box
-    component="span"
-    sx={{
-      flexShrink: 0,
-      display: "flex",
-      alignItems: "center",
-      fontSize: { xs: "20px", sm: "24px" },
-      lineHeight: 1,
-      position: "relative",
-      top: "-1px",
-    }}
-  >
-    →
-  </Box>
-</Button>
+                </Button>
               </CardContent>
             </Card>
           </Grid>
@@ -271,19 +232,7 @@ const HeroSection = () => {
   );
 };
 
-/* -------------------------------------------------------------------------- */
-/* Our Methodology — center-mode ("coverflow") carousel                       */
-/* Active card sits full-size and fully opaque in front, overlapping the      */
-/* prev/next cards which sit behind it, scaled down and faded.                */
-/*                                                                            */
-/* IMPORTANT: we track an *unbounded* virtual `position` (rather than a       */
-/* modulo-wrapped index) and key each rendered slot by its virtual index.     */
-/* That guarantees every click only ever shifts each visible card by exactly */
-/* one slot, in the direction clicked - so left and right always animate     */
-/* identically instead of one direction occasionally "teleporting" a card    */
-/* across the whole stage when the real index wraps from 0 to length-1 (or   */
-/* vice versa).                                                              */
-/* -------------------------------------------------------------------------- */
+
 
 interface MethodologyStep {
   number: string;
@@ -333,8 +282,8 @@ const MethodologySection = () => {
   const isSm = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600-900
 
   // Card + layout sizing per breakpoint
-const cardWidth = isXs ? 270 : isSm ? 300 : 340;
-const cardHeight = isXs ? 240 : isSm ? 260 : 240;
+  const cardWidth = isXs ? 270 : isSm ? 300 : 340;
+  const cardHeight = isXs ? 240 : isSm ? 260 : 240;
   // Symmetric "coverflow" stack: the active card sits centered and full
   // size, with cards peeking on BOTH sides, shrinking/fading with distance -
   // matching the reference (active card + 2 receding cards on each side).
@@ -449,26 +398,19 @@ const cardHeight = isXs ? 240 : isSm ? 260 : 240;
           mt: 2,
           color: "#298911",
           fontWeight: 600,
-          "&::before": {
-            content: '""',
-            display: "inline-block",
-            width: "7px",
-            height: "7px",
-            backgroundColor: "red",
-            marginRight: "6px",
-            verticalAlign: "middle",
-          },
+          
         }}
       >
         OUR METHODOLOGY
       </Typography>
 
-      <Typography variant="h3"
-       sx={{
-         mt: 2,
-         fontSize:40,
-         }}
-       >
+      <Typography
+        variant="h3"
+        sx={{
+          mt: 2,
+          fontSize: 40,
+        }}
+      >
         The 5-step security-first lifecycle.
       </Typography>
 
@@ -480,7 +422,7 @@ const cardHeight = isXs ? 240 : isSm ? 260 : 240;
           color: "rgba(255,255,255,0.75)",
           fontSize: "18px",
           lineHeight: 1.6,
-          fontFamily:"IStok Web",
+          fontFamily: "IStok Web",
         }}
       >
         A structured engineering process we run on every blockchain and AI
@@ -554,8 +496,7 @@ const cardHeight = isXs ? 240 : isSm ? 260 : 240;
                   width: cardWidth,
                   height: cardHeight,
                   transform: `translate(calc(-50% + ${offsetPx}px), -50%) scale(${scale})`,
-                  transition:
-                    "transform 0.45s ease, opacity 0.45s ease",
+                  transition: "transform 0.45s ease, opacity 0.45s ease",
                   opacity,
                   zIndex: 10 - distance,
                   cursor: isActive ? "grab" : "pointer",
@@ -585,7 +526,7 @@ const cardHeight = isXs ? 240 : isSm ? 260 : 240;
                     fontWeight: 700,
                     fontSize: "22px",
                     lineHeight: 1.2,
-                    fontFamily:"IStok Web",
+                    fontFamily: "IStok Web",
                   }}
                 >
                   {step.title}
@@ -597,7 +538,7 @@ const cardHeight = isXs ? 240 : isSm ? 260 : 240;
                     color: "rgba(255,255,255,0.85)",
                     fontSize: "16px",
                     lineHeight: 1.6,
-                    fontFamily:"IStok Web",
+                    fontFamily: "IStok Web",
                   }}
                 >
                   {step.description}
@@ -608,54 +549,59 @@ const cardHeight = isXs ? 240 : isSm ? 260 : 240;
         </Box>
 
         {/* Arrow controls */}
-        <IconButton
-          onClick={goPrev}
-          aria-label="Previous methodology step"
-          sx={{
-            position: "absolute",
-            left: { xs: 4, md: 12 },
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 4,
-            backgroundColor: "#0B3306",
-            border: "1px solid #178B0B",
-            color: "#fff",
-            width: 40,
-            height: 40,
-            "&:hover": { backgroundColor: "#178B0B" },
-          }}
-        >
-          <PlayArrowIcon
+       <IconButton
+  onClick={goPrev}
+  aria-label="Previous methodology step"
   sx={{
-    transform: "rotate(180deg)",
-    fontSize: 24,
+    display: { xs: "none", md: "flex" },
+    position: "absolute",
+    left: 12,
+    top: "50%",
+    transform: "translateY(-50%)",
+    zIndex: 4,
+    backgroundColor: "#0B3306",
+    border: "1px solid #178B0B",
+    color: "#fff",
+    width: 40,
+    height: 40,
+    "&:hover": {
+      backgroundColor: "#178B0B",
+    },
   }}
-/>
-
+>
+          <PlayArrowIcon
+            sx={{
+              transform: "rotate(180deg)",
+              fontSize: 24,
+            }}
+          />
         </IconButton>
 
         <IconButton
-          onClick={goNext}
-          aria-label="Next methodology step"
-          sx={{
-            position: "absolute",
-            right: { xs: 4, md: 12 },
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 4,
-            backgroundColor: "#0B3306",
-            border: "1px solid #178B0B",
-            color: "#fff",
-            width: 40,
-            height: 40,
-            "&:hover": { backgroundColor: "#178B0B" },
-          }}
-        >
-          <PlayArrowIcon
+  onClick={goNext}
+  aria-label="Next methodology step"
   sx={{
-    fontSize: 24,
+    display: { xs: "none", md: "flex" },
+    position: "absolute",
+    right: 12,
+    top: "50%",
+    transform: "translateY(-50%)",
+    zIndex: 4,
+    backgroundColor: "#0B3306",
+    border: "1px solid #178B0B",
+    color: "#fff",
+    width: 40,
+    height: 40,
+    "&:hover": {
+      backgroundColor: "#178B0B",
+    },
   }}
-/>
+>
+          <PlayArrowIcon
+            sx={{
+              fontSize: 24,
+            }}
+          />
         </IconButton>
       </Box>
 
