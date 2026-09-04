@@ -13,19 +13,15 @@ import {
 
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-
-import {
-  SiFlutter,
-  SiReact,
-  SiTypescript,
-  SiSolidity,
-  SiRuby,
-  SiAndroid,
-  SiExpress,
-  SiNodedotjs,
-  SiPostgresql,
-  SiGithub,
-} from "react-icons/si";
+import CodeIcon from "@mui/icons-material/Code";
+import DataObjectIcon from "@mui/icons-material/DataObject";
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
+import AndroidIcon from "@mui/icons-material/Android";
+import ApiIcon from "@mui/icons-material/Api";
+import DnsIcon from "@mui/icons-material/Dns";
+import StorageIcon from "@mui/icons-material/Storage";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 import AppImage from "../../assets/App Development.png";
 import Footer from "../../component/Footer";
@@ -176,52 +172,52 @@ interface Technology {
 const STACK: Technology[] = [
   {
     name: "Flutter",
-    icon: SiFlutter,
+    icon: CodeIcon,
     color: "#02569B",
   },
   {
     name: "React Native",
-    icon: SiReact,
+    icon: PhoneIphoneIcon,
     color: "#61DAFB",
   },
   {
     name: "TypeScript",
-    icon: SiTypescript,
+    icon: DataObjectIcon,
     color: "#3178C6",
   },
   {
     name: "Solidity",
-    icon: SiSolidity,
+    icon: AccountBalanceWalletIcon,
     color: "#8C8C8C",
   },
   {
     name: "Ruby",
-    icon: SiRuby,
+    icon: CodeIcon,
     color: "#CC342D",
   },
   {
     name: "Android",
-    icon: SiAndroid,
+    icon: AndroidIcon,
     color: "#3DDC84",
   },
   {
     name: "Express.js",
-    icon: SiExpress,
+    icon: ApiIcon,
     color: "#FFFFFF",
   },
   {
     name: "Node.js",
-    icon: SiNodedotjs,
+    icon: DnsIcon,
     color: "#339933",
   },
   {
     name: "PostgreSQL",
-    icon: SiPostgresql,
+    icon: StorageIcon,
     color: "#4169E1",
   },
   {
     name: "Git/GitHub",
-    icon: SiGithub,
+    icon: GitHubIcon,
     color: "#FFFFFF",
   },
 ];

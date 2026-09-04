@@ -12,20 +12,14 @@ import {
 
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-
-import {
-  SiEthereum,
-  SiPolygon,
-  SiSolidity,
-  SiRuby,
-  SiTypescript,
-  SiSolana,
-  SiIpfs,
-  SiGraphql,
-  SiChainlink,
-  SiNodedotjs,
-  SiReact,
-} from "react-icons/si";
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+import LayersIcon from "@mui/icons-material/Layers";
+import CodeIcon from "@mui/icons-material/Code";
+import DataObjectIcon from "@mui/icons-material/DataObject";
+import HubIcon from "@mui/icons-material/Hub";
+import StorageIcon from "@mui/icons-material/Storage";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import DnsIcon from "@mui/icons-material/Dns";
 
 import AppImage from "../../assets/blockchain-hero.png";
 import Footer from "../../component/Footer";
@@ -116,72 +110,72 @@ interface Technology {
 const STACK: Technology[] = [
   {
     name: "Ethereum",
-    icon: SiEthereum,
+    icon: AccountBalanceWalletIcon,
     color: "#627EEA",
   },
   {
     name: "Polygon",
-    icon: SiPolygon,
+    icon: LayersIcon,
     color: "#8247E5",
   },
   {
     name: "Solidity",
-    icon: SiSolidity,
+    icon: CodeIcon,
     color: "#8C8C8C",
   },
   {
     name: "Ruby",
-    icon: SiRuby,
+    icon: CodeIcon,
     color: "#CC342D",
   },
   {
     name: "TypeScript",
-    icon: SiTypescript,
+    icon: DataObjectIcon,
     color: "#3178C6",
   },
   {
     name: "Arbitrum",
-    icon: SiEthereum,
+    icon: AccountBalanceWalletIcon,
     color: "#28A0F0",
   },
   {
     name: "Solana (Rust)",
-    icon: SiSolana,
+    icon: HubIcon,
     color: "#9945FF",
   },
   {
     name: "Hardhat / Foundry",
-    icon: SiSolidity,
+    icon: CodeIcon,
     color: "#F7C948",
   },
   {
     name: "Ethers.js / Web3.js",
-    icon: SiEthereum,
+    icon: AccountBalanceWalletIcon,
     color: "#627EEA",
   },
   {
     name: "IPFS & Pinata",
-    icon: SiIpfs,
+    icon: StorageIcon,
     color: "#65C2CB",
   },
   {
     name: "The Graph",
-    icon: SiGraphql,
+    icon: AccountTreeIcon,
     color: "#E10098",
   },
   {
     name: "Chainlink Oracles",
-    icon: SiChainlink,
+    icon: HubIcon,
     color: "#375BD2",
   },
   {
     name: "Node.js",
-    icon: SiNodedotjs,
+    icon: DnsIcon,
     color: "#339933",
   },
   {
     name: "React / Next.js",
-    icon: SiReact,
+    icon: CodeIcon,
     color: "#61DAFB",
   },
 ];
