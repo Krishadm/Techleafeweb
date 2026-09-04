@@ -1283,7 +1283,7 @@ const pageStyles = `
     }
 
     .tl-metrics-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr;   
 
       gap: 14px;
 
