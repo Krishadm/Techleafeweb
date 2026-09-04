@@ -19,8 +19,6 @@ export type BlogPost = {
   image: string;
   sections: BlogSection[];
   conclusion?: string;
-  companyText?: string;
-  cta?: string;
 };
 
 export const blogPosts: BlogPost[] = [
@@ -111,11 +109,6 @@ export const blogPosts: BlogPost[] = [
 
     conclusion:
       "Blockchain has the potential to transform how businesses manage digital transactions and information. By providing new approaches to transparency, security, and traceability, it can help organizations build innovative digital solutions.",
-
-    companyText:
-      "At Tech Leafe Technologies, we help businesses explore modern technologies and develop solutions based on their specific requirements.",
-
-    cta: "Have a blockchain idea? Let's build your digital solution together.",
   },
 
   {
@@ -172,11 +165,6 @@ export const blogPosts: BlogPost[] = [
 
     conclusion:
       "Artificial Intelligence is no longer only a futuristic concept — it is becoming a practical technology for businesses across different industries.",
-
-    companyText:
-      "At Tech Leafe Technologies, we help businesses explore AI-powered solutions that can improve efficiency, customer experiences, and digital operations.",
-
-    cta: "Ready to explore AI for your business? Let's build something smarter together.",
   },
 
   {
@@ -263,11 +251,6 @@ export const blogPosts: BlogPost[] = [
 
     conclusion:
       "A website is more than an online business card — it can become an important part of your marketing, sales, customer-service, and brand-building strategy.",
-
-    companyText:
-      "At Tech Leafe Technologies, we create modern digital solutions designed around business goals and customer needs.",
-
-    cta: "Need a professional website for your business? Let's build your digital presence together.",
   },
 
   {
@@ -330,11 +313,6 @@ export const blogPosts: BlogPost[] = [
 
     conclusion:
       "Smart contract security isn't a single checkbox — it's a process applied consistently, project after project. Asking about that process before a contract reaches mainnet is far cheaper than dealing with the consequences after.",
-
-    companyText:
-      "At Tech Leafe Technologies, every contract we ship goes through this kind of layered review before deployment.",
-
-    cta: "Have a contract that needs a security review? Let's talk before it reaches mainnet.",
   },
 
   {
@@ -387,10 +365,5 @@ export const blogPosts: BlogPost[] = [
 
     conclusion:
       "Neither framework is the wrong choice in the abstract — the deciding factors are almost always about your team and your specific app, not the framework itself.",
-
-    companyText:
-      "At Tech Leafe Technologies, we build in both and will recommend the one that actually fits your project, not just the one we'd rather use.",
-
-    cta: "Not sure which framework fits your app? Let's talk through your requirements.",
   },
 ];
