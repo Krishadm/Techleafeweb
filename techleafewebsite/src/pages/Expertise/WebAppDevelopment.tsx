@@ -1412,17 +1412,7 @@ const AppDevelopmentPage: React.FC = () => {
               separator="/"
             >
 
-              <a href="/">
-                Home
-              </a>
-
-              <a href="/services">
-                Services
-              </a>
-
-              <span className="tl-breadcrumb-current">
-                App Development
-              </span>
+             
 
             </Breadcrumbs>
 
