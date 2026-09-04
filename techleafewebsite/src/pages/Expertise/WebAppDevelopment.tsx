@@ -4,7 +4,6 @@ import {
   Box,
   Container,
   Typography,
-  Button,
   Breadcrumbs,
   Accordion,
   AccordionSummary,
@@ -26,32 +25,6 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import AppImage from "../../assets/App Development.png";
 import Footer from "../../component/Footer";
 
-/* DATA */
-
-const METRICS = [
-  {
-    value: "99.9%",
-    number: 99.9,
-    suffix: "%",
-    decimals: 1,
-    label: "Uptime & reliability",
-  },
-  {
-    value: "<100ms",
-    number: 100,
-    prefix: "<",
-    suffix: "ms",
-    decimals: 0,
-    label: "Average API latency",
-  },
-  {
-    value: "100/100",
-    number: 100,
-    suffix: "/100",
-    decimals: 0,
-    label: "Lighthouse performance target",
-  },
-];
 
 const WHY_CARDS = [
   {
@@ -523,9 +496,8 @@ const pageStyles = `
   ========================================================= */
 
   .tl-hero {
-    padding-bottom: 56px;
+    padding-bottom: 24px;
 
-    border-bottom: 1px solid var(--tl-accent);
   }
 
   .tl-hero-grid {
@@ -555,6 +527,7 @@ const pageStyles = `
     font-weight: 600;
 
     line-height: 1.4;
+    text-transform: uppercase;
   }
 
   .tl-hero h1 {
@@ -635,295 +608,22 @@ const pageStyles = `
       0 20px 50px rgba(29, 98, 12, 0.25);
   }
 
-  /* =========================================================
-     BUTTONS
-  ========================================================= */
-
-  .tl-hero-actions {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 16px;
-
-    animation:
-      tlFadeUp 0.8s ease 0.3s both;
-  }
-
-  .tl-btn-primary,
-  .tl-btn-ghost {
-    min-height: 46px;
-
-    padding: 12px 24px !important;
-
-    border-radius: 999px !important;
-
-    text-transform: none !important;
-
-    font-weight: 600 !important;
-
-    display: inline-flex !important;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
-
-    transition:
-      transform 0.3s ease,
-      background-color 0.3s ease,
-      border-color 0.3s ease,
-      color 0.3s ease,
-      box-shadow 0.3s ease !important;
-  }
-
-  .tl-btn-primary {
-    color: #ffffff !important;
-
-    background:
-      var(--tl-accent) !important;
-  }
-
-  .tl-btn-primary:hover {
-    transform: translateY(-4px);
-
-    background: #24790f !important;
-
-    box-shadow:
-      0 10px 25px rgba(29, 98, 12, 0.3);
-  }
-
-  .tl-btn-ghost {
-    color: var(--tl-fg) !important;
-
-    background: transparent !important;
-
-    border:
-      1px solid #333333 !important;
-  }
-
-  .tl-btn-ghost:hover {
-    transform: translateY(-4px);
-
-    color: var(--tl-accent-light) !important;
-
-    border-color:
-      var(--tl-accent-light) !important;
-  }
-
-  .arrow-cta {
-    display: inline-flex;
-
-    align-items: center;
-
-    transition:
-      transform 0.3s ease;
-  }
-
-  .tl-btn-primary:hover .arrow-cta,
-  .tl-btn-ghost:hover .arrow-cta {
-    transform: translateX(5px);
-  }
-
-  /* =========================================================
-     METRICS
-  ========================================================= */
-
-  .tl-metrics-grid {
-    display: grid;
-
-    grid-template-columns:
-      repeat(3, 1fr);
-
-    gap: 24px;
-
-    margin-top: 56px;
-  }
-
-  .tl-metric-card {
-    position: relative;
-
-    min-width: 0;
-
-    min-height: 80px;
-
-    padding: 24px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    overflow: hidden;
-
-    background:
-      linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0.035),
-        rgba(255, 255, 255, 0.01)
-      );
-
-    border:
-      1px solid var(--tl-border);
-
-    border-radius: 16px;
-
-    transition:
-      transform 0.35s ease,
-      border-color 0.35s ease,
-      box-shadow 0.35s ease;
-  }
-
-  .tl-metric-card:nth-child(1) {
-    animation:
-      tlFadeUp 0.6s ease 0.15s both;
-  }
-
-  .tl-metric-card:nth-child(2) {
-    animation:
-      tlFadeUp 0.6s ease 0.3s both;
-  }
-
-  .tl-metric-card:nth-child(3) {
-    animation:
-      tlFadeUp 0.6s ease 0.45s both;
-  }
-
-  .tl-metric-card::before {
-    content: "";
-
-    position: absolute;
-
-    width: 120px;
-
-    height: 120px;
-
-    top: -70px;
-
-    right: -60px;
-
-    border-radius: 50%;
-
-    background:
-      rgba(53, 165, 28, 0.08);
-
-    filter: blur(10px);
-
-    transition:
-      transform 0.5s ease,
-      opacity 0.5s ease;
-  }
-
-  .tl-metric-card:hover::before {
-    transform: scale(2);
-
-    opacity: 0.8;
-  }
-
-  .tl-metric-card::after {
-    content: "";
-
-    position: absolute;
-
-    right: 15%;
-
-    bottom: 0;
-
-    left: 15%;
-
-    height: 2px;
-
-    background:
-      var(--tl-accent-light);
-
-    transform: scaleX(0);
-
-    transition:
-      transform 0.35s ease;
-  }
-
-  .tl-metric-card:hover {
-    transform: translateY(-8px);
-
-    border-color:
-      var(--tl-accent-light);
-  }
-
-  .tl-metric-card:hover::after {
-    transform: scaleX(1);
-  }
-
-  .tl-mn {
-    position: relative;
-
-    z-index: 1;
-
-    margin-bottom: 12px;
-
-    color:
-      var(--tl-accent-light);
-
-    font-size:
-      clamp(27px, 3vw, 34px);
-
-    font-weight: 800;
-
-    line-height: 1;
-
-    letter-spacing: -0.5px;
-
-    animation:
-      tlNumberGlow 2s ease-in-out;
-
-    transition:
-      transform 0.3s ease,
-      color 0.3s ease;
-  }
-
-  .tl-metric-card:hover .tl-mn {
-    color: #ffffff;
-
-    transform: scale(1.06);
-  }
-
-  .tl-ml {
-    position: relative;
-
-    z-index: 1;
-
-    color:
-      var(--tl-muted);
-
-    font-size: 13px;
-
-    line-height: 1.4;
-
-    text-align: center;
-  }
 
   /* =========================================================
      SECTIONS
   ========================================================= */
 
   .tl-section {
-    padding: 72px 0;
+    padding: 40px 0;
   }
 
   .tl-section-soft {
-    padding: 72px 0;
+   padding: 32px 0 32px; 
 
     background:
       var(--tl-bg-soft);
 
-    border-top:
-      1px solid rgba(29, 98, 12, 0.35);
-
-    border-bottom:
-      1px solid rgba(29, 98, 12, 0.35);
+  
   }
 
   .tl-section h2,
@@ -1214,9 +914,6 @@ const pageStyles = `
     padding: 0 24px;
   }
 
-  // .tl-tech-section .tl-eyebrow {
-  //   margin-bottom: 14px;
-  // }
 
   .tl-tech-section h2 {
      text-align : center;  
@@ -1428,6 +1125,9 @@ const pageStyles = `
   /* =========================================================
      FAQ
   ========================================================= */
+   .tl-section-soft {
+  background-color: #000000;;
+    }
 
   .tl-faq-container {
     width: 100%;
@@ -1437,6 +1137,7 @@ const pageStyles = `
     margin: 0 auto;
 
     padding: 0 24px;
+    
   }
 
   .tl-faq-list {
@@ -1566,11 +1267,11 @@ const pageStyles = `
       order: 2;
     }
 
-    .tl-hero-actions {
-      width: 100%;
+    // .tl-hero-actions {
+    //   width: 100%;
 
-      flex-direction: column;
-    }
+    //   flex-direction: column;
+    // }
 
     .tl-btn-primary,
     .tl-btn-ghost {
@@ -1578,7 +1279,7 @@ const pageStyles = `
     }
 
     .tl-metrics-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr;   
 
       gap: 14px;
 
@@ -1587,7 +1288,7 @@ const pageStyles = `
 
     .tl-section,
     .tl-section-soft {
-      padding: 52px 0;
+      padding: 32px 0;
     }
 
     .tl-service-block-grid {
@@ -1968,7 +1669,7 @@ const AppDevelopmentPage: React.FC = () => {
               <Box>
 
                 <div className="tl-eyebrow">
-                  Extension of our core — mobile-first delivery
+                  EXTENSION OF OUR CORE — MOBILE-FIRST DELIVERY
                 </div>
 
                 <Typography component="h1">
@@ -1987,27 +1688,7 @@ const AppDevelopmentPage: React.FC = () => {
                   actually enjoy using.
                 </Typography>
 
-                <Box className="tl-hero-actions">
-
-                  <Button
-                    href="/contact"
-                    className="tl-btn-primary"
-                  >
-                    Start a project
-
-                    <ArrowCta />
-                  </Button>
-
-                  <Button
-                    href="#details"
-                    className="tl-btn-ghost"
-                  >
-                    See what&apos;s included
-
-                    <ArrowCta />
-                  </Button>
-
-                </Box>
+              
 
               </Box>
 
@@ -2023,43 +1704,6 @@ const AppDevelopmentPage: React.FC = () => {
 
               </Box>
 
-            </Box>
-
-            {/* =================================================
-                METRICS
-            ================================================= */}
-
-            <Box
-              className="tl-metrics-grid"
-              ref={metricsRef}
-            >
-              {METRICS.map((metric) => (
-                <Box
-                  className="tl-metric-card"
-                  key={metric.label}
-                >
-
-                  <div className="tl-mn">
-
-                    <CountUp
-                      end={metric.number}
-                      duration={2200}
-                      decimals={metric.decimals}
-                      prefix={metric.prefix}
-                      suffix={metric.suffix}
-                      startAnimation={
-                        metricsVisible
-                      }
-                    />
-
-                  </div>
-
-                  <div className="tl-ml">
-                    {metric.label}
-                  </div>
-
-                </Box>
-              ))}
             </Box>
 
           </Container>

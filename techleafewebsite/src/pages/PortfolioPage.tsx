@@ -623,7 +623,6 @@ interface LeadershipMember {
   title: string;
   subtitle?: string;
   bio: React.ReactNode[];
-  quote?: { label: string; text: string };
 }
 
 const leadershipMembers: LeadershipMember[] = [
@@ -631,50 +630,32 @@ const leadershipMembers: LeadershipMember[] = [
     // TODO: point to the real headshot asset once it's added to /assets
     photo: "/assets/team/psv-headshot.jpg",
     name: "P. S. Vigneshwaran",
-    title: "Founder & Director, Tech Leafe Technologies Private Limited",
+    title: "Chief Executive Officer (CEO)",
     bio: [
       <>
-        My journey in technology began at the operational ground level in{" "}
-        <strong>system administration and enterprise IT infrastructure</strong>, evolving into
-        software engineering, venture building, and high-performance Web3 architecture. Since{" "}
-        <strong>2020</strong>, I&apos;ve led multidisciplinary ventures and founded Tech Leafe
-        Technologies with a vision to build secure, next-generation solutions powered by{" "}
-        <strong>Blockchain, decentralized systems, and AI</strong>.
-      </>,
-      <>
-        My core expertise spans Enterprise Blockchain Development and DeFi — including{" "}
-        <strong>two proprietary Layer-2 frameworks</strong>, custom tokens deployed across{" "}
-        <strong>Solana and BSC</strong>, and <strong>three multi-chain exchanges</strong> with
-        cross-chain bridges and multi-signature security, backed by an entrepreneurial start with
-        Maco Internet Laboratories and Maco Tours &amp; Travels in 2020.
+        With a background spanning enterprise IT infrastructure, software engineering, and
+        high-performance Web3 architecture, P. S. Vigneshwaran <strong>led Tech Leafe Technologies
+        in 2020</strong> to build secure, scalable solutions powered by Blockchain and AI. His
+        engineering work includes <strong>two proprietary Layer-2 blockchain frameworks and three
+        multi-chain cryptocurrency exchanges</strong>, backed by an academic foundation in BCA,
+        MCA, MSCA, and BBA. He believes technology is only as powerful as the trust and efficiency
+        it delivers — a principle that shapes every product Tech Leafe ships.
       </>,
     ],
-    quote: {
-      label: "Our Vision",
-      text: "Technology is only as powerful as the trust and efficiency it delivers. At Tech Leafe, we are committed to transforming advanced Blockchain and AI architectures into dependable, enterprise-grade business outcomes.",
-    },
   },
   {
     photo: "/assets/team/tmari-headshot.jpg",
     name: "T. Mari",
-    title: "Director & Operations (Finance)",
-    subtitle: "Entrepreneur · Tech Leader · Real Estate Expert",
+    title: "Chief Operating Officer (COO)",
     bio: [
       <>
-        T. Mari is a dynamic entrepreneur and strategic leader with{" "}
-        <strong>20+ years of experience</strong> in business, real estate, technology, and
-        operations, with deep expertise in market trends, investor relations, and organizational
-        leadership. At Tech Leafe Technologies, he shapes the company&apos;s{" "}
-        <strong>strategic and operational direction</strong>, focused on finance and sustainable
-        growth, and also serves as a Director at Maco Internet Laboratories.
-      </>,
-      <>
-        With a <strong>Bachelor of Business Administration (BBA)</strong>, he brings{" "}
-        <strong>
-          strategic planning, team building, and business development
-        </strong>{" "}
-        expertise that strengthens partnerships, evaluates growth opportunities, and supports the
-        company&apos;s journey toward sustainable, responsible expansion.
+        A dynamic entrepreneur and strategic leader with <strong>20+ years of experience across
+        business, real estate, technology, and operations</strong>, T. Mari drives Tech Leafe
+        Technologies&apos; <strong>strategic and financial direction</strong> — bringing deep expertise in
+        strategic planning, investor relations, and organizational leadership. He also serves as a
+        Director at Maco Internet Laboratories, and holds a Bachelor of Business Administration
+        (BBA) that grounds his practical experience in long-term planning, business development,
+        and sustainable growth.
       </>,
     ],
   },
@@ -775,51 +756,13 @@ function LeadershipBlock({ member, index }: { member: LeadershipMember; index: n
                 lineHeight: 1.75,
                 color: "#c9c9c9",
                 opacity: 0.92,
-                mb: pIndex === member.bio.length - 1 && !member.quote ? 0 : 2,
+                mb: pIndex === member.bio.length - 1 ? 0 : 2,
                 "& strong": { color: "#20A914", fontWeight: 700 },
               }}
             >
               {paragraph}
             </Typography>
           ))}
-
-          {member.quote && (
-            <Box
-              sx={{
-                position: "relative",
-                mt: 3,
-                p: { xs: 2.5, md: 3 },
-                borderRadius: "14px",
-                border: "1px solid rgba(32, 169, 20, 0.3)",
-                background: "rgba(10, 22, 10, 0.4)",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontFamily: "'Istok Web', sans-serif",
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
-                  color: "#20A914",
-                  mb: 1,
-                }}
-              >
-                {member.quote.label}
-              </Typography>
-              <Typography
-                sx={{
-                  fontFamily: "'Istok Web', sans-serif",
-                  fontStyle: "italic",
-                  fontSize: "14.5px",
-                  lineHeight: 1.7,
-                  color: "#e6e6e6",
-                }}
-              >
-                &ldquo;{member.quote.text}&rdquo;
-              </Typography>
-            </Box>
-          )}
         </Box>
       </Box>
     </ScrollReveal>
