@@ -1,15 +1,24 @@
-import { Outlet, ScrollRestoration } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
+import { ScrollRestoration } from "react-router-dom";
 import WhatsAppButton from "../pages/WhatsAppButton";
 import { Box } from "@mui/material";
 import Header from "../pages/Header";
 
-
 const MainLayout = () => {
+  const { pathname } = useLocation();
+
+  // Reset scroll to the top of the page on every route change.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <Box>
         <ScrollRestoration />
       <Header />
-        
+
       <Box component="main">
         <Outlet />
       </Box>
