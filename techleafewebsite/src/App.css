@@ -95,7 +95,7 @@
 
   background: rgba(0, 17, 0, 0.3);
 
-  font-family: "Instrument Sans";
+  font-family: '"DM Sans", sans-serif';
 
   font-size: clamp(13px, 1.2vw, 16px);
   font-weight: 700;
@@ -109,7 +109,8 @@
 
 .hero-animated-heading {
   margin: 0;
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: clamp(34px, 5vw, 50px);
   font-weight: 700;
   line-height: 1.15;
@@ -191,7 +192,8 @@
 
   color: #ffffff;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
 
   font-size: clamp(15px, 1.4vw, 18px);
   font-weight: 400;
@@ -268,7 +270,8 @@
 .stat-number strong {
   color: #ffffff;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
 
 
   font-size: clamp(26px, 2.5vw, 36px);
@@ -289,7 +292,8 @@
 
   color: #ffffff;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
 
   font-size: clamp(13px, 1.1vw, 15px);
   font-weight: 400;
@@ -341,7 +345,7 @@
 .expertise-copy h1 {
   margin: 0;
   color: #f3f3f3;
-  font-family: "Francois One", sans-serif;
+  font-family: "Francois One";
   font-size: clamp(2.1rem, 3vw, 4rem);
   line-height: 1.05;
   font-weight: 400;
@@ -712,7 +716,8 @@
 
   .stat-number strong {
     color: #ffffff;
-    font-family: "Instrument Sans", sans-serif;
+    font-family: '"DM Sans", sans-serif';
+
     font-size: clamp(24px, 7vw, 30px);
     font-weight: 600;
     line-height: 1;
@@ -722,7 +727,8 @@
   .stat-card p {
     margin: 4px 0 0;
     color: #ffffff;
-    font-family: "Instrument Sans", sans-serif;
+    font-family: '"DM Sans", sans-serif';
+
     font-size: 13px;
     font-weight: 400;
     line-height: 1.3;
@@ -851,7 +857,8 @@
 
   color: #ffffff;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
 
   font-size: clamp(38px, 5vw, 54px);
   font-weight: 700;
@@ -871,7 +878,8 @@
 
   color: rgba(255, 255, 255, 0.72);
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
 
   font-size: clamp(15px, 1.5vw, 17px);
 
@@ -1043,8 +1051,7 @@
   color: #ffffff;
 
   font-family:
-    "Instrument Sans",
-    sans-serif;
+    "Instrument Sans";
 
   font-size:
     clamp(22px, 2.2vw, 29px);
@@ -1063,8 +1070,7 @@
     rgba(255, 255, 255, 0.72);
 
   font-family:
-    "Instrument Sans",
-    sans-serif;
+    "Instrument Sans";
 
   font-size: 15px;
 
@@ -1110,8 +1116,7 @@
     rgba(32, 169, 20, 0.08);
 
   font-family:
-    "Instrument Sans",
-    sans-serif;
+    "Instrument Sans";
 
   font-size: 14px;
   font-weight: 700;
@@ -1360,7 +1365,7 @@
 
 .official-blog-detail {
   min-height: 100vh;
-  padding: 32px 24px 90px;
+  padding: 0 24px 90px;
   color: #ffffff;
 
   background:
@@ -1390,8 +1395,6 @@
 
   margin-bottom: 48px;
   padding-bottom: 16px;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .official-back-button {
@@ -1409,7 +1412,8 @@
   color: #ffffff;
   background: rgba(32, 169, 20, 0.06);
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: 13px;
   font-weight: 700;
 
@@ -1435,7 +1439,8 @@
 .official-nav-category {
   color: #20a914;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: 11px;
   font-weight: 800;
 
@@ -1472,19 +1477,13 @@
 
   color: #20a914;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: 11px;
   font-weight: 800;
 
   letter-spacing: 0.15em;
   text-transform: uppercase;
-}
-
-.official-blog-kicker::before {
-  content: "";
-  width: 34px;
-  height: 1px;
-  background: #20a914;
 }
 
 .official-blog-hero h1 {
@@ -1493,7 +1492,8 @@
 
   color: #ffffff;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: clamp(40px, 5.4vw, 64px);
   font-weight: 700;
 
@@ -1502,7 +1502,7 @@
 }
 
 .official-blog-meta {
-  margin-top: 22px;
+  margin-bottom: 22px;
 
   display: flex;
   align-items: center;
@@ -1511,7 +1511,8 @@
 
   color: rgba(255, 255, 255, 0.48);
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: 12px;
 }
 
@@ -1547,32 +1548,6 @@
   object-position: center;
 }
 
-.official-image-corner {
-  position: absolute;
-  z-index: 2;
-
-  width: 50px;
-  height: 50px;
-
-  pointer-events: none;
-}
-
-.official-image-corner-top {
-  top: 12px;
-  right: 12px;
-
-  border-top: 1px solid #20a914;
-  border-right: 1px solid #20a914;
-}
-
-.official-image-corner-bottom {
-  bottom: 12px;
-  left: 12px;
-
-  border-bottom: 1px solid #20a914;
-  border-left: 1px solid #20a914;
-}
-
 
 /* ==================================================
    ARTICLE CONTENT
@@ -1601,7 +1576,8 @@
 
   color: #20a914;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: 14px;
   font-weight: 800;
 
@@ -1622,7 +1598,8 @@
 
   color: #20a914;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: 10px;
   font-weight: 800;
 
@@ -1635,23 +1612,13 @@
 
   color: #ffffff;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: clamp(25px, 3vw, 33px);
   font-weight: 650;
 
   line-height: 1.2;
   letter-spacing: -0.03em;
-}
-
-.official-heading-line {
-  display: block;
-
-  width: 50px;
-  height: 2px;
-
-  margin-top: 13px;
-
-  background: #20a914;
 }
 
 
@@ -1664,7 +1631,8 @@
 
   color: rgba(255, 255, 255, 0.76);
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: clamp(15px, 1.35vw, 17px);
 
   line-height: 1.82;
@@ -1682,7 +1650,8 @@
 
   color: rgba(255, 255, 255, 0.76);
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: clamp(15px, 1.35vw, 17px);
 
   line-height: 1.75;
@@ -1705,8 +1674,6 @@
 .official-conclusion {
   margin-left: 110px;
   padding-top: 28px;
-
-  border-top: 1px solid rgba(32, 169, 20, 0.4);
 }
 
 .official-conclusion-label {
@@ -1715,7 +1682,8 @@
 
   color: #20a914;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: 10px;
   font-weight: 800;
 
@@ -1728,22 +1696,12 @@
 
   color: #ffffff;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: clamp(28px, 3vw, 36px);
   font-weight: 650;
 
   letter-spacing: -0.03em;
-}
-
-.official-conclusion-line {
-  display: block;
-
-  width: 60px;
-  height: 2px;
-
-  margin: 13px 0 18px;
-
-  background: #20a914;
 }
 
 .official-conclusion p {
@@ -1751,7 +1709,8 @@
 
   color: rgba(255, 255, 255, 0.78);
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: clamp(16px, 1.45vw, 18px);
 
   line-height: 1.78;
@@ -1781,7 +1740,8 @@
 .blog-not-found-code {
   color: #20a914;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: 13px;
   font-weight: 800;
 
@@ -1791,7 +1751,8 @@
 .blog-not-found h1 {
   margin: 12px 0 10px;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: clamp(34px, 6vw, 54px);
 
   letter-spacing: -0.04em;
@@ -1802,7 +1763,8 @@
 
   color: rgba(255, 255, 255, 0.62);
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
 }
 
 .blog-not-found-link {
@@ -1816,7 +1778,8 @@
 
   color: #ffffff;
 
-  font-family: "Instrument Sans", sans-serif;
+  font-family: '"DM Sans", sans-serif';
+
   font-size: 14px;
   font-weight: 700;
 
@@ -1830,7 +1793,7 @@
 
 @media (max-width: 900px) {
   .official-blog-detail {
-    padding: 28px 20px 72px;
+    padding: 0 20px 72px;
   }
 
   .official-blog-hero {
@@ -1871,7 +1834,7 @@
 
 @media (max-width: 700px) {
   .official-blog-detail {
-    padding: 22px 16px 58px;
+    padding: 0 16px 58px;
   }
 
   .official-blog-nav {
@@ -2134,7 +2097,7 @@
 .blog-page,
 .official-blog-detail,
 .blog-not-found {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
 }
 
 
@@ -2144,7 +2107,7 @@
 
 /* Small top label */
 .blog-eyebrow {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -2152,7 +2115,7 @@
 
 /* Main heading */
 .blog-hero h1 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: clamp(40px, 4.5vw, 56px);
   font-weight: 700;
   line-height: 1.1;
@@ -2161,7 +2124,7 @@
 
 /* Hero description */
 .blog-hero p {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 17px;
   font-weight: 400;
   line-height: 1.7;
@@ -2169,14 +2132,14 @@
 
 /* Card category */
 .blog-category {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 13px;
   font-weight: 600;
 }
 
 /* Card title */
 .blog-card h2 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: clamp(22px, 2vw, 28px);
   font-weight: 700;
   line-height: 1.3;
@@ -2185,7 +2148,7 @@
 
 /* Card description */
 .blog-card-content > p {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 16px;
   font-weight: 400;
   line-height: 1.7;
@@ -2193,7 +2156,7 @@
 
 /* View More button */
 .blog-view-more-btn {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 14px;
   font-weight: 600;
 }
@@ -2205,14 +2168,14 @@
 
 /* Back button */
 .official-back-button {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 14px;
   font-weight: 600;
 }
 
 /* Top right category */
 .official-nav-category {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -2220,7 +2183,7 @@
 
 /* Tech Leafe Insights */
 .official-blog-kicker {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -2228,7 +2191,7 @@
 
 /* Main article title */
 .official-blog-hero h1 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: clamp(42px, 5vw, 62px);
   font-weight: 700;
   line-height: 1.08;
@@ -2237,14 +2200,14 @@
 
 /* Article metadata */
 .official-blog-meta {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 13px;
   font-weight: 400;
 }
 
 /* 01, 02, 03... */
 .official-section-number {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -2252,7 +2215,7 @@
 
 /* INSIGHT label */
 .official-section-label {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -2260,7 +2223,7 @@
 
 /* Article section headings */
 .official-section-header h2 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: clamp(26px, 2.5vw, 32px);
   font-weight: 700;
   line-height: 1.25;
@@ -2269,7 +2232,7 @@
 
 /* Main article paragraphs */
 .official-section-content p {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 17px;
   font-weight: 400;
   line-height: 1.75;
@@ -2278,7 +2241,7 @@
 /* Bullet + numbered lists */
 .official-section-content ul,
 .official-section-content ol {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 17px;
   font-weight: 400;
   line-height: 1.75;
@@ -2286,7 +2249,7 @@
 
 /* Final Perspective */
 .official-conclusion-label {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -2294,7 +2257,7 @@
 
 /* Conclusion heading */
 .official-conclusion h2 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: clamp(28px, 3vw, 36px);
   font-weight: 700;
   line-height: 1.2;
@@ -2302,7 +2265,7 @@
 
 /* Conclusion paragraph */
 .official-conclusion p {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 17px;
   font-weight: 400;
   line-height: 1.75;
@@ -2314,25 +2277,25 @@
 ================================================== */
 
 .blog-not-found-code {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 13px;
   font-weight: 700;
 }
 
 .blog-not-found h1 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: clamp(36px, 5vw, 52px);
   font-weight: 700;
 }
 
 .blog-not-found p {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 16px;
   line-height: 1.7;
 }
 
 .blog-not-found-link {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans";
   font-size: 14px;
   font-weight: 600;
 }
@@ -2471,6 +2434,11 @@
   font-family: "DM Sans";
 }
 
+/* Force DM Sans for all MUI Typography inside About page */
+.about-page .MuiTypography-root {
+  font-family: "DM Sans";
+}
+
 /* ABOUT US / HOW WE WORK / WHY TECH LEAFE */
 .about-label {
   color: #20a914;
@@ -2506,7 +2474,7 @@
 .about-description {
   color: rgba(255, 255, 255, 0.75);
 
-  font-family: "DM Sans";
+  font-family: '"DM Sans", sans-serif';
   font-size: 17px !important;
   font-weight: 400 !important;
 
@@ -2517,7 +2485,7 @@
 .about-body-text {
   color: rgba(255, 255, 255, 0.76);
 
-  font-family: "DM Sans";
+  font-family: '"DM Sans", sans-serif';
   font-size: 16px !important;
   font-weight: 400 !important;
 
