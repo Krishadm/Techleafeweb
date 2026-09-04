@@ -12,28 +12,20 @@ import {
 
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import LayersIcon from "@mui/icons-material/Layers";
-import CodeIcon from "@mui/icons-material/Code";
-import DataObjectIcon from "@mui/icons-material/DataObject";
-import HubIcon from "@mui/icons-material/Hub";
-import StorageIcon from "@mui/icons-material/Storage";
-import AccountTreeIcon from "@mui/icons-material/AccountTree";
-import DnsIcon from "@mui/icons-material/Dns";
 
-import {
-  SiEthereum,
-  SiPolygon,
-  SiSolidity,
-  SiRuby,
-  SiTypescript,
-  SiSolana,
-  SiIpfs,
-  SiGraphql,
-  SiChainlink,
-  SiNodedotjs,
-  SiReact,
-} from "react-icons/si";
+// import {
+//   SiEthereum,
+//   SiPolygon,
+//   SiSolidity,
+//   SiRuby,
+//   SiTypescript,
+//   SiSolana,
+//   SiIpfs,
+//   SiGraphql,
+//   SiChainlink,
+//   SiNodedotjs,
+//   SiReact,
+// } from "react-icons/si";
 
 import AppImage from "../../assets/blockchain-hero.png";
 import Footer from "../../component/Footer";
@@ -124,72 +116,72 @@ interface Technology {
 const STACK: Technology[] = [
   {
     name: "Ethereum",
-    icon: AccountBalanceWalletIcon,
+    icon: SiEthereum,
     color: "#627EEA",
   },
   {
     name: "Polygon",
-    icon: LayersIcon,
+    icon: SiPolygon,
     color: "#8247E5",
   },
   {
     name: "Solidity",
-    icon: CodeIcon,
+    icon: SiSolidity,
     color: "#8C8C8C",
   },
   {
     name: "Ruby",
-    icon: CodeIcon,
+    icon: SiRuby,
     color: "#CC342D",
   },
   {
     name: "TypeScript",
-    icon: DataObjectIcon,
+    icon: SiTypescript,
     color: "#3178C6",
   },
   {
     name: "Arbitrum",
-    icon: AccountBalanceWalletIcon,
+    icon: SiEthereum,
     color: "#28A0F0",
   },
   {
     name: "Solana (Rust)",
-    icon: HubIcon,
+    icon: SiSolana,
     color: "#9945FF",
   },
   {
     name: "Hardhat / Foundry",
-    icon: CodeIcon,
+    icon: SiSolidity,
     color: "#F7C948",
   },
   {
     name: "Ethers.js / Web3.js",
-    icon: AccountBalanceWalletIcon,
+    icon: SiEthereum,
     color: "#627EEA",
   },
   {
     name: "IPFS & Pinata",
-    icon: StorageIcon,
+    icon: SiIpfs,
     color: "#65C2CB",
   },
   {
     name: "The Graph",
-    icon: AccountTreeIcon,
+    icon: SiGraphql,
     color: "#E10098",
   },
   {
     name: "Chainlink Oracles",
-    icon: HubIcon,
+    icon: SiChainlink,
     color: "#375BD2",
   },
   {
     name: "Node.js",
-    icon: DnsIcon,
+    icon: SiNodedotjs,
     color: "#339933",
   },
   {
     name: "React / Next.js",
-    icon: CodeIcon,
+    icon: SiReact,
     color: "#61DAFB",
   },
 ];
@@ -226,9 +218,9 @@ const pageStyles = `
     --tl-bg-soft: #050505;
     --tl-fg: #ffffff;
     --tl-muted: #cfcfcf;
-    --tl-accent: #35A51C;
-    --tl-accent-light: #35A51C;
-    --tl-border: rgba(53, 165, 28, 0.55);
+    --tl-accent: #1d620c;
+    --tl-accent-light: #35a51c;
+    --tl-border: rgba(29, 98, 12, 0.55);
   }
 
   html {
@@ -267,16 +259,11 @@ const pageStyles = `
     color: var(--tl-fg);
     background: var(--tl-bg);
 
-    font-family: "DM Sans";
-  }
-
-  /* Force DM Sans for MUI components */
-  .tl-root .MuiTypography-root,
-  .tl-root .MuiBreadcrumbs-root,
-  .tl-root .MuiAccordion-root,
-  .tl-root .MuiAccordionSummary-root,
-  .tl-root .MuiAccordionDetails-root {
-    font-family: "DM Sans";
+    font-family:
+      "Inter",
+      "Segoe UI",
+      Roboto,
+      sans-serif;
   }
 
   .tl-wrap {
@@ -792,9 +779,7 @@ const pageStyles = `
     padding: 72px 0;
   }
 
-  .tl-section-soft {
-    padding-top: 72px;
-  }
+
 
   .tl-section h2,
   .tl-section-soft h2 {
