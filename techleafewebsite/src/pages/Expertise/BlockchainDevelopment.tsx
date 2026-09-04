@@ -226,9 +226,9 @@ const pageStyles = `
     --tl-bg-soft: #050505;
     --tl-fg: #ffffff;
     --tl-muted: #cfcfcf;
-    --tl-accent: #1d620c;
-    --tl-accent-light: #35a51c;
-    --tl-border: rgba(29, 98, 12, 0.55);
+    --tl-accent: #35A51C;
+    --tl-accent-light: #35A51C;
+    --tl-border: rgba(53, 165, 28, 0.55);
   }
 
   html {
@@ -267,11 +267,16 @@ const pageStyles = `
     color: var(--tl-fg);
     background: var(--tl-bg);
 
-    font-family:
-      "Inter",
-      "Segoe UI",
-      Roboto,
-      sans-serif;
+    font-family: "DM Sans";
+  }
+
+  /* Force DM Sans for MUI components */
+  .tl-root .MuiTypography-root,
+  .tl-root .MuiBreadcrumbs-root,
+  .tl-root .MuiAccordion-root,
+  .tl-root .MuiAccordionSummary-root,
+  .tl-root .MuiAccordionDetails-root {
+    font-family: "DM Sans";
   }
 
   .tl-wrap {
