@@ -311,9 +311,9 @@ const pageStyles = `
     --tl-bg-soft: #050505;
     --tl-fg: #ffffff;
     --tl-muted: #cfcfcf;
-    --tl-accent: #1d620c;
+    --tl-accent: #35a51c;
     --tl-accent-light: #35a51c;
-    --tl-border: rgba(29, 98, 12, 0.55);
+    --tl-border: rgba(53, 165, 28, 0.55);
   }
 
   html {
@@ -352,11 +352,7 @@ const pageStyles = `
     color: var(--tl-fg);
     background: var(--tl-bg);
 
-    font-family:
-      "Inter",
-      "Segoe UI",
-      Roboto,
-      sans-serif;
+    font-family: '"DM Sans", sans-serif';
   }
 
   .tl-wrap {
@@ -458,6 +454,8 @@ const pageStyles = `
     white-space: nowrap;
 
     font-size: 13px;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   .tl-breadcrumb a {
@@ -466,6 +464,8 @@ const pageStyles = `
     text-decoration: none;
 
     transition: color 0.3s ease;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   .tl-breadcrumb a:hover {
@@ -476,6 +476,8 @@ const pageStyles = `
     color: var(--tl-fg);
 
     font-size: 13px;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   /* =========================================================
@@ -504,16 +506,19 @@ const pageStyles = `
   }
 
   .tl-eyebrow {
+  margin-top:32px;
     margin-bottom: 16px;
 
     color: var(--tl-accent-light);
 
-    font-size: 13px;
+    font-size: 15px;
 
     font-weight: 600;
 
     line-height: 1.4;
     text-transform: uppercase;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   .tl-hero h1 {
@@ -528,12 +533,16 @@ const pageStyles = `
     line-height: 1.15;
 
     letter-spacing: -1px;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   .tl-hero h1 em {
     color: var(--tl-accent-light);
 
     font-style: normal;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   .tl-lede {
@@ -546,6 +555,8 @@ const pageStyles = `
     font-size: 17px;
 
     line-height: 1.6;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   /* =========================================================
@@ -591,7 +602,7 @@ const pageStyles = `
     border-color: var(--tl-accent-light);
 
     box-shadow:
-      0 20px 50px rgba(29, 98, 12, 0.25);
+      0 20px 50px rgba(53, 165, 28, 0.25);
   }
 
   /* =========================================================
@@ -629,6 +640,8 @@ const pageStyles = `
 
     gap: 8px;
 
+    font-family: '"DM Sans", sans-serif';
+
     transition:
       transform 0.3s ease,
       background-color 0.3s ease,
@@ -647,10 +660,10 @@ const pageStyles = `
   .tl-btn-primary:hover {
     transform: translateY(-4px);
 
-    background: #24790f !important;
+    background: #35a51c !important;
 
     box-shadow:
-      0 10px 25px rgba(29, 98, 12, 0.3);
+      0 10px 25px rgba(53, 165, 28, 0.3);
   }
 
   .tl-btn-ghost {
@@ -838,6 +851,8 @@ const pageStyles = `
     animation:
       tlNumberGlow 2s ease-in-out;
 
+    font-family: '"DM Sans", sans-serif';
+
     transition:
       transform 0.3s ease,
       color 0.3s ease;
@@ -862,6 +877,8 @@ const pageStyles = `
     line-height: 1.4;
 
     text-align: center;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   /* =========================================================
@@ -885,6 +902,8 @@ const pageStyles = `
     font-weight: 700;
 
     line-height: 1.2;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   /* =========================================================
@@ -925,7 +944,7 @@ const pageStyles = `
       var(--tl-accent-light);
 
     box-shadow:
-      0 15px 35px rgba(29, 98, 12, 0.18);
+      0 15px 35px rgba(53, 165, 28, 0.18);
   }
 
   .tl-card h3 {
@@ -939,6 +958,8 @@ const pageStyles = `
     font-weight: 700;
 
     line-height: 1.35;
+
+    font-family: '"DM Sans", sans-serif';
 
     transition:
       transform 0.3s ease,
@@ -962,6 +983,8 @@ const pageStyles = `
     font-size: 14px;
 
     line-height: 1.6;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   /* =========================================================
@@ -972,7 +995,7 @@ const pageStyles = `
     padding: 40px 0;
 
     border-top:
-      1px solid rgba(29, 98, 12, 0.4);
+      1px solid rgba(53, 165, 28, 0.4);
 
     transition:
       padding-left 0.3s ease,
@@ -1010,6 +1033,8 @@ const pageStyles = `
 
     font-weight: 600;
 
+    font-family: '"DM Sans", sans-serif';
+
     transition:
       transform 0.3s ease,
       letter-spacing 0.3s ease;
@@ -1034,6 +1059,8 @@ const pageStyles = `
 
     line-height: 1.3;
 
+    font-family: '"DM Sans", sans-serif';
+
     transition:
       transform 0.3s ease,
       color 0.3s ease;
@@ -1056,6 +1083,8 @@ const pageStyles = `
     font-size: 15px;
 
     line-height: 1.6;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   .tl-bullet-grid {
@@ -1081,6 +1110,8 @@ const pageStyles = `
 
     border-bottom:
       1px solid rgba(255, 255, 255, 0.06);
+
+    font-family: '"DM Sans", sans-serif';
 
     transition:
       padding-left 0.3s ease,
@@ -1137,10 +1168,10 @@ const pageStyles = `
     background: #000000;
 
     border-top:
-      1px solid rgba(29, 98, 12, 0.35);
+      1px solid rgba(53, 165, 28, 0.35);
 
     border-bottom:
-      1px solid rgba(29, 98, 12, 0.35);
+      1px solid rgba(53, 165, 28, 0.35);
 
     overflow: hidden;
   }
@@ -1176,6 +1207,8 @@ const pageStyles = `
     font-weight: 700;
 
     line-height: 1.2;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   /* =========================================================
@@ -1297,6 +1330,8 @@ const pageStyles = `
 
     white-space: nowrap;
 
+    font-family: '"DM Sans", sans-serif';
+
     transition:
       transform 0.3s ease,
       border-color 0.3s ease,
@@ -1416,6 +1451,8 @@ const pageStyles = `
       var(--tl-fg);
 
     font-size: 26px;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   .tl-cta-band p {
@@ -1427,6 +1464,8 @@ const pageStyles = `
       var(--tl-muted);
 
     line-height: 1.6;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   /* =========================================================
@@ -1455,7 +1494,7 @@ const pageStyles = `
       transparent !important;
 
     border-bottom:
-      1px solid rgba(29, 98, 12, 0.4);
+      1px solid rgba(53, 165, 28, 0.4);
 
     box-shadow:
       none !important;
@@ -1488,6 +1527,8 @@ const pageStyles = `
     font-size: 15px;
   
     font-weight: 200;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   .tl-faq-icon {
@@ -1506,6 +1547,8 @@ const pageStyles = `
     font-size: 14px;
 
     line-height: 1.6;
+
+    font-family: '"DM Sans", sans-serif';
   }
 
   /* =========================================================
@@ -1938,6 +1981,7 @@ const AIDevelopmentServices: React.FC = () => {
             <Breadcrumbs
               className="tl-breadcrumb"
               separator="/"
+              sx={{ fontFamily: '"DM Sans", sans-serif' }}
             >
             </Breadcrumbs>
 
@@ -1953,7 +1997,7 @@ const AIDevelopmentServices: React.FC = () => {
                   Extension of our core — think, automate, innovate
                 </div>
 
-                <Typography component="h1">
+                <Typography component="h1" sx={{ fontFamily: '"DM Sans", sans-serif' }}>
                   Turn raw business data into an operations engine.
 {" "}
                   <em>
@@ -1961,7 +2005,7 @@ const AIDevelopmentServices: React.FC = () => {
                   </em>
                 </Typography>
 
-                <Typography className="tl-lede">
+                <Typography className="tl-lede" sx={{ fontFamily: '"DM Sans", sans-serif' }}>
                  We replace manual operational bottlenecks with AI agents, grounded RAG knowledge bases, and private fine-tuned LLMs built
                   for your own data — not generic wrappers around a public API.
                 </Typography>
@@ -2003,7 +2047,7 @@ const AIDevelopmentServices: React.FC = () => {
               WHY THIS MATTERS
             </div>
 
-            <Typography component="h2">
+            <Typography component="h2" sx={{ fontFamily: '"DM Sans", sans-serif' }}>
               Why AI Development
             </Typography> 
 
@@ -2015,11 +2059,11 @@ const AIDevelopmentServices: React.FC = () => {
                   key={card.title}
                 >
 
-                  <Typography component="h3">
+                  <Typography component="h3" sx={{ fontFamily: '"DM Sans", sans-serif' }}>
                     {card.title}
                   </Typography>
 
-                  <Typography component="p">
+                  <Typography component="p" sx={{ fontFamily: '"DM Sans", sans-serif' }}>
                     {card.body}
                   </Typography>
 
@@ -2050,7 +2094,7 @@ const AIDevelopmentServices: React.FC = () => {
               What&apos;s included
             </div>
 
-            <Typography component="h2">
+            <Typography component="h2" sx={{ fontFamily: '"DM Sans", sans-serif' }}>
               Inside ai development
             </Typography>
 
@@ -2069,11 +2113,11 @@ const AIDevelopmentServices: React.FC = () => {
                       {service.index}
                     </div>
 
-                    <Typography component="h3">
+                    <Typography component="h3" sx={{ fontFamily: '"DM Sans", sans-serif' }}>
                       {service.title}
                     </Typography>
 
-                    <Typography component="p">
+                    <Typography component="p" sx={{ fontFamily: '"DM Sans", sans-serif' }}>
                       {service.body}
                     </Typography>
 
@@ -2117,7 +2161,7 @@ const AIDevelopmentServices: React.FC = () => {
           >
 
         
-            <Typography component="h2">
+            <Typography component="h2" sx={{ fontFamily: '"DM Sans", sans-serif' }}>
               What we build it with
             </Typography>
 
@@ -2187,7 +2231,7 @@ const AIDevelopmentServices: React.FC = () => {
               Q&amp;A
             </div>
 
-            <Typography component="h2">
+            <Typography component="h2" sx={{ fontFamily: '"DM Sans", sans-serif' }}>
               Questions about this service
             </Typography>
 
