@@ -1486,14 +1486,16 @@ const pageStyles = `
 
   .tl-faq-summary {
     min-height:
-      60px !important;
+      76px !important;
+
+    padding: 8px 0 !important;
 
     color:
       #ffffff !important;
 
     font-size: 15px;
-
-    font-weight: 600;
+  
+    font-weight: 200;
   }
 
   .tl-faq-icon {
