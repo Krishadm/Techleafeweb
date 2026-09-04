@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
+import { ScrollRestoration } from "react-router-dom";
 import WhatsAppButton from "../pages/WhatsAppButton";
 import { Box } from "@mui/material";
 import Header from "../pages/Header";
@@ -15,6 +16,7 @@ const MainLayout = () => {
 
   return (
     <Box>
+        <ScrollRestoration />
       <Header />
 
       <Box component="main">

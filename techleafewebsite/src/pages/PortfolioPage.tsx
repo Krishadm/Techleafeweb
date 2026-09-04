@@ -8,7 +8,6 @@ import {
 import Footer from "../component/Footer";
 import { useEffect, useRef, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
-
 // SVG Stroke Animation Keyframes - draws once and stays static
 const drawLeafPath = keyframes`
   to {
@@ -1659,7 +1658,8 @@ function VoicesSlider() {
 
 export default function PortfolioPage() {
   return (
-    <Box sx={{ zoom: 0.9 }}>
+    // <Box sx={{ zoom: 0.9 }}>
+    <>
     <Box
       sx={{
         minHeight: "100vh",
@@ -2850,7 +2850,6 @@ export default function PortfolioPage() {
       </Container>
     </Box>
     <Footer/>
-
-    </Box>
+    </>
   );
 }

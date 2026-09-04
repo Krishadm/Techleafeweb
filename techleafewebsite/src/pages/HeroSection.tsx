@@ -1,15 +1,10 @@
-import {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-} from "react";
-
+import { useState, useRef, useEffect, useCallback } from "react";
 import type {
   TouchEvent,
   KeyboardEvent,
   MouseEvent as ReactMouseEvent,
 } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -21,47 +16,45 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import ViewInArOutlinedIcon from "@mui/icons-material/ViewInArOutlined";
+import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
+import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
+interface MethodologyStep {
+  number: string;
+  title: string;
+  description: string;
+}
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
-      number: "01",
+      key: "blockchain",
       title: "Blockchain",
       heading: "Decentralized Apps, Smart Contracts & Web3",
       description:
         "Build secure, audit-ready decentralized ecosystems. From EVM and Solana smart contracts to custom dApps, DeFi platforms, and tokenomics design, we deliver transparent Web3 infrastructure built for transactional security and scale.",
-      features: [
-        "Solidity & Rust smart contract audits",
-        "DApp front-ends with subgraph indexing",
-        "Non-custodial wallets & account abstraction",
-      ],
-      buttonText: "View Blockchain Development",
+      icon: <ViewInArOutlinedIcon sx={{ fontSize: { xs: 34, sm: 40 } }} />,
+      path: "/expertise/blockchain-development",
     },
     {
-      number: "02",
+      key: "ai",
       title: "AI",
       heading: "Custom Enterprise AI & LLM Solutions",
       description:
         "Unlock the power of your internal business data with zero data leakage. We design production-ready Retrieval-Augmented Generation (RAG) pipelines, autonomous AI agents, and private open-source LLM fine-tuning to automate complex corporate workflows.",
-      features: [
-        "Grounded, source-attributed RAG chatbots",
-        "Multi-agent workflow automation",
-        "Private fine-tuned LLMs, hosted in your cloud",
-      ],
-      buttonText: "View AI Solutions",
+      icon: <PsychologyOutlinedIcon sx={{ fontSize: { xs: 34, sm: 40 } }} />,
+      path: "/expertise/AIDevelopmentServices",
     },
     {
-      number: "03",
+      key: "app",
       title: "App",
       heading: "Full-Stack Web Engineering & Mobile Apps",
       description:
         "Turn your ideas into fast, intuitive software. We develop cross-platform iOS & Android applications and cloud-native full-stack web platforms engineered for low latency and a seamless user experience.",
-      features: [
-        "Flutter & React Native mobile apps",
-        "Next.js, Node.js full-stack web platforms",
-        "UI/UX, e-commerce, SEO, and ongoing support",
-      ],
-      buttonText: "View App Development",
+      icon: <PhoneIphoneOutlinedIcon sx={{ fontSize: { xs: 34, sm: 40 } }} />,
+      path: "/expertise/appdevelopment",
     },
   ];
 
@@ -70,26 +63,20 @@ const HeroSection = () => {
       sx={{
         bgcolor: "#000",
         color: "#fff",
-        py: 8,
-        px: 3,
+        pt: 3,
+        pb: 6,
+        width: "100%",
+        maxWidth: "1600px",
+        px: { xs: 2, sm: 4, md: 11 },
+        boxSizing: "border-box",
       }}
     >
       {/* Heading */}
       <Typography
         sx={{
-          mt: 2,
+          mt: 0,
           color: "#298911",
           fontWeight: 600,
-
-          "&::before": {
-            content: '""',
-            display: "inline-block",
-            width: "7px",
-            height: "7px",
-            backgroundColor: "red",
-            marginRight: "6px",
-            verticalAlign: "middle",
-          },
         }}
       >
         WHAT WE BUILD
@@ -98,9 +85,10 @@ const HeroSection = () => {
       <Typography
         variant="h3"
         sx={{
-          mt: 2,
-          mb: 5, // gap before cards
-          fontWeight: 700,
+          mt: 1.5,
+          mb: 4, // gap before cards
+          fontSize: { xs: 32, sm: 36, md: 40 },
+          lineHeight: 1.15,
         }}
       >
         Three disciplines, one engineering pipeline.
@@ -109,14 +97,21 @@ const HeroSection = () => {
       {/* Grid starts here */}
       <Grid container spacing={4}>
         {services.map((service) => (
-          <Grid size={{ xs: 12, md: 6, lg: 4 }} key={service.number}>
+          <Grid size={{ xs: 12, md: 6, lg: 4 }} key={service.key}>
             <Card
               sx={{
-                backgroundColor: "#061F03",
+                backgroundColor: "#000000",
                 border: "1px solid #178B0B",
-                borderRadius: "6px",
+                borderRadius: "20px",
                 color: "#fff",
                 height: "100%",
+                // Hover effect
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+
+                "&:hover": {
+                  transform: "scale(1.03)",
+                  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+                },
               }}
             >
               <CardContent
@@ -125,25 +120,30 @@ const HeroSection = () => {
                   display: "flex",
                   flexDirection: "column",
                   boxSizing: "border-box",
+                  p: { xs: 3, sm: 4 },
                 }}
               >
-                <Typography
+                {/* Icon */}
+                <Box
                   sx={{
-                    color: "#ffffff",
-                    fontSize: "14px",
-                    fontWeight: 500,
+                    color: "#20A914",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    mb: 2,
                   }}
+                  aria-hidden="true"
                 >
-                  {service.number} — {service.title}
-                </Typography>
+                  {service.icon}
+                </Box>
 
                 <Typography
                   variant="h5"
                   sx={{
-                    mt: 2,
-                    color: "#20A914",
-                    fontWeight: 600,
-                    lineHeight: 1.5,
+                    color: "#ffffff",
+                    fontWeight: 700,
+                    fontSize: { xs: "22px", sm: "24px" },
+                    lineHeight: 1.3,
                   }}
                 >
                   {service.heading}
@@ -152,64 +152,69 @@ const HeroSection = () => {
                 <Typography
                   sx={{
                     mt: 2,
-                    color: "#ffffff",
-                    fontSize: "14px",
-                    lineHeight: 1.5,
+                    color: "rgba(255,255,255,0.75)",
+                    fontSize: "16px",
+                    lineHeight: 1.6,
+                    flexGrow: 1,
                   }}
                 >
                   {service.description}
                 </Typography>
 
-                <Box
-                  sx={{
-                    height: "120px",
-                  }}
-                >
-                  <Box
-                    component="ul"
-                    sx={{
-                      mt: 2,
-                      pl: 2,
-                      color: "#fff",
-                    }}
-                  >
-                    {service.features?.map((feature, index) => (
-                      <li key={index}>
-                        <Typography
-                          sx={{
-                            color: "#fff",
-                            fontSize: "13px",
-                          }}
-                        >
-                          {feature}
-                        </Typography>
-                      </li>
-                    ))}
-                  </Box>
-                </Box>
-                {/* Button goes here */}
+                {/* Explore More button */}
                 <Button
+                  onClick={() => navigate(service.path)}
                   variant="contained"
+                  aria-label={`Explore more about ${service.title}`}
                   sx={{
-                    mt: 1,
+                    mt: 3,
                     alignSelf: "flex-start",
+                    width: { xs: "100%", sm: "auto" },
+                    minWidth: 0,
                     borderRadius: "30px",
-                    textTransform: "lowercase",
-                    backgroundColor: "#178B0B",
+                    textTransform: "capitalize",
+                    backgroundColor: "#0e5e03",
                     color: "#fff",
-                    fontSize: "12px",
-                    px: 2,
-                    py: 0.8,
-                    minWidth: "190px",
+                    fontSize: { xs: "14px", sm: "15px" },
+                    fontWeight: 600,
+                    px: 3,
+                    py: 1,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+
+                    // Hover effect
+                    transition:
+                      "transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease",
+
                     "&:hover": {
                       backgroundColor: "#178B0B",
+                      transform: "scale(1.03)",
+                      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+                    },
+                    "&:focus-visible": {
+                      outline: "2px solid #20A914",
+                      outlineOffset: "2px",
                     },
                   }}
                 >
-                  {service.buttonText}
-                  <span style={{ marginLeft: "12px", fontSize: "18px" }}>
+                  <Box component="span">Explore More</Box>
+
+                  <Box
+                    component="span"
+                    sx={{
+                      flexShrink: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      fontSize: { xs: "18px", sm: "20px" },
+                      lineHeight: 1,
+                      position: "relative",
+                      top: "-1px",
+                    }}
+                  >
                     →
-                  </span>
+                  </Box>
                 </Button>
               </CardContent>
             </Card>
@@ -222,18 +227,6 @@ const HeroSection = () => {
     </Box>
   );
 };
-
-/* -------------------------------------------------------------------------- */
-/* Our Methodology — center-mode ("coverflow") carousel                       */
-/* Active card sits full-size and fully opaque in front, overlapping the      */
-/* prev/next cards which sit behind it, scaled down and faded.                */
-/* -------------------------------------------------------------------------- */
-
-interface MethodologyStep {
-  number: string;
-  title: string;
-  description: string;
-}
 
 const methodologySteps: MethodologyStep[] = [
   {
@@ -269,7 +262,7 @@ const methodologySteps: MethodologyStep[] = [
 ];
 
 const AUTOPLAY_DELAY = 5000;
-const SWIPE_THRESHOLD = 50; // px needed to trigger a slide change
+const SWIPE_THRESHOLD = 50;
 
 const MethodologySection = () => {
   const theme = useTheme();
@@ -277,31 +270,35 @@ const MethodologySection = () => {
   const isSm = useMediaQuery(theme.breakpoints.between("sm", "md")); // 600-900
 
   // Card + layout sizing per breakpoint
-  const cardWidth = isXs ? 250 : isSm ? 300 : 380;
-  const cardHeight = isXs ? 220 : 240;
-  // How far (as a fraction of card width) the side cards sit from center.
-  // 0.55 means the center card overlaps ~45% of each side card - "half and half".
-  const overlapFactor = isXs ? 0.62 : 0.55;
-  // On mobile there isn't room to peek the neighbours without clipping - hide them.
-  const showNeighbours = !isXs;
+  const cardWidth = isXs ? 270 : isSm ? 300 : 340;
+  const cardHeight = isXs ? 240 : isSm ? 260 : 240;
+  const overlapFactor = isXs ? 0.62 : isSm ? 0.58 : 0.5;
 
   const length = methodologySteps.length;
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [position, setPosition] = useState(0);
+  const activeIndex = ((position % length) + length) % length;
+
   const [isPaused, setIsPaused] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
 
   const dragStartX = useRef<number | null>(null);
   const dragDeltaX = useRef(0);
 
-  const goTo = useCallback(
-    (index: number) => {
-      setActiveIndex(((index % length) + length) % length);
-    },
-    [length]
-  );
+  const goNext = useCallback(() => setPosition((p) => p + 1), []);
+  const goPrev = useCallback(() => setPosition((p) => p - 1), []);
 
-  const goNext = useCallback(() => goTo(activeIndex + 1), [activeIndex, goTo]);
-  const goPrev = useCallback(() => goTo(activeIndex - 1), [activeIndex, goTo]);
+  const goTo = useCallback(
+    (targetRealIndex: number) => {
+      setPosition((p) => {
+        const currentReal = ((p % length) + length) % length;
+        let delta = targetRealIndex - currentReal;
+        if (delta > length / 2) delta -= length;
+        if (delta < -length / 2) delta += length;
+        return p + delta;
+      });
+    },
+    [length],
+  );
 
   // Autoplay
   useEffect(() => {
@@ -358,9 +355,12 @@ const MethodologySection = () => {
     if (dragStartX.current !== null) endDrag();
     setIsPaused(false);
   };
-
-  // Only render the active card plus one neighbour on each side.
-  const visibleOffsets = showNeighbours ? [-1, 0, 1] : [0];
+  const maxSide = isXs ? 0 : 2;
+  const sideCount = Math.min(maxSide, Math.floor((length - 1) / 2));
+  const visibleOffsets = Array.from(
+    { length: sideCount * 2 + 1 },
+    (_, i) => i - sideCount,
+  );
 
   return (
     <Box sx={{ mt: 10 }}>
@@ -370,21 +370,18 @@ const MethodologySection = () => {
           mt: 2,
           color: "#298911",
           fontWeight: 600,
-          "&::before": {
-            content: '""',
-            display: "inline-block",
-            width: "7px",
-            height: "7px",
-            backgroundColor: "red",
-            marginRight: "6px",
-            verticalAlign: "middle",
-          },
         }}
       >
         OUR METHODOLOGY
       </Typography>
 
-      <Typography variant="h3" sx={{ mt: 2, fontWeight: 700 }}>
+      <Typography
+        variant="h3"
+        sx={{
+          mt: 2,
+          fontSize: 40,
+        }}
+      >
         The 5-step security-first lifecycle.
       </Typography>
 
@@ -394,7 +391,7 @@ const MethodologySection = () => {
           mb: 6,
           maxWidth: "720px",
           color: "rgba(255,255,255,0.75)",
-          fontSize: "15px",
+          fontSize: "18px",
           lineHeight: 1.6,
         }}
       >
@@ -441,41 +438,42 @@ const MethodologySection = () => {
             overflow: "hidden",
           }}
         >
-          {visibleOffsets.map((offset) => {
-            const index = ((activeIndex + offset) % length + length) % length;
-            const step = methodologySteps[index];
-            const isActive = offset === 0;
+          {visibleOffsets.map((slotOffset) => {
+            const virtualIndex = position + slotOffset;
+            const realIndex = ((virtualIndex % length) + length) % length;
+            const step = methodologySteps[realIndex];
+
+            const offset = virtualIndex - position; // always equals slotOffset
+            const distance = Math.abs(offset);
+            const isActive = distance === 0;
             const offsetPx = offset * cardWidth * overlapFactor;
+            const scale = 1 - distance * 0.14;
+            const opacity = Math.max(2 - distance * 0.32, 0.28);
 
             return (
               <Box
-                key={step.number}
-                onClick={() => !isActive && goTo(index)}
+                key={virtualIndex}
+                onClick={() => !isActive && goTo(realIndex)}
                 sx={{
                   position: "absolute",
                   left: "50%",
                   top: "50%",
                   width: cardWidth,
                   height: cardHeight,
-                  transform: `translate(calc(-50% + ${offsetPx}px), -50%) scale(${
-                    isActive ? 1 : 0.85
-                  })`,
-                  transition:
-                    "transform 0.45s ease, opacity 0.45s ease",
-                  opacity: isActive ? 1 : 0.35,
-                  zIndex: isActive ? 3 : 1,
+                  transform: `translate(calc(-50% + ${offsetPx}px), -50%) scale(${scale})`,
+                  transition: "transform 0.45s ease, opacity 0.45s ease",
+                  opacity,
+                  zIndex: 10 - distance,
                   cursor: isActive ? "grab" : "pointer",
                   background:
                     "linear-gradient(160deg, #0B3306 0%, #041A02 100%)",
                   border: "1px solid #178B0B",
                   borderRadius: "10px",
-                  p: 3,
+                  p: { xs: 2, sm: 3 },
                   boxSizing: "border-box",
                   display: "flex",
                   flexDirection: "column",
-                  boxShadow: isActive
-                    ? "0 20px 40px rgba(0,0,0,0.55)"
-                    : "none",
+                  boxShadow: isActive ? "0 20px 40px rgba(0,0,0,0.55)" : "none",
                 }}
               >
                 <Typography
@@ -486,11 +484,11 @@ const MethodologySection = () => {
 
                 <Typography
                   sx={{
-                    mt: 1,
+                    mt: 1.5,
                     color: "#20A914",
-                    fontWeight: 600,
-                    fontSize: "18px",
-                    lineHeight: 1.4,
+                    fontWeight: 700,
+                    fontSize: "22px",
+                    lineHeight: 1.2,
                   }}
                 >
                   {step.title}
@@ -500,7 +498,7 @@ const MethodologySection = () => {
                   sx={{
                     mt: 1.5,
                     color: "rgba(255,255,255,0.85)",
-                    fontSize: "14px",
+                    fontSize: "16px",
                     lineHeight: 1.6,
                   }}
                 >
@@ -516,8 +514,9 @@ const MethodologySection = () => {
           onClick={goPrev}
           aria-label="Previous methodology step"
           sx={{
+            display: { xs: "none", md: "flex" },
             position: "absolute",
-            left: { xs: 4, md: 12 },
+            left: 12,
             top: "50%",
             transform: "translateY(-50%)",
             zIndex: 4,
@@ -526,18 +525,27 @@ const MethodologySection = () => {
             color: "#fff",
             width: 40,
             height: 40,
-            "&:hover": { backgroundColor: "#178B0B" },
+            "&:hover": {
+              backgroundColor: "#178B0B",
+              // bor
+            },
           }}
         >
-          <span style={{ fontSize: 16, lineHeight: 1 }}>←</span>
+          <PlayArrowIcon
+            sx={{
+              transform: "rotate(180deg)",
+              fontSize: 24,
+            }}
+          />
         </IconButton>
 
         <IconButton
           onClick={goNext}
           aria-label="Next methodology step"
           sx={{
+            display: { xs: "none", md: "flex" },
             position: "absolute",
-            right: { xs: 4, md: 12 },
+            right: 12,
             top: "50%",
             transform: "translateY(-50%)",
             zIndex: 4,
@@ -546,10 +554,16 @@ const MethodologySection = () => {
             color: "#fff",
             width: 40,
             height: 40,
-            "&:hover": { backgroundColor: "#178B0B" },
+            "&:hover": {
+              backgroundColor: "#178B0B",
+            },
           }}
         >
-          <span style={{ fontSize: 16, lineHeight: 1 }}>→</span>
+          <PlayArrowIcon
+            sx={{
+              fontSize: 24,
+            }}
+          />
         </IconButton>
       </Box>
 
@@ -571,7 +585,7 @@ const MethodologySection = () => {
               p: 0,
               cursor: "pointer",
               backgroundColor: activeIndex === i ? "#20A914" : "#2b2b2b",
-              transition: "all 0.25s ease",
+              transition: "all 0.30s ease",
             }}
           />
         ))}
