@@ -877,7 +877,7 @@ const pageStyles = `
   }
 
   .tl-section-soft {
-    padding: 72px 0;
+    padding-top: 72px;
   }
 
   .tl-section h2,
