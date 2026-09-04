@@ -202,103 +202,6 @@ const FAQS = [
       "Our development hub is at 100 Feet Road, Camp Road Junction, Selaiyur, Tambaram, Chennai. We host in-person technical reviews locally and work with remote clients globally.",
   },
 ];
-
-/* =========================================================
-   COUNT UP COMPONENT
-========================================================= */
-
-interface CountUpProps {
-  end: number;
-  duration?: number;
-  decimals?: number;
-  prefix?: string;
-  suffix?: string;
-  startAnimation: boolean;
-}
-
-const CountUp: React.FC<CountUpProps> = ({
-  end,
-  duration = 2000,
-  decimals = 0,
-  prefix = "",
-  suffix = "",
-  startAnimation,
-}) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!startAnimation) return;
-
-    let startTime: number | null = null;
-    let animationFrame: number;
-
-    const animate = (currentTime: number) => {
-      if (startTime === null) {
-        startTime = currentTime;
-      }
-
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
-
-      const currentValue = easedProgress * end;
-
-      setCount(currentValue);
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-
-    return () => {
-      cancelAnimationFrame(animationFrame);
-    };
-  }, [end, duration, startAnimation]);
-
-  return (
-    <>
-      {prefix}
-      {count.toFixed(decimals)}
-      {suffix}
-    </>
-  );
-};
-
-/* =========================================================
-   ARROW
-========================================================= */
-
-const ArrowCta: React.FC = () => (
-  <span className="arrow-cta" aria-hidden="true">
-    <svg
-      viewBox="0 0 26 14"
-      width="26"
-      height="14"
-      fill="none"
-    >
-      <path
-        d="M1 7H20"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M14 1L21 7L14 13"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </span>
-);
-
 /* =========================================================
    CSS
 ========================================================= */
@@ -1871,8 +1774,8 @@ const BlockchainDevelopment: React.FC = () => {
   const [openFaq, setOpenFaq] =
     useState<string | false>(false);
 
-  const [metricsVisible, setMetricsVisible] =
-    useState(false);
+  // const [metricsVisible, setMetricsVisible] =
+  //   useState(false);
 
   const metricsRef =
     useRef<HTMLDivElement | null>(null);
@@ -1892,8 +1795,6 @@ const BlockchainDevelopment: React.FC = () => {
           const entry = entries[0];
 
           if (entry.isIntersecting) {
-            setMetricsVisible(true);
-
             observer.unobserve(element);
           }
         },
