@@ -1357,7 +1357,7 @@
 
 .official-blog-detail {
   min-height: 100vh;
-  padding: 32px 24px 90px;
+  padding: 0 24px 90px;
   color: #ffffff;
 
   background:
@@ -1387,8 +1387,6 @@
 
   margin-bottom: 48px;
   padding-bottom: 16px;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .official-back-button {
@@ -1477,13 +1475,6 @@
   text-transform: uppercase;
 }
 
-.official-blog-kicker::before {
-  content: "";
-  width: 34px;
-  height: 1px;
-  background: #20a914;
-}
-
 .official-blog-hero h1 {
   margin: 0;
   max-width: 700px;
@@ -1499,7 +1490,7 @@
 }
 
 .official-blog-meta {
-  margin-top: 22px;
+  margin-bottom: 22px;
 
   display: flex;
   align-items: center;
@@ -1542,32 +1533,6 @@
 
   object-fit: cover;
   object-position: center;
-}
-
-.official-image-corner {
-  position: absolute;
-  z-index: 2;
-
-  width: 50px;
-  height: 50px;
-
-  pointer-events: none;
-}
-
-.official-image-corner-top {
-  top: 12px;
-  right: 12px;
-
-  border-top: 1px solid #20a914;
-  border-right: 1px solid #20a914;
-}
-
-.official-image-corner-bottom {
-  bottom: 12px;
-  left: 12px;
-
-  border-bottom: 1px solid #20a914;
-  border-left: 1px solid #20a914;
 }
 
 
@@ -1640,17 +1605,6 @@
   letter-spacing: -0.03em;
 }
 
-.official-heading-line {
-  display: block;
-
-  width: 50px;
-  height: 2px;
-
-  margin-top: 13px;
-
-  background: #20a914;
-}
-
 
 /* ==================================================
    PARAGRAPH
@@ -1702,8 +1656,6 @@
 .official-conclusion {
   margin-left: 110px;
   padding-top: 28px;
-
-  border-top: 1px solid rgba(32, 169, 20, 0.4);
 }
 
 .official-conclusion-label {
@@ -1730,17 +1682,6 @@
   font-weight: 650;
 
   letter-spacing: -0.03em;
-}
-
-.official-conclusion-line {
-  display: block;
-
-  width: 60px;
-  height: 2px;
-
-  margin: 13px 0 18px;
-
-  background: #20a914;
 }
 
 .official-conclusion p {
@@ -1827,7 +1768,7 @@
 
 @media (max-width: 900px) {
   .official-blog-detail {
-    padding: 28px 20px 72px;
+    padding: 0 20px 72px;
   }
 
   .official-blog-hero {
@@ -1868,7 +1809,7 @@
 
 @media (max-width: 700px) {
   .official-blog-detail {
-    padding: 22px 16px 58px;
+    padding: 0 16px 58px;
   }
 
   .official-blog-nav {

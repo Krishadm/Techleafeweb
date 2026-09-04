@@ -282,7 +282,7 @@ const Footer: React.FC = () => {
                 mb: 1.5,
               }}
             >
-              📧 support@techleafe.com
+              📧 admin@techleafe.com
             </Typography>
 
             <Typography

@@ -66,6 +66,12 @@ export default function BlogDetail() {
 
             <div className="official-blog-hero-copy">
 
+              <div className="official-blog-meta">
+                <span>{post.category}</span>
+                <span aria-hidden="true">•</span>
+                <span>Insight</span>
+              </div>
+
               <span className="official-blog-kicker">
                 Tech Leafe Insights
               </span>
@@ -73,12 +79,6 @@ export default function BlogDetail() {
               <h1>
                 {post.title}
               </h1>
-
-              <div className="official-blog-meta">
-                <span>{post.category}</span>
-                <span aria-hidden="true">•</span>
-                <span>Insight</span>
-              </div>
 
             </div>
 
@@ -90,16 +90,6 @@ export default function BlogDetail() {
                 src={post.image}
                 alt={post.title}
                 loading="eager"
-              />
-
-              <span
-                className="official-image-corner official-image-corner-top"
-                aria-hidden="true"
-              />
-
-              <span
-                className="official-image-corner official-image-corner-bottom"
-                aria-hidden="true"
               />
 
             </div>
@@ -139,11 +129,6 @@ export default function BlogDetail() {
                         <h2>
                           {section.heading}
                         </h2>
-
-                        <span
-                          className="official-heading-line"
-                          aria-hidden="true"
-                        />
 
                       </header>
                     )}
@@ -210,11 +195,6 @@ export default function BlogDetail() {
                 <h2>
                   Conclusion
                 </h2>
-
-                <span
-                  className="official-conclusion-line"
-                  aria-hidden="true"
-                />
 
                 <p>
                   {post.conclusion}
