@@ -58,7 +58,7 @@ const GetInTouchSection: React.FC = () => {
             Accept: "application/json",
           },
           body: JSON.stringify({
-            access_key: "YOUR_ACCESS_KEY",
+            access_key: "5f9344f3-3660-4516-9d83-4c28db96033f",
 
             name: formData.name,
             email: formData.email,
