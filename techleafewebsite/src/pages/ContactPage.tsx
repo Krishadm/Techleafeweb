@@ -888,12 +888,12 @@ const GetInTouchSection: React.FC = () => {
                   </p>
 
                   <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=info@techleafe.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=admin@techleafe.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="git-info-value git-link"
                   >
-                    info@techleafe.com
+                    admin@techleafe.com
                   </a>
                 </div>
               </div>

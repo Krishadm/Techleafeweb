@@ -268,7 +268,7 @@ const Footer: React.FC = () => {
                 fontFamily: '"DM Sans"',
                 }}
             >
-              📧 info@techleafe.com
+              📧 admin@techleafe.com
             </Typography>
             <Typography variant="body2" sx={{ color: "#bdbdbd",fontFamily: '"DM Sans"', }}>
               📞 +91 93459 55510
