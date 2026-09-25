@@ -15,6 +15,9 @@ import PortfolioPage from "../pages/Portfolio/Portfolio";
 import CrabCoinPage from "../pages/Portfolio/Crabcoin/Crabcoin";
 import RockWalletPage from "../pages/Portfolio/Rockwallet/Rockwallet";
 import SuperHeroPage from "../pages/Portfolio/Superhero/Superhero";
+// upcoming project
+import UpcomingProject from "../pages/UpcomingProject/UpcomingProject";
+
 //contact page
 import ContactPage from "../pages/Contact/Contact";
 //not found page
@@ -70,6 +73,10 @@ export const router = createBrowserRouter([
       {
         path: "superHero",
         element: <SuperHeroPage />,
+      },
+      {
+        path: "upcoming-project",
+        element: <UpcomingProject />,
       },
       {
         path: "contact",

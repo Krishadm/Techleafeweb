@@ -599,10 +599,16 @@ const teamMembers: TeamMember[] = [
     description: "Leads complex web builds end-to-end, turning ambitious specs into fast, reliable, production-ready products.",
   },
   {
-    photo: "/assets/team/Krishna Kanth. S.jpg",
-    name: "Krishna Kanth. S",   
+    photo: "/assets/team/Krishna Kanth.png",
+    name: "Krishna Kanth",   
     role: "Software Developer",
     description: "Brings deep full-stack expertise to architect and ship scalable, high-performance web applications.",
+  },
+  {
+    photo: "/assets/team/mohan aditiyan.png",
+    name: "Mohan Aditiyan ",
+    role: "Software Engineer",
+    description: "Leads teams and transforms business needs into scalable, AI-powered solutions and impactful digital products.",
   },
 ];
 

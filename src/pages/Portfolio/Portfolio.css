@@ -468,9 +468,14 @@
   .portfolio-page .pp-style-41 {
   grid-template-columns: repeat(4, 1fr);
   column-gap: 24px;
-  row-gap: 48px;
+  row-gap: 38px;
   padding-top: 44px;
 }
+}
+@media (min-width: 900px) {
+  .portfolio-page .pp-style-41 > .team-stop:last-child {
+    grid-column: 4;
+  }
 }
 
 .portfolio-page .pp-style-42 {

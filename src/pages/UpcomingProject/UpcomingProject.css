@@ -1,0 +1,991 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
+
+.upcoming-page {
+  --green: #159e1a;
+  --green-bright: #20b925;
+  --black: #000000;
+  --dark: #050505;
+  --border: #1b1b1b;
+  --muted: #999999;
+  --dim: #555555;
+
+  width: 100%;
+  background: var(--black);
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  overflow: hidden;
+}
+
+.upcoming-page *,
+.upcoming-page *::before,
+.upcoming-page *::after {
+  box-sizing: border-box;
+}
+
+.upcoming-page a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* =====================================================
+   COMMON
+===================================================== */
+
+.section-label {
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.upcoming-hero {
+  min-height: 590px;
+  padding: 90px 8% 70px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-left {
+  width: 55%;
+  position: relative;
+  z-index: 5;
+}
+
+.project-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 24px;
+
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+
+  background: var(--green);
+  border-radius: 50%;
+
+  box-shadow: 0 0 12px rgba(21, 158, 26, 0.7);
+}
+
+.hero-left h1 {
+  max-width: 700px;
+
+  margin: 0;
+
+  font-size: clamp(55px, 7vw, 90px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -4px;
+}
+
+.hero-left h1 span {
+  color: var(--green);
+}
+
+.hero-copy {
+  margin: 25px 0 23px;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding-bottom: 8px;
+
+  border-bottom: 1px solid var(--green);
+
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+
+  transition: 0.25s ease;
+}
+
+.hero-button span {
+  color: var(--green);
+  font-size: 17px;
+}
+
+.hero-button:hover {
+  color: var(--green);
+}
+
+
+/* =====================================================
+   HERO VISUAL
+===================================================== */
+
+.hero-visual {
+  width: 390px;
+  height: 390px;
+
+  position: absolute;
+  right: 8%;
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+.hero-ring {
+  position: absolute;
+
+  width: 270px;
+  height: 150px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px solid rgba(21, 158, 26, 0.25);
+  border-radius: 50%;
+}
+
+.ring-1 {
+  transform: translate(-50%, -50%) rotate(25deg);
+}
+
+.ring-2 {
+  transform: translate(-50%, -50%) rotate(-25deg);
+}
+
+.ring-3 {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+}
+
+.hero-core {
+  width: 100px;
+  height: 100px;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--green);
+
+  background: #030603;
+
+  box-shadow:
+    0 0 45px rgba(21, 158, 26, 0.08);
+}
+
+.hero-core span {
+  color: var(--green);
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.hero-node {
+  position: absolute;
+
+  padding: 8px 11px;
+
+  border: 1px solid #242424;
+  background: #050505;
+
+  color: #777777;
+
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.hero-node span {
+  margin-right: 6px;
+  color: var(--green);
+}
+
+.hero-node-1 {
+  top: 45px;
+  left: 15px;
+}
+
+.hero-node-2 {
+  top: 65px;
+  right: 5px;
+}
+
+.hero-node-3 {
+  bottom: 55px;
+  left: 0;
+}
+
+.hero-node-4 {
+  bottom: 25px;
+  right: 30px;
+}
+
+
+/* =====================================================
+   CLUES
+===================================================== */
+
+.clues-section {
+  padding: 65px 8% 70px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-heading h2 {
+  margin: 12px 0 35px;
+
+  font-size: clamp(40px, 5vw, 65px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -3px;
+}
+
+.section-heading h2 span {
+  color: #666666;
+}
+
+.clues-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.clue-card {
+  min-height: 215px;
+
+  padding: 22px;
+
+  border: 1px solid #202020;
+
+  background: #050505;
+
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.clue-card:hover {
+  border-color: var(--green);
+  transform: translateY(-4px);
+}
+
+.clue-card.active {
+  border-color: rgba(21, 158, 26, 0.5);
+  background: #050b05;
+}
+
+.clue-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.clue-top span {
+  color: #555555;
+  font-size: 9px;
+}
+
+.clue-top strong {
+  color: var(--green);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.clue-card h3 {
+  margin: 55px 0 8px;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.clue-card p {
+  margin: 0;
+
+  color: #888888;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   CONNECTION
+===================================================== */
+
+.connection-section {
+  padding: 65px 8% 70px;
+  border-bottom: 1px solid var(--border);
+}
+
+.connection-heading h2 {
+  margin: 12px 0 20px;
+
+  font-size: clamp(40px, 5vw, 65px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -3px;
+}
+
+.connection-heading h2 span {
+  color: var(--green);
+}
+
+.connection-visual {
+  max-width: 850px;
+  height: 350px;
+
+  margin: 5px auto 0;
+
+  position: relative;
+}
+
+.connection-item {
+  position: absolute;
+
+  min-width: 120px;
+
+  padding: 12px;
+
+  border: 1px solid #222222;
+  background: #050505;
+
+  z-index: 3;
+}
+
+.connection-item small {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: var(--green);
+  font-size: 8px;
+}
+
+.connection-item strong {
+  color: #dddddd;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.item-a {
+  top: 20px;
+  left: 8%;
+}
+
+.item-b {
+  top: 20px;
+  right: 8%;
+}
+
+.item-c {
+  bottom: 25px;
+  left: 14%;
+}
+
+.item-d {
+  bottom: 25px;
+  right: 14%;
+}
+
+.connection-center {
+  width: 105px;
+  height: 105px;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--green);
+
+  background: #020502;
+
+  z-index: 5;
+}
+
+.connection-center span {
+  color: var(--green);
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.connection-line {
+  position: absolute;
+
+  width: 27%;
+  height: 1px;
+
+  left: 36.5%;
+  top: 50%;
+
+  background: rgba(21, 158, 26, 0.35);
+
+  transform-origin: center;
+}
+
+.line-a {
+  transform: rotate(28deg);
+}
+
+.line-b {
+  transform: rotate(-28deg);
+}
+
+.line-c {
+  transform: rotate(152deg);
+}
+
+.line-d {
+  transform: rotate(-152deg);
+}
+
+
+/* =====================================================
+   GUESS
+===================================================== */
+
+.guess-section {
+  padding: 65px 8% 70px;
+  border-bottom: 1px solid var(--border);
+}
+
+.guess-section h2 {
+  margin: 12px 0 35px;
+
+  font-size: clamp(40px, 5vw, 65px);
+  line-height: 0.95;
+  letter-spacing: -3px;
+}
+
+.guess-section h2 span {
+  color: #666666;
+}
+
+.guess-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.guess-card {
+  min-height: 180px;
+
+  padding: 20px;
+
+  border: 1px solid #202020;
+  background: #050505;
+}
+
+.guess-card > span {
+  color: #555555;
+  font-size: 9px;
+}
+
+.guess-icon {
+  margin-top: 25px;
+
+  color: var(--green);
+
+  font-size: 24px;
+}
+
+.guess-card h3 {
+  margin: 8px 0 5px;
+
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.guess-card p {
+  margin: 0;
+
+  color: #777777;
+  font-size: 11px;
+}
+
+.guess-card.mystery {
+  border-color: rgba(21, 158, 26, 0.35);
+}
+
+.guess-bottom {
+  margin: 25px 0 0;
+
+  color: #777777;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   PRODUCT PREVIEW
+===================================================== */
+
+.preview-section {
+  padding: 65px 8% 70px;
+
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+
+  gap: 55px;
+
+  align-items: center;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.preview-copy h2 {
+  margin: 12px 0 15px;
+
+  font-size: clamp(40px, 4.5vw, 60px);
+  line-height: 0.95;
+  letter-spacing: -3px;
+}
+
+.preview-copy h2 span {
+  color: #666666;
+}
+
+.preview-copy p {
+  max-width: 350px;
+
+  margin: 0;
+
+  color: #888888;
+
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+
+/* Product window */
+
+.product-window {
+  height: 310px;
+
+  position: relative;
+
+  border: 1px solid #222222;
+
+  background: #050505;
+
+  overflow: hidden;
+}
+
+.window-header {
+  height: 42px;
+
+  padding: 0 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #1c1c1c;
+}
+
+.window-header > span {
+  color: #555555;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+
+.window-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.window-dots i {
+  width: 5px;
+  height: 5px;
+
+  display: block;
+
+  border-radius: 50%;
+  background: #333333;
+}
+
+.window-content {
+  display: flex;
+  height: calc(100% - 42px);
+}
+
+.window-sidebar {
+  width: 17%;
+
+  padding: 22px 13px;
+
+  border-right: 1px solid #1c1c1c;
+}
+
+.window-sidebar span {
+  display: block;
+
+  width: 100%;
+  height: 5px;
+
+  margin-bottom: 16px;
+
+  background: #171717;
+}
+
+.window-main {
+  flex: 1;
+
+  padding: 25px;
+}
+
+.window-title {
+  width: 45%;
+  height: 8px;
+
+  background: #191919;
+}
+
+.window-subtitle {
+  width: 65%;
+  height: 5px;
+
+  margin-top: 10px;
+
+  background: #111111;
+}
+
+.window-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 9px;
+
+  margin-top: 30px;
+}
+
+.window-cards > div {
+  height: 90px;
+
+  border: 1px solid #1c1c1c;
+
+  background: #080808;
+}
+
+.window-cards .mystery-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-color: rgba(21, 158, 26, 0.4);
+
+  color: var(--green);
+
+  font-size: 20px;
+}
+
+.window-overlay {
+  position: absolute;
+
+  inset: 42px 0 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.72);
+
+  backdrop-filter: blur(5px);
+}
+
+.window-overlay strong {
+  color: #ffffff;
+
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+
+.window-overlay span {
+  margin-top: 8px;
+
+  color: #666666;
+
+  font-size: 10px;
+}
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+.final-section {
+  padding: 75px 8% 80px;
+
+  text-align: center;
+}
+
+.final-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  margin-bottom: 20px;
+
+  color: var(--green);
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.final-section h2 {
+  margin: 12px 0 17px;
+
+  font-size: clamp(48px, 6vw, 85px);
+  line-height: 0.92;
+  letter-spacing: -4px;
+}
+
+.final-section h2 span {
+  color: var(--green);
+}
+
+.final-section > p {
+  margin: 0;
+
+  color: #888888;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.coming-badge {
+  width: 190px;
+
+  margin: 28px auto 0;
+
+  padding: 13px 20px;
+
+  border: 1px solid #222222;
+
+  background: #050505;
+}
+
+.coming-badge small {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #555555;
+
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.coming-badge strong {
+  color: var(--green);
+
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .upcoming-hero {
+    min-height: 720px;
+    align-items: flex-start;
+  }
+
+  .hero-left {
+    width: 100%;
+  }
+
+  .hero-visual {
+    width: 330px;
+    height: 330px;
+
+    top: auto;
+    bottom: 20px;
+    right: 50%;
+
+    transform: translateX(50%);
+  }
+
+  .clues-grid,
+  .guess-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-section {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .upcoming-hero,
+  .clues-section,
+  .connection-section,
+  .guess-section,
+  .preview-section,
+  .final-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+
+  /* Hero */
+
+  .upcoming-hero {
+    min-height: 650px;
+    padding-top: 65px;
+  }
+
+  .project-label {
+    font-size: 8px;
+  }
+
+  .hero-left h1 {
+    font-size: 55px;
+    letter-spacing: -3px;
+  }
+
+  .hero-copy {
+    font-size: 14px;
+  }
+
+  .hero-visual {
+    width: 280px;
+    height: 280px;
+  }
+
+  .hero-ring {
+    width: 210px;
+    height: 120px;
+  }
+
+  .ring-3 {
+    width: 160px;
+    height: 160px;
+  }
+
+  .hero-core {
+    width: 80px;
+    height: 80px;
+  }
+
+  .hero-core span {
+    font-size: 28px;
+  }
+
+  .hero-node {
+    font-size: 6px;
+    padding: 6px 8px;
+  }
+
+
+  /* Sections */
+
+  .section-heading h2,
+  .connection-heading h2,
+  .guess-section h2,
+  .preview-copy h2 {
+    font-size: 42px;
+    letter-spacing: -2px;
+  }
+
+
+  /* Connection */
+
+  .connection-visual {
+    height: 330px;
+  }
+
+  .connection-item {
+    min-width: 95px;
+    padding: 9px;
+  }
+
+  .connection-item strong {
+    font-size: 7px;
+  }
+
+  .connection-center {
+    width: 80px;
+    height: 80px;
+  }
+
+  .connection-center span {
+    font-size: 23px;
+  }
+
+
+  /* Product */
+
+  .product-window {
+    height: 260px;
+  }
+
+  .window-main {
+    padding: 18px;
+  }
+
+  .window-cards > div {
+    height: 65px;
+  }
+
+  .window-overlay strong {
+    font-size: 10px;
+  }
+
+
+  /* Final */
+
+  .final-section h2 {
+    font-size: 50px;
+    letter-spacing: -3px;
+  }
+
+}
