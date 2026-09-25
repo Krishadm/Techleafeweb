@@ -1,0 +1,62 @@
+/* Google Font */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+:root {
+  --bg: #020302;
+  --white: #ffffff;
+  --green: #187a0c;
+  --green-bright: #238f12;
+  --green-deep: #073f02;
+  --green-line: #1d850d;
+  --muted: #d6d6d6;
+
+  /* portfolio */
+  --green-icon: #20A914;
+  --green-text: #35A51C;
+  --text-soft: #c9c9c9;
+  --text-gray: #9a9a9a;
+
+  --font-main: "DM Sans", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  color: var(--white);
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100%;
+  height: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  font-family: var(--font-main);
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}

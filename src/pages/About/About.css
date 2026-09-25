@@ -1,0 +1,356 @@
+
+/* =========================
+   MAIN PAGE
+========================= */
+
+.about-page {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #000000;
+  color: var(--white);
+  /* padding: 55px 0; */
+  padding-top: 55px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+/* MUI Container override */
+.about-page .about-container {
+  width: 100%;
+  max-width: 1200px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================
+   TOP SECTION
+========================= */
+
+.about-page .about-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+/* =========================
+   HERO ANIMATIONS
+========================= */
+
+@keyframes aboutFadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes aboutFadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes aboutFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* =========================
+   LEFT CONTENT
+========================= */
+
+.about-page .about-content {
+  width: 43%;
+  animation: aboutFadeLeft 0.8s ease both;
+}
+
+/* =========================
+   ABOUT TITLE
+========================= */
+
+.about-page .about-title {
+  margin: 0 0 20px;
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+/* First/hero title */
+.about-page .about-content .about-title {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+}
+
+/* Section titles */
+.about-page .about-section .about-title,
+.about-page .teams-heading .about-title {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+}
+
+/* Green highlighted word */
+.about-page .about-title span {
+  color: #20a914;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.about-page .about-description {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+/* =========================
+   LABEL
+========================= */
+
+.about-page .about-label {
+  margin: 0 0 12px;
+  color: #20a914;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* =========================
+   BODY TEXT
+========================= */
+
+.about-page .about-body-text {
+  margin-top: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+/* =========================
+   TECHNOLOGY IMAGE CONTAINER
+========================= */
+
+.about-page .about-images {
+  width: 55%;
+  max-width: 600px;
+  position: relative;
+  animation: aboutFadeRight 0.8s ease 0.15s both;
+}
+
+/* =========================
+   TECHNOLOGY IMAGE
+========================= */
+
+.about-page .about-technology-image {
+  width: 100%;
+  height: 380px;
+  display: block;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid #1d620c;
+  box-sizing: border-box;
+
+  box-shadow: 0 10px 35px rgba(29, 98, 12, 0.12);
+
+  animation: aboutFloat 5s ease-in-out 1s infinite;
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* =========================
+   IMAGE HOVER
+========================= */
+
+.about-page .about-technology-image:hover {
+  animation-play-state: paused;
+  transform: scale(1.02);
+  border-color: #20a914;
+
+  box-shadow: 0 20px 50px rgba(29, 98, 12, 0.25);
+}
+
+/* =========================
+   MISSION & VISION
+========================= */
+
+.about-page .info-cards {
+  display: flex;
+  gap: 15px;
+  margin: 55px 0;
+}
+
+.about-page .info-card-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about-page .about-section {
+  margin-bottom: 55px;
+}
+
+/* =========================
+   TEAMS HEADING
+========================= */
+
+.about-page .teams-heading {
+  margin-bottom: 35px;
+}
+
+/* =========================
+   FEATURE GRID
+========================= */
+
+.about-page .teams-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .about-page {
+    padding: 45px 0;
+  }
+
+  .about-page .about-top {
+    gap: 40px;
+  }
+
+  .about-page .about-images {
+    width: 55%;
+  }
+
+  .about-page .about-technology-image {
+    height: 320px;
+  }
+
+  .about-page .teams-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .about-page {
+    padding: 35px 0;
+  }
+
+  .about-page .about-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+  }
+
+  .about-page .about-content {
+    width: 100%;
+  }
+
+  .about-page .about-images {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about-page .about-technology-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .about-page .info-cards {
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  .about-page .teams-heading {
+    margin-bottom: 25px;
+  }
+
+  .about-page .teams-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .about-page .about-content .about-title {
+    font-size: 2.2rem;
+  }
+
+  .about-page .about-section .about-title,
+  .about-page .teams-heading .about-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 450px) {
+  .about-page .about-technology-image {
+    border-radius: 10px;
+  }
+
+  .about-page .info-cards {
+    gap: 12px;
+  }
+
+  .about-page .about-content .about-title {
+    font-size: 2rem;
+  }
+
+  .about-page .about-description,
+  .about-page .about-body-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page .about-content,
+  .about-page .about-images,
+  .about-page .about-technology-image {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+

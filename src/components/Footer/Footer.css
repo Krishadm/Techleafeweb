@@ -1,0 +1,157 @@
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  background-color: #000000;
+  color: var(--green);
+  margin-top: 8px;
+  width: 100%;
+}
+
+.footer-container {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+/* =========================
+   COMPANY
+========================= */
+
+.footer-company-title {
+  color: var(--green) !important;
+  font-weight: 600 !important;
+  margin-bottom: 16px !important;
+}
+
+.footer-description {
+  color: var(--muted) !important;
+  line-height: 1.8 !important;
+  max-width: 350px;
+}
+
+/* =========================
+   SOCIAL ICONS
+========================= */
+
+.footer-social-icons {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.footer-social-icon {
+  color: var(--white) !important;
+}
+
+.footer-social-icon.facebook-icon:hover {
+  color: var(--white) !important;
+  background-color: #1877f2 !important;
+}
+
+.footer-social-icon.instagram-icon:hover {
+  color: var(--white) !important;
+  background: linear-gradient(
+    45deg,
+    #f9ce34,
+    #ee2a7b,
+    #6228d7
+  ) !important;
+}
+
+.footer-social-icon.linkedin-icon:hover {
+  color: var(--white) !important;
+  background-color: #0a66c2 !important;
+}
+
+.footer-social-icon.twitter-icon:hover {
+  color: var(--white) !important;
+  background-color: #1da1f2 !important;
+}
+
+/* =========================
+   SECTION TITLES
+========================= */
+
+.footer-section-title {
+  color: var(--green) !important;
+  font-weight: 600 !important;
+  margin-bottom: 16px !important;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+.footer-link {
+  display: block !important;
+  color: var(--muted) !important;
+  margin-bottom: 9.6px !important;
+}
+
+.footer-link:hover {
+  color: var(--white) !important;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.footer-contact-text {
+  color: var(--muted) !important;
+  margin-bottom: 12px !important;
+}
+
+.footer-location-icon {
+  color: var(--muted) !important;
+  font-size: 1.1rem !important;
+  vertical-align: middle;
+  margin-right: 4px !important;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.footer-divider {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  border-color: #444 !important;
+}
+
+/* =========================
+   BOTTOM
+========================= */
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-copyright {
+  color: #999 !important;
+  text-align: center;
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-legal-text {
+  color: #999 !important;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+  .footer-bottom {
+    flex-direction: column;
+  }
+}
+
